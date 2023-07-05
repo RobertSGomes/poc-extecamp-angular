@@ -1,0 +1,47 @@
+<nav class="fixed w-full top-0 bg-white">
+  <ul
+    class="flex flex-row items-center justify-between h-20 w-[1280px] mx-auto px-8"
+  >
+    <div class="flex flex-row items-center gap-x-9">
+      <li class="logo">
+        <img src="../../../../assets/extecamp_logo.png" width="100%" />
+      </li>
+      <li>
+        <a class="font-semibold text-base text-gray-600" [routerLink]="['']"
+          >Home</a
+        >
+      </li>
+      <li>
+        <a class="font-semibold text-base text-gray-600" [routerLink]="['']"
+          >Página 1</a
+        >
+      </li>
+      <li>
+        <a class="font-semibold text-base text-gray-600" [routerLink]="['']"
+          >Página 2</a
+        >
+      </li>
+      <li>
+        <a class="font-semibold text-base text-gray-600" [routerLink]="['']"
+          >Página 3</a
+        >
+      </li>
+    </div>
+    <div class="flex flex-row items-center gap-x-3">
+      <li class="nav-button signin">
+        <a
+          class="font-semibold text-base text-gray-600 px-[18px] py-[10px]"
+          [routerLink]="['signin']"
+          >Entrar</a
+        >
+      </li>
+      <li class="nav-button signup">
+        <a
+          class="font-semibold text-base text-gray-600 px-[18px] py-[10px] rounded-lg border border-gray-300"
+          [routerLink]="['signup']"
+          >Cadastro</a
+        >
+      </li>
+    </div>
+  </ul>
+</nav>
