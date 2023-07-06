@@ -9,6 +9,7 @@ import { SignupComponent } from './templates/signup/signup.component';
 import { AllCoursesComponent } from './templates/all-courses/all-courses.component';
 import { CourseComponent } from './templates/course/course.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
+import { ProfessorHomeComponent } from './templates/professor-home/professor-home.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { NavbarComponent } from './shared/components/navbar/navbar.component';
     AllCoursesComponent,
     CourseComponent,
     NavbarComponent,
+    ProfessorHomeComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
