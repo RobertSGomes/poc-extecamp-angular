@@ -1,7 +1,10 @@
 <div class="flex flex-row h-screen">
   <app-sidebar></app-sidebar>
 
-  <app-header-navbar></app-header-navbar>
+  <app-header-navbar
+    [name]="'Larissa'"
+    [description]="'Bem vinda a sua área do docente EXTECAMP'"
+  ></app-header-navbar>
 
   <div
     class="flex flex-col min-h-[calc(100%-108px)] overflow-y-auto w-full ml-[300px] mt-[108px] px-8 py-16 bg-gray-50"
@@ -103,7 +106,20 @@
         <th>Nome do curso</th>
         <th>Tipo de curso</th>
         <th>Situação</th>
+        <th></th>
       </thead>
+      <tbody>
+        <tr>
+          <td>ECO-0290</td>
+          <td>001</td>
+          <td>PRÁTICAS INOVADORAS EM GESTÃO PÚBLICA</td>
+          <td></td>
+          <td>ANDAMENTO</td>
+          <td></td>
+        </tr>
+        <tr></tr>
+        <tr></tr>
+      </tbody>
     </table>
     <div class="flex flex-row justify-between py-6">
       <h1 class="font-semibold text-lg text-gray-900">Cursos propostos</h1>
