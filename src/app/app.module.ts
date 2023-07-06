@@ -10,8 +10,9 @@ import { AllCoursesComponent } from './templates/all-courses/all-courses.compone
 import { CourseComponent } from './templates/course/course.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { ProfessorHomeComponent } from './templates/professor-home/professor-home.component';
-import { ProfessorSidebarComponent } from './shared/components/sidebar/sidebar.component';
+import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 import { ProfesssorOfferingComponent } from './templates/professsor-offering/professsor-offering.component';
+import { HeaderNavbarComponent } from './shared/components/header-navbar/header-navbar.component';
 import { StudentHomeComponent } from './templates/student-home/student-home.component';
 
 @NgModule({
@@ -24,8 +25,9 @@ import { StudentHomeComponent } from './templates/student-home/student-home.comp
     CourseComponent,
     NavbarComponent,
     ProfessorHomeComponent,
-    ProfessorSidebarComponent,
+    SidebarComponent,
     ProfesssorOfferingComponent,
+    HeaderNavbarComponent,
     StudentHomeComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
