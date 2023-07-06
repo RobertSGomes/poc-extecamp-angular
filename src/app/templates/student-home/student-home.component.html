@@ -23,5 +23,45 @@
     }"
   ></app-header-navbar>
 
-  <div class="col-start-2 overflow-y-auto w-full px-8 py-16 bg-gray-50"></div>
+  <div class="col-start-2 overflow-y-auto w-full px-8">
+    <section class="flex py-6 items-center justify-between">
+      <h1 class="font-semibold text-lg text-gray-900">Meus cursos</h1>
+      <div class="flex gap-2">
+        <button
+          class="rounded-md px-3 py-2 font-semibold text-sm text-gray-700 bg-gray-50"
+        >
+          Todos
+        </button>
+        <button
+          class="rounded-md px-3 py-2 font-semibold text-sm text-gray-500"
+        >
+          Completos
+        </button>
+        <button
+          class="rounded-md px-3 py-2 font-semibold text-sm text-gray-500"
+        >
+          Incompletos
+        </button>
+      </div>
+    </section>
+    <section
+      class="rounded-2xl border border-gray-200 flex flex-col py-8 gap-6 items-center"
+    >
+      <div class="flex justify-center w-full">
+        <div class="flex flex-col gap-1 items-center w-[352px]">
+          <h1 class="font-semibold text-base text-gray-900">
+            Sem cursos registrados
+          </h1>
+          <p class="font-normal text-sm text-gray-600 text-center">
+            Você ainda não está inscrito ou matriculado em um curso da EXTECAMP
+          </p>
+        </div>
+      </div>
+      <button
+        class="rounded-lg px-[14px] py-2 w-fit bg-gray-600 font-semibold text-sm text-white"
+      >
+        Buscar novo curso
+      </button>
+    </section>
+  </div>
 </div>
