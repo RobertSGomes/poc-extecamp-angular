@@ -10,8 +10,9 @@ import { AllCoursesComponent } from './templates/all-courses/all-courses.compone
 import { CourseComponent } from './templates/course/course.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { ProfessorHomeComponent } from './templates/professor-home/professor-home.component';
-import { ProfessorSidebarComponent } from './shared/components/sidebar/sidebar.component';
+import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 import { ProfesssorOfferingComponent } from './templates/professsor-offering/professsor-offering.component';
+import { HeaderNavbarComponent } from './shared/components/header-navbar/header-navbar.component';
 
 @NgModule({
   declarations: [
@@ -23,8 +24,9 @@ import { ProfesssorOfferingComponent } from './templates/professsor-offering/pro
     CourseComponent,
     NavbarComponent,
     ProfessorHomeComponent,
-    ProfessorSidebarComponent,
+    SidebarComponent,
     ProfesssorOfferingComponent,
+    HeaderNavbarComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

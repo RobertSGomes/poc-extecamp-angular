@@ -1,7 +1,119 @@
 <div class="flex flex-row h-screen">
   <app-sidebar></app-sidebar>
 
-  <div class="min-h-full h-[3000px] overflow-y-auto w-full pl-[300px]">
-    <p>Offering</p>
+  <app-header-navbar></app-header-navbar>
+
+  <div
+    class="flex flex-col min-h-[calc(100%-108px)] overflow-y-auto w-full ml-[300px] mt-[108px] px-8 py-16 bg-gray-50"
+  >
+    <h1 class="font-semibold text-lg text-gray-900">Visão geral</h1>
+    <div class="flex flex-row gap-x-[22px] py-6">
+      <div
+        class="flex flex-col w-full bg-white rounded-xl border border-gray-200"
+      >
+        <div class="flex flex-col gap-y-2 border-b border-b-gray-200 p-6">
+          <p class="font-medium text-sm text-gray-600">Proposto</p>
+          <div class="flex flex-row items-center justify-between">
+            <h1 class="font-semibold text-4xl text-gray-900">1</h1>
+            <button
+              class="flex items-center justify-center rounded-[6px] w-6 h-6 border border-gray-300 shadow-sm"
+            ></button>
+          </div>
+        </div>
+        <div class="flex flex-row p-6 justify-end">
+          <button class="font-semibold text-sm text-violet-700">
+            Ver todos
+          </button>
+        </div>
+      </div>
+      <div
+        class="flex flex-col w-full bg-white rounded-xl border border-gray-200"
+      >
+        <div class="flex flex-col gap-y-2 border-b border-b-gray-200 p-6">
+          <p class="font-medium text-sm text-gray-600">Andamento</p>
+          <div class="flex flex-row items-center justify-between">
+            <h1 class="font-semibold text-4xl text-gray-900">2</h1>
+            <button
+              class="flex items-center justify-center rounded-[6px] w-6 h-6 border border-gray-300 shadow-sm"
+            ></button>
+          </div>
+        </div>
+        <div class="flex flex-row p-6 justify-end">
+          <button class="font-semibold text-sm text-violet-700">
+            Ver todos
+          </button>
+        </div>
+      </div>
+      <div
+        class="flex flex-col w-full bg-white rounded-xl border border-gray-200"
+      >
+        <div class="flex flex-col gap-y-2 border-b border-b-gray-200 p-6">
+          <p class="font-medium text-sm text-gray-600">Terminados</p>
+          <div class="flex flex-row items-center justify-between">
+            <h1 class="font-semibold text-4xl text-gray-900">0</h1>
+            <button
+              class="flex items-center justify-center rounded-[6px] w-6 h-6 border border-gray-300 shadow-sm"
+            ></button>
+          </div>
+        </div>
+        <div class="flex flex-row p-6 justify-end">
+          <button class="font-semibold text-sm text-violet-700">
+            Ver todos
+          </button>
+        </div>
+      </div>
+      <div
+        class="flex flex-col w-full bg-white rounded-xl border border-gray-200"
+      >
+        <div class="flex flex-col gap-y-2 border-b border-b-gray-200 p-6">
+          <p class="font-medium text-sm text-gray-600">Com pendência</p>
+          <div class="flex flex-row items-center justify-between">
+            <h1 class="font-semibold text-4xl text-gray-900">0</h1>
+            <button
+              class="flex items-center justify-center rounded-[6px] w-6 h-6 border border-gray-300 shadow-sm"
+            ></button>
+          </div>
+        </div>
+        <div class="flex flex-row p-6 justify-end">
+          <button class="font-semibold text-sm text-violet-700">
+            Ver todos
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-row justify-between py-6">
+      <h1 class="font-semibold text-lg text-gray-900">Cursos em andamento</h1>
+      <div class="flex flex-row gap-x-2">
+        <button
+          class="rounded-lg px-[14px] py-2 border bg-white border-gray-300 shadow-sm font-semibold text-sm text-gray-700"
+        >
+          Filtros
+        </button>
+        <button
+          class="rounded-lg px-[14px] py-2 border bg-violet-600 border-violet-600 shadow-sm font-semibold text-sm text-white"
+        >
+          Novo oferecimento
+        </button>
+      </div>
+    </div>
+    <table>
+      <thead>
+        <th>Sigla</th>
+        <th>Oferecimento</th>
+        <th>Nome do curso</th>
+        <th>Tipo de curso</th>
+        <th>Situação</th>
+      </thead>
+    </table>
+    <div class="flex flex-row justify-between py-6">
+      <h1 class="font-semibold text-lg text-gray-900">Cursos propostos</h1>
+      <div class="flex flex-row gap-x-2">
+        <button
+          class="rounded-lg px-[14px] py-2 border bg-white border-gray-300 shadow-sm font-semibold text-sm text-gray-700"
+        >
+          Filtros
+        </button>
+      </div>
+    </div>
   </div>
 </div>

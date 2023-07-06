@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css'],
 })
-export class ProfessorSidebarComponent {
+export class SidebarComponent {
   sidebar: String = '/professor/home';
 
   constructor(private router: Router) {
