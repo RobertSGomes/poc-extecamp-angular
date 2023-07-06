@@ -1,1 +1,103 @@
-<p>signup works!</p>
+<section class="relative flex h-screen w-screen items-center justify-center">
+  <div class="flex flex-col p-2 items-center gap-8">
+    <img
+      src="../../../assets/extecamp_logo_colored.png"
+      class="w-[286px] h-[90px]"
+    />
+    <div class="flex flex-col gap-6 items-center">
+      <div class="flex flex-col gap-6 items-start justify-start">
+        <h1 class="font-semibold text-lg text-gray-900">Cadastro</h1>
+        <div class="flex flex-col gap-6">
+          <div class="flex flex-col gap-[6px] w-[500px]">
+            <label class="font-medium text-sm text-gray-700"
+              >Nome completo *</label
+            >
+            <div
+              class="flex gap-2 w-full px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+            >
+              <input
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                placeholder="Preencha"
+                required
+              />
+              <div class="rounded-full bg-gray-300 w-4 h-4"></div>
+            </div>
+          </div>
+          <div class="flex flex-col gap-[6px] w-[500px]">
+            <label class="font-medium text-sm text-gray-700">Telefone *</label>
+            <div
+              class="flex gap-2 w-full px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+            >
+              <select class="font-medium text-base text-gray-800 outline-none">
+                <option>BR</option>
+                <option>EN</option>
+                <option>ES</option>
+              </select>
+              <input
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                placeholder="+55 (DDD) 00000-0000"
+                required
+              />
+            </div>
+          </div>
+          <div class="flex flex-col gap-[6px] w-[500px]">
+            <label class="font-medium text-sm text-gray-700">Email *</label>
+            <div
+              class="flex gap-2 w-full px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+            >
+              <input
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                placeholder="E-mail ou número de matrícula"
+                required
+              />
+              <div class="rounded-full bg-gray-300 w-4 h-4"></div>
+            </div>
+          </div>
+          <div class="flex flex-col gap-[6px] w-[500px]">
+            <label class="font-medium text-sm text-gray-700">Senha *</label>
+            <div
+              class="flex gap-2 w-full px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+            >
+              <input
+                type="password"
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                placeholder="Preencha"
+                required
+              />
+              <div class="rounded-full bg-gray-300 w-4 h-4"></div>
+            </div>
+          </div>
+          <div class="flex flex-col gap-[6px] w-[500px]">
+            <label class="font-medium text-sm text-gray-700"
+              >Confirmação de senha *</label
+            >
+            <div
+              class="flex gap-2 w-full px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+            >
+              <input
+                type="password"
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                placeholder="Preencha"
+                required
+              />
+              <div class="rounded-full bg-gray-300 w-4 h-4"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr class="flex w-[500px] h-[.5px] bg-gray-200" />
+      <button
+        class="rounded-lg w-fit px-[80px] py-[14px] bg-violet-600 border border-violet-600 font-semibold text-sm text-white shadow-sm"
+      >
+        Cadastrar
+      </button>
+    </div>
+  </div>
+
+  <button
+    class="absolute left-[65px] top-[65px] px-4 py-[10px] font-semibold text-sm text-violet-700"
+    [routerLink]="['']"
+  >
+    Voltar para home
+  </button>
+</section>
