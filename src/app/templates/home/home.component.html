@@ -22,6 +22,7 @@
       <div>
         <button
           class="px-7 py-4 rounded-lg bg-gray-600 font-semibold text-lg text-neutral-50 shadow-sm"
+          [routerLink]="['courses']"
         >
           Conheça os cursos disponíveis
         </button>
@@ -267,7 +268,10 @@
           </div>
         </div>
       </div>
-      <button class="font-semibold text-sm text-violet-700">
+      <button
+        class="font-semibold text-sm text-violet-700"
+        [routerLink]="['courses']"
+      >
         Ver todos os cursos
       </button>
     </div>
@@ -572,7 +576,7 @@
     </button>
   </div>
   <div
-    class="flex flex-row items-start justify-between w-[1280px] mx-auto px-8 gap-y-8"
+    class="flex flex-col items-start justify-between w-[1280px] mx-auto px-8 gap-y-8"
   >
     <div class="flex flex-row gap-x-8">
       <div
@@ -654,8 +658,311 @@
       </div>
     </div>
     <div class="flex flex-row gap-x-8">
-      <button></button>
-      <button></button>
+      <button
+        class="flex items-center justify-center w-14 h-14 rounded-full border border-gray-200 shadow-sm"
+      ></button>
+      <button
+        class="flex items-center justify-center w-14 h-14 rounded-full border border-gray-200 shadow-sm"
+      ></button>
+    </div>
+  </div>
+</section>
+
+<section class="flex flex-col py-24 gap-y-16">
+  <div
+    class="flex flex-col items-start justify-between w-[1280px] mx-auto px-8 gap-y-8"
+  >
+    <div class="flex flex-col items-center w-[768px] mx-auto gap-y-5">
+      <div class="flex flex-col items-center gap-y-3">
+        <p class="font-medium text-sm text-gray-500 text-center">
+          Texto chapeu
+        </p>
+        <h1
+          class="font-semibold text-4xl tracking-tighter text-gray-900 text-center"
+        >
+          Área PROEC
+        </h1>
+        <h1
+          class="font-semibold text-4xl tracking-tighter text-gray-900 text-center"
+        >
+          LOGO
+        </h1>
+      </div>
+      <p class="font-normal text-xl text-gray-600 text-center">Texto corpo</p>
+    </div>
+  </div>
+  <div
+    class="flex flex-col items-center w-[1216px] mx-auto gap-y-8 bg-gray-200 rounded-2xl p-16"
+  >
+    <p class="font-normal text-xl text-gray-800">Logos dos orgãos do proec</p>
+    <div class="flex items-center justify-between flex-wrap w-full">
+      <div
+        class="flex items-center justify-center w-[108px] h-[108px] bg-white rounded-full"
+      >
+        <p class="font-semibold text-base text-gray-800">LOGO</p>
+      </div>
+      <div
+        class="flex items-center justify-center w-[108px] h-[108px] bg-white rounded-full"
+      >
+        <p class="font-semibold text-base text-gray-800">LOGO</p>
+      </div>
+      <div
+        class="flex items-center justify-center w-[108px] h-[108px] bg-white rounded-full"
+      >
+        <p class="font-semibold text-base text-gray-800">LOGO</p>
+      </div>
+      <div
+        class="flex items-center justify-center w-[108px] h-[108px] bg-white rounded-full"
+      >
+        <p class="font-semibold text-base text-gray-800">LOGO</p>
+      </div>
+      <div
+        class="flex items-center justify-center w-[108px] h-[108px] bg-white rounded-full"
+      >
+        <p class="font-semibold text-base text-gray-800">LOGO</p>
+      </div>
+      <div
+        class="flex items-center justify-center w-[108px] h-[108px] bg-white rounded-full"
+      >
+        <p class="font-semibold text-base text-gray-800">LOGO</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="flex flex-col py-24 gap-y-16">
+  <div
+    class="flex flex-row items-start justify-between w-[1280px] mx-auto px-8"
+  >
+    <div class="flex flex-col gap-y-5 w-[768px]">
+      <div class="flex flex-col gap-y-3">
+        <p class="font-medium text-sm text-gray-500">
+          Fale conosco para obter suporte personalizado e esclarecer todas as
+          suas dúvidas.
+        </p>
+        <h1 class="font-semibold text-4xl tracking-tighter text-gray-900">
+          Entre em contato
+        </h1>
+      </div>
+      <p class="font-normal text-xl text-gray-600">
+        Estamos aqui para responder suas perguntas e fornecer informações
+        adicionais sobre nossos serviços.muito mais.
+      </p>
+    </div>
+  </div>
+  <div
+    class="flex flex-row items-start justify-between w-[1280px] h-[524px] mx-auto px-8"
+  >
+    <div class="flex flex-col gap-y-12">
+      <div class="flex flex-row gap-x-4">
+        <div
+          class="w-14 h-14 bg-gray-100 rounded-[28px] border-[10px] border-gray-50"
+        ></div>
+        <div class="flex flex-col gap-y-5">
+          <div class="flex flex-col mt-[10px] gap-y-2">
+            <h1 class="font-semibold text-xl text-gray-900">Email</h1>
+          </div>
+          <div>
+            <p class="font-semibold text-base text-gray-700">
+              extecamp@extecamp.unicamp.br
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-row gap-x-4">
+        <div
+          class="w-14 h-14 bg-gray-100 rounded-[28px] border-[10px] border-gray-50"
+        ></div>
+        <div class="flex flex-col gap-y-5">
+          <div class="flex flex-col mt-[10px] gap-y-2">
+            <h1 class="font-semibold text-xl text-gray-900">Telefone</h1>
+            <p class="font-normal text-base text-gray-600">
+              Segunda a sexta das 09:00 às 18:00
+            </p>
+          </div>
+          <div class="flex flex-col gap-y-2">
+            <p class="font-semibold text-base text-gray-700">(19) 3521-4646</p>
+            <p class="font-semibold text-base text-gray-700">(19) 3521-4646</p>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-row gap-x-4">
+        <div
+          class="w-14 h-14 bg-gray-100 rounded-[28px] border-[10px] border-gray-50"
+        ></div>
+        <div class="flex flex-col gap-y-5">
+          <div class="flex flex-col mt-[10px] gap-y-2">
+            <h1 class="font-semibold text-xl text-gray-900">Endereço</h1>
+          </div>
+          <div class="flex flex-col gap-y-1">
+            <p class="font-normal text-base text-gray-700">
+              Rua Saturnino de Brito, nº 323
+            </p>
+            <p class="font-normal text-base text-gray-700">
+              2º andar, em frente do RS.
+            </p>
+            <p class="font-normal text-base text-gray-700">
+              Cidade Universitária - Campinas - SP.
+            </p>
+            <p class="font-normal text-base text-gray-700">13083-889</p>
+            <p class="font-normal text-base text-gray-700">UNICAMP</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col h-full bg-yellow-400">
+      <iframe
+        class="w-[598px] h-full"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3677.657903883625!2d-47.06267147970952!3d-22.815136610036912!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8c6b187b0becd%3A0x29691c805ec58e80!2sExtecamp%20-%20Escola%20de%20Extens%C3%A3o%20da%20Unicamp!5e0!3m2!1spt-BR!2sbr!4v1688653170071!5m2!1spt-BR!2sbr"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+  </div>
+</section>
+
+<section class="flex flex-col bg-gray-950">
+  <div
+    class="flex flex-row justify-between w-[1280px] mx-auto pt-16 pb-12 px-8"
+  >
+    <div class="flex flex-col gap-y-8 w-[320px]">
+      <img src="../../../assets/extecamp_logo.png" class="w-[214px]" />
+      <p class="font-normal text-base text-gray-200">Subtítulo</p>
+    </div>
+    <div class="flex flex-col gap-y-4 w-[160px]">
+      <p class="font-semibold text-sm text-gray-200">Página</p>
+      <div class="flex flex-col gap-y-3">
+        <div class="flex items-center flex-row gap-x-2">
+          <p class="font-semibold text-base text-gray-200">Link</p>
+        </div>
+        <div class="flex items-center flex-row gap-x-2">
+          <p class="font-semibold text-base text-gray-200">Link</p>
+        </div>
+        <div class="flex items-center flex-row gap-x-2">
+          <p class="font-semibold text-base text-gray-200">Link</p>
+          <div
+            class="px-2 py-0.5 rounded-2xl border border-gray-200 bg-gray bg-white/10"
+          >
+            <p class="font-medium text-xs text-gray-200">Novo</p>
+          </div>
+        </div>
+        <div class="flex items-center flex-row gap-x-2">
+          <p class="font-semibold text-base text-gray-200">Link</p>
+        </div>
+        <div class="flex items-center flex-row gap-x-2">
+          <p class="font-semibold text-base text-gray-200">Link</p>
+        </div>
+        <div class="flex items-center flex-row gap-x-2">
+          <p class="font-semibold text-base text-gray-200">Link</p>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col gap-y-4 w-[160px]">
+      <p class="font-semibold text-sm text-gray-200">Página</p>
+      <div class="flex flex-col gap-y-3">
+        <div class="flex items-center flex-row gap-x-2">
+          <p class="font-semibold text-base text-gray-200">Link</p>
+        </div>
+        <div class="flex items-center flex-row gap-x-2">
+          <p class="font-semibold text-base text-gray-200">Link</p>
+        </div>
+        <div class="flex items-center flex-row gap-x-2">
+          <p class="font-semibold text-base text-gray-200">Link</p>
+          <div
+            class="px-2 py-0.5 rounded-2xl border border-gray-200 bg-gray bg-white/10"
+          >
+            <p class="font-medium text-xs text-gray-200">Novo</p>
+          </div>
+        </div>
+        <div class="flex items-center flex-row gap-x-2">
+          <p class="font-semibold text-base text-gray-200">Link</p>
+        </div>
+        <div class="flex items-center flex-row gap-x-2">
+          <p class="font-semibold text-base text-gray-200">Link</p>
+        </div>
+        <div class="flex items-center flex-row gap-x-2">
+          <p class="font-semibold text-base text-gray-200">Link</p>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col gap-y-4 w-[160px]">
+      <p class="font-semibold text-sm text-gray-200">Página</p>
+      <div class="flex flex-col gap-y-3">
+        <div class="flex items-center flex-row gap-x-2">
+          <p class="font-semibold text-base text-gray-200">Link</p>
+        </div>
+        <div class="flex items-center flex-row gap-x-2">
+          <p class="font-semibold text-base text-gray-200">Link</p>
+        </div>
+        <div class="flex items-center flex-row gap-x-2">
+          <p class="font-semibold text-base text-gray-200">Link</p>
+          <div
+            class="px-2 py-0.5 rounded-2xl border border-gray-200 bg-gray bg-white/10"
+          >
+            <p class="font-medium text-xs text-gray-200">Novo</p>
+          </div>
+        </div>
+        <div class="flex items-center flex-row gap-x-2">
+          <p class="font-semibold text-base text-gray-200">Link</p>
+        </div>
+        <div class="flex items-center flex-row gap-x-2">
+          <p class="font-semibold text-base text-gray-200">Link</p>
+        </div>
+        <div class="flex items-center flex-row gap-x-2">
+          <p class="font-semibold text-base text-gray-200">Link</p>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col gap-y-4 w-[160px]">
+      <p class="font-semibold text-sm text-gray-200">Órgãos</p>
+      <div class="flex flex-col gap-y-3">
+        <div class="flex items-center flex-row gap-x-2">
+          <p class="font-semibold text-base text-gray-200 whitespace-nowrap">
+            Centro de convenções
+          </p>
+        </div>
+        <div class="flex items-center flex-row gap-x-2">
+          <p class="font-semibold text-base text-gray-200 whitespace-nowrap">
+            Espaço cultural Casa do lago
+          </p>
+        </div>
+        <div class="flex items-center flex-row gap-x-2">
+          <p class="font-semibold text-base text-gray-200 whitespace-nowrap">
+            CIS - Guanabara
+          </p>
+          <div
+            class="px-2 py-0.5 rounded-2xl border border-gray-200 bg-gray bg-white/10"
+          >
+            <p class="font-medium text-xs text-gray-200">Novo</p>
+          </div>
+        </div>
+        <div class="flex items-center flex-row gap-x-2">
+          <p class="font-semibold text-base text-gray-200 whitespace-nowrap">
+            Ginásio Multidisplinar
+          </p>
+        </div>
+        <div class="flex items-center flex-row gap-x-2">
+          <p class="font-semibold text-base text-gray-200 whitespace-nowrap">
+            Museu de Artes Visuais
+          </p>
+        </div>
+        <div class="flex items-center flex-row gap-x-2">
+          <p class="font-semibold text-base text-gray-200 whitespace-nowrap">
+            Museu Exploratório de Ciências
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="flex flex-row justify-between w-[1280px] mx-auto py-12 px-8">
+    <p class="font-normal text-base text-gray-300">
+      © 2023 Extecamp. Todos os direitos reservados.
+    </p>
+    <div class="flex flex-row gap-x-6">
+      <div class="w-6 h-6 bg-gray-400 rounded-lg"></div>
+      <div class="w-6 h-6 bg-gray-400 rounded-lg"></div>
+      <div class="w-6 h-6 bg-gray-400 rounded-lg"></div>
     </div>
   </div>
 </section>
