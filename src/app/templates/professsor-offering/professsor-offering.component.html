@@ -1,14 +1,25 @@
-<div class="flex flex-row h-screen">
-  <app-sidebar></app-sidebar>
+<div class="grid grid-rows-[108px_1fr] grid-cols-[300px_1fr] h-screen">
+  <app-sidebar
+    [navItens]="[
+      {
+        title: 'Página inicial',
+        routerLink: '/professor/home'
+      },
+      {
+        title: 'Oferecimentos',
+        routerLink: '/professor/offering'
+      }
+    ]"
+  ></app-sidebar>
 
   <app-header-navbar
-    [name]="'Larissa'"
-    [description]="'Bem vinda a sua área do docente EXTECAMP'"
+    [props]="{
+      name: 'Larissa',
+      description: 'Bem vinda a sua área do docente EXTECAMP'
+    }"
   ></app-header-navbar>
 
-  <div
-    class="flex flex-col min-h-[calc(100%-108px)] overflow-y-auto w-full ml-[300px] mt-[108px] px-8 py-16 bg-gray-50"
-  >
+  <div class="col-start-2 overflow-y-auto w-full px-8 py-16 bg-gray-50">
     <h1 class="font-semibold text-lg text-gray-900">Visão geral</h1>
     <div class="flex flex-row gap-x-[22px] py-6">
       <div

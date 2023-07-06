@@ -1,30 +1,18 @@
 <nav
-  class="flex flex-col justify-between fixed top-0 left-0 h-full w-[300px] overflow-hidden border-r border-r-gray-200 px-4"
+  class="flex flex-col justify-between row-span-2 overflow-hidden border-r border-r-gray-200 px-4 h-screen w-full"
 >
   <ul class="flex flex-col items-center gap-y-6 pt-8">
     <img src="../../../assets/extecamp_logo_colored.png" class="w-[250px]" />
     <div class="flex flex-col gap-y-1 w-full">
-      <li>
+      <li *ngFor="let navItem of navItens">
         <a
           [ngClass]="{
-            'bg-gray-50 text-gray-900': sidebar === '/professor/home'
+            'bg-gray-50 text-gray-900': navItem.routerLink === currentUrl
           }"
-          [routerLink]="['/professor', 'home']"
+          [routerLink]="navItem.routerLink"
           class="flex flex-row px-3 py-2 w-full rounded-[6px] font-semibold text-base text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+          >{{ navItem.title }}</a
         >
-          Página inicial
-        </a>
-      </li>
-      <li>
-        <a
-          [ngClass]="{
-            'bg-gray-50 text-gray-900': sidebar === '/professor/offering'
-          }"
-          [routerLink]="['/professor', 'offering']"
-          class="flex flex-row px-3 py-2 w-full rounded-[6px] font-semibold text-base text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-        >
-          Oferecimentos
-        </a>
       </li>
     </div>
   </ul>

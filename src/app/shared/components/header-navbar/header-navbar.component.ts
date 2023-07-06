@@ -1,5 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 
+interface IProps {
+  name: string;
+  description: string;
+}
+
 @Component({
   selector: 'app-header-navbar',
   templateUrl: './header-navbar.component.html',
@@ -7,12 +12,12 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class HeaderNavbarComponent implements OnInit {
   @Input()
-  name: string = 'Guest';
-
-  @Input()
-  description: string = '';
+  props: IProps = {
+    name: '',
+    description: '',
+  };
 
   ngOnInit() {
-    this.name = `Olá, ${this.name}`;
+    this.props.name = `Olá, ${this.props.name}`;
   }
 }
