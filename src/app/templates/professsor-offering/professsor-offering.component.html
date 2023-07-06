@@ -19,7 +19,7 @@
     }"
   ></app-header-navbar>
 
-  <div class="col-start-2 overflow-y-auto w-full px-8 py-16 bg-gray-50">
+  <div class="col-start-2 overflow-y-auto w-full px-8 py-6 bg-gray-50">
     <h1 class="font-semibold text-lg text-gray-900">Visão geral</h1>
     <div class="flex flex-row gap-x-[22px] py-6">
       <div
@@ -110,26 +110,102 @@
         </button>
       </div>
     </div>
-    <table>
-      <thead>
-        <th>Sigla</th>
-        <th>Oferecimento</th>
-        <th>Nome do curso</th>
-        <th>Tipo de curso</th>
-        <th>Situação</th>
-        <th></th>
+    <table class="w-full rounded-2xl overflow-hidden">
+      <thead class="border-b border-b-gray-200">
+        <th class="p-3 bg-gray-100 text-left font-medium text-xs text-gray-700">
+          Sigla
+        </th>
+        <th class="p-3 bg-gray-100 text-left font-medium text-xs text-gray-700">
+          Oferecimento
+        </th>
+        <th class="p-3 bg-gray-100 text-left font-medium text-xs text-gray-700">
+          Nome do curso
+        </th>
+        <th class="p-3 bg-gray-100 text-left font-medium text-xs text-gray-700">
+          Tipo de curso
+        </th>
+        <th class="p-3 bg-gray-100 text-left font-medium text-xs text-gray-700">
+          Situação
+        </th>
+        <th
+          class="p-3 bg-gray-100 text-left font-medium text-xs text-gray-700"
+        ></th>
       </thead>
       <tbody>
         <tr>
-          <td>ECO-0290</td>
-          <td>001</td>
-          <td>PRÁTICAS INOVADORAS EM GESTÃO PÚBLICA</td>
-          <td></td>
-          <td>ANDAMENTO</td>
-          <td></td>
+          <td
+            class="p-3 bg-white text-left font-medium text-sm text-gray-900 border-b border-b-gray-200"
+          >
+            ECO-0290
+          </td>
+          <td
+            class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200"
+          >
+            001
+          </td>
+          <td
+            class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200"
+          >
+            PRÁTICAS INOVADORAS EM GESTÃO PÚBLICA
+          </td>
+          <td
+            class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200"
+          >
+            <div
+              class="flex flex-row items-center gap-x-[6px] rounded-2xl bg-emerald-50 pl-[6px] pr-2 py-0.5 w-fit"
+            >
+              <div class="w-[6px] h-[6px] rounded-full bg-emerald-500"></div>
+              <p class="font-medium text-xs text-emerald-800">
+                Cursos múltiplos
+              </p>
+            </div>
+          </td>
+          <td
+            class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200"
+          >
+            ANDAMENTO
+          </td>
+          <td
+            class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200"
+          ></td>
         </tr>
-        <tr></tr>
-        <tr></tr>
+        <tr>
+          <td
+            class="p-3 bg-white text-left font-medium text-sm text-gray-900 border-b border-b-gray-200"
+          >
+            ECO-0290
+          </td>
+          <td
+            class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200"
+          >
+            002
+          </td>
+          <td
+            class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200"
+          >
+            ECONOMIA BRASILEIRA CONTEMPORÂNEA
+          </td>
+          <td
+            class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200"
+          >
+            <div
+              class="flex flex-row items-center gap-x-[6px] rounded-2xl bg-sky-50 pl-[6px] pr-2 py-0.5 w-fit"
+            >
+              <div class="w-[6px] h-[6px] rounded-full bg-sky-500"></div>
+              <p class="font-medium text-xs text-sky-800">
+                Cursos simples/disciplina
+              </p>
+            </div>
+          </td>
+          <td
+            class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200"
+          >
+            ANDAMENTO
+          </td>
+          <td
+            class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200"
+          ></td>
+        </tr>
       </tbody>
     </table>
     <div class="flex flex-row justify-between py-6">
