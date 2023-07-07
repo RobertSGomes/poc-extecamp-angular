@@ -1,4 +1,4 @@
-<div class="grid grid-rows-[108px_1fr] grid-cols-[300px_1fr] h-screen">
+<div class="grid grid-rows-[0px_auto_1fr] grid-cols-[300px_1fr] h-screen">
   <app-sidebar
     [navItens]="[
       {
@@ -12,14 +12,15 @@
     ]"
   ></app-sidebar>
 
-  <app-header-navbar
-    [props]="{
-      name: 'Larissa',
-      description: 'Bem vinda a sua área do docente EXTECAMP'
-    }"
-  ></app-header-navbar>
+  <div
+    class="flex col-start-2 row-start-2 flex-row items-center justify-between border-b border-b-gray-200 px-8 py-4 h-[72px] w-full"
+  >
+    <p></p>
+  </div>
 
-  <div class="col-start-2 overflow-y-auto w-full px-8 py-6 bg-gray-50">
+  <div
+    class="col-start-2 row-start-3 overflow-y-auto w-full px-8 py-6 bg-gray-50"
+  >
     <h1 class="font-semibold text-lg text-gray-900">Novo oferecimento</h1>
 
     <section class="w-[1072px] mx-auto my-6">

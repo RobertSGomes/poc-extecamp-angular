@@ -20,17 +20,15 @@
         'border-4 border-violet-600 bg-violet-100 shadow-[0px_0px_0px_4px] shadow-violet-100': step.step_index <= currentStep,
         'border-2 border-gray-200 bg-white': step.step_index > currentStep,
       }"
-      class="w-6 h-6 rounded-full"
+      class="flex items-center justify-center w-6 h-6 rounded-full"
     >
-      <div class="w-full h-full flex items-center justify-center">
-        <div
-          [ngClass]="{
-            'w-[10px] h-[10px] bg-violet-600': step.step_index <= currentStep,
-            'w-2 h-2 bg-gray-200': step.step_index > currentStep,
+      <div
+        [ngClass]="{
+            'bg-violet-600': step.step_index <= currentStep,
+            'bg-gray-200': step.step_index > currentStep,
           }"
-          class="rounded-full"
-        ></div>
-      </div>
+        class="flex rounded-full w-2 h-2"
+      ></div>
     </div>
     <p
       [ngClass]="{
