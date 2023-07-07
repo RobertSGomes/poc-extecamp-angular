@@ -6,8 +6,9 @@ import { SigninComponent } from './templates/signin/signin.component';
 import { SignupComponent } from './templates/signup/signup.component';
 import { AllCoursesComponent } from './templates/all-courses/all-courses.component';
 import { ProfessorHomeComponent } from './templates/professor-home/professor-home.component';
-import { ProfesssorOfferingComponent } from './templates/professsor-offering/professsor-offering.component';
+import { ProfessorOfferingComponent } from './templates/professor-offering/professor-offering.component';
 import { StudentAllCoursesComponent } from './templates/student-all-courses/student-all-courses.component';
+import { ProfessorNewOfferingComponent } from './templates/professor-new-offering/professor-new-offering.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'courses', component: AllCoursesComponent },
   { path: 'professor/home', component: ProfessorHomeComponent },
-  { path: 'professor/offering', component: ProfesssorOfferingComponent },
+  { path: 'professor/offering', component: ProfessorOfferingComponent },
+  { path: 'professor/offering/new', component: ProfessorNewOfferingComponent },
   { path: 'student/home', component: StudentHomeComponent },
   { path: 'student/all-courses', component: StudentAllCoursesComponent },
 ];

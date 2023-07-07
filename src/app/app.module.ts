@@ -11,11 +11,11 @@ import { CourseComponent } from './templates/course/course.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { ProfessorHomeComponent } from './templates/professor-home/professor-home.component';
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
-import { ProfesssorOfferingComponent } from './templates/professsor-offering/professsor-offering.component';
+import { ProfessorOfferingComponent } from './templates/professor-offering/professor-offering.component';
 import { HeaderNavbarComponent } from './shared/components/header-navbar/header-navbar.component';
 import { StudentHomeComponent } from './templates/student-home/student-home.component';
 import { StudentAllCoursesComponent } from './templates/student-all-courses/student-all-courses.component';
-import { NewComponent } from './templates/professor-offering/new/new.component';
+import { ProfessorNewOfferingComponent } from './templates/professor-new-offering/professor-new-offering.component';
 
 @NgModule({
   declarations: [
@@ -28,11 +28,11 @@ import { NewComponent } from './templates/professor-offering/new/new.component';
     NavbarComponent,
     ProfessorHomeComponent,
     SidebarComponent,
-    ProfesssorOfferingComponent,
+    ProfessorOfferingComponent,
     HeaderNavbarComponent,
     StudentHomeComponent,
     StudentAllCoursesComponent,
-    NewComponent,
+    ProfessorNewOfferingComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
