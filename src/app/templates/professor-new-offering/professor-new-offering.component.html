@@ -98,43 +98,48 @@
         <p class="font-medium text-sm text-gray-700">Sigla do curso *</p>
 
         <div class="flex gap-x-[18px]">
-          <select
-            class="px-[14px] py-[10px] rounded-lg border border-gray-300 shadow-sm font-normal text-base text-gray-800 outline-none w-[152px] h-fit placeholder:text-gray-500"
+          <div
+            class="flex gap-2 w-[152px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
           >
-            <option>Eco</option>
-          </select>
-          <select
-            class="px-[14px] py-[10px] rounded-lg border border-gray-300 shadow-sm font-normal text-base text-gray-800 outline-none w-[152px] h-fit placeholder:text-gray-500"
+            <select class="w-full text-gray-800 text-base outline-none">
+              <option>ECO</option>
+            </select>
+          </div>
+          <div
+            class="flex gap-2 w-[152px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
           >
-            <option>1234</option>
-          </select>
+            <select class="w-full text-gray-800 text-base outline-none">
+              <option>1234</option>
+            </select>
+          </div>
         </div>
       </div>
 
-      <div class="flex flex-col gap-y-2 mb-6">
-        <p class="font-medium text-sm text-gray-700">Tipo de curso *</p>
-
-        <div class="flex gap-x-[18px]">
-          <select
-            class="px-[14px] py-[10px] rounded-lg border border-gray-300 shadow-sm font-normal text-base text-gray-800 outline-none w-[665px] h-fit placeholder:text-gray-500"
-          >
+      <div class="flex flex-col gap-[6px] mb-6">
+        <label class="font-medium text-sm text-gray-700">Tipo de curso *</label>
+        <div
+          class="flex gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+        >
+          <select class="w-full text-gray-800 text-base outline-none">
             <option>Selecione</option>
+            <option>Curso de extensão</option>
           </select>
         </div>
       </div>
 
-      <div class="flex flex-col gap-y-2 mb-6">
-        <p class="font-medium text-sm text-gray-700">Nome do curso *</p>
-
-        <div class="flex gap-x-[18px]">
+      <div class="flex flex-col gap-[6px] mb-6">
+        <label class="font-medium text-sm text-gray-700">Nome do curso *</label>
+        <div
+          class="flex gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+        >
           <input
-            class="px-[14px] py-[10px] rounded-lg border border-gray-300 shadow-sm font-normal text-base text-gray-800 outline-none w-[665px] h-fit placeholder:text-gray-500"
+            class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
             placeholder="Preencha"
           />
         </div>
       </div>
 
-      <div>
+      <div class="flex flex-col gap-y-2 mb-6">
         <p class="font-medium text-sm text-gray-700">
           Em caso de curso aberto ou de difusão, o oferecimento será de fluxo
           contínuo?
@@ -146,6 +151,7 @@
             id="fluxo_continuo_yes"
             name="curso_fluxo_continuo"
             value="Sim"
+            checked
           />
           <label
             for="fluxo_continuo_yes"
@@ -165,6 +171,163 @@
             class="font-medium text-base text-gray-700"
             >Não</label
           >
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-y-2 mb-6">
+        <p class="font-medium text-sm text-gray-700">
+          Em caso de curso múltiplo, haverá disciplina eletiva?
+        </p>
+
+        <div class="flex items-center gap-x-2">
+          <input
+            type="radio"
+            id="disciplina_eletiva_yes"
+            name="disciplina_eletiva"
+            value="Sim"
+            checked
+          />
+          <label
+            for="disciplina_eletiva_yes"
+            class="font-medium text-base text-gray-700"
+            >Sim</label
+          >
+        </div>
+        <div class="flex items-center gap-x-2">
+          <input
+            type="radio"
+            id="disciplina_eletiva_no"
+            name="disciplina_eletiva"
+            value="Não"
+          />
+          <label
+            for="disciplina_eletiva_no"
+            class="font-medium text-base text-gray-700"
+            >Não</label
+          >
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-[6px] mb-6">
+        <label class="font-medium text-sm text-gray-700"
+          >Forma de realização *</label
+        >
+        <div
+          class="flex gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+        >
+          <select class="w-full text-gray-800 text-base outline-none">
+            <option>Selecione</option>
+            <option>Presencial</option>
+            <option>Semipresencial</option>
+            <option>EAD</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-[6px] mb-6">
+        <label class="font-medium text-sm text-gray-700"
+          >Plataforma de gestão dos alunos *</label
+        >
+        <div
+          class="flex gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+        >
+          <select class="w-full text-gray-800 text-base outline-none">
+            <option>Selecione</option>
+            <option>Extecamp</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="flex flex-col w-[665px] gap-[6px] mb-6">
+        <label class="font-medium text-sm text-gray-700"
+          >Mensagem ao aluno em ambiente virtual de aprendizado</label
+        >
+        <div
+          class="flex gap-2 w-full h-[163px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+        >
+          <textarea
+            class="w-full h-full text-gray-800 text-base outline-none resize-none placeholder:text-gray-500"
+            placeholder="Preencha"
+          ></textarea>
+        </div>
+        <p class="font-normal text-sm text-gray-700">
+          Preencha no caso de oferecimento contínuo e/ou quando o curso for
+          oferecido em outros ambientes/plataformas
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-[6px] mb-6 w-[665px]">
+        <label class="font-medium text-sm text-gray-700"
+          >Descrição ao aluno sobre o ambiente virtual de aprendizagem</label
+        >
+        <label class="font-normal text-sm text-gray-700"
+          >Quando o curso for a distância, descrever no campo abaixo, como e em
+          que ambientes virtuais de aprendizagem as aulas serão ministradas e,
+          se houver aulas práticas, que tipo de atividades serão desenvolvidas.
+          Especificar ainda os recursos de mídia previstos, bem como a forma e
+          os critérios de avaliação do curso (Deliberação CEPE A-04/19). As
+          informações deste campo serão disponibilizadas no material de
+          divulgação do curso e são importantes para que o aluno possa avaliar
+          suas condições de participação.</label
+        >
+        <div
+          class="flex gap-2 px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+        >
+          <textarea
+            class="w-full h-[129px] text-gray-800 text-base outline-none resize-none placeholder:text-gray-500"
+            placeholder="Preencha"
+            minlength="50"
+            maxlength="10000"
+          ></textarea>
+        </div>
+        <p class="font-normal text-sm text-gray-700">
+          Mínimo de 50 e máximo de 10000 caracteres
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-[6px] mb-6">
+        <label class="font-medium text-sm text-gray-700">Unidade *</label>
+        <div
+          class="flex gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+        >
+          <input
+            class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+            placeholder="Preencha"
+          />
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-[6px] mb-6">
+        <label class="font-medium text-sm text-gray-700">Departamento *</label>
+        <div
+          class="flex gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+        >
+          <input
+            class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+            placeholder="Preencha"
+          />
+        </div>
+      </div>
+
+      <hr class="h-[1px] bg-gray-200 mb-6" />
+
+      <div class="flex justify-between items-center">
+        <button
+          class="px-4 py-[10px] rounded-lg font-semibold text-sm text-violet-700"
+        >
+          Voltar
+        </button>
+        <div class="flex gap-x-[15px]">
+          <button
+            class="px-4 py-[10px] rounded-lg font-semibold text-sm text-gray-700 shadow-sm border border-gray-300"
+          >
+            Cancelar
+          </button>
+          <button
+            class="px-4 py-[10px] rounded-lg font-semibold text-sm text-white bg-violet-700"
+          >
+            Próximo
+          </button>
         </div>
       </div>
     </section>
