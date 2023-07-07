@@ -8,6 +8,7 @@ import { AllCoursesComponent } from './templates/all-courses/all-courses.compone
 import { ProfessorHomeComponent } from './templates/professor-home/professor-home.component';
 import { ProfesssorOfferingComponent } from './templates/professsor-offering/professsor-offering.component';
 import { StudentAllCoursesComponent } from './templates/student-all-courses/student-all-courses.component';
+import { StudentCourseDetailComponent } from './templates/student-course-detail/student-course-detail.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'professor/offering', component: ProfesssorOfferingComponent },
   { path: 'student/home', component: StudentHomeComponent },
   { path: 'student/all-courses', component: StudentAllCoursesComponent },
+  { path: 'student/course-detail', component: StudentCourseDetailComponent },
 ];
 
 @NgModule({
