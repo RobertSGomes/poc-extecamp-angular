@@ -10,6 +10,7 @@ import { ProfessorOfferingComponent } from './templates/professor-offering/profe
 import { StudentAllCoursesComponent } from './templates/student-all-courses/student-all-courses.component';
 import { ProfessorNewOfferingComponent } from './templates/professor-new-offering/professor-new-offering.component';
 import { StudentCourseDetailComponent } from './templates/student-course-detail/student-course-detail.component';
+import { StudentCourseRegistrationComponent } from './templates/student-course-registration/student-course-registration.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -22,6 +23,10 @@ const routes: Routes = [
   { path: 'student/home', component: StudentHomeComponent },
   { path: 'student/all-courses', component: StudentAllCoursesComponent },
   { path: 'student/course-detail', component: StudentCourseDetailComponent },
+  {
+    path: 'student/course-register',
+    component: StudentCourseRegistrationComponent,
+  },
 ];
 
 @NgModule({
