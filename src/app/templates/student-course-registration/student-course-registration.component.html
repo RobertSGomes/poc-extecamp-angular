@@ -70,12 +70,12 @@
         </h1>
 
         <!-- Nome completo -->
-        <div class="flex flex-col gap-[6px] w-[665px]">
+        <div class="flex flex-col gap-[6px]">
           <label class="font-medium text-sm text-gray-700"
             >Nome completo *</label
           >
           <div
-            class="flex gap-2 w-full px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+            class="flex items-center gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
           >
             <input
               class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
@@ -85,10 +85,10 @@
         </div>
 
         <!-- E-mail -->
-        <div class="flex flex-col gap-[6px] w-[665px]">
+        <div class="flex flex-col gap-[6px]">
           <label class="font-medium text-sm text-gray-700">E-mail *</label>
           <div
-            class="flex gap-2 w-full px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+            class="flex items-center gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
           >
             <input
               type="email"
@@ -99,18 +99,17 @@
         </div>
 
         <!-- Telefone -->
-        <div class="flex flex-col gap-y-[6px] w-[495px]">
+        <div class="flex flex-col gap-y-[6px]">
           <label class="font-medium text-sm text-gray-700">Telefone *</label>
           <div
-            class="flex gap-2 w-full px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+            class="flex items-center gap-2 w-[495px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
           >
             <select class="font-medium text-base text-gray-800 outline-none">
-              <option>BR</option>
+              <option selected>BR</option>
               <option>EN</option>
               <option>ES</option>
             </select>
             <input
-              type="email"
               class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
               placeholder="+55 (DDD) 00000-0000"
             />
@@ -118,22 +117,22 @@
         </div>
 
         <!-- Documento Identificação -->
-        <div class="flex flex-col gap-y-[6px] w-[495px]">
+        <div class="flex flex-col gap-y-[6px]">
           <label class="font-medium text-sm text-gray-700"
             >Documento de identificação *</label
           >
           <div class="flex gap-[18px] items-center">
             <div
-              class="flex w-full px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+              class="w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
             >
               <select class="w-full text-gray-800 text-base outline-none">
+                <option selected value="">Selecione</option>
                 <option>RG</option>
                 <option>CNH</option>
               </select>
             </div>
             <input
-              type="email"
-              class="w-full px-3 py-2 rounded-lg border border-gray-300 shadow-sm text-gray-800 text-base outline-none placeholder:text-gray-500"
+              class="w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm text-gray-800 text-base outline-none placeholder:text-gray-500"
               placeholder="1234567890"
             />
           </div>
@@ -141,28 +140,30 @@
 
         <!-- Emissor -->
         <div class="flex gap-x-[18px]">
-          <div class="flex flex-col gap-[6px] w-[238px]">
+          <div class="flex flex-col gap-[6px]">
             <label class="font-medium text-sm text-gray-700"
               >Órgão emissor *</label
             >
             <div
-              class="flex gap-2 w-full px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+              class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
             >
               <select class="w-full text-gray-800 text-base outline-none">
+                <option selected value="">Selecione</option>
                 <option>SSP</option>
                 <option>MTE-SP</option>
                 <option>MTE-SE</option>
               </select>
             </div>
           </div>
-          <div class="flex flex-col gap-[6px] w-[238px]">
+          <div class="flex flex-col gap-[6px]">
             <label class="font-medium text-sm text-gray-700"
               >Estado emissor *</label
             >
             <div
-              class="flex gap-2 w-full px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+              class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
             >
               <select class="w-full text-gray-800 text-base outline-none">
+                <option selected value="">Selecione</option>
                 <option>AC</option>
                 <option>AL</option>
                 <option>AP</option>
@@ -197,10 +198,10 @@
 
         <!-- CPF e Data nascimento -->
         <div class="flex gap-x-[18px]">
-          <div class="flex flex-col gap-[6px] w-[238px]">
+          <div class="flex flex-col gap-[6px]">
             <label class="font-medium text-sm text-gray-700">CPF *</label>
             <div
-              class="flex gap-2 w-full px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+              class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
             >
               <input
                 class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
@@ -208,16 +209,16 @@
               />
             </div>
           </div>
-          <div class="flex flex-col gap-[6px] w-[238px]">
+          <div class="flex flex-col gap-[6px]">
             <label class="font-medium text-sm text-gray-700"
               >Data de nascimento *</label
             >
             <div
-              class="flex gap-2 w-full px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+              class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
             >
               <div class="w-5 h-5 rounded-full bg-gray-300"></div>
               <input
-                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
                 placeholder="dd/mm/aaaa"
               />
             </div>
@@ -226,41 +227,148 @@
 
         <!-- Origem -->
         <div class="flex gap-x-[18px]">
-          <div class="flex flex-col gap-[6px] w-[238px]">
+          <div class="flex flex-col gap-[6px]">
             <label class="font-medium text-sm text-gray-700"
               >País de origem *</label
             >
             <div
-              class="flex gap-2 w-full px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+              class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
             >
               <select class="w-full text-gray-800 text-base outline-none">
+                <option selected value="">Selecione</option>
                 <option>Brasil</option>
               </select>
             </div>
           </div>
-          <div class="flex flex-col gap-[6px] w-[238px]">
+          <div class="flex flex-col gap-[6px]">
             <label class="font-medium text-sm text-gray-700"
               >Estado de origem *</label
             >
             <div
-              class="flex gap-2 w-full px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+              class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
             >
               <select class="w-full text-gray-800 text-base outline-none">
+                <option selected value="">Selecione</option>
                 <option>SP</option>
               </select>
             </div>
           </div>
-          <div class="flex flex-col gap-[6px] w-[238px]">
+          <div class="flex flex-col gap-[6px]">
             <label class="font-medium text-sm text-gray-700"
               >Cidade de origem *</label
             >
             <div
-              class="flex gap-2 w-full px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+              class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
             >
               <select class="w-full text-gray-800 text-base outline-none">
+                <option selected value="">Selecione</option>
                 <option>Atibaia</option>
               </select>
             </div>
+          </div>
+        </div>
+
+        <!-- Gênero e estado cívil -->
+        <div class="flex gap-x-[18px]">
+          <div class="flex flex-col gap-[6px]">
+            <label class="font-medium text-sm text-gray-700">Gênero *</label>
+            <div
+              class="flex items-center gap-2 w-[324px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+            >
+              <select class="w-full text-gray-800 text-base outline-none">
+                <option selected value="">Selecione</option>
+                <option>Masculino</option>
+                <option>Feminino</option>
+                <option>Outro</option>
+              </select>
+            </div>
+          </div>
+          <div class="flex flex-col gap-[6px]">
+            <label class="font-medium text-sm text-gray-700"
+              >Estado cívil *</label
+            >
+            <div
+              class="flex items-center gap-2 w-[324px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+            >
+              <select class="w-full text-gray-800 text-base outline-none">
+                <option selected value="">Selecione</option>
+                <option>Solteiro</option>
+                <option>Casado</option>
+                <option>União Estável</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Deficiência -->
+        <div class="flex items-center gap-[76px]">
+          <div class="flex flex-col gap-1">
+            <p class="font-medium text-sm text-gray-700">
+              Possui alguma deficiência?
+            </p>
+            <div class="flex items-center gap-x-2">
+              <input
+                type="radio"
+                id="deficiencia_true"
+                name="deficiencia"
+                value="Sim"
+                checked
+              />
+              <label
+                for="deficiencia_true"
+                class="font-medium text-base text-gray-700"
+                >Sim</label
+              >
+            </div>
+            <div class="flex items-center gap-x-2">
+              <input
+                type="radio"
+                id="deficiencia_false"
+                name="deficiencia"
+                value="Não"
+              />
+              <label
+                for="deficiencia_false"
+                class="font-medium text-base text-gray-700"
+                >Não</label
+              >
+            </div>
+          </div>
+          <div class="flex flex-col gap-[6px]">
+            <label class="font-medium text-sm text-gray-700">Qual?</label>
+            <div
+              class="flex items-center gap-2 w-[408px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+            >
+              <select class="w-full text-gray-800 text-base outline-none">
+                <option selected value="">Selecione</option>
+                <option>Visual</option>
+                <option>Motora</option>
+                <option>Psicológica</option>
+                <option>Jogador de LOL</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <hr class="h-[1px] bg-gray-200" />
+
+        <div class="flex justify-between items-center">
+          <button
+            class="px-4 py-[10px] rounded-lg font-semibold text-sm text-violet-700"
+          >
+            Voltar
+          </button>
+          <div class="flex gap-x-[15px]">
+            <button
+              class="px-4 py-[10px] rounded-lg font-semibold text-sm text-gray-700 shadow-sm border border-gray-300"
+            >
+              Cancelar
+            </button>
+            <button
+              class="px-4 py-[10px] rounded-lg font-semibold text-sm text-white bg-violet-700"
+            >
+              Próximo
+            </button>
           </div>
         </div>
       </section>
