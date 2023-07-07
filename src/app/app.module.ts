@@ -15,6 +15,7 @@ import { ProfesssorOfferingComponent } from './templates/professsor-offering/pro
 import { HeaderNavbarComponent } from './shared/components/header-navbar/header-navbar.component';
 import { StudentHomeComponent } from './templates/student-home/student-home.component';
 import { StudentAllCoursesComponent } from './templates/student-all-courses/student-all-courses.component';
+import { NewComponent } from './templates/professor-offering/new/new.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { StudentAllCoursesComponent } from './templates/student-all-courses/stud
     HeaderNavbarComponent,
     StudentHomeComponent,
     StudentAllCoursesComponent,
+    NewComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
