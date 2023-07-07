@@ -1,1 +1,99 @@
-<p>student-course-registration works!</p>
+<div class="grid grid-rows-[0px_auto_1fr] grid-cols-[300px_1fr] h-screen">
+  <app-sidebar
+    [navItens]="[
+      {
+        title: 'Página inicial',
+        routerLink: '/student/home'
+      },
+      {
+        title: 'Meus dados',
+        routerLink: '#'
+      },
+      {
+        title: 'Meus cursos',
+        routerLink: '#'
+      }
+    ]"
+  ></app-sidebar>
+
+  <div
+    class="flex col-start-2 row-start-2 flex-row items-center justify-between border-b border-b-gray-200 px-8 py-4 h-[72px] w-full"
+  >
+    <p></p>
+  </div>
+
+  <div
+    class="col-start-2 row-start-3 h-full overflow-y-auto w-full px-8 bg-gray-50"
+  >
+    <h1 class="px-8 py-6 font-semibold text-lg text-gray-900">Inscrição</h1>
+    <p class="px-8 font-normal text-sm text-black">
+      FOP-0472 - BIOQUÍMICA E FISIOLOGIA APLICADAS AO TREINAMENTO FÍSICO<br />
+      Oferecimento 005<br />
+      24 de abril a 16 de julho<br />
+      Curso de extensão<br />
+    </p>
+    <div class="flex flex-col py-24 gap-8 mx-auto w-[1072px]">
+      <app-steps
+        [currentStep]="0"
+        [props]="{
+          steps: [
+            {
+              title: 'Dados pessoais e profisisonais',
+              step_index: 0,
+              amount_inside_steps: 0
+            },
+            {
+              title: 'Endereço',
+              step_index: 1,
+              amount_inside_steps: 0
+            },
+            {
+              title: 'Termo de compromisso',
+              step_index: 2,
+              amount_inside_steps: 0
+            },
+            {
+              title: 'Upload de documentos',
+              step_index: 3,
+              amount_inside_steps: 0
+            }
+          ]
+        }"
+      ></app-steps>
+
+      <!--Formulário-->
+      <section
+        class="flex flex-col p-8 gap-y-6 rounded-2xl bg-white border border-gray-200 shadow-sm"
+      >
+        <h1 class="font-semibold text-lg text-black">
+          Dados pessoais e profissionais
+        </h1>
+        <div class="flex flex-col gap-[6px] w-[665px]">
+          <label class="font-medium text-sm text-gray-700"
+            >Nome completo *</label
+          >
+          <div
+            class="flex gap-2 w-full px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+          >
+            <input
+              class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+              placeholder="Seu nome"
+            />
+          </div>
+        </div>
+        <div class="flex flex-col gap-[6px] w-[665px]">
+          <label class="font-medium text-sm text-gray-700">E-mail *</label>
+          <div
+            class="flex gap-2 w-full px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+          >
+            <input
+              type="email"
+              class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+              placeholder="example@extecamp.com"
+            />
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
