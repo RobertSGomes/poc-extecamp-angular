@@ -4,16 +4,15 @@ interface IProps {
   steps: Array<{
     title: string;
     step_index: number;
-    amount_inside_steps: number;
   }>;
 }
 
 @Component({
-  selector: 'app-steps',
-  templateUrl: './steps.component.html',
-  styleUrls: ['./steps.component.css'],
+  selector: 'app-history-line',
+  templateUrl: './history-line.component.html',
+  styleUrls: ['./history-line.component.css'],
 })
-export class StepsComponent {
+export class HistoryLineComponent {
   @Input()
   props: IProps = {
     steps: [],
@@ -21,7 +20,4 @@ export class StepsComponent {
 
   @Input()
   currentStep = 0;
-
-  @Input()
-  currentInsideStep = 0;
 }

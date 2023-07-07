@@ -1,0 +1,45 @@
+<div class="relative flex w-full py-6">
+  <div
+    class="flex justify-stretch absolute top-[35px] left-1/2 -translate-x-1/2 h-0.5"
+  >
+    <div
+      *ngFor="let item of [].constructor(props.steps.length - 1); let i = index"
+      [ngStyle]="{ width: 1008 / props.steps.length + 'px' }"
+      [ngClass]="{
+        'bg-violet-600': i <= currentStep,
+        'bg-gray-200': i > currentStep,
+      }"
+    ></div>
+  </div>
+  <div
+    class="flex flex-col items-center gap-y-4 w-full z-[1]"
+    *ngFor="let step of props.steps"
+  >
+    <div
+      [ngClass]="{
+        'border-4 border-violet-600 bg-violet-100 shadow-[0px_0px_0px_4px] shadow-violet-100': step.step_index <= currentStep,
+        'border-2 border-gray-200 bg-white': step.step_index > currentStep,
+      }"
+      class="w-6 h-6 rounded-full"
+    >
+      <div class="w-full h-full flex items-center justify-center">
+        <div
+          [ngClass]="{
+            'w-[10px] h-[10px] bg-violet-600': step.step_index <= currentStep,
+            'w-2 h-2 bg-gray-200': step.step_index > currentStep,
+          }"
+          class="rounded-full"
+        ></div>
+      </div>
+    </div>
+    <p
+      [ngClass]="{
+        'text-violet-600': step.step_index <= currentStep,
+        'text-gray-700': step.step_index > currentStep,
+      }"
+      class="flex font-semibold text-sm text-center px-[10px]"
+    >
+      {{ step.title }}
+    </p>
+  </div>
+</div>

@@ -1,17 +1,17 @@
 <div
-  class="flex flex-row items-end w-full rounded-2xl border border-gray-200 px-8 py-6 gap-x-5 bg-white my-6"
+  class="flex items-end w-full rounded-2xl border border-gray-200 px-8 py-6 gap-x-5 bg-white"
 >
   <div
     *ngFor="let step of props.steps"
-    class="flex flex-1 h-[62px] border-t-2"
+    class="flex border-t-2 w-full"
     [ngClass]="{
-      'border-t-violet-700': currentStep === step.step_index,
+      'border-t-violet-800': currentStep === step.step_index,
       'border-t-gray-300': currentStep < step.step_index,
       'border-t-emerald-500': currentStep > step.step_index,
       'border-t-4': currentStep >= step.step_index,
     }"
   >
-    <div class="flex flex-col gap-y-1 mt-4">
+    <div class="flex flex-col gap-y-1 mt-4 h-[62px]">
       <div class="flex gap-x-2">
         <div
           [ngClass]="{
@@ -20,7 +20,13 @@
           }"
           class="w-5 h-5 rounded-full bg-emerald-500"
         ></div>
-        <p class="flex flex-1 font-semibold text-sm text-gray-700">
+        <p
+          [ngClass]="{
+          'font-normal': currentStep !== step.step_index,
+          'font-semibold': currentStep === step.step_index,
+        }"
+          class="flex flex-1 text-sm text-gray-700"
+        >
           {{ step.title }}
         </p>
       </div>
@@ -36,8 +42,8 @@
             'hidden': currentStep !== step.step_index,
             'bg-transparent': currentInsideStep < i,
             'border-gray-300': currentInsideStep < i,
-            'bg-violet-700': currentInsideStep >= i,
-            'border-violet-700': currentInsideStep >= i,
+            'bg-violet-800': currentInsideStep >= i,
+            'border-violet-800': currentInsideStep >= i,
           }"
         ></div>
       </div>
