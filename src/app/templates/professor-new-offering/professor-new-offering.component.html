@@ -1,1 +1,25 @@
-<p>new works!</p>
+<div class="grid grid-rows-[108px_1fr] grid-cols-[300px_1fr] h-screen">
+  <app-sidebar
+    [navItens]="[
+      {
+        title: 'Página inicial',
+        routerLink: '/professor/home'
+      },
+      {
+        title: 'Oferecimentos',
+        routerLink: '/professor/offering'
+      }
+    ]"
+  ></app-sidebar>
+
+  <app-header-navbar
+    [props]="{
+      name: 'Larissa',
+      description: 'Bem vinda a sua área do docente EXTECAMP'
+    }"
+  ></app-header-navbar>
+
+  <div class="col-start-2 overflow-y-auto w-full px-8 py-6 bg-gray-50">
+    <h1 class="font-semibold text-lg text-gray-900">Novo oferecimento</h1>
+  </div>
+</div>

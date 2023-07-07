@@ -17,6 +17,7 @@ import { StudentHomeComponent } from './templates/student-home/student-home.comp
 import { StudentAllCoursesComponent } from './templates/student-all-courses/student-all-courses.component';
 import { ProfessorNewOfferingComponent } from './templates/professor-new-offering/professor-new-offering.component';
 import { StudentCourseDetailComponent } from './templates/student-course-detail/student-course-detail.component';
+import { StepsComponent } from './shared/components/steps/steps.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { StudentCourseDetailComponent } from './templates/student-course-detail/
     StudentAllCoursesComponent,
     ProfessorNewOfferingComponent,
     StudentCourseDetailComponent,
+    StepsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
