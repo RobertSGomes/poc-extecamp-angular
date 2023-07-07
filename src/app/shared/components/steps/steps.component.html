@@ -3,7 +3,7 @@
 >
   <div
     *ngFor="let step of props.steps"
-    class="flex border-t-2 w-full"
+    class="flex items-end border-t-2 w-full h-[62px]"
     [ngClass]="{
       'border-t-violet-800': currentStep === step.step_index,
       'border-t-gray-300': currentStep < step.step_index,
@@ -11,7 +11,7 @@
       'border-t-4': currentStep >= step.step_index,
     }"
   >
-    <div class="flex flex-col gap-y-1 mt-4 h-[62px]">
+    <div class="flex flex-col gap-y-1 mt-4 h-[42px]">
       <div class="flex gap-x-2">
         <div
           [ngClass]="{
@@ -30,7 +30,13 @@
           {{ step.title }}
         </p>
       </div>
-      <div class="flex flex-row gap-x-1">
+      <div
+        [ngClass]="{
+          hidden: step.amount_inside_steps <= 1,
+          flex: step.amount_inside_steps > 1
+        }"
+        class="flex-row gap-x-1"
+      >
         <div
           *ngFor="
             let item of [].constructor(step.amount_inside_steps);
