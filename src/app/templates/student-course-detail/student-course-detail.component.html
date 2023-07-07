@@ -1,1 +1,137 @@
-<p>student-course-detail works!</p>
+<div class="grid grid-rows-[0px_auto_1fr] grid-cols-[300px_1fr] h-screen">
+  <app-sidebar
+    [navItens]="[
+      {
+        title: 'Página inicial',
+        routerLink: '/student/home'
+      },
+      {
+        title: 'Meus dados',
+        routerLink: '#'
+      },
+      {
+        title: 'Meus cursos',
+        routerLink: '#'
+      }
+    ]"
+  ></app-sidebar>
+
+  <div
+    class="flex col-start-2 row-start-2 flex-row items-center justify-between border-b border-b-gray-200 px-8 py-4 h-[72px] w-full"
+  >
+    <p></p>
+  </div>
+
+  <div
+    class="flex col-start-2 row-start-3 h-full overflow-y-auto w-full px-8 bg-gray-50 justify-center"
+  >
+    <div
+      class="flex flex-col gap-y-6 items-center w-[1072px] py-6 border-x border-gray-200 shadow-sm bg-white"
+    >
+      <!-- Descrição do curso -->
+      <section
+        class="flex w-[993px] p-4 gap-x-[31px] rounded-2xl border border-gray-200 shadow-sm"
+      >
+        <div class="flex flex-col flex-1 gap-y-8">
+          <div class="flex flex-col gap-2">
+            <h2 class="font-normal text-base text-black h-[40px]">
+              CURSO DE EXTENSÃO
+            </h2>
+            <h1 class="font-semibold text-2xl text-black">
+              BIOQUÍMICA E FISIOLOGIA APLICADAS AO TREINAMENTO FÍSICO
+            </h1>
+          </div>
+          <p class="font-normal text-base text-gray-600">
+            Oferecer um curso que forneça uma visão integrada das respostas
+            metabólicas e fisiológicas em diferentes situações de exercícios,
+            que possa ser facilmente transposta para a prática profissional.
+            Esse conhecimento constitui o alicerce para que os profissionais
+            tenham maior segurança nas tomadas de decisões sobre os meios e
+            métodos de treino
+          </p>
+          <p class="font-medium text-lg text-black uppercase">
+            Inscrições de 24 de abril a 16 de julho
+          </p>
+          <div class="flex justify-between items-center">
+            <div class="flex flex-col gap-2">
+              <p class="font-normal text-base text-black">
+                Em até 10 parcelas de
+              </p>
+              <h1 class="font-semibold text-5xl">R$ 249,00*</h1>
+              <div>
+                <p class="font-normal text-sm text-black">
+                  Boleto bancário ou cartão de crédito
+                </p>
+                <p class="font-normal text-sm text-black">
+                  *Consulte as formas de pagamento
+                </p>
+              </div>
+            </div>
+            <button
+              class="rounded-lg w-fit h-fit px-[18px] py-[10px] bg-violet-600 border border-violet-600 font-semibold text-base text-white shadow-sm"
+            >
+              Inscreva-se
+            </button>
+          </div>
+        </div>
+        <div class="flex flex-1 rounded-2xl h-full bg-gray-300"></div>
+      </section>
+
+      <!-- Cards informativos -->
+      <section class="flex justify-between w-full px-8">
+        <div class="flex flex-col gap-y-8">
+          <div class="flex gap-5">
+            <div class="flex items-center justify-center w-[66px] h-[66px]">
+              <div
+                class="flex items-center justify-center w-[56px] h-[56px] rounded-full bg-gray-100 border-[10px] border-gray-50"
+              ></div>
+            </div>
+            <div class="flex flex-col justify-center gap-2 w-[234px]">
+              <p class="font-bold text-sm text-gray-700">Modalidade</p>
+              <p class="font-normal text-sm text-gray-600">Online</p>
+            </div>
+          </div>
+          <div class="flex gap-5">
+            <div class="flex items-center justify-center w-[66px] h-[66px]">
+              <div
+                class="flex items-center justify-center w-[56px] h-[56px] rounded-full bg-gray-100 border-[10px] border-gray-50"
+              ></div>
+            </div>
+            <div class="flex flex-col justify-center gap-2 w-[234px]">
+              <p class="font-bold text-sm text-gray-700">Duração</p>
+              <p class="font-normal text-sm text-gray-600">8 semanas</p>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col gap-y-8">
+          <div class="flex gap-5">
+            <div class="flex items-center justify-center w-[66px] h-[66px]">
+              <div
+                class="flex items-center justify-center w-[56px] h-[56px] rounded-full bg-gray-100 border-[10px] border-gray-50"
+              ></div>
+            </div>
+            <div class="flex flex-col justify-center gap-2 w-[234px]">
+              <p class="font-bold text-sm text-gray-700">Carga horária</p>
+              <p class="font-normal text-sm text-gray-600">40 horas</p>
+            </div>
+          </div>
+          <div class="flex gap-5">
+            <div class="flex items-center justify-center w-[66px] h-[66px]">
+              <div
+                class="flex items-center justify-center w-[56px] h-[56px] rounded-full bg-gray-100 border-[10px] border-gray-50"
+              ></div>
+            </div>
+            <div class="flex flex-col justify-center gap-2 w-[234px]">
+              <p class="font-bold text-sm text-gray-700">Certificado</p>
+              <p class="font-normal text-sm text-gray-600">
+                Certificado de conclusão fornecido
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Accordions -->
+    </div>
+  </div>
+</div>
