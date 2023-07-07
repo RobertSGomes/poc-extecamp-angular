@@ -60,7 +60,7 @@
     </section>
 
     <section
-      class="w-[1072px] mx-auto p-6 bg-white border border-gray-200 rounded-2xl shadow-sm"
+      class="w-[1072px] mx-auto px-6 py-8 bg-white border border-gray-200 rounded-2xl shadow-sm"
     >
       <app-history-line
         [currentStep]="0"
@@ -89,6 +89,84 @@
           ]
         }"
       ></app-history-line>
+
+      <hr class="h-[1px] bg-gray-200 my-6" />
+
+      <h1 class="font-semibold text-lg text-gray-900 mb-6">Dados iniciais</h1>
+
+      <div class="flex flex-col gap-y-2 mb-6">
+        <p class="font-medium text-sm text-gray-700">Sigla do curso *</p>
+
+        <div class="flex gap-x-[18px]">
+          <select
+            class="px-[14px] py-[10px] rounded-lg border border-gray-300 shadow-sm font-normal text-base text-gray-800 outline-none w-[152px] h-fit placeholder:text-gray-500"
+          >
+            <option>Eco</option>
+          </select>
+          <select
+            class="px-[14px] py-[10px] rounded-lg border border-gray-300 shadow-sm font-normal text-base text-gray-800 outline-none w-[152px] h-fit placeholder:text-gray-500"
+          >
+            <option>1234</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-y-2 mb-6">
+        <p class="font-medium text-sm text-gray-700">Tipo de curso *</p>
+
+        <div class="flex gap-x-[18px]">
+          <select
+            class="px-[14px] py-[10px] rounded-lg border border-gray-300 shadow-sm font-normal text-base text-gray-800 outline-none w-[665px] h-fit placeholder:text-gray-500"
+          >
+            <option>Selecione</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-y-2 mb-6">
+        <p class="font-medium text-sm text-gray-700">Nome do curso *</p>
+
+        <div class="flex gap-x-[18px]">
+          <input
+            class="px-[14px] py-[10px] rounded-lg border border-gray-300 shadow-sm font-normal text-base text-gray-800 outline-none w-[665px] h-fit placeholder:text-gray-500"
+            placeholder="Preencha"
+          />
+        </div>
+      </div>
+
+      <div>
+        <p class="font-medium text-sm text-gray-700">
+          Em caso de curso aberto ou de difusão, o oferecimento será de fluxo
+          contínuo?
+        </p>
+
+        <div class="flex items-center gap-x-2">
+          <input
+            type="radio"
+            id="fluxo_continuo_yes"
+            name="curso_fluxo_continuo"
+            value="Sim"
+          />
+          <label
+            for="fluxo_continuo_yes"
+            class="font-medium text-base text-gray-700"
+            >Sim</label
+          >
+        </div>
+        <div class="flex items-center gap-x-2">
+          <input
+            type="radio"
+            id="fluxo_continuo_no"
+            name="curso_fluxo_continuo"
+            value="Não"
+          />
+          <label
+            for="fluxo_continuo_no"
+            class="font-medium text-base text-gray-700"
+            >Não</label
+          >
+        </div>
+      </div>
     </section>
   </div>
 </div>
