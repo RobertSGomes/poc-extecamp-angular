@@ -19,6 +19,7 @@ import { ProfessorNewOfferingComponent } from './templates/professor-new-offerin
 import { StudentCourseDetailComponent } from './templates/student-course-detail/student-course-detail.component';
 import { AccordionComponent } from './shared/components/accordion/accordion.component';
 import { StepsComponent } from './shared/components/steps/steps.component';
+import { HistoryLineComponent } from './shared/history-line/history-line.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { StepsComponent } from './shared/components/steps/steps.component';
     StudentCourseDetailComponent,
     AccordionComponent,
     StepsComponent,
+    HistoryLineComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
