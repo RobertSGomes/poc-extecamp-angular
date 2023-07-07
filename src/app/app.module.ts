@@ -18,6 +18,7 @@ import { StudentAllCoursesComponent } from './templates/student-all-courses/stud
 import { ProfessorNewOfferingComponent } from './templates/professor-new-offering/professor-new-offering.component';
 import { StudentCourseDetailComponent } from './templates/student-course-detail/student-course-detail.component';
 import { AccordionComponent } from './shared/components/accordion/accordion.component';
+import { StepsComponent } from './shared/components/steps/steps.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { AccordionComponent } from './shared/components/accordion/accordion.comp
     ProfessorNewOfferingComponent,
     StudentCourseDetailComponent,
     AccordionComponent,
+    StepsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
