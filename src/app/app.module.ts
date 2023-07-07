@@ -20,6 +20,7 @@ import { StudentCourseDetailComponent } from './templates/student-course-detail/
 import { AccordionComponent } from './shared/components/accordion/accordion.component';
 import { StepsComponent } from './shared/components/steps/steps.component';
 import { HistoryLineComponent } from './shared/history-line/history-line.component';
+import { StudentCourseRegistrationComponent } from './templates/student-course-registration/student-course-registration.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { HistoryLineComponent } from './shared/history-line/history-line.compone
     AccordionComponent,
     StepsComponent,
     HistoryLineComponent,
+    StudentCourseRegistrationComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
