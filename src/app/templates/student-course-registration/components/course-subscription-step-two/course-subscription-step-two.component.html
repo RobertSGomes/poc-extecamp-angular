@@ -1,0 +1,29 @@
+<section
+  class="flex flex-col p-8 gap-y-6 rounded-2xl bg-white border border-gray-200 shadow-sm"
+>
+  <h1 class="font-semibold text-lg text-black">Endereço</h1>
+
+  <hr class="h-[1px] bg-gray-200" />
+
+  <div class="flex justify-between items-center">
+    <button
+      class="px-4 py-[10px] rounded-lg font-semibold text-sm text-violet-700"
+      (click)="backStep.emit()"
+    >
+      Voltar
+    </button>
+    <div class="flex gap-x-[15px]">
+      <button
+        class="px-4 py-[10px] rounded-lg font-semibold text-sm text-gray-700 shadow-sm border border-gray-300"
+      >
+        Cancelar
+      </button>
+      <button
+        class="px-4 py-[10px] rounded-lg font-semibold text-sm text-white bg-violet-700"
+        (click)="nextStep.emit()"
+      >
+        Próximo
+      </button>
+    </div>
+  </div>
+</section>

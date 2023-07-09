@@ -23,6 +23,9 @@ import { HistoryLineComponent } from './shared/components/history-line/history-l
 import { StudentCourseRegistrationComponent } from './templates/student-course-registration/student-course-registration.component';
 import { ProfessorFormStepOneComponent } from './templates/professor-new-offering/components/professor-form-step-one/professor-form-step-one.component';
 import { ProfessorFormStepTwoComponent } from './templates/professor-new-offering/components/professor-form-step-two/professor-form-step-two.component';
+import { CourseSubscriptionStepOneComponent } from './templates/student-course-registration/components/course-subscription-step-one/course-subscription-step-one.component';
+import { CourseSubscriptionStepTwoComponent } from './templates/student-course-registration/components/course-subscription-step-two/course-subscription-step-two.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -47,8 +50,10 @@ import { ProfessorFormStepTwoComponent } from './templates/professor-new-offerin
     StudentCourseRegistrationComponent,
     ProfessorFormStepOneComponent,
     ProfessorFormStepTwoComponent,
+    CourseSubscriptionStepOneComponent,
+    CourseSubscriptionStepTwoComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
