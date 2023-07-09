@@ -1,12 +1,12 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { HistoryStep } from '../../types/history.type';
+import { HistoryStep } from '../../../types/history.type';
 
 @Component({
-  selector: 'app-professor-form-step-two',
-  templateUrl: './professor-form-step-two.component.html',
-  styleUrls: ['./professor-form-step-two.component.css'],
+  selector: 'app-professor-form-step-one',
+  templateUrl: './professor-form-step-one.component.html',
+  styleUrls: ['./professor-form-step-one.component.css'],
 })
-export class ProfessorFormStepTwoComponent {
+export class ProfessorFormStepOneComponent {
   history_steps: HistoryStep[] = [
     {
       title: 'Dados iniciais',
@@ -30,6 +30,5 @@ export class ProfessorFormStepTwoComponent {
     },
   ];
 
-  @Output() backInsideStep: EventEmitter<void> = new EventEmitter<void>();
   @Output() nextInsideStep: EventEmitter<void> = new EventEmitter<void>();
 }
