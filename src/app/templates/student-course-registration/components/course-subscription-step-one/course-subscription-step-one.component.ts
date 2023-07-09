@@ -7,7 +7,7 @@ import { CourseRegistrationModel } from '../../models/course-registration.model'
   styleUrls: ['./course-subscription-step-one.component.css'],
 })
 export class CourseSubscriptionStepOneComponent {
-  @Input() courseRegistrationModel!: CourseRegistrationModel;
+  @Input() courseRegistration!: CourseRegistrationModel;
 
   @Output() nextStep: EventEmitter<void> = new EventEmitter<void>();
 }

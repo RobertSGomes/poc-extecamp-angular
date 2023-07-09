@@ -64,13 +64,14 @@
       <!--Formulário-->
       <div *ngIf="currentStep === 0">
         <app-course-subscription-step-one
-          [courseRegistrationModel]="courseRegistrationModel"
+          [courseRegistration]="courseRegistration"
           (nextStep)="nextStep()"
         ></app-course-subscription-step-one>
       </div>
 
       <div *ngIf="currentStep === 1">
         <app-course-subscription-step-two
+          [courseRegistration]="courseRegistration"
           (backStep)="backStep()"
           (nextStep)="nextStep()"
         ></app-course-subscription-step-two>
