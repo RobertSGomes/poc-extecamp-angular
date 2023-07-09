@@ -1,236 +1,270 @@
-<app-history-line [currentStep]="0" [steps]="history_steps"></app-history-line>
+<form (submit)="nextInsideStep.emit()">
+  <app-history-line
+    [currentStep]="0"
+    [steps]="history_steps"
+  ></app-history-line>
 
-<hr class="h-[1px] bg-gray-200 my-6" />
+  <hr class="h-[1px] bg-gray-200 my-6" />
 
-<h1 class="font-semibold text-lg text-gray-900 mb-6">Dados iniciais</h1>
+  <h1 class="font-semibold text-lg text-gray-900 mb-6">Dados iniciais</h1>
 
-<div class="flex flex-col gap-y-2 mb-6">
-  <p class="font-medium text-sm text-gray-700">Sigla do curso *</p>
+  <div class="flex flex-col gap-y-2 mb-6">
+    <p class="font-medium text-sm text-gray-700">Sigla do curso *</p>
 
-  <div class="flex gap-x-[18px]">
+    <div class="flex gap-x-[18px]">
+      <div
+        class="flex gap-2 w-[152px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+      >
+        <select class="w-full text-gray-800 text-base outline-none">
+          <option>ECO</option>
+        </select>
+      </div>
+      <div
+        class="flex gap-2 w-[152px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+      >
+        <select class="w-full text-gray-800 text-base outline-none">
+          <option>1234</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-col gap-[6px] mb-6">
+    <label class="font-medium text-sm text-gray-700">Tipo de curso *</label>
     <div
-      class="flex gap-2 w-[152px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+      class="flex gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
     >
-      <select class="w-full text-gray-800 text-base outline-none">
-        <option>ECO</option>
+      <select
+        class="w-full text-gray-800 text-base outline-none"
+        name="course_tipo"
+        [(ngModel)]="course.tipo"
+      >
+        <option [ngValue]="''">Selecione</option>
+        <option [ngValue]="'Curso de extensão'">Curso de extensão</option>
       </select>
     </div>
+  </div>
+
+  <div class="flex flex-col gap-[6px] mb-6">
+    <label class="font-medium text-sm text-gray-700">Nome do curso *</label>
     <div
-      class="flex gap-2 w-[152px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+      class="flex gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
     >
-      <select class="w-full text-gray-800 text-base outline-none">
-        <option>1234</option>
+      <input
+        class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+        placeholder="Preencha"
+        name="course_name"
+        [(ngModel)]="course.nome"
+      />
+    </div>
+  </div>
+
+  <div class="flex flex-col gap-y-2 mb-6">
+    <p class="font-medium text-sm text-gray-700">
+      Em caso de curso aberto ou de difusão, o oferecimento será de fluxo
+      contínuo?
+    </p>
+
+    <div class="flex items-center gap-x-2">
+      <input
+        type="radio"
+        id="fluxo_continuo_yes"
+        name="curso_fluxo_continuo"
+        [(ngModel)]="course.fluxo_continuo"
+        [value]="true"
+      />
+      <label
+        for="fluxo_continuo_yes"
+        class="font-medium text-base text-gray-700"
+        >Sim</label
+      >
+    </div>
+    <div class="flex items-center gap-x-2">
+      <input
+        type="radio"
+        id="fluxo_continuo_no"
+        name="curso_fluxo_continuo"
+        [(ngModel)]="course.fluxo_continuo"
+        [value]="false"
+      />
+      <label for="fluxo_continuo_no" class="font-medium text-base text-gray-700"
+        >Não</label
+      >
+    </div>
+  </div>
+
+  <div class="flex flex-col gap-y-2 mb-6">
+    <p class="font-medium text-sm text-gray-700">
+      Em caso de curso múltiplo, haverá disciplina eletiva?
+    </p>
+
+    <div class="flex items-center gap-x-2">
+      <input
+        type="radio"
+        id="disciplina_eletiva_yes"
+        name="disciplina_eletiva"
+        [(ngModel)]="course.disciplina_eletiva"
+        [value]="true"
+      />
+      <label
+        for="disciplina_eletiva_yes"
+        class="font-medium text-base text-gray-700"
+        >Sim</label
+      >
+    </div>
+    <div class="flex items-center gap-x-2">
+      <input
+        type="radio"
+        id="disciplina_eletiva_no"
+        name="disciplina_eletiva"
+        [(ngModel)]="course.disciplina_eletiva"
+        [value]="false"
+      />
+      <label
+        for="disciplina_eletiva_no"
+        class="font-medium text-base text-gray-700"
+        >Não</label
+      >
+    </div>
+  </div>
+
+  <div class="flex flex-col gap-[6px] mb-6">
+    <label class="font-medium text-sm text-gray-700"
+      >Forma de realização *</label
+    >
+    <div
+      class="flex gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+    >
+      <select
+        class="w-full text-gray-800 text-base outline-none"
+        name="course_forma_realizacao"
+        [(ngModel)]="course.forma_realizacao"
+      >
+        <option [value]="''">Selecione</option>
+        <option [value]="'Presencial'">Presencial</option>
+        <option [value]="'Semipresencial'">Semipresencial</option>
+        <option [value]="'EAD'">EAD</option>
       </select>
     </div>
   </div>
-</div>
 
-<div class="flex flex-col gap-[6px] mb-6">
-  <label class="font-medium text-sm text-gray-700">Tipo de curso *</label>
-  <div
-    class="flex gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
-  >
-    <select class="w-full text-gray-800 text-base outline-none">
-      <option>Selecione</option>
-      <option>Curso de extensão</option>
-    </select>
-  </div>
-</div>
-
-<div class="flex flex-col gap-[6px] mb-6">
-  <label class="font-medium text-sm text-gray-700">Nome do curso *</label>
-  <div
-    class="flex gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
-  >
-    <input
-      class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-      placeholder="Preencha"
-    />
-  </div>
-</div>
-
-<div class="flex flex-col gap-y-2 mb-6">
-  <p class="font-medium text-sm text-gray-700">
-    Em caso de curso aberto ou de difusão, o oferecimento será de fluxo
-    contínuo?
-  </p>
-
-  <div class="flex items-center gap-x-2">
-    <input
-      type="radio"
-      id="fluxo_continuo_yes"
-      name="curso_fluxo_continuo"
-      value="Sim"
-      checked
-    />
-    <label for="fluxo_continuo_yes" class="font-medium text-base text-gray-700"
-      >Sim</label
+  <div class="flex flex-col gap-[6px] mb-6">
+    <label class="font-medium text-sm text-gray-700"
+      >Plataforma de gestão dos alunos *</label
     >
-  </div>
-  <div class="flex items-center gap-x-2">
-    <input
-      type="radio"
-      id="fluxo_continuo_no"
-      name="curso_fluxo_continuo"
-      value="Não"
-    />
-    <label for="fluxo_continuo_no" class="font-medium text-base text-gray-700"
-      >Não</label
+    <div
+      class="flex gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
     >
+      <select
+        class="w-full text-gray-800 text-base outline-none"
+        name="course_plataforma"
+        [(ngModel)]="course.plataforma"
+      >
+        <option [value]="''">Selecione</option>
+        <option [value]="'Extecamp'">Extecamp</option>
+      </select>
+    </div>
   </div>
-</div>
 
-<div class="flex flex-col gap-y-2 mb-6">
-  <p class="font-medium text-sm text-gray-700">
-    Em caso de curso múltiplo, haverá disciplina eletiva?
-  </p>
-
-  <div class="flex items-center gap-x-2">
-    <input
-      type="radio"
-      id="disciplina_eletiva_yes"
-      name="disciplina_eletiva"
-      value="Sim"
-      checked
-    />
-    <label
-      for="disciplina_eletiva_yes"
-      class="font-medium text-base text-gray-700"
-      >Sim</label
+  <div class="flex flex-col w-[665px] gap-[6px] mb-6">
+    <label class="font-medium text-sm text-gray-700"
+      >Mensagem ao aluno em ambiente virtual de aprendizado</label
     >
-  </div>
-  <div class="flex items-center gap-x-2">
-    <input
-      type="radio"
-      id="disciplina_eletiva_no"
-      name="disciplina_eletiva"
-      value="Não"
-    />
-    <label
-      for="disciplina_eletiva_no"
-      class="font-medium text-base text-gray-700"
-      >Não</label
+    <div
+      class="flex gap-2 w-full h-[163px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
     >
+      <textarea
+        class="w-full h-full text-gray-800 text-base outline-none resize-none placeholder:text-gray-500"
+        placeholder="Preencha"
+        name="course_mensagem"
+        [(ngModel)]="course.mensagem"
+      ></textarea>
+    </div>
+    <p class="font-normal text-sm text-gray-700">
+      Preencha no caso de oferecimento contínuo e/ou quando o curso for
+      oferecido em outros ambientes/plataformas
+    </p>
   </div>
-</div>
 
-<div class="flex flex-col gap-[6px] mb-6">
-  <label class="font-medium text-sm text-gray-700">Forma de realização *</label>
-  <div
-    class="flex gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
-  >
-    <select class="w-full text-gray-800 text-base outline-none">
-      <option>Selecione</option>
-      <option>Presencial</option>
-      <option>Semipresencial</option>
-      <option>EAD</option>
-    </select>
+  <div class="flex flex-col gap-[6px] mb-6 w-[665px]">
+    <label class="font-medium text-sm text-gray-700"
+      >Descrição ao aluno sobre o ambiente virtual de aprendizagem</label
+    >
+    <label class="font-normal text-sm text-gray-700"
+      >Quando o curso for a distância, descrever no campo abaixo, como e em que
+      ambientes virtuais de aprendizagem as aulas serão ministradas e, se houver
+      aulas práticas, que tipo de atividades serão desenvolvidas. Especificar
+      ainda os recursos de mídia previstos, bem como a forma e os critérios de
+      avaliação do curso (Deliberação CEPE A-04/19). As informações deste campo
+      serão disponibilizadas no material de divulgação do curso e são
+      importantes para que o aluno possa avaliar suas condições de
+      participação.</label
+    >
+    <div
+      class="flex gap-2 px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+    >
+      <textarea
+        class="w-full h-[129px] text-gray-800 text-base outline-none resize-none placeholder:text-gray-500"
+        placeholder="Preencha"
+        minlength="50"
+        maxlength="10000"
+        name="course_descricao"
+        [(ngModel)]="course.descricao"
+      ></textarea>
+    </div>
+    <p class="font-normal text-sm text-gray-700">
+      Mínimo de 50 e máximo de 10000 caracteres
+    </p>
   </div>
-</div>
 
-<div class="flex flex-col gap-[6px] mb-6">
-  <label class="font-medium text-sm text-gray-700"
-    >Plataforma de gestão dos alunos *</label
-  >
-  <div
-    class="flex gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
-  >
-    <select class="w-full text-gray-800 text-base outline-none">
-      <option>Selecione</option>
-      <option>Extecamp</option>
-    </select>
+  <div class="flex flex-col gap-[6px] mb-6">
+    <label class="font-medium text-sm text-gray-700">Unidade *</label>
+    <div
+      class="flex gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+    >
+      <input
+        class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+        placeholder="Preencha"
+        name="course_unidade"
+        [(ngModel)]="course.unidade"
+      />
+    </div>
   </div>
-</div>
 
-<div class="flex flex-col w-[665px] gap-[6px] mb-6">
-  <label class="font-medium text-sm text-gray-700"
-    >Mensagem ao aluno em ambiente virtual de aprendizado</label
-  >
-  <div
-    class="flex gap-2 w-full h-[163px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
-  >
-    <textarea
-      class="w-full h-full text-gray-800 text-base outline-none resize-none placeholder:text-gray-500"
-      placeholder="Preencha"
-    ></textarea>
+  <div class="flex flex-col gap-[6px] mb-6">
+    <label class="font-medium text-sm text-gray-700">Departamento *</label>
+    <div
+      class="flex gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+    >
+      <input
+        class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+        placeholder="Preencha"
+        name="course_departamento"
+        [(ngModel)]="course.departamento"
+      />
+    </div>
   </div>
-  <p class="font-normal text-sm text-gray-700">
-    Preencha no caso de oferecimento contínuo e/ou quando o curso for oferecido
-    em outros ambientes/plataformas
-  </p>
-</div>
 
-<div class="flex flex-col gap-[6px] mb-6 w-[665px]">
-  <label class="font-medium text-sm text-gray-700"
-    >Descrição ao aluno sobre o ambiente virtual de aprendizagem</label
-  >
-  <label class="font-normal text-sm text-gray-700"
-    >Quando o curso for a distância, descrever no campo abaixo, como e em que
-    ambientes virtuais de aprendizagem as aulas serão ministradas e, se houver
-    aulas práticas, que tipo de atividades serão desenvolvidas. Especificar
-    ainda os recursos de mídia previstos, bem como a forma e os critérios de
-    avaliação do curso (Deliberação CEPE A-04/19). As informações deste campo
-    serão disponibilizadas no material de divulgação do curso e são importantes
-    para que o aluno possa avaliar suas condições de participação.</label
-  >
-  <div
-    class="flex gap-2 px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
-  >
-    <textarea
-      class="w-full h-[129px] text-gray-800 text-base outline-none resize-none placeholder:text-gray-500"
-      placeholder="Preencha"
-      minlength="50"
-      maxlength="10000"
-    ></textarea>
-  </div>
-  <p class="font-normal text-sm text-gray-700">
-    Mínimo de 50 e máximo de 10000 caracteres
-  </p>
-</div>
+  <hr class="h-[1px] bg-gray-200 mb-6" />
 
-<div class="flex flex-col gap-[6px] mb-6">
-  <label class="font-medium text-sm text-gray-700">Unidade *</label>
-  <div
-    class="flex gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
-  >
-    <input
-      class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-      placeholder="Preencha"
-    />
-  </div>
-</div>
-
-<div class="flex flex-col gap-[6px] mb-6">
-  <label class="font-medium text-sm text-gray-700">Departamento *</label>
-  <div
-    class="flex gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
-  >
-    <input
-      class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-      placeholder="Preencha"
-    />
-  </div>
-</div>
-
-<hr class="h-[1px] bg-gray-200 mb-6" />
-
-<div class="flex justify-between items-center">
-  <button
-    class="px-4 py-[10px] rounded-lg font-semibold text-sm text-violet-700"
-  >
-    Voltar
-  </button>
-  <div class="flex gap-x-[15px]">
+  <div class="flex justify-between items-center">
     <button
-      class="px-4 py-[10px] rounded-lg font-semibold text-sm text-gray-700 shadow-sm border border-gray-300"
+      class="px-4 py-[10px] rounded-lg font-semibold text-sm text-violet-700"
     >
-      Cancelar
+      Voltar
     </button>
-    <button
-      (click)="nextInsideStep.emit()"
-      class="px-4 py-[10px] rounded-lg font-semibold text-sm text-white bg-violet-700"
-    >
-      Próximo
-    </button>
+    <div class="flex gap-x-[15px]">
+      <button
+        class="px-4 py-[10px] rounded-lg font-semibold text-sm text-gray-700 shadow-sm border border-gray-300"
+      >
+        Cancelar
+      </button>
+      <button
+        class="px-4 py-[10px] rounded-lg font-semibold text-sm text-white bg-violet-700"
+        type="submit"
+      >
+        Próximo
+      </button>
+    </div>
   </div>
-</div>
+</form>

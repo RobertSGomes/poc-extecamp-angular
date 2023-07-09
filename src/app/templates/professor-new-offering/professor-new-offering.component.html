@@ -63,18 +63,17 @@
       class="w-[1072px] mx-auto px-6 py-8 bg-white border border-gray-200 rounded-2xl shadow-sm"
     >
       <div *ngIf="current_step === 0">
-        <div *ngIf="current_inside_step === 0">
-          <app-professor-form-step-one
-            (nextInsideStep)="nextInsideStep()"
-          ></app-professor-form-step-one>
-        </div>
+        <app-professor-form-step-one
+          *ngIf="current_inside_step === 0"
+          [course]="course"
+          (nextInsideStep)="nextInsideStep()"
+        ></app-professor-form-step-one>
 
-        <div *ngIf="current_inside_step === 1">
-          <app-professor-form-step-two
-            (backInsideStep)="backInsideStep()"
-            (nextInsideStep)="nextInsideStep()"
-          ></app-professor-form-step-two>
-        </div>
+        <app-professor-form-step-two
+          *ngIf="current_inside_step === 1"
+          (backInsideStep)="backInsideStep()"
+          (nextInsideStep)="nextInsideStep()"
+        ></app-professor-form-step-two>
       </div>
     </section>
   </div>

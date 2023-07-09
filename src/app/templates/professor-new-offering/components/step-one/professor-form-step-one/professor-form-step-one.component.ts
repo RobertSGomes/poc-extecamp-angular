@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, Input } from '@angular/core';
 import { HistoryStep } from '../../../types/history.type';
+import { CourseModel } from '../../../models/course.model';
 
 @Component({
   selector: 'app-professor-form-step-one',
@@ -31,4 +32,6 @@ export class ProfessorFormStepOneComponent {
   ];
 
   @Output() nextInsideStep: EventEmitter<void> = new EventEmitter<void>();
+
+  @Input() course!: CourseModel;
 }
