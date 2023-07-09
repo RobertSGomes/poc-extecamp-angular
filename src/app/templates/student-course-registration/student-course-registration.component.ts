@@ -8,7 +8,7 @@ import { CourseRegistrationModel } from './models/course-registration.model';
 })
 export class StudentCourseRegistrationComponent {
   courseRegistration = new CourseRegistrationModel();
-  currentStep: number = 0;
+  currentStep: number = 3;
 
   nextStep(): void {
     this.currentStep++;
