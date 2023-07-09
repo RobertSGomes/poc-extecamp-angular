@@ -26,6 +26,7 @@ import { CourseSubscriptionStepTwoComponent } from './templates/student-course-r
 import { FormsModule } from '@angular/forms';
 import { ProfessorFormStepOneComponent } from './templates/professor-new-offering/components/step-one/professor-form-step-one/professor-form-step-one.component';
 import { ProfessorFormStepTwoComponent } from './templates/professor-new-offering/components/step-one/professor-form-step-two/professor-form-step-two.component';
+import { ProfessorFormStepThreeComponent } from './templates/professor-new-offering/components/step-one/professor-form-step-three/professor-form-step-three.component';
 import { CourseSubscriptionStepThreeComponent } from './templates/student-course-registration/components/course-subscription-step-three/course-subscription-step-three.component';
 import { CourseSubscriptionStepFourComponent } from './templates/student-course-registration/components/course-subscription-step-four/course-subscription-step-four.component';
 
@@ -54,6 +55,7 @@ import { CourseSubscriptionStepFourComponent } from './templates/student-course-
     ProfessorFormStepTwoComponent,
     CourseSubscriptionStepOneComponent,
     CourseSubscriptionStepTwoComponent,
+    ProfessorFormStepThreeComponent,
     CourseSubscriptionStepThreeComponent,
     CourseSubscriptionStepFourComponent,
   ],

@@ -1,29 +1,151 @@
-<app-history-line [currentStep]="1" [steps]="history_steps"></app-history-line>
+<form (submit)="nextInsideStep.emit()">
+  <app-history-line
+    [currentStep]="1"
+    [steps]="history_steps"
+  ></app-history-line>
 
-<hr class="h-[1px] bg-gray-200 my-6" />
+  <hr class="h-[1px] bg-gray-200 my-6" />
 
-<h1 class="font-semibold text-lg text-gray-900 mb-6">Step 2</h1>
+  <h1 class="font-semibold text-lg text-gray-900 mb-6">
+    Palavras-chave e áreas
+  </h1>
 
-<hr class="h-[1px] bg-gray-200 mb-6" />
+  <div class="flex flex-col gap-y-2 mb-6">
+    <p class="font-medium text-sm text-gray-700">Palavras-chave *</p>
 
-<div class="flex justify-between items-center">
-  <button
-    (click)="backInsideStep.emit()"
-    class="px-4 py-[10px] rounded-lg font-semibold text-sm text-violet-700"
-  >
-    Voltar
-  </button>
-  <div class="flex gap-x-[15px]">
-    <button
-      class="px-4 py-[10px] rounded-lg font-semibold text-sm text-gray-700 shadow-sm border border-gray-300"
-    >
-      Cancelar
-    </button>
-    <button
-      (click)="nextInsideStep.emit()"
-      class="px-4 py-[10px] rounded-lg font-semibold text-sm text-white bg-violet-700"
-    >
-      Próximo
-    </button>
+    <div class="flex gap-x-[18px] mb-6">
+      <div
+        class="flex gap-2 w-[324px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+      >
+        <select
+          class="w-full text-gray-800 text-base outline-none"
+          [(ngModel)]="course.palavras_chave[0]"
+          name="course_palavra_chave1"
+        >
+          <option [value]="''">Selecione</option>
+          <option [value]="'Economia'">Economia</option>
+          <option [value]="'Tecnologia'">Tecnologia</option>
+        </select>
+      </div>
+      <div
+        class="flex gap-2 w-[324px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+      >
+        <select
+          class="w-full text-gray-800 text-base outline-none"
+          [(ngModel)]="course.palavras_chave[1]"
+          name="course_palavra_chave2"
+        >
+          <option [value]="''">Selecione</option>
+          <option [value]="'Economia'">Economia</option>
+          <option [value]="'Tecnologia'">Tecnologia</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="flex gap-x-[18px]">
+      <div
+        class="flex gap-2 w-[324px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+      >
+        <select
+          class="w-full text-gray-800 text-base outline-none"
+          [(ngModel)]="course.palavras_chave[2]"
+          name="course_palavra_chave3"
+        >
+          <option [value]="''">Selecione</option>
+          <option [value]="'Economia'">Economia</option>
+          <option [value]="'Tecnologia'">Tecnologia</option>
+        </select>
+      </div>
+      <div
+        class="flex gap-2 w-[324px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+      >
+        <select
+          class="w-full text-gray-800 text-base outline-none"
+          [(ngModel)]="course.palavras_chave[3]"
+          name="course_palavra_chave4"
+        >
+          <option [value]="''">Selecione</option>
+          <option [value]="'Economia'">Economia</option>
+          <option [value]="'Tecnologia'">Tecnologia</option>
+        </select>
+      </div>
+    </div>
   </div>
-</div>
+
+  <div class="flex flex-col gap-y-2 mb-6">
+    <p class="font-medium text-sm text-gray-700">Área geral *</p>
+
+    <div class="flex gap-x-[18px]">
+      <div
+        class="flex gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+      >
+        <select
+          class="w-full text-gray-800 text-base outline-none"
+          [(ngModel)]="course.area_geral"
+          name="course_area_geral"
+        >
+          <option [value]="''">Selecione</option>
+          <option [value]="'Economia'">Economia</option>
+          <option [value]="'Tecnologia'">Tecnologia</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-col gap-y-2 mb-6">
+    <p class="font-medium text-sm text-gray-700">Área temáticas *</p>
+
+    <div class="flex gap-x-[18px]">
+      <div
+        class="flex gap-2 w-[324px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+      >
+        <select
+          class="w-full text-gray-800 text-base outline-none"
+          [(ngModel)]="course.areas_tematicas[0]"
+          name="course_areas_tematicasl"
+        >
+          <option [value]="''">Selecione</option>
+          <option [value]="'Front-End'">Front-End</option>
+          <option [value]="'Back-End'">Back-End</option>
+        </select>
+      </div>
+      <div
+        class="flex gap-2 w-[324px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+      >
+        <select
+          class="w-full text-gray-800 text-base outline-none"
+          [(ngModel)]="course.areas_tematicas[1]"
+          name="course_areas_tematicas2"
+        >
+          <option [value]="''">Selecione</option>
+          <option [value]="'Front-End'">Front-End</option>
+          <option [value]="'Back-End'">Back-End</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <hr class="h-[1px] bg-gray-200 mb-6" />
+
+  <div class="flex justify-between items-center">
+    <button
+      (click)="backInsideStep.emit()"
+      class="px-4 py-[10px] rounded-lg font-semibold text-sm text-violet-700"
+    >
+      Voltar
+    </button>
+    <div class="flex gap-x-[15px]">
+      <button
+        class="px-4 py-[10px] rounded-lg font-semibold text-sm text-gray-700 shadow-sm border border-gray-300"
+      >
+        Cancelar
+      </button>
+      <button
+        class="px-4 py-[10px] rounded-lg font-semibold text-sm text-white bg-violet-700"
+        type="submit"
+      >
+        Próximo
+      </button>
+    </div>
+  </div>
+</form>

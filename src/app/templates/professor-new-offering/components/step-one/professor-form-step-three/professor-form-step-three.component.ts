@@ -1,13 +1,13 @@
-import { Component, EventEmitter, Output, Input } from '@angular/core';
+import { Component, Output, Input, EventEmitter } from '@angular/core';
 import { HistoryStep } from '../../../types/history.type';
 import { CourseModel } from '../../../models/course.model';
 
 @Component({
-  selector: 'app-professor-form-step-two',
-  templateUrl: './professor-form-step-two.component.html',
-  styleUrls: ['./professor-form-step-two.component.css'],
+  selector: 'app-professor-form-step-three',
+  templateUrl: './professor-form-step-three.component.html',
+  styleUrls: ['./professor-form-step-three.component.css'],
 })
-export class ProfessorFormStepTwoComponent {
+export class ProfessorFormStepThreeComponent {
   history_steps: HistoryStep[] = [
     {
       title: 'Dados iniciais',
