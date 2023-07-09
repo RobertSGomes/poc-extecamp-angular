@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { HistoryStep } from '../../types/history.type';
+import { HistoryStep } from '../../../types/history.type';
 
 @Component({
   selector: 'app-professor-form-step-two',
