@@ -21,6 +21,8 @@ import { AccordionComponent } from './shared/components/accordion/accordion.comp
 import { StepsComponent } from './shared/components/steps/steps.component';
 import { HistoryLineComponent } from './shared/components/history-line/history-line.component';
 import { StudentCourseRegistrationComponent } from './templates/student-course-registration/student-course-registration.component';
+import { ProfessorFormStepOneComponent } from './templates/professor-new-offering/components/professor-form-step-one/professor-form-step-one.component';
+import { ProfessorFormStepTwoComponent } from './templates/professor-new-offering/components/professor-form-step-two/professor-form-step-two.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,8 @@ import { StudentCourseRegistrationComponent } from './templates/student-course-r
     StepsComponent,
     HistoryLineComponent,
     StudentCourseRegistrationComponent,
+    ProfessorFormStepOneComponent,
+    ProfessorFormStepTwoComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
