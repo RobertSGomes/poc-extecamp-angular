@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { HistoryStep } from 'src/app/templates/professor-new-offering/types/history.type';
 
 interface IProps {
   steps: Array<{
@@ -14,9 +15,7 @@ interface IProps {
 })
 export class HistoryLineComponent {
   @Input()
-  props: IProps = {
-    steps: [],
-  };
+  steps: HistoryStep[] = [];
 
   @Input()
   currentStep = 0;

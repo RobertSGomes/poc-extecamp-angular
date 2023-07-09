@@ -25,8 +25,8 @@
 
     <section class="w-[1072px] mx-auto my-6">
       <app-steps
-        [currentStep]="0"
-        [currentInsideStep]="0"
+        [currentStep]="current_step"
+        [currentInsideStep]="current_inside_step"
         [props]="{
           steps: [
             {
@@ -62,37 +62,20 @@
     <section
       class="w-[1072px] mx-auto px-6 py-8 bg-white border border-gray-200 rounded-2xl shadow-sm"
     >
-      <app-history-line
-        [currentStep]="0"
-        [props]="{
-          steps: [
-            {
-              title: 'Dados iniciais',
-              step_index: 0,
-            },
-            {
-              title: 'Palavras-chave e área',
-              step_index: 1,
-            },
-            {
-              title: 'Carga horária',
-              step_index: 2,
-            },
-            {
-              title: 'Conteúdo do curso',
-              step_index: 3,
-            },
-            {
-              title: 'Critérios de avaliação',
-              step_index: 4,
-            },
-          ]
-        }"
-      ></app-history-line>
+      <div *ngIf="current_step === 0">
+        <div *ngIf="current_inside_step === 0">
+          <app-professor-form-step-one
+            (nextInsideStep)="nextInsideStep()"
+          ></app-professor-form-step-one>
+        </div>
 
-      <hr class="h-[1px] bg-gray-200 my-6" />
-
-      <app-professor-form-step-one></app-professor-form-step-one>
+        <div *ngIf="current_inside_step === 1">
+          <app-professor-form-step-two
+            (backInsideStep)="backInsideStep()"
+            (nextInsideStep)="nextInsideStep()"
+          ></app-professor-form-step-two>
+        </div>
+      </div>
     </section>
   </div>
 </div>

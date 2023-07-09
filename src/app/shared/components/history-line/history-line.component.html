@@ -3,8 +3,8 @@
     class="flex justify-stretch absolute top-[11px] left-1/2 -translate-x-1/2 h-0.5"
   >
     <div
-      *ngFor="let item of [].constructor(props.steps.length - 1); let i = index"
-      [ngStyle]="{ width: 1008 / props.steps.length + 'px' }"
+      *ngFor="let item of [].constructor(steps.length - 1); let i = index"
+      [ngStyle]="{ width: 1008 / steps.length + 'px' }"
       [ngClass]="{
         'bg-violet-600': i <= currentStep,
         'bg-gray-200': i > currentStep,
@@ -13,7 +13,7 @@
   </div>
   <div
     class="flex flex-col items-center gap-y-4 w-full z-[1]"
-    *ngFor="let step of props.steps"
+    *ngFor="let step of steps"
   >
     <div
       [ngClass]="{

@@ -1,9 +1,14 @@
+<app-history-line [currentStep]="1" [steps]="history_steps"></app-history-line>
+
+<hr class="h-[1px] bg-gray-200 my-6" />
+
 <h1 class="font-semibold text-lg text-gray-900 mb-6">Step 2</h1>
 
 <hr class="h-[1px] bg-gray-200 mb-6" />
 
 <div class="flex justify-between items-center">
   <button
+    (click)="backInsideStep.emit()"
     class="px-4 py-[10px] rounded-lg font-semibold text-sm text-violet-700"
   >
     Voltar
@@ -15,6 +20,7 @@
       Cancelar
     </button>
     <button
+      (click)="nextInsideStep.emit()"
       class="px-4 py-[10px] rounded-lg font-semibold text-sm text-white bg-violet-700"
     >
       Próximo

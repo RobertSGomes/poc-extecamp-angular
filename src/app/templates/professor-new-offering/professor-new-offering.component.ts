@@ -11,4 +11,22 @@ export class ProfessorNewOfferingComponent {
   current_inside_step: number = 0;
 
   course: CourseModel = new CourseModel();
+
+  backInsideStep(): void {
+    this.current_inside_step--;
+  }
+
+  nextInsideStep(): void {
+    this.current_inside_step++;
+  }
+
+  nextStep(): void {
+    this.current_step++;
+    this.current_inside_step = 0;
+  }
+
+  backStep(): void {
+    this.current_step--;
+    this.current_inside_step = 0;
+  }
 }
