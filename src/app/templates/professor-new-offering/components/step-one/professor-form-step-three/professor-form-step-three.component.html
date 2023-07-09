@@ -1,0 +1,102 @@
+<form (submit)="nextInsideStep.emit()">
+  <app-history-line
+    [currentStep]="2"
+    [steps]="history_steps"
+  ></app-history-line>
+
+  <hr class="h-[1px] bg-gray-200 my-6" />
+
+  <h1 class="font-semibold text-lg text-gray-900 mb-6">Carga horária</h1>
+
+  <div class="flex flex-col gap-y-2 mb-6">
+    <div class="flex gap-x-[18px]">
+      <p class="w-[238px] font-medium text-sm text-gray-700">
+        Horas Presenciais - Prática
+      </p>
+      <p class="w-[238px] font-medium text-sm text-gray-700">
+        Horas Presenciais - Teórica
+      </p>
+    </div>
+
+    <div class="flex gap-x-[18px]">
+      <div
+        class="flex gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+      >
+        <input
+          class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+          placeholder="Preencha"
+          name="course_carga_horaria_presencial_pratica"
+          [(ngModel)]="course.carga_horaria_presencial_pratica"
+        />
+      </div>
+      <div
+        class="flex gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+      >
+        <input
+          class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+          placeholder="Preencha"
+          name="course_carga_horaria_presencial_teorica"
+          [(ngModel)]="course.carga_horaria_presencial_teorica"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-col gap-y-2 mb-6">
+    <div class="flex gap-x-[18px]">
+      <p class="w-[238px] font-medium text-sm text-gray-700">
+        Horas à Distância - Prática
+      </p>
+      <p class="w-[238px] font-medium text-sm text-gray-700">
+        Horas à Distância - Teórica
+      </p>
+    </div>
+
+    <div class="flex gap-x-[18px]">
+      <div
+        class="flex gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+      >
+        <input
+          class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+          placeholder="Preencha"
+          name="course_carga_horaria_ead_pratica"
+          [(ngModel)]="course.carga_horaria_ead_pratica"
+        />
+      </div>
+      <div
+        class="flex gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+      >
+        <input
+          class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+          placeholder="Preencha"
+          name="course_carga_horaria_ead_teorica"
+          [(ngModel)]="course.carga_horaria_ead_teorica"
+        />
+      </div>
+    </div>
+  </div>
+
+  <hr class="h-[1px] bg-gray-200 mb-6" />
+
+  <div class="flex justify-between items-center">
+    <button
+      (click)="backInsideStep.emit()"
+      class="px-4 py-[10px] rounded-lg font-semibold text-sm text-violet-700"
+    >
+      Voltar
+    </button>
+    <div class="flex gap-x-[15px]">
+      <button
+        class="px-4 py-[10px] rounded-lg font-semibold text-sm text-gray-700 shadow-sm border border-gray-300"
+      >
+        Cancelar
+      </button>
+      <button
+        class="px-4 py-[10px] rounded-lg font-semibold text-sm text-white bg-violet-700"
+        type="submit"
+      >
+        Próximo
+      </button>
+    </div>
+  </div>
+</form>

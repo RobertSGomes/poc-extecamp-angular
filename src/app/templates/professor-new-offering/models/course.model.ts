@@ -10,9 +10,9 @@ export class CourseModel {
   descricao: string = '';
   unidade: string = '';
   departamento: string = '';
-  palavras_chave: string[] = [];
+  palavras_chave: string[] = ['', '', '', ''];
   area_geral: string = '';
-  areas_tematicas: string[] = [];
+  areas_tematicas: string[] = ['', ''];
   carga_horaria_presencial_pratica?: string;
   carga_horaria_presencial_teorica?: string;
   carga_horaria_ead_pratica?: string;
