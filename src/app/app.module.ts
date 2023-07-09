@@ -26,6 +26,8 @@ import { CourseSubscriptionStepTwoComponent } from './templates/student-course-r
 import { FormsModule } from '@angular/forms';
 import { ProfessorFormStepOneComponent } from './templates/professor-new-offering/components/step-one/professor-form-step-one/professor-form-step-one.component';
 import { ProfessorFormStepTwoComponent } from './templates/professor-new-offering/components/step-one/professor-form-step-two/professor-form-step-two.component';
+import { CourseSubscriptionStepThreeComponent } from './templates/student-course-registration/components/course-subscription-step-three/course-subscription-step-three.component';
+import { CourseSubscriptionStepFourComponent } from './templates/student-course-registration/components/course-subscription-step-four/course-subscription-step-four.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,8 @@ import { ProfessorFormStepTwoComponent } from './templates/professor-new-offerin
     ProfessorFormStepTwoComponent,
     CourseSubscriptionStepOneComponent,
     CourseSubscriptionStepTwoComponent,
+    CourseSubscriptionStepThreeComponent,
+    CourseSubscriptionStepFourComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

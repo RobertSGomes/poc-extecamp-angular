@@ -61,21 +61,34 @@
         }"
       ></app-steps>
 
-      <!--Formulário-->
-      <div *ngIf="currentStep === 0">
-        <app-course-subscription-step-one
-          [courseRegistration]="courseRegistration"
-          (nextStep)="nextStep()"
-        ></app-course-subscription-step-one>
-      </div>
+      <!--Formulário - Step1 -->
+      <app-course-subscription-step-one
+        *ngIf="currentStep === 0"
+        [courseRegistration]="courseRegistration"
+        (nextStep)="nextStep()"
+      ></app-course-subscription-step-one>
 
-      <div *ngIf="currentStep === 1">
-        <app-course-subscription-step-two
-          [courseRegistration]="courseRegistration"
-          (backStep)="backStep()"
-          (nextStep)="nextStep()"
-        ></app-course-subscription-step-two>
-      </div>
+      <!--Formulário - Step2 -->
+      <app-course-subscription-step-two
+        *ngIf="currentStep === 1"
+        [courseRegistration]="courseRegistration"
+        (backStep)="backStep()"
+        (nextStep)="nextStep()"
+      ></app-course-subscription-step-two>
+
+      <!--Formulário - Step3 -->
+      <app-course-subscription-step-three
+        *ngIf="currentStep === 2"
+        (backStep)="backStep()"
+        (nextStep)="nextStep()"
+      ></app-course-subscription-step-three>
+
+      <!--Formulário - Step4 -->
+      <app-course-subscription-step-four
+        *ngIf="currentStep === 3"
+        (backStep)="backStep()"
+        (nextStep)="nextStep()"
+      ></app-course-subscription-step-four>
     </div>
   </div>
 </div>
