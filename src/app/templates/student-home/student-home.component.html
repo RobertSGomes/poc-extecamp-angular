@@ -23,46 +23,197 @@
     }"
   ></app-header-navbar>
 
-  <div class="col-start-2 overflow-y-auto w-full px-8">
-    <section class="flex py-6 items-center justify-between">
-      <h1 class="font-semibold text-lg text-gray-900">Meus cursos</h1>
-      <div class="flex gap-2">
-        <button
-          class="rounded-md px-3 py-2 font-semibold text-sm text-gray-700 bg-gray-50"
-        >
-          Todos
-        </button>
-        <button
-          class="rounded-md px-3 py-2 font-semibold text-sm text-gray-500"
-        >
-          Completos
-        </button>
-        <button
-          class="rounded-md px-3 py-2 font-semibold text-sm text-gray-500"
-        >
-          Incompletos
-        </button>
-      </div>
-    </section>
-    <section
-      class="rounded-2xl border border-gray-200 flex flex-col py-8 gap-6 items-center"
-    >
-      <div class="flex justify-center w-full">
-        <div class="flex flex-col gap-1 items-center w-[352px]">
-          <h1 class="font-semibold text-base text-gray-900">
-            Sem cursos registrados
-          </h1>
-          <p class="font-normal text-sm text-gray-600 text-center">
-            Você ainda não está inscrito ou matriculado em um curso da EXTECAMP
-          </p>
-        </div>
-      </div>
-      <button
-        class="rounded-lg px-[14px] py-2 w-fit bg-gray-600 font-semibold text-sm text-white"
-        [routerLink]="['/student', 'all-courses']"
+  <div class="col-start-2 overflow-y-auto w-[1072px] mx-auto px-8">
+    <div class="flex flex-col py-8 gap-y-8">
+      <!-- Notificação 1 -->
+      <section
+        *ngIf="registeredCourses.length > 0"
+        class="flex p-4 gap-x-6 rounded-xl bg-orange-50 border border-orange-300 shadow-sm"
       >
-        Buscar novo curso
-      </button>
-    </section>
+        <div
+          class="relative w-4 h-4 rounded-full bg-orange-600 before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:w-[28px] before:h-[28px] before:rounded-full before:border-2 before:border-orange-600/30 after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:w-[38px] after:h-[38px] after:rounded-full after:border-2 after:border-orange-600/10"
+        ></div>
+        <div class="flex flex-1 flex-col gap-y-3">
+          <div class="flex flex-col gap-1">
+            <h1 class="font-semibold text-sm text-orange-700">
+              Atenção! Termo de compromisso disponível para assinatura
+            </h1>
+            <p class="flex-1 font-normal text-sm text-orange-600">
+              Sua assinatura é necessária para confirmar sua inscrição no curso
+              BIO-0083 - BIOQUÍMICA E FISIOLOGIA APLICADAS AO TREINAMENTO FÍSICO
+              e garantir que você esteja ciente das responsabilidades e
+              obrigações envolvidas.
+              <br /><br />
+              Por favor, leia atentamente o termo de compromisso antes de
+              prosseguir com a assinatura. Ele contém informações importantes
+              sobre prazos, materiais do curso, expectativas de participação e
+              quaisquer outras diretrizes relevantes.
+            </p>
+          </div>
+          <div class="flex gap-x-3">
+            <a class="font-semibold text-sm text-orange-600">Assinar</a>
+            <a class="font-semibold text-sm text-orange-700"
+              >Ler termo de compromisso</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- Notificação 2 -->
+      <section
+        *ngIf="registeredCourses.length > 0"
+        class="flex p-4 gap-x-6 rounded-xl bg-orange-50 border border-orange-300 shadow-sm"
+      >
+        <div
+          class="relative w-4 h-4 rounded-full bg-orange-600 before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:w-[28px] before:h-[28px] before:rounded-full before:border-2 before:border-orange-600/30 after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:w-[38px] after:h-[38px] after:rounded-full after:border-2 after:border-orange-600/10"
+        ></div>
+        <div class="flex flex-1 flex-col gap-y-3">
+          <div class="flex flex-col gap-1">
+            <h1 class="font-semibold text-sm text-orange-700">
+              Atenção! Realize o upload de documentos obrigatórios para
+              finalização da sua inscrição.
+            </h1>
+            <p class="flex-1 font-normal text-sm text-orange-600">
+              O envio dos documentos é necessário para confirmar sua inscrição
+              no curso BIO-0083 - BIOQUÍMICA E FISIOLOGIA APLICADAS AO
+              TREINAMENTO FÍSICO.
+            </p>
+          </div>
+          <div class="flex gap-x-3">
+            <a class="font-semibold text-sm text-orange-600"
+              >Enviar documentos</a
+            >
+            <a class="font-semibold text-sm text-orange-700">Saiba mais</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="w-full">
+        <div class="flex py-6 items-center justify-between">
+          <h1 class="font-semibold text-lg text-gray-900">Meus cursos</h1>
+          <div class="flex gap-2">
+            <button
+              class="rounded-md px-3 py-2 font-semibold text-sm text-gray-700 bg-gray-50"
+            >
+              Todos
+            </button>
+            <button
+              class="rounded-md px-3 py-2 font-semibold text-sm text-gray-500"
+            >
+              Completos
+            </button>
+            <button
+              class="rounded-md px-3 py-2 font-semibold text-sm text-gray-500"
+            >
+              Incompletos
+            </button>
+          </div>
+        </div>
+
+        <!-- Cursos registrados -->
+        <table
+          *ngIf="registeredCourses.length > 0"
+          class="w-full overflow-hidden rounded-2xl"
+        >
+          <thead class="border-b border-gray-200">
+            <th
+              class="p-3 bg-gray-100 text-left font-medium text-xs text-gray-700"
+            >
+              Sigla
+            </th>
+            <th
+              class="p-3 bg-gray-100 text-left font-medium text-xs text-gray-700"
+            >
+              Oferecimento
+            </th>
+            <th
+              class="p-3 bg-gray-100 text-left font-medium text-xs text-gray-700"
+            >
+              Nome do curso
+            </th>
+            <th
+              class="p-3 bg-gray-100 text-left font-medium text-xs text-gray-700"
+            >
+              Tipo de curso
+            </th>
+            <th
+              class="p-3 bg-gray-100 text-left font-medium text-xs text-gray-700"
+            >
+              Inscrição
+            </th>
+            <th
+              class="p-3 bg-gray-100 text-left font-medium text-xs text-gray-700"
+            ></th>
+          </thead>
+          <tbody *ngFor="let registeredCourse of registeredCourses">
+            <tr>
+              <td
+                class="p-3 bg-white text-left font-medium text-sm text-gray-900 border-b border-b-gray-200"
+              >
+                {{ registeredCourse.sigla }}
+              </td>
+              <td
+                class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200 w-[121px]"
+              >
+                {{ registeredCourse.oferecimento }}
+              </td>
+              <td
+                class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200 w-[297px]"
+              >
+                {{ registeredCourse.nome }}
+              </td>
+              <td
+                class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200"
+              >
+                <div
+                  class="flex flex-row items-center gap-x-[6px] rounded-2xl bg-emerald-50 pl-[6px] pr-2 py-0.5 w-fit"
+                >
+                  <div
+                    class="w-[6px] h-[6px] rounded-full bg-emerald-500"
+                  ></div>
+                  <p class="font-medium text-xs text-emerald-800">
+                    {{ registeredCourse.tipo }}
+                  </p>
+                </div>
+              </td>
+              <td
+                class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200"
+              >
+                {{ registeredCourse.inscricao }}
+              </td>
+              <td
+                class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200 w-[72px]"
+              >
+                <button class="w-4 h-4 rounded-sm bg-gray-300"></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Sem cursos registrados -->
+        <div
+          *ngIf="registeredCourses.length === 0"
+          class="rounded-2xl border border-gray-200 flex flex-col py-8 gap-6 items-center"
+        >
+          <div class="flex justify-center w-full">
+            <div class="flex flex-col gap-1 items-center w-[352px]">
+              <h1 class="font-semibold text-base text-gray-900">
+                Sem cursos registrados
+              </h1>
+              <p class="font-normal text-sm text-gray-600 text-center">
+                Você ainda não está inscrito ou matriculado em um curso da
+                EXTECAMP
+              </p>
+            </div>
+          </div>
+          <button
+            class="rounded-lg px-[14px] py-2 w-fit bg-gray-600 font-semibold text-sm text-white"
+            [routerLink]="['/student', 'all-courses']"
+          >
+            Buscar novo curso
+          </button>
+        </div>
+      </section>
+    </div>
   </div>
 </div>
