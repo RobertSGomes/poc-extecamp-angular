@@ -66,6 +66,7 @@
           *ngIf="current_inside_step === 0"
           [course]="course"
           (nextInsideStep)="nextInsideStep()"
+          (openCancelModal)="openCancelModal()"
         ></app-step-one-form-one>
 
         <app-step-one-form-two
@@ -111,6 +112,34 @@
           (backInsideStep)="backInsideStep()"
           (nextInsideStep)="nextInsideStep()"
         ></app-step-two-form-two>
+
+        <app-step-two-form-three
+          *ngIf="current_inside_step === 2"
+          [course]="course"
+          (backInsideStep)="backInsideStep()"
+          (nextInsideStep)="nextInsideStep()"
+        ></app-step-two-form-three>
+
+        <app-step-two-form-four
+          *ngIf="current_inside_step === 3"
+          [course]="course"
+          (backInsideStep)="backInsideStep()"
+          (nextInsideStep)="nextInsideStep()"
+        ></app-step-two-form-four>
+
+        <app-step-two-form-five
+          *ngIf="current_inside_step === 4"
+          [course]="course"
+          (backInsideStep)="backInsideStep()"
+          (nextInsideStep)="nextInsideStep()"
+        ></app-step-two-form-five>
+
+        <app-step-two-form-five
+          *ngIf="current_inside_step === 5"
+          [course]="course"
+          (backInsideStep)="backInsideStep()"
+          (nextStep)="nextStep()"
+        ></app-step-two-form-five>
       </div>
 
       <div *ngIf="current_step === 3">
@@ -146,5 +175,46 @@
         ></app-step-five-form-one>
       </div>
     </section>
+  </div>
+</div>
+
+<div
+  *ngIf="modalCancelOpened"
+  (click)="modalCancelOpened = false"
+  class="absolute flex items-center justify-center top-0 left-0 w-screen h-screen bg-black/50 z-50 backdrop-blur-sm"
+>
+  <div
+    class="flex flex-col justify-between w-[525px] h-[200px] bg-white rounded-2xl p-6"
+  >
+    <div class="flex justify-between">
+      <div>
+        <h1 class="font-semibold text-lg text-gray-900">
+          Deseja cancelar o processo?
+        </h1>
+        <p class="font-normal text-sm text-gray-600">
+          Essa ação é irreversível
+        </p>
+      </div>
+      <div class="flex items-center justify-center w-11 h-11">
+        <button
+          (click)="modalCancelOpened = false"
+          class="w-6 h-6 rounded-sm bg-gray-300"
+        ></button>
+      </div>
+    </div>
+    <div class="flex items-center justify-end gap-x-4">
+      <button
+        (click)="modalCancelOpened = false"
+        class="px-4 py-[10px] rounded-lg font-semibold text-sm text-violet-700"
+      >
+        Fechar e voltar ao formulário
+      </button>
+      <button
+        [routerLink]="['/professor', 'offering']"
+        class="px-4 py-[10px] rounded-lg bg-violet-600 font-semibold text-sm text-white"
+      >
+        Sim, gostaria de cancelar
+      </button>
+    </div>
   </div>
 </div>

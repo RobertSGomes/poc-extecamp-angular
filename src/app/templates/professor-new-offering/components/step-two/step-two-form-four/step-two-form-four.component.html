@@ -1,1 +1,139 @@
-<p>step-two-form-four works!</p>
+<form
+  (submit)="nextInsideStep.emit()"
+  class="flex flex-col gap-y-6 w-[1072px] mx-auto p-8 bg-white border border-gray-200 rounded-2xl shadow-sm"
+>
+  <app-history-line
+    [currentStep]="3"
+    [steps]="history_steps"
+  ></app-history-line>
+
+  <hr class="h-[1px] bg-gray-200" />
+
+  <h1 class="font-semibold text-lg text-gray-900">Docentes sem vínculo</h1>
+
+  <div class="flex flex-row justify-between w-full mb-[10px]">
+    <p class="font-semibold text-base text-gray-700">Docente cadastrado</p>
+    <button
+      class="font-semibold text-sm text-violet-700 rounded-lg px-4 py-[10px] bg-violet-50 border border-violet-200"
+    >
+      Novo docente
+    </button>
+  </div>
+
+  <div
+    *ngIf="hasRecentAdded"
+    class="flex items-center justify-between gap-x-4 w-full p-4 rounded-xl bg-emerald-50 border border-emerald-300"
+  >
+    <div class="flex items-center gap-x-4">
+      <div
+        class="relative w-4 h-4 rounded-full bg-emerald-600 before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:w-[28px] before:h-[28px] before:rounded-full before:border-2 before:border-emerald-600/30 after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:w-[38px] after:h-[38px] after:rounded-full after:border-2 after:border-emerald-600/10"
+      ></div>
+
+      <p class="font-normal text-sm text-emerald-700">
+        Docente cadastrado com <b>sucesso!</b>
+      </p>
+    </div>
+
+    <button
+      class="w-5 h-5 bg-emerald-300 rounded-sm"
+      (click)="hasRecentAdded = false"
+    ></button>
+  </div>
+
+  <div>
+    <table class="w-full">
+      <thead class="border-b border-b-gray-200">
+        <th
+          class="font-medium text-xs text-left px-6 py-3 text-gray-600 w-[120px]"
+        >
+          Matrícula
+        </th>
+        <th
+          class="font-medium text-xs text-left px-6 py-3 text-gray-600 w-[218px]"
+        >
+          Docente
+        </th>
+        <th
+          class="font-medium text-xs text-left px-6 py-3 text-gray-600 w-[218px]"
+        >
+          Instituição, Unidade e Derpartamento
+        </th>
+        <th
+          class="font-medium text-xs text-left px-6 py-3 text-gray-600 w-fill"
+        >
+          Titulação
+        </th>
+        <th
+          class="font-medium text-xs text-left px-6 py-3 text-gray-600 w-[135px]"
+        >
+          Carga horária
+        </th>
+        <th
+          class="font-medium text-xs text-left px-6 py-3 text-gray-600 w-11"
+        ></th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let professor of professors">
+          <td class="px-6 py-3 text-left font-medium text-sm text-gray-900">
+            {{ professor.matricula }}
+          </td>
+          <td class="px-6 py-3 text-left font-normal text-sm text-gray-600">
+            {{ professor.docente }}
+          </td>
+          <td class="px-6 py-3 text-left font-normal text-sm text-gray-600">
+            {{ professor.instituicao }}/{{ professor.unidade }}/
+            {{ professor.departamento }}
+          </td>
+          <td class="px-6 py-3 text-left font-normal text-sm text-gray-600">
+            {{ professor.titulacao }}
+          </td>
+          <td class="px-6 py-3 text-left font-normal text-sm text-gray-600">
+            {{ professor.carga_horas }}h{{ professor.carga_minutos }}m
+          </td>
+          <td class="px-6 py-3 text-left font-normal text-sm text-gray-600">
+            <div class="flex gap-x-2">
+              <div class="w-5 h-5 rounded-sm bg-violet-700"></div>
+              <div class="w-5 h-5 rounded-sm bg-violet-700"></div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="w-full bg-gray-50" *ngIf="professors.length === 0">
+      <div class="w-[352px] mx-auto py-[48px]">
+        <p class="font-semibold text-base text-gray-900 text-center">
+          Sem docentes cadastrados
+        </p>
+        <p class="font-normal text-sm text-gray-600 text-center">
+          Para cadastrar um novo docente, clique no botão "Novo docente"
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="h-[1px] bg-gray-200" />
+
+  <div class="flex justify-between items-center">
+    <button
+      (click)="backInsideStep.emit()"
+      class="px-4 py-[10px] rounded-lg font-semibold text-sm text-violet-700"
+      type="button"
+    >
+      Voltar
+    </button>
+    <div class="flex gap-x-[15px]">
+      <button
+        class="px-4 py-[10px] rounded-lg font-semibold text-sm text-gray-700 shadow-sm border border-gray-300"
+        type="button"
+      >
+        Cancelar
+      </button>
+      <button
+        class="px-4 py-[10px] rounded-lg font-semibold text-sm text-white bg-violet-700"
+        type="submit"
+      >
+        Próximo
+      </button>
+    </div>
+  </div>
+</form>

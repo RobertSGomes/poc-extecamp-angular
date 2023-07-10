@@ -12,6 +12,8 @@ export class ProfessorNewOfferingComponent {
 
   course: CourseModel = new CourseModel();
 
+  modalCancelOpened = false;
+
   backInsideStep(): void {
     document.querySelector('#form-section')!.scrollTo(0, 0);
     this.current_inside_step--;
@@ -32,5 +34,9 @@ export class ProfessorNewOfferingComponent {
     document.querySelector('#form-section')!.scrollTo(0, 0);
     this.current_step--;
     this.current_inside_step = inside_step;
+  }
+
+  openCancelModal(): void {
+    this.modalCancelOpened = true;
   }
 }
