@@ -1,4 +1,7 @@
-<form (submit)="nextInsideStep.emit()">
+<form
+  (submit)="nextInsideStep.emit()"
+  class="w-[1072px] mx-auto px-6 py-8 bg-white border border-gray-200 rounded-2xl shadow-sm"
+>
   <app-history-line
     [currentStep]="0"
     [steps]="history_steps"
