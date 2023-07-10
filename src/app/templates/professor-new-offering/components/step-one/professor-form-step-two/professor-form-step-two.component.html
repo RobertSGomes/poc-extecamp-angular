@@ -20,7 +20,7 @@
         <select
           class="w-full text-gray-800 text-base outline-none"
           [(ngModel)]="course.palavras_chave[0]"
-          name="course_palavra_chave1"
+          name="course_palavras_chave1"
         >
           <option [value]="''">Selecione</option>
           <option [value]="'Economia'">Economia</option>
@@ -33,7 +33,7 @@
         <select
           class="w-full text-gray-800 text-base outline-none"
           [(ngModel)]="course.palavras_chave[1]"
-          name="course_palavra_chave2"
+          name="course_palavras_chave2"
         >
           <option [value]="''">Selecione</option>
           <option [value]="'Economia'">Economia</option>
@@ -49,7 +49,7 @@
         <select
           class="w-full text-gray-800 text-base outline-none"
           [(ngModel)]="course.palavras_chave[2]"
-          name="course_palavra_chave3"
+          name="course_palavras_chave3"
         >
           <option [value]="''">Selecione</option>
           <option [value]="'Economia'">Economia</option>
@@ -62,7 +62,7 @@
         <select
           class="w-full text-gray-800 text-base outline-none"
           [(ngModel)]="course.palavras_chave[3]"
-          name="course_palavra_chave4"
+          name="course_palavras_chave4"
         >
           <option [value]="''">Selecione</option>
           <option [value]="'Economia'">Economia</option>
@@ -131,12 +131,14 @@
     <button
       (click)="backInsideStep.emit()"
       class="px-4 py-[10px] rounded-lg font-semibold text-sm text-violet-700"
+      type="button"
     >
       Voltar
     </button>
     <div class="flex gap-x-[15px]">
       <button
         class="px-4 py-[10px] rounded-lg font-semibold text-sm text-gray-700 shadow-sm border border-gray-300"
+        type="button"
       >
         Cancelar
       </button>
