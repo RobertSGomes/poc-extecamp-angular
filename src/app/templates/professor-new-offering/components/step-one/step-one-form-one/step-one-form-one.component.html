@@ -1,17 +1,17 @@
 <form
   (submit)="nextInsideStep.emit()"
-  class="w-[1072px] mx-auto px-6 py-8 bg-white border border-gray-200 rounded-2xl shadow-sm"
+  class="flex flex-col w-[1072px] mx-auto p-8 gap-y-6 bg-white border border-gray-200 rounded-2xl shadow-sm"
 >
   <app-history-line
     [currentStep]="0"
     [steps]="history_steps"
   ></app-history-line>
 
-  <hr class="h-[1px] bg-gray-200 my-6" />
+  <hr class="h-[1px] bg-gray-200" />
 
-  <h1 class="font-semibold text-lg text-gray-900 mb-6">Dados iniciais</h1>
+  <h1 class="font-semibold text-lg text-gray-900">Dados iniciais</h1>
 
-  <div class="flex flex-col gap-y-2 mb-6">
+  <div class="flex flex-col gap-y-2">
     <p class="font-medium text-sm text-gray-700">Sigla do curso *</p>
 
     <div class="flex gap-x-[18px]">
@@ -32,7 +32,7 @@
     </div>
   </div>
 
-  <div class="flex flex-col gap-[6px] mb-6">
+  <div class="flex flex-col gap-[6px]">
     <label class="font-medium text-sm text-gray-700">Tipo de curso *</label>
     <div
       class="flex gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
@@ -48,7 +48,7 @@
     </div>
   </div>
 
-  <div class="flex flex-col gap-[6px] mb-6">
+  <div class="flex flex-col gap-[6px]">
     <label class="font-medium text-sm text-gray-700">Nome do curso *</label>
     <div
       class="flex gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
@@ -62,7 +62,7 @@
     </div>
   </div>
 
-  <div class="flex flex-col gap-y-2 mb-6">
+  <div class="flex flex-col gap-y-2">
     <p class="font-medium text-sm text-gray-700">
       Em caso de curso aberto ou de difusão, o oferecimento será de fluxo
       contínuo?
@@ -96,7 +96,7 @@
     </div>
   </div>
 
-  <div class="flex flex-col gap-y-2 mb-6">
+  <div class="flex flex-col gap-y-2">
     <p class="font-medium text-sm text-gray-700">
       Em caso de curso múltiplo, haverá disciplina eletiva?
     </p>
@@ -131,7 +131,7 @@
     </div>
   </div>
 
-  <div class="flex flex-col gap-[6px] mb-6">
+  <div class="flex flex-col gap-[6px]">
     <label class="font-medium text-sm text-gray-700"
       >Forma de realização *</label
     >
@@ -151,7 +151,7 @@
     </div>
   </div>
 
-  <div class="flex flex-col gap-[6px] mb-6">
+  <div class="flex flex-col gap-[6px]">
     <label class="font-medium text-sm text-gray-700"
       >Plataforma de gestão dos alunos *</label
     >
@@ -169,7 +169,7 @@
     </div>
   </div>
 
-  <div class="flex flex-col w-[665px] gap-[6px] mb-6">
+  <div class="flex flex-col w-[665px] gap-[6px]">
     <label class="font-medium text-sm text-gray-700"
       >Mensagem ao aluno em ambiente virtual de aprendizado</label
     >
@@ -189,7 +189,7 @@
     </p>
   </div>
 
-  <div class="flex flex-col gap-[6px] mb-6 w-[665px]">
+  <div class="flex flex-col gap-[6px] w-[665px]">
     <label class="font-medium text-sm text-gray-700"
       >Descrição ao aluno sobre o ambiente virtual de aprendizagem</label
     >
@@ -220,7 +220,7 @@
     </p>
   </div>
 
-  <div class="flex flex-col gap-[6px] mb-6">
+  <div class="flex flex-col gap-[6px]">
     <label class="font-medium text-sm text-gray-700">Unidade *</label>
     <div
       class="flex gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
@@ -234,7 +234,7 @@
     </div>
   </div>
 
-  <div class="flex flex-col gap-[6px] mb-6">
+  <div class="flex flex-col gap-[6px]">
     <label class="font-medium text-sm text-gray-700">Departamento *</label>
     <div
       class="flex gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
@@ -248,7 +248,7 @@
     </div>
   </div>
 
-  <hr class="h-[1px] bg-gray-200 mb-6" />
+  <hr class="h-[1px] bg-gray-200" />
 
   <div class="flex justify-between items-center">
     <button

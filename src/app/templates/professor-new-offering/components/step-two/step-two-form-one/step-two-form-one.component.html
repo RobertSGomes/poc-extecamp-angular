@@ -1,17 +1,17 @@
 <form
   (submit)="nextInsideStep.emit()"
-  class="w-[1072px] mx-auto px-6 py-8 bg-white border border-gray-200 rounded-2xl shadow-sm"
+  class="flex flex-col gap-y-6 w-[1072px] mx-auto p-8 bg-white border border-gray-200 rounded-2xl shadow-sm"
 >
   <app-history-line
     [currentStep]="0"
     [steps]="history_steps"
   ></app-history-line>
 
-  <hr class="h-[1px] bg-gray-200 my-6" />
+  <hr class="h-[1px] bg-gray-200" />
 
-  <h1 class="font-semibold text-lg text-gray-900 mb-6">Coordenação do curso</h1>
+  <h1 class="font-semibold text-lg text-gray-900">Coordenação do curso</h1>
 
-  <div class="flex flex-col gap-[6px] mb-6">
+  <div class="flex flex-col gap-[6px]">
     <label class="font-medium text-sm text-gray-700"
       >Coordenador de extensão *</label
     >
@@ -28,7 +28,7 @@
     </div>
   </div>
 
-  <div class="flex flex-col gap-[6px] mb-6">
+  <div class="flex flex-col gap-[6px]">
     <label class="font-medium text-sm text-gray-700"
       >Diretor da unidade *</label
     >
@@ -45,7 +45,7 @@
     </div>
   </div>
 
-  <div class="flex flex-col gap-[6px] mb-6">
+  <div class="flex flex-col gap-[6px]">
     <label class="font-medium text-sm text-gray-700"
       >Professor responsável *</label
     >
@@ -62,7 +62,7 @@
     </div>
   </div>
 
-  <div class="flex flex-col gap-[6px] mb-6">
+  <div class="flex flex-col gap-[6px]">
     <label class="font-medium text-sm text-gray-700">E-mail *</label>
     <div
       class="flex items-center gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
@@ -77,7 +77,7 @@
     </div>
   </div>
 
-  <div class="flex flex-col gap-y-[6px] mb-6">
+  <div class="flex flex-col gap-y-[6px]">
     <label class="font-medium text-sm text-gray-700">Telefone *</label>
     <div
       class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
@@ -96,7 +96,7 @@
     </div>
   </div>
 
-  <div class="flex flex-col gap-y-2 mb-6">
+  <div class="flex flex-col gap-y-2">
     <div class="flex gap-x-[18px]">
       <p class="w-[665px] font-medium text-sm text-gray-700">Instituição *</p>
     </div>
@@ -115,7 +115,7 @@
     </div>
   </div>
 
-  <div class="flex flex-col gap-y-2 mb-6">
+  <div class="flex flex-col gap-y-2">
     <p class="font-medium text-sm text-gray-700">Titulação *</p>
 
     <div class="flex gap-x-[18px]">
@@ -135,7 +135,7 @@
     </div>
   </div>
 
-  <div class="flex flex-col gap-y-2 mb-6">
+  <div class="flex flex-col gap-y-2">
     <p class="font-medium text-sm text-gray-700">Carga horária individual *</p>
 
     <div class="flex gap-x-[18px]">
@@ -162,7 +162,7 @@
     </div>
   </div>
 
-  <hr class="h-[1px] bg-gray-200 mb-6" />
+  <hr class="h-[1px] bg-gray-200" />
 
   <div class="flex justify-between items-center">
     <button

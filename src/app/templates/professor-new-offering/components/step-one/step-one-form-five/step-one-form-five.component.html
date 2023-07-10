@@ -1,20 +1,18 @@
 <form
   (submit)="nextStep.emit()"
-  class="w-[1072px] mx-auto px-6 py-8 bg-white border border-gray-200 rounded-2xl shadow-sm"
+  class="flex flex-col w-[1072px] mx-auto gap-y-6 p-8 bg-white border border-gray-200 rounded-2xl shadow-sm"
 >
   <app-history-line
     [currentStep]="4"
     [steps]="history_steps"
   ></app-history-line>
 
-  <hr class="h-[1px] bg-gray-200 my-6" />
+  <hr class="h-[1px] bg-gray-200" />
 
-  <h1 class="font-semibold text-lg text-gray-900 mb-6">
-    Critérios de avaliação
-  </h1>
+  <h1 class="font-semibold text-lg text-gray-900">Critérios de avaliação</h1>
 
   <section
-    class="flex w-[750px] p-4 gap-x-6 rounded-xl bg-violet-50 border border-violet-300 shadow-sm mb-6"
+    class="flex w-[750px] p-4 gap-x-6 rounded-xl bg-violet-50 border border-violet-300 shadow-sm"
   >
     <div
       class="relative w-4 h-4 rounded-full bg-violet-600 before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:w-[28px] before:h-[28px] before:rounded-full before:border-2 before:border-violet-600/30 after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:w-[38px] after:h-[38px] after:rounded-full after:border-2 after:border-violet-600/10"
@@ -37,7 +35,7 @@
     </div>
   </section>
 
-  <div class="flex flex-col gap-y-2 mb-6">
+  <div class="flex flex-col gap-y-2">
     <div class="flex gap-x-[18px]">
       <p class="w-[324px] font-medium text-sm text-gray-700">
         Frequência mínima *
@@ -78,9 +76,9 @@
     </div>
   </div>
 
-  <h1 class="font-semibold text-lg text-gray-900 mb-6">Pré-requisitos</h1>
+  <h1 class="font-semibold text-lg text-gray-900">Pré-requisitos</h1>
 
-  <div class="flex flex-col gap-[6px] mb-6">
+  <div class="flex flex-col gap-[6px]">
     <label class="font-medium text-sm text-gray-700"
       >Grau de Escolaridade *</label
     >
@@ -103,7 +101,7 @@
   </div>
 
   <section
-    class="flex w-[750px] p-4 gap-x-6 rounded-xl bg-violet-50 border border-violet-300 shadow-sm mb-6"
+    class="flex w-[750px] p-4 gap-x-6 rounded-xl bg-violet-50 border border-violet-300 shadow-sm"
   >
     <div
       class="relative w-4 h-4 rounded-full bg-violet-600 before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:w-[28px] before:h-[28px] before:rounded-full before:border-2 before:border-violet-600/30 after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:w-[38px] after:h-[38px] after:rounded-full after:border-2 after:border-violet-600/10"
@@ -126,7 +124,7 @@
     </div>
   </section>
 
-  <div class="flex flex-col gap-y-2 mb-6">
+  <div class="flex flex-col gap-y-2">
     <p class="font-medium text-sm text-gray-700">
       Esse curso pode ser divulgado para realização de forma corporativa?
     </p>
@@ -161,7 +159,7 @@
     </div>
   </div>
 
-  <hr class="h-[1px] bg-gray-200 mb-6" />
+  <hr class="h-[1px] bg-gray-200" />
 
   <div class="flex justify-between items-center">
     <button

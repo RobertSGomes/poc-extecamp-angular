@@ -1,22 +1,20 @@
 <form
   (submit)="nextInsideStep.emit()"
-  class="w-[1072px] mx-auto px-6 py-8 bg-white border border-gray-200 rounded-2xl shadow-sm"
+  class="flex flex-col w-[1072px] mx-auto p-8 gap-y-6 bg-white border border-gray-200 rounded-2xl shadow-sm"
 >
   <app-history-line
     [currentStep]="1"
     [steps]="history_steps"
   ></app-history-line>
 
-  <hr class="h-[1px] bg-gray-200 my-6" />
+  <hr class="h-[1px] bg-gray-200" />
 
-  <h1 class="font-semibold text-lg text-gray-900 mb-6">
-    Palavras-chave e áreas
-  </h1>
+  <h1 class="font-semibold text-lg text-gray-900">Palavras-chave e áreas</h1>
 
-  <div class="flex flex-col gap-y-2 mb-6">
+  <div class="flex flex-col gap-y-2">
     <p class="font-medium text-sm text-gray-700">Palavras-chave *</p>
 
-    <div class="flex gap-x-[18px] mb-6">
+    <div class="flex gap-x-[18px]">
       <div
         class="flex gap-2 w-[324px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
       >
@@ -75,7 +73,7 @@
     </div>
   </div>
 
-  <div class="flex flex-col gap-y-2 mb-6">
+  <div class="flex flex-col gap-y-2">
     <p class="font-medium text-sm text-gray-700">Área geral *</p>
 
     <div class="flex gap-x-[18px]">
@@ -95,7 +93,7 @@
     </div>
   </div>
 
-  <div class="flex flex-col gap-y-2 mb-6">
+  <div class="flex flex-col gap-y-2">
     <p class="font-medium text-sm text-gray-700">Área temáticas *</p>
 
     <div class="flex gap-x-[18px]">
@@ -128,7 +126,7 @@
     </div>
   </div>
 
-  <hr class="h-[1px] bg-gray-200 mb-6" />
+  <hr class="h-[1px] bg-gray-200" />
 
   <div class="flex justify-between items-center">
     <button

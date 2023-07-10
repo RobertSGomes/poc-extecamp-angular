@@ -1,17 +1,17 @@
 <form
   (submit)="nextInsideStep.emit()"
-  class="w-[1072px] mx-auto px-6 py-8 bg-white border border-gray-200 rounded-2xl shadow-sm"
+  class="flex flex-col w-[1072px] mx-auto p-8 gap-y-6 bg-white border border-gray-200 rounded-2xl shadow-sm"
 >
   <app-history-line
     [currentStep]="3"
     [steps]="history_steps"
   ></app-history-line>
 
-  <hr class="h-[1px] bg-gray-200 my-6" />
+  <hr class="h-[1px] bg-gray-200" />
 
-  <h1 class="font-semibold text-lg text-gray-900 mb-6">Conteúdo do curso</h1>
+  <h1 class="font-semibold text-lg text-gray-900">Conteúdo do curso</h1>
 
-  <div class="flex flex-col w-full gap-[6px] mb-6">
+  <div class="flex flex-col w-full gap-[6px]">
     <label class="font-medium text-sm text-gray-700"
       >Ementa (se o curso for múltiplo (composto por disciplinas), não incluir
       ementa. Deixe este campo em branco.)</label
@@ -29,7 +29,7 @@
     <p class="font-normal text-sm text-gray-700">Máximo de 1500 caracteres</p>
   </div>
 
-  <div class="flex flex-col w-full gap-[6px] mb-6">
+  <div class="flex flex-col w-full gap-[6px]">
     <label class="font-medium text-sm text-gray-700"
       >Bibliografia do curso</label
     >
@@ -48,7 +48,7 @@
     </p>
   </div>
 
-  <div class="flex flex-col w-full gap-[6px] mb-6">
+  <div class="flex flex-col w-full gap-[6px]">
     <label class="font-medium text-sm text-gray-700"
       >Procedimentos metodológicos</label
     >
@@ -67,7 +67,7 @@
     </p>
   </div>
 
-  <div class="flex flex-col w-full gap-[6px] mb-6">
+  <div class="flex flex-col w-full gap-[6px]">
     <label class="font-medium text-sm text-gray-700">Objetivos do curso</label>
     <div
       class="flex gap-2 w-full h-[163px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
@@ -84,7 +84,7 @@
     </p>
   </div>
 
-  <div class="flex flex-col w-full gap-[6px] mb-6">
+  <div class="flex flex-col w-full gap-[6px]">
     <label class="font-medium text-sm text-gray-700"
       >Público-alvo (Especificar área de formação e carreiras paralelas que
       poderão participar da disciplina/curso)</label
@@ -104,7 +104,7 @@
     </p>
   </div>
 
-  <hr class="h-[1px] bg-gray-200 mb-6" />
+  <hr class="h-[1px] bg-gray-200" />
 
   <div class="flex justify-between items-center">
     <button
