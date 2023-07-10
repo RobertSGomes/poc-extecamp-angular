@@ -1,17 +1,17 @@
 <form
   (submit)="nextInsideStep.emit()"
-  class="w-[1072px] mx-auto px-6 py-8 bg-white border border-gray-200 rounded-2xl shadow-sm"
+  class="flex flex-col w-[1072px] mx-auto p-8 gap-y-6 bg-white border border-gray-200 rounded-2xl shadow-sm"
 >
   <app-history-line
     [currentStep]="2"
     [steps]="history_steps"
   ></app-history-line>
 
-  <hr class="h-[1px] bg-gray-200 my-6" />
+  <hr class="h-[1px] bg-gray-200" />
 
-  <h1 class="font-semibold text-lg text-gray-900 mb-6">Carga horária</h1>
+  <h1 class="font-semibold text-lg text-gray-900">Carga horária</h1>
 
-  <div class="flex flex-col gap-y-2 mb-6">
+  <div class="flex flex-col gap-y-2">
     <div class="flex gap-x-[18px]">
       <p class="w-[238px] font-medium text-sm text-gray-700">
         Horas Presenciais - Prática
@@ -45,7 +45,7 @@
     </div>
   </div>
 
-  <div class="flex flex-col gap-y-2 mb-6">
+  <div class="flex flex-col gap-y-2">
     <div class="flex gap-x-[18px]">
       <p class="w-[238px] font-medium text-sm text-gray-700">
         Horas à Distância - Prática
@@ -79,7 +79,7 @@
     </div>
   </div>
 
-  <hr class="h-[1px] bg-gray-200 mb-6" />
+  <hr class="h-[1px] bg-gray-200" />
 
   <div class="flex justify-between items-center">
     <button
