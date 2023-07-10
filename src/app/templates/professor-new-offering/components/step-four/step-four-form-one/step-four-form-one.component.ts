@@ -19,4 +19,5 @@ export class StepFourFormOneComponent {
 
   @Output() backStep: EventEmitter<void> = new EventEmitter<void>();
   @Output() nextInsideStep: EventEmitter<void> = new EventEmitter<void>();
+  @Output() openCancelModal: EventEmitter<void> = new EventEmitter<void>();
 }

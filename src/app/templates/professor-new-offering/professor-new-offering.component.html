@@ -158,30 +158,35 @@
           [course]="course"
           (backStep)="backStep(3)"
           (nextInsideStep)="nextInsideStep()"
+          (openCancelModal)="openCancelModal()"
         ></app-step-four-form-one>
 
         <app-step-four-form-two
           *ngIf="current_inside_step === 1"
           (backInsideStep)="backInsideStep()"
           (nextInsideStep)="nextInsideStep()"
+          (openCancelModal)="openCancelModal()"
         ></app-step-four-form-two>
 
         <app-step-four-form-three
           *ngIf="current_inside_step === 2"
           (backInsideStep)="backInsideStep()"
           (nextInsideStep)="nextInsideStep()"
+          (openCancelModal)="openCancelModal()"
         ></app-step-four-form-three>
 
         <app-step-four-form-four
           *ngIf="current_inside_step === 3"
           (backInsideStep)="backInsideStep()"
           (nextStep)="nextStep()"
+          (openCancelModal)="openCancelModal()"
         ></app-step-four-form-four>
       </div>
 
       <div *ngIf="current_step === 4">
         <app-step-five-form-one
           (backStep)="backStep(3)"
+          (openCancelModal)="openCancelModal()"
         ></app-step-five-form-one>
       </div>
     </section>
