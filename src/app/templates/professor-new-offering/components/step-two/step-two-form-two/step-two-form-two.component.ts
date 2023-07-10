@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { HistoryStep } from '../../../types/history.type';
 import { CourseModel } from '../../../models/course.model';
+import { Professor } from '../../../types/professor.type';
 
 @Component({
   selector: 'app-step-two-form-two',
@@ -34,6 +35,21 @@ export class StepTwoFormTwoComponent {
       step_index: 5,
     },
   ];
+
+  professors: Professor[] = [
+    // {
+    //   matricula: '12345678',
+    //   docente: 'Maria da Silva',
+    //   instituicao: 'UNICAMP',
+    //   unidade: 'IQ',
+    //   departamento: 'DEPARTAMENTO DE FISICO-QUIMICA',
+    //   titulacao: 'Bacharel',
+    //   carga_horas: '2',
+    //   carga_minutos: '00',
+    // },
+  ];
+
+  hasRecentAdded = false;
 
   @Output() backInsideStep: EventEmitter<void> = new EventEmitter<void>();
   @Output() nextInsideStep: EventEmitter<void> = new EventEmitter<void>();
