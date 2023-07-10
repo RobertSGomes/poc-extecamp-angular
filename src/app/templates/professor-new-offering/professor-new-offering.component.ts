@@ -7,10 +7,12 @@ import { CourseModel } from './models/course.model';
   styleUrls: ['./professor-new-offering.component.css'],
 })
 export class ProfessorNewOfferingComponent {
-  current_step: number = 1;
-  current_inside_step: number = 1;
+  current_step: number = 0;
+  current_inside_step: number = 0;
 
   course: CourseModel = new CourseModel();
+
+  modalCancelOpened = false;
 
   backInsideStep(): void {
     document.querySelector('#form-section')!.scrollTo(0, 0);
@@ -32,5 +34,9 @@ export class ProfessorNewOfferingComponent {
     document.querySelector('#form-section')!.scrollTo(0, 0);
     this.current_step--;
     this.current_inside_step = inside_step;
+  }
+
+  openCancelModal(): void {
+    this.modalCancelOpened = true;
   }
 }
