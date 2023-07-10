@@ -74,6 +74,7 @@
           [course]="course"
           (backInsideStep)="backInsideStep()"
           (nextInsideStep)="nextInsideStep()"
+          (openCancelModal)="openCancelModal()"
         ></app-step-one-form-two>
 
         <app-step-one-form-three
@@ -81,6 +82,7 @@
           [course]="course"
           (backInsideStep)="backInsideStep()"
           (nextInsideStep)="nextInsideStep()"
+          (openCancelModal)="openCancelModal()"
         ></app-step-one-form-three>
 
         <app-step-one-form-four
@@ -88,6 +90,7 @@
           [course]="course"
           (backInsideStep)="backInsideStep()"
           (nextInsideStep)="nextInsideStep()"
+          (openCancelModal)="openCancelModal()"
         ></app-step-one-form-four>
 
         <app-step-one-form-five
@@ -95,6 +98,7 @@
           [course]="course"
           (backInsideStep)="backInsideStep()"
           (nextStep)="nextStep()"
+          (openCancelModal)="openCancelModal()"
         ></app-step-one-form-five>
       </div>
 
@@ -104,6 +108,7 @@
           [course]="course"
           (backStep)="backStep(4)"
           (nextInsideStep)="nextInsideStep()"
+          (openCancelModal)="openCancelModal()"
         ></app-step-two-form-one>
 
         <app-step-two-form-two
@@ -111,6 +116,7 @@
           [course]="course"
           (backInsideStep)="backInsideStep()"
           (nextInsideStep)="nextInsideStep()"
+          (openCancelModal)="openCancelModal()"
         ></app-step-two-form-two>
 
         <app-step-two-form-three
@@ -118,6 +124,7 @@
           [course]="course"
           (backInsideStep)="backInsideStep()"
           (nextInsideStep)="nextInsideStep()"
+          (openCancelModal)="openCancelModal()"
         ></app-step-two-form-three>
 
         <app-step-two-form-four
@@ -125,6 +132,7 @@
           [course]="course"
           (backInsideStep)="backInsideStep()"
           (nextInsideStep)="nextInsideStep()"
+          (openCancelModal)="openCancelModal()"
         ></app-step-two-form-four>
 
         <app-step-two-form-five
@@ -132,14 +140,16 @@
           [course]="course"
           (backInsideStep)="backInsideStep()"
           (nextInsideStep)="nextInsideStep()"
+          (openCancelModal)="openCancelModal()"
         ></app-step-two-form-five>
 
-        <app-step-two-form-five
+        <app-step-two-form-six
           *ngIf="current_inside_step === 5"
           [course]="course"
           (backInsideStep)="backInsideStep()"
           (nextStep)="nextStep()"
-        ></app-step-two-form-five>
+          (openCancelModal)="openCancelModal()"
+        ></app-step-two-form-six>
       </div>
 
       <div *ngIf="current_step === 3">
