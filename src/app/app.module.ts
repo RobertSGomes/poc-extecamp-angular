@@ -24,13 +24,13 @@ import { StudentCourseRegistrationComponent } from './templates/student-course-r
 import { CourseSubscriptionStepOneComponent } from './templates/student-course-registration/components/course-subscription-step-one/course-subscription-step-one.component';
 import { CourseSubscriptionStepTwoComponent } from './templates/student-course-registration/components/course-subscription-step-two/course-subscription-step-two.component';
 import { FormsModule } from '@angular/forms';
-import { ProfessorFormStepOneComponent } from './templates/professor-new-offering/components/step-one/professor-form-step-one/professor-form-step-one.component';
-import { ProfessorFormStepTwoComponent } from './templates/professor-new-offering/components/step-one/professor-form-step-two/professor-form-step-two.component';
-import { ProfessorFormStepThreeComponent } from './templates/professor-new-offering/components/step-one/professor-form-step-three/professor-form-step-three.component';
+import { StepOneFormOneComponent } from './templates/professor-new-offering/components/step-one/step-one-form-one/step-one-form-one.component';
+import { StepOneFormTwoComponent } from './templates/professor-new-offering/components/step-one/step-one-form-two/step-one-form-two.component';
+import { StepOneFormThreeComponent } from './templates/professor-new-offering/components/step-one/step-one-form-three/step-one-form-three.component';
 import { CourseSubscriptionStepThreeComponent } from './templates/student-course-registration/components/course-subscription-step-three/course-subscription-step-three.component';
 import { CourseSubscriptionStepFourComponent } from './templates/student-course-registration/components/course-subscription-step-four/course-subscription-step-four.component';
-import { ProfessorFormStepFourComponent } from './templates/professor-new-offering/components/step-one/professor-form-step-four/professor-form-step-four.component';
-import { ProfessorFormStepFiveComponent } from './templates/professor-new-offering/components/step-one/professor-form-step-five/professor-form-step-five.component';
+import { StepOneFormFourComponent } from './templates/professor-new-offering/components/step-one/step-one-form-four/step-one-form-four.component';
+import { StepOneFormFiveComponent } from './templates/professor-new-offering/components/step-one/step-one-form-five/step-one-form-five.component';
 
 @NgModule({
   declarations: [
@@ -53,15 +53,15 @@ import { ProfessorFormStepFiveComponent } from './templates/professor-new-offeri
     StepsComponent,
     HistoryLineComponent,
     StudentCourseRegistrationComponent,
-    ProfessorFormStepOneComponent,
-    ProfessorFormStepTwoComponent,
+    StepOneFormOneComponent,
+    StepOneFormTwoComponent,
     CourseSubscriptionStepOneComponent,
     CourseSubscriptionStepTwoComponent,
-    ProfessorFormStepThreeComponent,
+    StepOneFormThreeComponent,
     CourseSubscriptionStepThreeComponent,
     CourseSubscriptionStepFourComponent,
-    ProfessorFormStepFourComponent,
-    ProfessorFormStepFiveComponent,
+    StepOneFormFourComponent,
+    StepOneFormFiveComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

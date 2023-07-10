@@ -3,11 +3,11 @@ import { HistoryStep } from '../../../types/history.type';
 import { CourseModel } from '../../../models/course.model';
 
 @Component({
-  selector: 'app-professor-form-step-one',
-  templateUrl: './professor-form-step-one.component.html',
-  styleUrls: ['./professor-form-step-one.component.css'],
+  selector: 'app-step-one-form-two',
+  templateUrl: './step-one-form-two.component.html',
+  styleUrls: ['./step-one-form-two.component.css'],
 })
-export class ProfessorFormStepOneComponent {
+export class StepOneFormTwoComponent {
   history_steps: HistoryStep[] = [
     {
       title: 'Dados iniciais',
@@ -31,6 +31,7 @@ export class ProfessorFormStepOneComponent {
     },
   ];
 
+  @Output() backInsideStep: EventEmitter<void> = new EventEmitter<void>();
   @Output() nextInsideStep: EventEmitter<void> = new EventEmitter<void>();
 
   @Input() course!: CourseModel;

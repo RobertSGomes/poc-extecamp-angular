@@ -25,8 +25,8 @@ export class ProfessorNewOfferingComponent {
     this.current_inside_step = 0;
   }
 
-  backStep(): void {
+  backStep(inside_step: number): void {
     this.current_step--;
-    this.current_inside_step = 0;
+    this.current_inside_step = inside_step;
   }
 }

@@ -1,13 +1,13 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Output, Input } from '@angular/core';
 import { HistoryStep } from '../../../types/history.type';
 import { CourseModel } from '../../../models/course.model';
 
 @Component({
-  selector: 'app-professor-form-step-five',
-  templateUrl: './professor-form-step-five.component.html',
-  styleUrls: ['./professor-form-step-five.component.css'],
+  selector: 'app-step-one-form-one',
+  templateUrl: './step-one-form-one.component.html',
+  styleUrls: ['./step-one-form-one.component.css'],
 })
-export class ProfessorFormStepFiveComponent {
+export class StepOneFormOneComponent {
   history_steps: HistoryStep[] = [
     {
       title: 'Dados iniciais',
@@ -31,7 +31,6 @@ export class ProfessorFormStepFiveComponent {
     },
   ];
 
-  @Output() backInsideStep: EventEmitter<void> = new EventEmitter<void>();
   @Output() nextInsideStep: EventEmitter<void> = new EventEmitter<void>();
 
   @Input() course!: CourseModel;

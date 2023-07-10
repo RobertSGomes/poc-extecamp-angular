@@ -63,39 +63,39 @@
       class="w-[1072px] mx-auto px-6 py-8 bg-white border border-gray-200 rounded-2xl shadow-sm"
     >
       <div *ngIf="current_step === 0">
-        <app-professor-form-step-one
+        <app-step-one-form-one
           *ngIf="current_inside_step === 0"
           [course]="course"
           (nextInsideStep)="nextInsideStep()"
-        ></app-professor-form-step-one>
+        ></app-step-one-form-one>
 
-        <app-professor-form-step-two
+        <app-step-one-form-two
           *ngIf="current_inside_step === 1"
           [course]="course"
           (backInsideStep)="backInsideStep()"
           (nextInsideStep)="nextInsideStep()"
-        ></app-professor-form-step-two>
+        ></app-step-one-form-two>
 
-        <app-professor-form-step-three
+        <app-step-one-form-three
           *ngIf="current_inside_step === 2"
           [course]="course"
           (backInsideStep)="backInsideStep()"
           (nextInsideStep)="nextInsideStep()"
-        ></app-professor-form-step-three>
+        ></app-step-one-form-three>
 
-        <app-professor-form-step-four
+        <app-step-one-form-four
           *ngIf="current_inside_step === 3"
           [course]="course"
           (backInsideStep)="backInsideStep()"
           (nextInsideStep)="nextInsideStep()"
-        ></app-professor-form-step-four>
+        ></app-step-one-form-four>
 
-        <app-professor-form-step-five
+        <app-step-one-form-five
           *ngIf="current_inside_step === 4"
           [course]="course"
           (backInsideStep)="backInsideStep()"
-          (nextInsideStep)="nextInsideStep()"
-        ></app-professor-form-step-five>
+          (nextStep)="nextStep()"
+        ></app-step-one-form-five>
       </div>
     </section>
   </div>
