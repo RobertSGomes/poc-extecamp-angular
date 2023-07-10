@@ -60,15 +60,74 @@
       <div class="flex gap-x-[15px]">
         <button
           class="px-4 py-[10px] rounded-lg font-semibold text-sm text-gray-700 shadow-sm border border-gray-300"
+          (click)="openCancelModal.emit()"
         >
           Cancelar
         </button>
         <button
           class="px-4 py-[10px] rounded-lg font-semibold text-sm text-white bg-violet-700"
+          (click)="openSubmitModal()"
         >
           Solicitar análise dos documentos
         </button>
       </div>
     </div>
   </section>
+</div>
+
+<div
+  *ngIf="submitModalOpened"
+  (click)="submitModalOpened = false"
+  class="absolute flex items-center justify-center top-0 left-0 w-screen h-screen bg-black/50 z-50 backdrop-blur-sm"
+>
+  <div class="flex flex-col justify-between p-6 gap-y-8 bg-white rounded-2xl">
+    <div class="flex justify-between">
+      <h1 class="font-semibold text-lg text-gray-900">
+        Confirmação de solicitação de análise de oferecimento
+      </h1>
+      <div class="flex items-center justify-center w-11 h-11">
+        <button
+          (click)="submitModalOpened = false"
+          class="w-6 h-6 rounded-sm bg-gray-300"
+        ></button>
+      </div>
+    </div>
+    <div>
+      <p class="font-normal text-sm text-gray-600">
+        Antes de prosseguir, verifique as informações fornecidas:
+      </p>
+      <br />
+      <ol class="list-decimal list-inside">
+        <li class="font-normal text-sm text-gray-600">
+          Dados inseridos nos formulários
+        </li>
+        <li class="font-normal text-sm text-gray-600">
+          Assinatura eletrônica dos formulários
+        </li>
+      </ol>
+      <br />
+      <p class="font-normal text-sm text-gray-600">
+        Confirme tudo antes de enviar. Revisaremos e forneceremos uma resposta
+        em breve através da área ‘Meus Cursos’ e por e-mail.
+      </p>
+      <br />
+      <p class="font-normal text-sm text-gray-600">
+        Clique em 'Confirmar' para enviar ou 'Voltar' para revisar.
+      </p>
+    </div>
+    <div class="flex items-center justify-end gap-x-4">
+      <button
+        (click)="submitModalOpened = false"
+        class="px-4 py-[10px] rounded-lg font-semibold text-sm text-violet-700"
+      >
+        Voltar
+      </button>
+      <button
+        [routerLink]="['/professor', 'offering']"
+        class="px-4 py-[10px] rounded-lg bg-violet-600 font-semibold text-sm text-white"
+      >
+        Confimar
+      </button>
+    </div>
+  </div>
 </div>

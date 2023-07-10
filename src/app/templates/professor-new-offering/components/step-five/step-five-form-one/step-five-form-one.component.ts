@@ -8,7 +8,14 @@ import { CourseModel } from '../../../models/course.model';
   styleUrls: ['./step-five-form-one.component.css'],
 })
 export class StepFiveFormOneComponent {
+  submitModalOpened: boolean = false;
+
   @Input() course!: CourseModel;
 
   @Output() backStep: EventEmitter<void> = new EventEmitter<void>();
+  @Output() openCancelModal: EventEmitter<void> = new EventEmitter<void>();
+
+  openSubmitModal() {
+    this.submitModalOpened = true;
+  }
 }
