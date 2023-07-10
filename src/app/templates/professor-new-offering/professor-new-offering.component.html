@@ -104,6 +104,13 @@
           (backStep)="backStep(4)"
           (nextInsideStep)="nextInsideStep()"
         ></app-step-two-form-one>
+
+        <app-step-two-form-two
+          *ngIf="current_inside_step === 1"
+          [course]="course"
+          (backInsideStep)="backInsideStep()"
+          (nextInsideStep)="nextInsideStep()"
+        ></app-step-two-form-two>
       </div>
 
       <div *ngIf="current_step === 4">

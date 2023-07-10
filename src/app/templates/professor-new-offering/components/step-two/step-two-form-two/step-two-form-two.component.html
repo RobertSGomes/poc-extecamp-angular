@@ -1,1 +1,75 @@
-<p>step-two-form-two works!</p>
+<form
+  (submit)="nextInsideStep.emit()"
+  class="w-[1072px] mx-auto px-6 py-8 bg-white border border-gray-200 rounded-2xl shadow-sm"
+>
+  <app-history-line
+    [currentStep]="1"
+    [steps]="history_steps"
+  ></app-history-line>
+
+  <hr class="h-[1px] bg-gray-200 my-6" />
+
+  <h1 class="font-semibold text-lg text-gray-900 mb-6">
+    Professores docentes da UNICAMP (Cadastro DGRH)
+  </h1>
+
+  <div class="flex flex-row justify-between w-full mb-[10px]">
+    <p class="font-semibold text-base text-gray-700">Docente cadastrado</p>
+    <button
+      class="font-semibold text-sm text-violet-700 rounded-lg px-4 py-[10px] bg-violet-50 border border-violet-200"
+    >
+      Novo docente
+    </button>
+  </div>
+
+  <div class="mb-6">
+    <table class="w-full">
+      <thead>
+        <th class="font-medium text-xs text-gray-600">Matrícula</th>
+        <th class="font-medium text-xs text-gray-600">Docente</th>
+        <th class="font-medium text-xs text-gray-600">
+          Instituição, Unidade e Derpartamento
+        </th>
+        <th class="font-medium text-xs text-gray-600">Titulação</th>
+        <th class="font-medium text-xs text-gray-600">Carga horária</th>
+        <th class="font-medium text-xs text-gray-600"></th>
+      </thead>
+    </table>
+    <div class="w-full bg-gray-50">
+      <div class="w-[352px] mx-auto py-[48px]">
+        <p class="font-semibold text-base text-gray-900 text-center">
+          Sem docentes cadastrados
+        </p>
+        <p class="font-normal text-sm text-gray-600 text-center">
+          Para cadastrar um novo docente, clique no botão "Novo docente"
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="h-[1px] bg-gray-200 mb-6" />
+
+  <div class="flex justify-between items-center">
+    <button
+      (click)="backInsideStep.emit()"
+      class="px-4 py-[10px] rounded-lg font-semibold text-sm text-violet-700"
+      type="button"
+    >
+      Voltar
+    </button>
+    <div class="flex gap-x-[15px]">
+      <button
+        class="px-4 py-[10px] rounded-lg font-semibold text-sm text-gray-700 shadow-sm border border-gray-300"
+        type="button"
+      >
+        Cancelar
+      </button>
+      <button
+        class="px-4 py-[10px] rounded-lg font-semibold text-sm text-white bg-violet-700"
+        type="submit"
+      >
+        Próximo
+      </button>
+    </div>
+  </div>
+</form>
