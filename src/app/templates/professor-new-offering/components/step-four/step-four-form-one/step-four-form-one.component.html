@@ -1,6 +1,6 @@
 <form
+  class="flex flex-col gap-y-6 w-[1072px] mx-auto p-8 bg-white border border-gray-200 rounded-2xl shadow-sm"
   (submit)="nextInsideStep.emit()"
-  class="flex flex-col gap-y-6 w-[1072px] mx-auto px-6 py-8 bg-white border border-gray-200 rounded-2xl shadow-sm"
 >
   <app-history-line [currentStep]="0" [steps]="historySteps"></app-history-line>
 
@@ -194,6 +194,7 @@
     <button
       class="px-4 py-[10px] rounded-lg font-semibold text-sm text-violet-700"
       type="button"
+      (click)="backStep.emit()"
     >
       Voltar
     </button>

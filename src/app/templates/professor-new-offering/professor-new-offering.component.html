@@ -138,11 +138,33 @@
         <app-step-four-form-one
           *ngIf="current_inside_step === 0"
           [course]="course"
+          (backStep)="backStep(3)"
+          (nextInsideStep)="nextInsideStep()"
         ></app-step-four-form-one>
+
+        <app-step-four-form-two
+          *ngIf="current_inside_step === 1"
+          (backInsideStep)="backInsideStep()"
+          (nextInsideStep)="nextInsideStep()"
+        ></app-step-four-form-two>
+
+        <app-step-four-form-three
+          *ngIf="current_inside_step === 2"
+          (backInsideStep)="backInsideStep()"
+          (nextInsideStep)="nextInsideStep()"
+        ></app-step-four-form-three>
+
+        <app-step-four-form-four
+          *ngIf="current_inside_step === 3"
+          (backInsideStep)="backInsideStep()"
+          (nextStep)="nextStep()"
+        ></app-step-four-form-four>
       </div>
 
       <div *ngIf="current_step === 4">
-        <app-step-five-form-one></app-step-five-form-one>
+        <app-step-five-form-one
+          (backStep)="backStep(3)"
+        ></app-step-five-form-one>
       </div>
     </section>
   </div>

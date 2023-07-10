@@ -1,0 +1,41 @@
+<form
+  class="flex flex-col gap-y-6 w-[1072px] mx-auto p-8 bg-white border border-gray-200 rounded-2xl shadow-sm"
+  (submit)="nextInsideStep.emit()"
+>
+  <app-history-line [currentStep]="1" [steps]="historySteps"></app-history-line>
+
+  <hr class="h-[1px] bg-gray-200" />
+
+  <div class="flex flex-col gap-y-2">
+    <h1 class="font-semibold text-lg text-gray-900">Taxas</h1>
+    <p class="font-normal text-base text-gray-600">
+      Incidem sobre o custo total do curso
+    </p>
+  </div>
+
+  <hr class="h-[1px] bg-gray-200" />
+
+  <div class="flex justify-between items-center">
+    <button
+      class="px-4 py-[10px] rounded-lg font-semibold text-sm text-violet-700"
+      type="button"
+      (click)="backInsideStep.emit()"
+    >
+      Voltar
+    </button>
+    <div class="flex gap-x-[15px]">
+      <button
+        class="px-4 py-[10px] rounded-lg font-semibold text-sm text-gray-700 shadow-sm border border-gray-300"
+        type="button"
+      >
+        Cancelar
+      </button>
+      <button
+        class="px-4 py-[10px] rounded-lg font-semibold text-sm text-white bg-violet-700"
+        type="submit"
+      >
+        Próximo
+      </button>
+    </div>
+  </div>
+</form>

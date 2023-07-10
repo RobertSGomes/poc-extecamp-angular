@@ -39,6 +39,9 @@ import { StepTwoFormFourComponent } from './templates/professor-new-offering/com
 import { StepTwoFormFiveComponent } from './templates/professor-new-offering/components/step-two/step-two-form-five/step-two-form-five.component';
 import { StepTwoFormSixComponent } from './templates/professor-new-offering/components/step-two/step-two-form-six/step-two-form-six.component';
 import { StepFourFormOneComponent } from './templates/professor-new-offering/components/step-four/step-four-form-one/step-four-form-one.component';
+import { StepFourFormTwoComponent } from './templates/professor-new-offering/components/step-four/step-four-form-two/step-four-form-two.component';
+import { StepFourFormThreeComponent } from './templates/professor-new-offering/components/step-four/step-four-form-three/step-four-form-three.component';
+import { StepFourFormFourComponent } from './templates/professor-new-offering/components/step-four/step-four-form-four/step-four-form-four.component';
 
 @NgModule({
   declarations: [
@@ -78,6 +81,9 @@ import { StepFourFormOneComponent } from './templates/professor-new-offering/com
     StepTwoFormFiveComponent,
     StepTwoFormSixComponent,
     StepFourFormOneComponent,
+    StepFourFormTwoComponent,
+    StepFourFormThreeComponent,
+    StepFourFormFourComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
