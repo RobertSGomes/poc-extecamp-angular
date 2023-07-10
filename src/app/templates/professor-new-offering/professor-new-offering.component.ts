@@ -13,19 +13,23 @@ export class ProfessorNewOfferingComponent {
   course: CourseModel = new CourseModel();
 
   backInsideStep(): void {
+    document.querySelector('#form-section')!.scrollTo(0, 0);
     this.current_inside_step--;
   }
 
   nextInsideStep(): void {
+    document.querySelector('#form-section')!.scrollTo(0, 0);
     this.current_inside_step++;
   }
 
   nextStep(): void {
+    document.querySelector('#form-section')!.scrollTo(0, 0);
     this.current_step++;
     this.current_inside_step = 0;
   }
 
   backStep(inside_step: number): void {
+    document.querySelector('#form-section')!.scrollTo(0, 0);
     this.current_step--;
     this.current_inside_step = inside_step;
   }

@@ -20,6 +20,7 @@
 
   <div
     class="col-start-2 row-start-3 overflow-y-auto w-full px-8 py-6 bg-gray-50"
+    id="form-section"
   >
     <h1 class="font-semibold text-lg text-gray-900">Novo oferecimento</h1>
 
@@ -94,6 +95,15 @@
           (backInsideStep)="backInsideStep()"
           (nextStep)="nextStep()"
         ></app-step-one-form-five>
+      </div>
+
+      <div *ngIf="current_step === 1">
+        <app-step-two-form-one
+          *ngIf="current_inside_step === 0"
+          [course]="course"
+          (backStep)="backStep(4)"
+          (nextInsideStep)="nextInsideStep()"
+        ></app-step-two-form-one>
       </div>
 
       <div *ngIf="current_step === 4">
