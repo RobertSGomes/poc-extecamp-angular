@@ -113,6 +113,13 @@
         ></app-step-two-form-two>
       </div>
 
+      <div *ngIf="current_step === 3">
+        <app-step-four-form-one
+          *ngIf="current_inside_step === 0"
+          [course]="course"
+        ></app-step-four-form-one>
+      </div>
+
       <div *ngIf="current_step === 4">
         <app-step-five-form-one></app-step-five-form-one>
       </div>

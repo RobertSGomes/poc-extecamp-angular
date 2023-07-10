@@ -1,0 +1,215 @@
+<form
+  (submit)="nextInsideStep.emit()"
+  class="flex flex-col gap-y-6 w-[1072px] mx-auto px-6 py-8 bg-white border border-gray-200 rounded-2xl shadow-sm"
+>
+  <app-history-line [currentStep]="0" [steps]="historySteps"></app-history-line>
+
+  <hr class="h-[1px] bg-gray-200" />
+
+  <h1 class="font-semibold text-lg text-gray-900">Custos do oferecimento</h1>
+
+  <div class="flex flex-col gap-y-2">
+    <p class="font-medium text-sm text-gray-700">
+      Será um curso de fluxo contínuo?
+    </p>
+
+    <div class="flex items-center gap-x-2">
+      <input
+        type="radio"
+        id="disciplina_eletiva_yes"
+        name="disciplina_eletiva"
+        [(ngModel)]="course.fluxo_continuo"
+        [value]="true"
+      />
+      <label
+        for="disciplina_eletiva_yes"
+        class="font-medium text-base text-gray-700"
+        >Sim</label
+      >
+    </div>
+    <div class="flex items-center gap-x-2">
+      <input
+        type="radio"
+        id="disciplina_eletiva_no"
+        name="disciplina_eletiva"
+        [(ngModel)]="course.disciplina_eletiva"
+        [value]="false"
+      />
+      <label
+        for="disciplina_eletiva_no"
+        class="font-medium text-base text-gray-700"
+        >Não</label
+      >
+    </div>
+  </div>
+
+  <h1 class="font-semibold text-lg text-gray-900">Planilha de custos</h1>
+
+  <table>
+    <tbody>
+      <tr class="border-b border-gray-200">
+        <td class="px-6 py-3">
+          <p class="font-normal text-sm text-gray-600">Professores hora-aula</p>
+          <p class="font-normal text-sm text-gray-600">(incluir encargos)(a)</p>
+        </td>
+        <td class="px-6 py-3">
+          <div
+            class="flex items-center gap-2 w-[180px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+          >
+            <input
+              class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+              placeholder="R$"
+            />
+          </div>
+        </td>
+      </tr>
+      <tr class="border-b border-gray-200">
+        <td class="px-6 py-3">
+          <p class="font-normal text-sm text-gray-600">
+            Professores outras atividades
+          </p>
+          <p class="font-normal text-sm text-gray-600">(incluir encargos)(a)</p>
+        </td>
+        <td class="px-6 py-3">
+          <div
+            class="flex items-center gap-2 w-[180px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+          >
+            <input
+              class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+              placeholder="R$"
+            />
+          </div>
+        </td>
+      </tr>
+      <tr class="border-b border-gray-200">
+        <td class="px-6 py-3">
+          <p class="font-normal text-sm text-gray-600">Material de Consumo</p>
+          <p class="font-normal text-sm text-gray-600">
+            (materiais de escritório, etc.)
+          </p>
+        </td>
+        <td class="px-6 py-3">
+          <div
+            class="flex items-center gap-2 w-[180px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+          >
+            <input
+              class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+              placeholder="R$"
+            />
+          </div>
+        </td>
+      </tr>
+      <tr class="border-b border-gray-200">
+        <td class="px-6 py-3">
+          <p class="font-normal text-sm text-gray-600">
+            Material permanente e equipamentos
+          </p>
+        </td>
+        <td class="px-6 py-3">
+          <div
+            class="flex items-center gap-2 w-[180px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+          >
+            <input
+              class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+              placeholder="R$"
+            />
+          </div>
+        </td>
+      </tr>
+      <tr class="border-b border-gray-200">
+        <td class="px-6 py-3">
+          <p class="font-normal text-sm text-gray-600">Serviço de Terceiros</p>
+          <p class="font-normal text-sm text-gray-600">(incluir encargos)</p>
+        </td>
+        <td class="px-6 py-3">
+          <div
+            class="flex items-center gap-2 w-[180px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+          >
+            <input
+              class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+              placeholder="R$"
+            />
+          </div>
+        </td>
+      </tr>
+      <tr class="border-b border-gray-200">
+        <td class="px-6 py-3">
+          <p class="font-normal text-sm text-gray-600">Outros Custos</p>
+          <p class="font-normal text-sm text-gray-600">
+            (Certificados/Atestados entre Outros)
+          </p>
+        </td>
+        <td class="px-6 py-3">
+          <div
+            class="flex items-center gap-2 w-[180px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+          >
+            <input
+              class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+              placeholder="R$"
+            />
+          </div>
+        </td>
+      </tr>
+      <tr class="border-b border-gray-200 bg-yellow-200/30">
+        <td class="px-6 py-3">
+          <p class="font-normal text-sm text-gray-600">
+            Aproveitamento de Recursos Gerados
+          </p>
+          <p class="font-normal text-sm text-gray-600">
+            por Cursos de Extensão
+          </p>
+        </td>
+        <td class="px-6 py-3">
+          <div
+            class="flex items-center gap-2 w-[180px] px-3 py-2 bg-white rounded-lg border border-gray-300 shadow-sm"
+          >
+            <input
+              class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+              placeholder="R$"
+            />
+          </div>
+        </td>
+      </tr>
+      <tr class="border-b border-gray-200 bg-blue-200/30">
+        <td class="px-6 py-3">
+          <p class="font-normal text-sm text-gray-600">Custo total do curso</p>
+        </td>
+        <td class="px-6 py-3">
+          <div
+            class="flex items-center gap-2 w-[180px] px-3 py-2 bg-white rounded-lg border border-gray-300 shadow-sm"
+          >
+            <input
+              class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+              placeholder="R$"
+            />
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr class="h-[1px] bg-gray-200" />
+
+  <div class="flex justify-between items-center">
+    <button
+      class="px-4 py-[10px] rounded-lg font-semibold text-sm text-violet-700"
+      type="button"
+    >
+      Voltar
+    </button>
+    <div class="flex gap-x-[15px]">
+      <button
+        class="px-4 py-[10px] rounded-lg font-semibold text-sm text-gray-700 shadow-sm border border-gray-300"
+        type="button"
+      >
+        Cancelar
+      </button>
+      <button
+        class="px-4 py-[10px] rounded-lg font-semibold text-sm text-white bg-violet-700"
+        type="submit"
+      >
+        Próximo
+      </button>
+    </div>
+  </div>
+</form>
