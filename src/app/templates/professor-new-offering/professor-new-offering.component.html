@@ -97,6 +97,10 @@
           (nextStep)="nextStep()"
         ></app-step-one-form-five>
       </div>
+
+      <div *ngIf="current_step === 4">
+        <app-step-five-form-one></app-step-five-form-one>
+      </div>
     </section>
   </div>
 </div>
