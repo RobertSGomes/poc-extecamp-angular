@@ -15,12 +15,12 @@ type RegisteredCourse = {
 })
 export class StudentHomeComponent {
   registeredCourses: RegisteredCourse[] = [
-    // {
-    //   sigla: 'BIO-0083',
-    //   oferecimento: '003',
-    //   nome: 'BIOQUÍMICA E FISIOLOGIA APLICADAS AO TREINAMENTO FÍSICO',
-    //   tipo: 'Curso de extensão',
-    //   inscricao: 'INCOMPLETA',
-    // },
+    {
+      sigla: 'BIO-0083',
+      oferecimento: '003',
+      nome: 'BIOQUÍMICA E FISIOLOGIA APLICADAS AO TREINAMENTO FÍSICO',
+      tipo: 'Curso de extensão',
+      inscricao: 'INCOMPLETA',
+    },
   ];
 }
