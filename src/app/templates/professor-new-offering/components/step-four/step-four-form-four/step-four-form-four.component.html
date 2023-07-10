@@ -8,6 +8,69 @@
 
   <h1 class="font-semibold text-lg text-gray-900">Condições de pagamento</h1>
 
+  <div class="flex flex-col gap-y-2">
+    <p class="font-medium text-sm text-gray-700">Curso gratuíto?</p>
+
+    <div class="flex items-center gap-x-2">
+      <input
+        type="radio"
+        id="disciplina_eletiva_yes"
+        name="disciplina_eletiva"
+        [value]="true"
+      />
+      <label
+        for="disciplina_eletiva_yes"
+        class="font-medium text-base text-gray-700"
+        >Sim</label
+      >
+    </div>
+    <div class="flex items-center gap-x-2">
+      <input
+        type="radio"
+        id="disciplina_eletiva_no"
+        name="disciplina_eletiva"
+        [value]="false"
+      />
+      <label
+        for="disciplina_eletiva_no"
+        class="font-medium text-base text-gray-700"
+        >Não</label
+      >
+    </div>
+  </div>
+
+  <hr class="h-[1px] bg-gray-200" />
+
+  <h1 class="font-semibold text-lg text-gray-900">À vista</h1>
+
+  <div class="flex gap-x-[18px]">
+    <div class="flex flex-col gap-[6px]">
+      <label class="font-medium text-sm text-gray-700">Valor</label>
+      <div
+        class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+      >
+        <input
+          class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+          placeholder="R$"
+        />
+      </div>
+    </div>
+    <div class="flex flex-col gap-[6px]">
+      <label class="font-medium text-sm text-gray-700"
+        >Data do vencimento</label
+      >
+      <div
+        class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+      >
+        <div class="w-5 h-5 rounded-full bg-gray-300"></div>
+        <input
+          class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+          placeholder="dd/mm/aaaa"
+        />
+      </div>
+    </div>
+  </div>
+
   <hr class="h-[1px] bg-gray-200" />
 
   <div class="flex justify-between items-center">
