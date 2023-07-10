@@ -8,7 +8,7 @@ import { CourseModel } from './models/course.model';
 })
 export class ProfessorNewOfferingComponent {
   current_step: number = 0;
-  current_inside_step: number = 0;
+  current_inside_step: number = 4;
 
   course: CourseModel = new CourseModel();
 

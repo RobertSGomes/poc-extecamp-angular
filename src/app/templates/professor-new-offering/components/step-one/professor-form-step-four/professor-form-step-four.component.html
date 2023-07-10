@@ -1,0 +1,127 @@
+<form (submit)="nextInsideStep.emit()">
+  <app-history-line
+    [currentStep]="3"
+    [steps]="history_steps"
+  ></app-history-line>
+
+  <hr class="h-[1px] bg-gray-200 my-6" />
+
+  <h1 class="font-semibold text-lg text-gray-900 mb-6">Conteúdo do curso</h1>
+
+  <div class="flex flex-col w-full gap-[6px] mb-6">
+    <label class="font-medium text-sm text-gray-700"
+      >Ementa (se o curso for múltiplo (composto por disciplinas), não incluir
+      ementa. Deixe este campo em branco.)</label
+    >
+    <div
+      class="flex gap-2 w-full h-[163px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+    >
+      <textarea
+        class="w-full h-full text-gray-800 text-base outline-none resize-none placeholder:text-gray-500"
+        placeholder="Preencha"
+        name="course_ementa"
+        [(ngModel)]="course.ementa"
+      ></textarea>
+    </div>
+    <p class="font-normal text-sm text-gray-700">Máximo de 1500 caracteres</p>
+  </div>
+
+  <div class="flex flex-col w-full gap-[6px] mb-6">
+    <label class="font-medium text-sm text-gray-700"
+      >Bibliografia do curso</label
+    >
+    <div
+      class="flex gap-2 w-full h-[163px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+    >
+      <textarea
+        class="w-full h-full text-gray-800 text-base outline-none resize-none placeholder:text-gray-500"
+        placeholder="Preencha"
+        name="course_bibliografia"
+        [(ngModel)]="course.bibliografia"
+      ></textarea>
+    </div>
+    <p class="font-normal text-sm text-gray-700">
+      Mínimo de 50 e máximo de 10000 caracteres
+    </p>
+  </div>
+
+  <div class="flex flex-col w-full gap-[6px] mb-6">
+    <label class="font-medium text-sm text-gray-700"
+      >Procedimentos metodológicos</label
+    >
+    <div
+      class="flex gap-2 w-full h-[163px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+    >
+      <textarea
+        class="w-full h-full text-gray-800 text-base outline-none resize-none placeholder:text-gray-500"
+        placeholder="Preencha"
+        name="course_procedimentos"
+        [(ngModel)]="course.procedimentos"
+      ></textarea>
+    </div>
+    <p class="font-normal text-sm text-gray-700">
+      Mínimo de 50 e máximo de 10000 caracteres
+    </p>
+  </div>
+
+  <div class="flex flex-col w-full gap-[6px] mb-6">
+    <label class="font-medium text-sm text-gray-700">Objetivos do curso</label>
+    <div
+      class="flex gap-2 w-full h-[163px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+    >
+      <textarea
+        class="w-full h-full text-gray-800 text-base outline-none resize-none placeholder:text-gray-500"
+        placeholder="Preencha"
+        name="course_objetivo"
+        [(ngModel)]="course.objetivo"
+      ></textarea>
+    </div>
+    <p class="font-normal text-sm text-gray-700">
+      Mínimo de 50 e máximo de 1000 caracteres
+    </p>
+  </div>
+
+  <div class="flex flex-col w-full gap-[6px] mb-6">
+    <label class="font-medium text-sm text-gray-700"
+      >Público-alvo (Especificar área de formação e carreiras paralelas que
+      poderão participar da disciplina/curso)</label
+    >
+    <div
+      class="flex gap-2 w-full h-[163px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+    >
+      <textarea
+        class="w-full h-full text-gray-800 text-base outline-none resize-none placeholder:text-gray-500"
+        placeholder="Preencha"
+        name="course_publico_alvo"
+        [(ngModel)]="course.publico_alvo"
+      ></textarea>
+    </div>
+    <p class="font-normal text-sm text-gray-700">
+      Mínimo de 10 e máximo de 1000 caracteres
+    </p>
+  </div>
+
+  <hr class="h-[1px] bg-gray-200 mb-6" />
+
+  <div class="flex justify-between items-center">
+    <button
+      (click)="backInsideStep.emit()"
+      class="px-4 py-[10px] rounded-lg font-semibold text-sm text-violet-700"
+    >
+      Voltar
+    </button>
+    <div class="flex gap-x-[15px]">
+      <button
+        class="px-4 py-[10px] rounded-lg font-semibold text-sm text-gray-700 shadow-sm border border-gray-300"
+      >
+        Cancelar
+      </button>
+      <button
+        class="px-4 py-[10px] rounded-lg font-semibold text-sm text-white bg-violet-700"
+        type="submit"
+      >
+        Próximo
+      </button>
+    </div>
+  </div>
+</form>

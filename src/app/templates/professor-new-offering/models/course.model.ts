@@ -22,8 +22,8 @@ export class CourseModel {
   procedimentos: string = '';
   objetivo: string = '';
   publico_alvo: string = '';
-  frequencia_minima: number = 0;
-  nota_minima: number = 0;
+  frequencia_minima!: number;
+  nota_minima!: number;
   grau_escolaridade: string = '';
   divulgacao_corporativa: boolean = false;
 }

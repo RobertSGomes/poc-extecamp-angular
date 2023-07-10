@@ -1,0 +1,181 @@
+<form (submit)="nextInsideStep.emit()">
+  <app-history-line
+    [currentStep]="3"
+    [steps]="history_steps"
+  ></app-history-line>
+
+  <hr class="h-[1px] bg-gray-200 my-6" />
+
+  <h1 class="font-semibold text-lg text-gray-900 mb-6">
+    Critérios de avaliação
+  </h1>
+
+  <section
+    class="flex w-[750px] p-4 gap-x-6 rounded-xl bg-violet-50 border border-violet-300 shadow-sm mb-6"
+  >
+    <div
+      class="relative w-4 h-4 rounded-full bg-violet-600 before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:w-[28px] before:h-[28px] before:rounded-full before:border-2 before:border-violet-600/30 after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:w-[38px] after:h-[38px] after:rounded-full after:border-2 after:border-violet-600/10"
+    ></div>
+    <div class="flex-1">
+      <p class="font-semibold text-sm text-violet-600">Mínimo para aprovação</p>
+      <ul>
+        <li class="font-normal text-sm text-violet-600">
+          • Nota 7,0 em escala de 0 à 10 e frequência de 75% para cursos de
+          extensão.
+        </li>
+        <li class="font-normal text-sm text-violet-600">
+          • Nota 7,0 em escala de 0 à 10 e frequência de 75% para cursos de com
+          carga horária igual ou superior a 360 horas.
+        </li>
+        <li class="font-normal text-sm text-violet-600">
+          • Para curso de difusão, não há critério de avaliação.
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="flex flex-col gap-y-2 mb-6">
+    <div class="flex gap-x-[18px]">
+      <p class="w-[324px] font-medium text-sm text-gray-700">
+        Frequência mínima *
+      </p>
+      <p class="w-[324px] font-medium text-sm text-gray-700">Nota mínima *</p>
+    </div>
+
+    <div class="flex gap-x-[18px]">
+      <div
+        class="flex gap-2 w-[324px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+      >
+        <input
+          class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+          placeholder="%"
+          name="course_frequencia_minima"
+          [(ngModel)]="course.frequencia_minima"
+        />
+      </div>
+      <div
+        class="flex gap-2 w-[324px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+      >
+        <input
+          class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+          placeholder="Preencha"
+          name="course_nota_minima"
+          [(ngModel)]="course.nota_minima"
+        />
+      </div>
+    </div>
+
+    <div class="flex flex-row gap-x-[18px]">
+      <div class="w-[324px]"></div>
+      <div class="w-[324px]">
+        <p class="font-normal text-sm text-gray-700">
+          Para cursos de Difusão o valor será "0"
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <h1 class="font-semibold text-lg text-gray-900 mb-6">Pré-requisitos</h1>
+
+  <div class="flex flex-col gap-[6px] mb-6">
+    <label class="font-medium text-sm text-gray-700"
+      >Grau de Escolaridade *</label
+    >
+    <div
+      class="flex gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+    >
+      <select
+        class="w-full text-gray-800 text-base outline-none"
+        name="course_grau_escolaridade"
+        [(ngModel)]="course.grau_escolaridade"
+      >
+        <option [ngValue]="''">Selecione</option>
+        <option [ngValue]="'Bacharelado'">Bacharelado</option>
+      </select>
+    </div>
+    <p class="font-normal text-sm text-gray-700">
+      Obrigatória a entrega, pelo aluno, de cópias dos comprovantes no ato da
+      matrícula
+    </p>
+  </div>
+
+  <section
+    class="flex w-[750px] p-4 gap-x-6 rounded-xl bg-violet-50 border border-violet-300 shadow-sm mb-6"
+  >
+    <div
+      class="relative w-4 h-4 rounded-full bg-violet-600 before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:w-[28px] before:h-[28px] before:rounded-full before:border-2 before:border-violet-600/30 after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:w-[38px] after:h-[38px] after:rounded-full after:border-2 after:border-violet-600/10"
+    ></div>
+    <p class="flex-1 font-normal text-sm text-violet-600">
+      A EXTECAMP - Escola de Extensão da Unicamp, com o objetivo de facilitar a
+      relação da Universidade com empresas e organizações, criou um novo modelo
+      de atendimento: os cursos corporativos. Com eles as instituições públicas
+      e privadas poderão ter à sua disposição cursos criados para suas
+      necessidades específicas, bem como personalizar cursos já existentes para
+      que melhor se adequem aos seus propósitos. <br />
+      Eles poderão ser desenvolvidos em qualquer das modalidades já aprovadas na
+      Unicamp.Além disso, as aulas poderão ser ministradas tanto nas
+      dependências da Unicamp quanto em espaços da empresa. Poderão também ser
+      utilizados recursos de tecnologia de EAD (ensino à distância), de acordo
+      com a análise das necessidades dos grupos de alunos."
+    </p>
+  </section>
+
+  <div class="flex flex-col gap-y-2 mb-6">
+    <p class="font-medium text-sm text-gray-700">
+      Esse curso pode ser divulgado para realização de forma corporativa?
+    </p>
+
+    <div class="flex items-center gap-x-2">
+      <input
+        type="radio"
+        id="divulgacao_corporativa_yes"
+        name="curso_divulgacao_corporativa"
+        [(ngModel)]="course.divulgacao_corporativa"
+        [value]="true"
+      />
+      <label
+        for="divulgacao_corporativa_yes"
+        class="font-medium text-base text-gray-700"
+        >Sim</label
+      >
+    </div>
+    <div class="flex items-center gap-x-2">
+      <input
+        type="radio"
+        id="divulgacao_corporativa_no"
+        name="curso_divulgacao_corporativa"
+        [(ngModel)]="course.divulgacao_corporativa"
+        [value]="false"
+      />
+      <label
+        for="divulgacao_corporativa_no"
+        class="font-medium text-base text-gray-700"
+        >Não</label
+      >
+    </div>
+  </div>
+
+  <hr class="h-[1px] bg-gray-200 mb-6" />
+
+  <div class="flex justify-between items-center">
+    <button
+      (click)="backInsideStep.emit()"
+      class="px-4 py-[10px] rounded-lg font-semibold text-sm text-violet-700"
+    >
+      Voltar
+    </button>
+    <div class="flex gap-x-[15px]">
+      <button
+        class="px-4 py-[10px] rounded-lg font-semibold text-sm text-gray-700 shadow-sm border border-gray-300"
+      >
+        Cancelar
+      </button>
+      <button
+        class="px-4 py-[10px] rounded-lg font-semibold text-sm text-white bg-violet-700"
+        type="submit"
+      >
+        Próximo
+      </button>
+    </div>
+  </div>
+</form>

@@ -82,6 +82,20 @@
           (backInsideStep)="backInsideStep()"
           (nextInsideStep)="nextInsideStep()"
         ></app-professor-form-step-three>
+
+        <app-professor-form-step-four
+          *ngIf="current_inside_step === 3"
+          [course]="course"
+          (backInsideStep)="backInsideStep()"
+          (nextInsideStep)="nextInsideStep()"
+        ></app-professor-form-step-four>
+
+        <app-professor-form-step-five
+          *ngIf="current_inside_step === 4"
+          [course]="course"
+          (backInsideStep)="backInsideStep()"
+          (nextInsideStep)="nextInsideStep()"
+        ></app-professor-form-step-five>
       </div>
     </section>
   </div>

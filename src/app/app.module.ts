@@ -29,6 +29,8 @@ import { ProfessorFormStepTwoComponent } from './templates/professor-new-offerin
 import { ProfessorFormStepThreeComponent } from './templates/professor-new-offering/components/step-one/professor-form-step-three/professor-form-step-three.component';
 import { CourseSubscriptionStepThreeComponent } from './templates/student-course-registration/components/course-subscription-step-three/course-subscription-step-three.component';
 import { CourseSubscriptionStepFourComponent } from './templates/student-course-registration/components/course-subscription-step-four/course-subscription-step-four.component';
+import { ProfessorFormStepFourComponent } from './templates/professor-new-offering/components/step-one/professor-form-step-four/professor-form-step-four.component';
+import { ProfessorFormStepFiveComponent } from './templates/professor-new-offering/components/step-one/professor-form-step-five/professor-form-step-five.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +60,8 @@ import { CourseSubscriptionStepFourComponent } from './templates/student-course-
     ProfessorFormStepThreeComponent,
     CourseSubscriptionStepThreeComponent,
     CourseSubscriptionStepFourComponent,
+    ProfessorFormStepFourComponent,
+    ProfessorFormStepFiveComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
