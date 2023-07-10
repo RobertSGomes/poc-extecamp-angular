@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { CourseModel } from '../../../models/course.model';
 
@@ -9,4 +9,6 @@ import { CourseModel } from '../../../models/course.model';
 })
 export class StepFiveFormOneComponent {
   @Input() course!: CourseModel;
+
+  @Output() backStep: EventEmitter<void> = new EventEmitter<void>();
 }

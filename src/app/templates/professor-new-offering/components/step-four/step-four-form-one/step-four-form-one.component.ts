@@ -16,5 +16,7 @@ export class StepFourFormOneComponent {
   ];
 
   @Input() course!: CourseModel;
+
+  @Output() backStep: EventEmitter<void> = new EventEmitter<void>();
   @Output() nextInsideStep: EventEmitter<void> = new EventEmitter<void>();
 }
