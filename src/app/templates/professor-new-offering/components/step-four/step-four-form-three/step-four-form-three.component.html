@@ -6,10 +6,53 @@
 
   <hr class="h-[1px] bg-gray-200" />
 
-  <div class="flex flex-col gap-y-2">
-    <h1 class="font-semibold text-lg text-gray-900">Taxas</h1>
-    <p class="font-normal text-base text-gray-600">
-      Incidem sobre o custo total do curso
+  <h1 class="font-semibold text-lg text-gray-900">Formas de pagamento</h1>
+
+  <!-- Tipo de pagamento -->
+  <div class="flex flex-col gap-[6px]">
+    <label class="font-medium text-sm text-gray-700">Tipo de pagamento *</label>
+    <div
+      class="flex items-center gap-2 w-[408px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+    >
+      <select class="w-full text-gray-800 text-base outline-none">
+        <option selected [ngValue]="''">Selecione</option>
+        <option>Cartão de crédito</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Fonte do pagamento -->
+  <div class="flex flex-col gap-[6px]">
+    <label class="font-medium text-sm text-gray-700"
+      >Fonte do pagamento *</label
+    >
+    <div
+      class="flex items-center gap-2 w-[408px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+    >
+      <select class="w-full text-gray-800 text-base outline-none">
+        <option selected [ngValue]="''">Selecione</option>
+        <option>Só Deus sabe</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Taxa inscrição -->
+  <div class="flex flex-col gap-[6px] w-[408px]">
+    <label class="font-medium text-sm text-gray-700"
+      >Taxa de inscrição de Curso Fechado/In Company</label
+    >
+    <div
+      class="flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+    >
+      <input
+        class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+        placeholder="R$"
+      />
+    </div>
+    <p class="flex-1 font-normal text-sm text-gray-600">
+      A taxa de inscrição terá dois valores, sendo R$ 20,00 para cursos até 180h
+      e R$ 60,00 para cursos a partir de 180h, o calculo da taxa será sobre o
+      número máximo de alunos do curso.
     </p>
   </div>
 
