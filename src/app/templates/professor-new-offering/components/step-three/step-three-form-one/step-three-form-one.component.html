@@ -1,1 +1,139 @@
-<p>step-three-form-one works!</p>
+<form
+  (submit)="nextInsideStep.emit()"
+  class="flex flex-col gap-y-6 w-[1072px] mx-auto p-8 bg-white border border-gray-200 rounded-2xl shadow-sm"
+>
+  <app-history-line
+    [currentStep]="0"
+    [steps]="history_steps"
+  ></app-history-line>
+
+  <hr class="h-[1px] bg-gray-200" />
+
+  <h1 class="font-semibold text-lg text-gray-900">Divulgação</h1>
+
+  <div class="flex flex-col gap-y-2">
+    <p class="font-medium text-sm text-gray-700">Divulgar pela EXTECAMP? *</p>
+
+    <p class="w-[471px] font-normal text-sm text-gray-700">
+      Se sim, o cursos será publicado nos meios de divulgação da Extecamp. As
+      publicações seguem cronogramas pré-definidos.
+    </p>
+
+    <div class="flex items-center gap-x-2">
+      <input
+        type="radio"
+        id="disciplina_eletiva_yes"
+        name="disciplina_eletiva"
+        [value]="true"
+      />
+      <label
+        for="disciplina_eletiva_yes"
+        class="font-medium text-base text-gray-700"
+        >Sim</label
+      >
+    </div>
+    <div class="flex items-center gap-x-2">
+      <input
+        type="radio"
+        id="disciplina_eletiva_no"
+        name="disciplina_eletiva"
+        [value]="false"
+      />
+      <label
+        for="disciplina_eletiva_no"
+        class="font-medium text-base text-gray-700"
+        >Não</label
+      >
+    </div>
+  </div>
+
+  <div class="flex flex-col w-full gap-[6px]">
+    <p class="font-medium text-sm text-gray-700">
+      Divulgação pela própria unidade
+    </p>
+    <p class="font-normal text-sm text-gray-700">
+      Explicar como e onde será feita a divulgação e enviar o material para
+      análise pela EXTECAMP conforme § 2° do artigo 2° DEL. CEPE A5/96
+    </p>
+    <div
+      class="flex gap-2 w-full h-[163px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+    >
+      <textarea
+        class="w-full h-full text-gray-800 text-base outline-none resize-none placeholder:text-gray-500"
+        placeholder="Preencha"
+        name="course_bibliografia"
+        [(ngModel)]="course.bibliografia"
+      ></textarea>
+    </div>
+    <p class="font-normal text-sm text-gray-700">Máximo de 200 caracteres</p>
+  </div>
+
+  <div class="flex flex-col gap-y-2">
+    <div class="flex gap-x-[18px]">
+      <p class="w-[494px] font-medium text-sm text-gray-700">
+        Hotsite do curso
+      </p>
+    </div>
+
+    <div class="flex gap-x-[18px]">
+      <div
+        class="flex gap-2 w-[494px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+      >
+        <input
+          class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+          placeholder="http://"
+          name="course_frequencia_minima"
+          [(ngModel)]="course.frequencia_minima"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-col gap-y-2">
+    <div class="flex gap-x-[18px]">
+      <p class="w-[494px] font-medium text-sm text-gray-700">
+        Página no Facebook
+      </p>
+    </div>
+
+    <div class="flex gap-x-[18px]">
+      <div
+        class="flex gap-2 w-[494px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+      >
+        <input
+          class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+          placeholder="http://"
+          name="course_frequencia_minima"
+          [(ngModel)]="course.frequencia_minima"
+        />
+      </div>
+    </div>
+  </div>
+
+  <hr class="h-[1px] bg-gray-200" />
+
+  <div class="flex justify-between items-center">
+    <button
+      (click)="backStep.emit()"
+      class="px-4 py-[10px] rounded-lg font-semibold text-sm text-violet-700"
+      type="button"
+    >
+      Voltar
+    </button>
+    <div class="flex gap-x-[15px]">
+      <button
+        class="px-4 py-[10px] rounded-lg font-semibold text-sm text-gray-700 shadow-sm border border-gray-300"
+        type="button"
+        (click)="openCancelModal.emit()"
+      >
+        Cancelar
+      </button>
+      <button
+        class="px-4 py-[10px] rounded-lg font-semibold text-sm text-white bg-violet-700"
+        type="submit"
+      >
+        Próximo
+      </button>
+    </div>
+  </div>
+</form>

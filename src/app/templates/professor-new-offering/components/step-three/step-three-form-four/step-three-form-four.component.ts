@@ -3,11 +3,11 @@ import { HistoryStep } from '../../../types/history.type';
 import { CourseModel } from '../../../models/course.model';
 
 @Component({
-  selector: 'app-step-three-form-one',
-  templateUrl: './step-three-form-one.component.html',
-  styleUrls: ['./step-three-form-one.component.css'],
+  selector: 'app-step-three-form-four',
+  templateUrl: './step-three-form-four.component.html',
+  styleUrls: ['./step-three-form-four.component.css'],
 })
-export class StepThreeFormOneComponent {
+export class StepThreeFormFourComponent {
   history_steps: HistoryStep[] = [
     {
       title: 'Divulgação do curso',
@@ -27,8 +27,8 @@ export class StepThreeFormOneComponent {
     },
   ];
 
-  @Output() backStep: EventEmitter<void> = new EventEmitter<void>();
-  @Output() nextInsideStep: EventEmitter<void> = new EventEmitter<void>();
+  @Output() backInsideStep: EventEmitter<void> = new EventEmitter<void>();
+  @Output() nextStep: EventEmitter<void> = new EventEmitter<void>();
   @Output() openCancelModal: EventEmitter<void> = new EventEmitter<void>();
 
   @Input() course!: CourseModel;

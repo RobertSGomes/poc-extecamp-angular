@@ -1,17 +1,15 @@
 <form
-  (submit)="nextInsideStep.emit()"
+  (submit)="nextStep.emit()"
   class="flex flex-col gap-y-6 w-[1072px] mx-auto p-8 bg-white border border-gray-200 rounded-2xl shadow-sm"
 >
   <app-history-line
-    [currentStep]="2"
+    [currentStep]="3"
     [steps]="history_steps"
   ></app-history-line>
 
   <hr class="h-[1px] bg-gray-200" />
 
-  <h1 class="font-semibold text-lg text-gray-900">
-    Oferecimento e outras informações
-  </h1>
+  <h1 class="font-semibold text-lg text-gray-900">Critérios de admissão</h1>
 
   <hr class="h-[1px] bg-gray-200" />
 
