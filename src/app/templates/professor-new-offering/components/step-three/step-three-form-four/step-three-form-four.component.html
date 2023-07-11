@@ -11,6 +11,57 @@
 
   <h1 class="font-semibold text-lg text-gray-900">Critérios de admissão</h1>
 
+  <div class="flex flex-col gap-y-2">
+    <p class="font-medium text-sm text-gray-700">
+      Haverá critérios de admissão?
+    </p>
+
+    <div class="flex items-center gap-x-2">
+      <input
+        type="radio"
+        id="disciplina_eletiva_yes"
+        name="disciplina_eletiva"
+        [value]="true"
+      />
+      <label
+        for="disciplina_eletiva_yes"
+        class="font-medium text-base text-gray-700"
+        >Sim</label
+      >
+    </div>
+    <div class="flex items-center gap-x-2">
+      <input
+        type="radio"
+        id="disciplina_eletiva_no"
+        name="disciplina_eletiva"
+        [value]="false"
+      />
+      <label
+        for="disciplina_eletiva_no"
+        class="font-medium text-base text-gray-700"
+        >Não</label
+      >
+    </div>
+  </div>
+
+  <div class="grid divide-y divide-gray-200 border-y border-y-gray-200">
+    <app-accordion
+      [isBlocked]="true"
+      [noBorder]="true"
+      [title]="'Parâmetros dos critérios'"
+    ></app-accordion>
+    <app-accordion
+      [isBlocked]="true"
+      [noBorder]="true"
+      [title]="'Documentos extras opcionais'"
+    ></app-accordion>
+    <app-accordion
+      [isBlocked]="true"
+      [noBorder]="true"
+      [title]="'Curso em parceria'"
+    ></app-accordion>
+  </div>
+
   <hr class="h-[1px] bg-gray-200" />
 
   <div class="flex justify-between items-center">

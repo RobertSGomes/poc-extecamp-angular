@@ -13,4 +13,10 @@ export class AccordionComponent {
 
   @Input()
   content: string = '';
+
+  @Input()
+  isBlocked: boolean = false;
+
+  @Input()
+  noBorder: boolean = false;
 }

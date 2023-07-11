@@ -1,17 +1,30 @@
-<div class="w-full border border-gray-200 rounded-2xl">
+<div
+  [ngClass]="{
+    'border border-gray-200': !noBorder
+  }"
+  class="w-full rounded-2xl"
+>
   <div
-    class="flex justify-between items-center p-4 gap-3 cursor-pointer"
+    [ngClass]="{
+      'cursor-not-allowed': isBlocked,
+      'cursor-pointer': !isBlocked
+    }"
+    class="flex justify-between items-center p-4 gap-3"
     (click)="isOpened = !isOpened"
   >
-    <h1 class="flex flex-1 font-semibold text-base text-gray-600">
-      {{ title }}
-    </h1>
+    <div class="flex gap-x-3 items-center">
+      <div *ngIf="isBlocked" class="w-5 h-5 rounded-sm bg-red-300"></div>
+      <h1 class="flex flex-1 font-semibold text-base text-gray-600">
+        {{ title }}
+      </h1>
+    </div>
+
     <div class="w-[24px] h-[24px] rounded-sm bg-gray-300"></div>
   </div>
   <div
     [ngClass]="{
-      'hidden': !isOpened,
-      'flex': isOpened,
+      'hidden': !isOpened || isBlocked,
+      'flex': isOpened && !isBlocked,
     }"
     class="px-[52px] py-4"
   >
