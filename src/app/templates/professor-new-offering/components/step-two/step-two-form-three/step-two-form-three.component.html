@@ -15,6 +15,8 @@
     <p class="font-semibold text-base text-gray-700">Docente cadastrado</p>
     <button
       class="font-semibold text-sm text-violet-700 rounded-lg px-4 py-[10px] bg-violet-50 border border-violet-200"
+      type="button"
+      (click)="openNewProfessorModal = true"
     >
       Novo docente
     </button>
@@ -138,3 +140,185 @@
     </div>
   </div>
 </form>
+
+<div
+  *ngIf="openNewProfessorModal"
+  class="flex justify-end items-start w-screen h-screen absolute top-0 left-0 z-40 backdrop-blur-sm bg-black/50"
+>
+  <div class="z-50 w-[798px] h-screen bg-white p-6 overflow-y-auto">
+    <div class="flex flex-col gap-y-8">
+      <div class="flex justify-between">
+        <div>
+          <h1 class="font-semibold text-base text-gray-900">
+            Cadastrar novo docente
+          </h1>
+          <p class="font-normal text-sm text-gray-700">Com vínculo</p>
+        </div>
+        <button
+          class="w-5 h-5 rounded-sm bg-gray-300"
+          type="button"
+          (click)="openNewProfessorModal = false"
+        ></button>
+      </div>
+      <div class="flex flex-col gap-y-6">
+        <div class="flex flex-col gap-[6px]">
+          <label class="font-medium text-sm text-gray-700"
+            >Pesquisar por docentes*</label
+          >
+          <div
+            class="flex items-center gap-2 w-full px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+          >
+            <div class="w-5 h-5 rounded-full bg-gray-300"></div>
+            <input
+              class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+              placeholder="Pesquisar"
+            />
+          </div>
+          <p class="font-normal text-sm text-gray-600">
+            Pesquisa por nome ou por número de matrícula
+          </p>
+        </div>
+        <div class="flex flex-col gap-[6px]">
+          <label class="font-medium text-sm text-gray-700">Nome *</label>
+          <div
+            class="flex items-center gap-2 w-full px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+          >
+            <input
+              class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+              placeholder="Preencha"
+            />
+          </div>
+        </div>
+        <div class="flex gap-x-8 justify-between">
+          <div class="flex flex-col gap-[6px]">
+            <label class="font-medium text-sm text-gray-700">Matrícula *</label>
+            <div
+              class="flex items-center gap-2 w-full px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+            >
+              <input
+                class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                placeholder="Preencha"
+              />
+            </div>
+          </div>
+          <div class="flex flex-col gap-[6px]">
+            <label class="font-medium text-sm text-gray-700">Titulação *</label>
+            <div
+              class="flex items-center gap-2 w-full px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+            >
+              <input
+                class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                placeholder="Preencha"
+              />
+            </div>
+          </div>
+          <div class="flex flex-col gap-[6px]">
+            <label class="font-medium text-sm text-gray-700">Situação *</label>
+            <div
+              class="flex items-center gap-2 w-full px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+            >
+              <input
+                class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                placeholder="Preencha"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col gap-[6px]">
+          <label class="font-medium text-sm text-gray-700">Instituição *</label>
+          <div
+            class="flex items-center gap-2 w-full px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+          >
+            <input
+              class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+              placeholder="Preencha"
+            />
+          </div>
+        </div>
+        <div class="flex flex-col gap-[6px]">
+          <label class="font-medium text-sm text-gray-700">Unidade *</label>
+          <div
+            class="flex items-center gap-2 w-full px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+          >
+            <input
+              class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+              placeholder="Preencha"
+            />
+          </div>
+        </div>
+        <div class="flex flex-col gap-[6px]">
+          <label class="font-medium text-sm text-gray-700"
+            >Departamento *</label
+          >
+          <div
+            class="flex items-center gap-2 w-full px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+          >
+            <input
+              class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+              placeholder="Preencha"
+            />
+          </div>
+        </div>
+        <div class="flex flex-col gap-[6px]">
+          <label class="font-medium text-sm text-gray-700"
+            >Função no local de trabalho *</label
+          >
+          <div
+            class="flex items-center gap-2 w-full px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+          >
+            <input
+              class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+              placeholder="Preencha"
+            />
+          </div>
+        </div>
+        <div class="flex flex-col gap-y-2">
+          <div class="flex gap-x-[18px]">
+            <p class="w-full font-medium text-sm text-gray-700">
+              Carga horária do docente*
+            </p>
+          </div>
+
+          <div class="flex gap-x-[18px]">
+            <div
+              class="flex gap-2 w-[135px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+            >
+              <input
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                placeholder="Horas"
+                name="course_carga_horaria_presencial_pratica"
+                [(ngModel)]="course.carga_horaria_presencial_pratica"
+              />
+            </div>
+            <div
+              class="flex gap-2 w-[135px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+            >
+              <input
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                placeholder="Minutos"
+                name="course_carga_horaria_presencial_teorica"
+                [(ngModel)]="course.carga_horaria_presencial_teorica"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex justify-end gap-x-[15px]">
+        <button
+          class="px-[14px] py-2 rounded-lg font-semibold text-sm text-violet-700"
+          type="button"
+          (click)="openNewProfessorModal = false"
+        >
+          Cancelar
+        </button>
+        <button
+          class="px-[14px] py-2 rounded-lg font-semibold text-sm text-white bg-violet-600"
+          type="button"
+          (click)="openNewProfessorModal = false"
+        >
+          Confirmar docente
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -50,6 +50,7 @@ export class StepTwoFormTwoComponent {
   ];
 
   hasRecentAdded = false;
+  openNewProfessorModal = false;
 
   @Output() backInsideStep: EventEmitter<void> = new EventEmitter<void>();
   @Output() nextInsideStep: EventEmitter<void> = new EventEmitter<void>();
