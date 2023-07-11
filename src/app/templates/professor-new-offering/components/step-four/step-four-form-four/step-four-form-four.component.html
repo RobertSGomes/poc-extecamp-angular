@@ -9,6 +9,7 @@
   <!-- Condições de pagamento -->
   <h1 class="font-semibold text-lg text-gray-900">Condições de pagamento</h1>
 
+  <!-- Curso gratuíto? -->
   <div class="flex flex-col gap-y-2">
     <p class="font-medium text-sm text-gray-700">Curso gratuíto?</p>
 
@@ -45,7 +46,9 @@
   <!-- À vista -->
   <h1 class="font-semibold text-lg text-gray-900">À vista</h1>
 
+  <!-- Valor e data vencimento -->
   <div class="flex gap-x-[18px]">
+    <!-- Valor -->
     <div class="flex flex-col gap-[6px]">
       <label class="font-medium text-sm text-gray-700">Valor</label>
       <div
@@ -57,6 +60,8 @@
         />
       </div>
     </div>
+
+    <!-- Data vencimento -->
     <div class="flex flex-col gap-[6px]">
       <label class="font-medium text-sm text-gray-700"
         >Data do vencimento</label
@@ -81,7 +86,9 @@
     <p class="font-normal text-sm text-gray-600">Opção 1</p>
   </div>
 
+  <!-- Número parcelas, valor e data vencimento -->
   <div class="flex gap-x-[18px]">
+    <!-- Número parcelas -->
     <div class="flex flex-col gap-[6px]">
       <label class="font-medium text-sm text-gray-700"
         >Número de parcelas</label
@@ -106,6 +113,8 @@
         </select>
       </div>
     </div>
+
+    <!-- Valor -->
     <div class="flex flex-col gap-[6px]">
       <label class="font-medium text-sm text-gray-700">Valor</label>
       <div
@@ -117,6 +126,8 @@
         />
       </div>
     </div>
+
+    <!-- Data vencimento -->
     <div class="flex flex-col gap-[6px]">
       <label class="font-medium text-sm text-gray-700"
         >Data do vencimento</label
@@ -145,6 +156,7 @@
   <!-- Cartão de crédito -->
   <h1 class="font-semibold text-lg text-gray-900">Cartão de crédito</h1>
 
+  <!-- Número máximo parcelas -->
   <div class="flex flex-col gap-[6px]">
     <label class="font-medium text-sm text-gray-700"
       >Número máximo de parcelas</label
@@ -172,7 +184,374 @@
 
   <hr class="h-[1px] bg-gray-200" />
 
+  <!-- Descontos especiais -->
   <h1 class="font-semibold text-lg text-gray-900">Descontos especiais</h1>
+
+  <!-- Porcentagem desconto - Estudantes -->
+  <div class="flex flex-col gap-[6px]">
+    <label class="font-medium text-sm text-gray-700"
+      >Porcentagem de desconto a estudantes</label
+    >
+    <div
+      class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+    >
+      <input
+        class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+      />
+      <p class="font-normal text-base text-gray-500">%</p>
+    </div>
+  </div>
+
+  <!-- Para e porcentagem -->
+  <div class="flex gap-x-[18px]">
+    <!-- Para -->
+    <div class="flex flex-col gap-[6px]">
+      <label class="font-medium text-sm text-gray-700">Para</label>
+      <div
+        class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+      >
+        <input
+          class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+        />
+      </div>
+    </div>
+
+    <!-- Porcentagem -->
+    <div class="flex flex-col gap-[6px]">
+      <label class="font-medium text-sm text-gray-700"
+        >Porcentagem de desconto</label
+      >
+      <div
+        class="flex items-center gap-2 w-[150px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+      >
+        <input
+          class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+        />
+        <p class="font-normal text-base text-gray-500">%</p>
+      </div>
+    </div>
+  </div>
+
+  <button class="flex gap-x-2" type="button">
+    <div class="w-5 h-5 rounded-lg bg-violet-700"></div>
+    <p class="font-semibold text-sm text-violet-700">
+      Inserir nova opção de desconto
+    </p>
+  </button>
+
+  <hr class="h-[1px] bg-gray-200" />
+
+  <!-- Convênio -->
+  <h1 class="font-semibold text-lg text-gray-900">Convênio</h1>
+
+  <!-- Número processo -->
+  <div class="flex flex-col gap-[6px]">
+    <label class="font-medium text-sm text-gray-700">Número do processo</label>
+    <div
+      class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+    >
+      <input
+        class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+      />
+    </div>
+  </div>
+
+  <!-- Nome empresa -->
+  <div class="flex flex-col gap-[6px]">
+    <label class="font-medium text-sm text-gray-700"
+      >Nome da empresa/Instituição</label
+    >
+    <div
+      class="flex items-center gap-2 w-[323px] h-[154px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+    >
+      <textarea
+        class="w-full h-full text-gray-800 text-base outline-none resize-none"
+        name="course_ementa"
+      ></textarea>
+    </div>
+  </div>
+
+  <!-- CNPJ, tipo, responsável e cargo -->
+  <div class="flex gap-x-[18px]">
+    <!-- CNPJ -->
+    <div class="flex flex-col gap-[6px]">
+      <label class="font-medium text-sm text-gray-700">CNPJ</label>
+      <div
+        class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+      >
+        <input
+          class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+        />
+      </div>
+    </div>
+
+    <!-- Tipo -->
+    <div class="flex flex-col gap-[6px]">
+      <label class="font-medium text-sm text-gray-700">Tipo</label>
+      <div
+        class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+      >
+        <select class="w-full text-gray-800 text-base outline-none">
+          <option selected [ngValue]="''">Selecione</option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+          <option>6</option>
+          <option>7</option>
+          <option>8</option>
+          <option>9</option>
+          <option>10</option>
+          <option>11</option>
+          <option>12</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Responsável -->
+    <div class="flex flex-col gap-[6px]">
+      <label class="font-medium text-sm text-gray-700">Responsável</label>
+      <div
+        class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+      >
+        <input
+          class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+        />
+      </div>
+    </div>
+
+    <!-- Cargo -->
+    <div class="flex flex-col gap-[6px]">
+      <label class="font-medium text-sm text-gray-700">Cargo</label>
+      <div
+        class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+      >
+        <input
+          class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- Infos valor e vencimento -->
+  <div class="flex items-start py-4 gap-x-2 w-[323px]">
+    <input type="checkbox" id="checkbox_infos_parcela" class="mt-[3px]" />
+    <label
+      for="checkbox_infos_parcela"
+      class="font-medium text-sm text-gray-700"
+      >Clique aqui caso não tenha a informação do valor da parcela e da data de
+      vencimento.</label
+    >
+  </div>
+
+  <!-- Número parcelas -->
+  <div class="flex flex-col gap-[6px]">
+    <label class="font-medium text-sm text-gray-700">Número de parcelas</label>
+    <div
+      class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+    >
+      <select class="w-full text-gray-800 text-base outline-none">
+        <option selected [ngValue]="''">Selecione</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+        <option>8</option>
+        <option>9</option>
+        <option>10</option>
+        <option>11</option>
+        <option>12</option>
+      </select>
+    </div>
+  </div>
+
+  <hr class="h-[1px] bg-gray-200" />
+
+  <!-- Recursos doações, patrocínio e outros -->
+  <h1 class="font-semibold text-lg text-gray-900">
+    Recursos provenientes de doações, patrocino e outros
+  </h1>
+
+  <!-- Valor -->
+  <div class="flex flex-col gap-[6px]">
+    <label class="font-medium text-sm text-gray-700">Valor</label>
+    <div
+      class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+    >
+      <p class="font-normal text-base text-gray-500">R$</p>
+      <input
+        class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+      />
+    </div>
+  </div>
+
+  <!-- Nome empresa -->
+  <div class="flex flex-col gap-[6px]">
+    <label class="font-medium text-sm text-gray-700"
+      >Nome da empresa/Instituição</label
+    >
+    <div
+      class="flex items-center gap-2 w-[323px] h-[154px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+    >
+      <textarea
+        class="w-full h-full text-gray-800 text-base outline-none resize-none"
+        name="course_ementa"
+      ></textarea>
+    </div>
+  </div>
+
+  <hr class="h-[1px] bg-gray-200" />
+
+  <!-- Empresa -->
+  <div class="flex flex-col gap-y-2">
+    <h1 class="font-semibold text-lg text-gray-900">Empresa</h1>
+    <p class="font-normal text-sm text-gray-600">Dados da empresa</p>
+  </div>
+
+  <!-- Nome empresa -->
+  <div class="flex flex-col gap-[6px]">
+    <label class="font-medium text-sm text-gray-700">Nome</label>
+    <div
+      class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+    >
+      <input
+        class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+      />
+    </div>
+  </div>
+
+  <!-- Endereço e bairro -->
+  <div class="flex gap-x-[18px]">
+    <!-- Endereço -->
+    <div class="flex flex-col gap-[6px]">
+      <label class="font-medium text-sm text-gray-700">Endereço</label>
+      <div
+        class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+      >
+        <input
+          class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+        />
+      </div>
+    </div>
+
+    <!-- Bairro -->
+    <div class="flex flex-col gap-[6px]">
+      <label class="font-medium text-sm text-gray-700">Bairro</label>
+      <div
+        class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+      >
+        <input
+          class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- Cidade e CEP -->
+  <div class="flex gap-x-[18px]">
+    <!-- Cidade -->
+    <div class="flex flex-col gap-[6px]">
+      <label class="font-medium text-sm text-gray-700">Cidade</label>
+      <div
+        class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+      >
+        <input
+          class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+        />
+      </div>
+    </div>
+
+    <!-- CEP -->
+    <div class="flex flex-col gap-[6px]">
+      <label class="font-medium text-sm text-gray-700">CEP</label>
+      <div
+        class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+      >
+        <input
+          class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- CNPJ -->
+  <div class="flex flex-col gap-[6px]">
+    <label class="font-medium text-sm text-gray-700">CNPJ </label>
+    <div
+      class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+    >
+      <input
+        class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+      />
+    </div>
+  </div>
+
+  <!-- Ins. Estadual -->
+  <div class="flex flex-col gap-[6px]">
+    <label class="font-medium text-sm text-gray-700">Ins. Estadual </label>
+    <div
+      class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+    >
+      <input
+        class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+      />
+    </div>
+  </div>
+
+  <!-- Nome do contato -->
+  <div class="flex flex-col gap-[6px]">
+    <label class="font-medium text-sm text-gray-700">Nome do contato </label>
+    <div
+      class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+    >
+      <input
+        class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+      />
+    </div>
+  </div>
+
+  <!-- Telefone e Fax -->
+  <div class="flex gap-x-[18px]">
+    <!-- Telefone -->
+    <div class="flex flex-col gap-[6px]">
+      <label class="font-medium text-sm text-gray-700">Telefone</label>
+      <div
+        class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+      >
+        <input
+          class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+        />
+      </div>
+    </div>
+
+    <!-- Fax -->
+    <div class="flex flex-col gap-[6px]">
+      <label class="font-medium text-sm text-gray-700">Fax</label>
+      <div
+        class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+      >
+        <input
+          class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- E-mail -->
+  <div class="flex flex-col gap-[6px]">
+    <label class="font-medium text-sm text-gray-700">E-mail</label>
+    <div
+      class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+    >
+      <input
+        class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+      />
+    </div>
+  </div>
 
   <hr class="h-[1px] bg-gray-200" />
 
