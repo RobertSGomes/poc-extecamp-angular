@@ -5,6 +5,8 @@ interface IProps {
   description: string;
 }
 
+type HeaederRoutes = Array<string>;
+
 @Component({
   selector: 'app-header-navbar',
   templateUrl: './header-navbar.component.html',
@@ -16,6 +18,9 @@ export class HeaderNavbarComponent implements OnInit {
     name: '',
     description: '',
   };
+
+  @Input()
+  routes: HeaederRoutes = [];
 
   ngOnInit() {
     this.props.name = `Olá, ${this.props.name}`;

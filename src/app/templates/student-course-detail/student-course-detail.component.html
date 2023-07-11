@@ -16,10 +16,15 @@
     ]"
   ></app-sidebar>
 
-  <div
-    class="flex col-start-2 row-start-2 flex-row items-center justify-between border-b border-b-gray-200 px-8 py-4 h-[72px] w-full"
-  >
-    <p></p>
+  <div class="col-start-2 row-start-2 w-full">
+    <app-header-navbar
+      [routes]="[
+        'Cursos',
+        'Meus cursos',
+        'Ver todos os cursos',
+        '{{course.name}}'
+      ]"
+    ></app-header-navbar>
   </div>
 
   <div class="col-start-2 row-start-3 overflow-y-auto w-full px-8 bg-gray-50">
