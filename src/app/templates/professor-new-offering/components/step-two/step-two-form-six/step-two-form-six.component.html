@@ -1,1 +1,326 @@
-<p>step-two-form-six works!</p>
+<form
+  (submit)="nextStep.emit()"
+  class="flex flex-col gap-y-6 w-[1072px] mx-auto p-8 bg-white border border-gray-200 rounded-2xl shadow-sm"
+>
+  <app-history-line
+    [currentStep]="5"
+    [steps]="history_steps"
+  ></app-history-line>
+
+  <hr class="h-[1px] bg-gray-200" />
+
+  <h1 class="font-semibold text-lg text-gray-900">
+    Validação de carga horária
+  </h1>
+
+  <table>
+    <thead class="border-b border-b-gray-200">
+      <th class="px-6 py-3 text-left font-medium text-xs text-gray-700 flex-1">
+        Docente
+      </th>
+      <th
+        class="px-6 py-3 text-left font-medium text-xs text-gray-700 w-[172px]"
+      >
+        Status
+      </th>
+      <th
+        class="px-6 py-3 text-left font-medium text-xs text-gray-700 w-[278px]"
+      >
+        Carga horária
+      </th>
+      <th
+        class="px-6 py-3 text-left font-medium text-xs text-gray-700 w-[278px]"
+      >
+        Carga horária<br />Concomitante/Simultânea
+      </th>
+    </thead>
+    <tbody>
+      <tr>
+        <td
+          class="border-b border-b-gray-200 px-4 py-3 font-normal text-sm text-gray-700"
+        >
+          Maria da Silva
+        </td>
+        <td class="border-b border-b-gray-200 px-4 py-3">
+          <div
+            class="w-fit px-[6px] py-0.5 rounded-[6px] bg-emerald-50 border border-emerald-300"
+          >
+            <p class="font-medium text-xs text-emerald-700 whitespace-nowrap">
+              Professor responsável
+            </p>
+          </div>
+        </td>
+        <td class="border-b border-b-gray-200 px-4 py-3">
+          <div class="flex gap-x-2 w-full">
+            <div
+              class="flex items-center gap-2 w-full px-3 py-2 bg-white rounded-lg border border-gray-300 shadow-sm"
+            >
+              <input
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                placeholder="h"
+              />
+            </div>
+            <div
+              class="flex items-center gap-2 w-full px-3 py-2 bg-white rounded-lg border border-gray-300 shadow-sm"
+            >
+              <input
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                placeholder="min"
+              />
+            </div>
+          </div>
+        </td>
+        <td class="border-b border-b-gray-200 px-4 py-3">
+          <div class="flex gap-x-2 w-full">
+            <div
+              class="flex items-center gap-2 w-full px-3 py-2 bg-white rounded-lg border border-gray-300 shadow-sm"
+            >
+              <input
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                placeholder="h"
+              />
+            </div>
+            <div
+              class="flex items-center gap-2 w-full px-3 py-2 bg-white rounded-lg border border-gray-300 shadow-sm"
+            >
+              <input
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                placeholder="min"
+              />
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td
+          class="border-b border-b-gray-200 px-4 py-3 font-normal text-sm text-gray-700"
+        >
+          Maria da Silva
+        </td>
+        <td class="border-b border-b-gray-200 px-4 py-3">
+          <div
+            class="w-fit px-[6px] py-0.5 rounded-[6px] bg-blue-50 border border-blue-300"
+          >
+            <p class="font-medium text-xs text-blue-700 whitespace-nowrap">
+              Professor com vínculo
+            </p>
+          </div>
+        </td>
+        <td class="border-b border-b-gray-200 px-4 py-3">
+          <div class="flex gap-x-2 w-full">
+            <div
+              class="flex items-center gap-2 w-full px-3 py-2 bg-white rounded-lg border border-gray-300 shadow-sm"
+            >
+              <input
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                placeholder="h"
+              />
+            </div>
+            <div
+              class="flex items-center gap-2 w-full px-3 py-2 bg-white rounded-lg border border-gray-300 shadow-sm"
+            >
+              <input
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                placeholder="min"
+              />
+            </div>
+          </div>
+        </td>
+        <td class="border-b border-b-gray-200 px-4 py-3">
+          <div class="flex gap-x-2 w-full">
+            <div
+              class="flex items-center gap-2 w-full px-3 py-2 bg-white rounded-lg border border-gray-300 shadow-sm"
+            >
+              <input
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                placeholder="h"
+              />
+            </div>
+            <div
+              class="flex items-center gap-2 w-full px-3 py-2 bg-white rounded-lg border border-gray-300 shadow-sm"
+            >
+              <input
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                placeholder="min"
+              />
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td
+          class="border-b border-b-gray-200 px-4 py-3 font-normal text-sm text-gray-700"
+        >
+          Maria da Silva
+        </td>
+        <td class="border-b border-b-gray-200 px-4 py-3">
+          <div
+            class="w-fit px-[6px] py-0.5 rounded-[6px] bg-blue-50 border border-blue-300"
+          >
+            <p class="font-medium text-xs text-blue-700 whitespace-nowrap">
+              Professor sem vínculo
+            </p>
+          </div>
+        </td>
+        <td class="border-b border-b-gray-200 px-4 py-3">
+          <div class="flex gap-x-2 w-full">
+            <div
+              class="flex items-center gap-2 w-full px-3 py-2 bg-white rounded-lg border border-gray-300 shadow-sm"
+            >
+              <input
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                placeholder="h"
+              />
+            </div>
+            <div
+              class="flex items-center gap-2 w-full px-3 py-2 bg-white rounded-lg border border-gray-300 shadow-sm"
+            >
+              <input
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                placeholder="min"
+              />
+            </div>
+          </div>
+        </td>
+        <td class="border-b border-b-gray-200 px-4 py-3">
+          <div class="flex gap-x-2 w-full">
+            <div
+              class="flex items-center gap-2 w-full px-3 py-2 bg-white rounded-lg border border-gray-300 shadow-sm"
+            >
+              <input
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                placeholder="h"
+              />
+            </div>
+            <div
+              class="flex items-center gap-2 w-full px-3 py-2 bg-white rounded-lg border border-gray-300 shadow-sm"
+            >
+              <input
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                placeholder="min"
+              />
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div
+    class="flex justify-between gap-x-4 w-full p-4 rounded-xl bg-orange-50 border border-orange-300"
+  >
+    <div class="flex gap-x-4">
+      <div
+        class="relative w-4 h-4 rounded-full bg-orange-600 before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:w-[28px] before:h-[28px] before:rounded-full before:border-2 before:border-orange-600/30 after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:w-[38px] after:h-[38px] after:rounded-full after:border-2 after:border-orange-600/10"
+      ></div>
+
+      <div class="flex flex-col gap-y-1">
+        <p class="font-semibold text-sm text-orange-700">Atenção!</p>
+        <p class="font-normal text-sm text-orange-700">
+          A soma da carga horária dos docentes é menor que a carga horária do
+          curso.<br />Favor voltar e corrigir a carga horária dos professores.
+        </p>
+      </div>
+    </div>
+
+    <button class="w-5 h-5 bg-orange-300 rounded-sm" type="submit"></button>
+  </div>
+
+  <table class="w-fit">
+    <thead class="border-b border-b-gray-200">
+      <th
+        class="w-[243px] px-6 py-3 text-left font-semibold text-sm text-gray-900"
+      >
+        Validação da carga total
+      </th>
+      <th
+        class="w-[243px] px-6 py-3 text-left font-medium text-xs text-gray-700"
+      >
+        Carga horária
+      </th>
+    </thead>
+    <tbody>
+      <tr>
+        <td
+          class="border-b border-b-gray-200 w-[243px] px-6 py-3 font-bold text-sm text-gray-700"
+        >
+          Total
+        </td>
+        <td class="border-b border-b-gray-200 w-[243px] px-6 py-3">
+          <div class="flex gap-x-2 w-full">
+            <div
+              class="flex items-center gap-2 w-full px-3 py-2 bg-white rounded-lg border border-gray-300 shadow-sm"
+            >
+              <input
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                placeholder="h"
+              />
+            </div>
+            <div
+              class="flex items-center gap-2 w-full px-3 py-2 bg-white rounded-lg border border-gray-300 shadow-sm"
+            >
+              <input
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                placeholder="min"
+              />
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td
+          class="border-b border-b-gray-200 w-[243px] px-6 py-3 font-bold text-sm text-gray-700"
+        >
+          Carga horária total do curso
+        </td>
+        <td class="border-b border-b-gray-200 w-[243px] px-6 py-3">
+          <div class="flex gap-x-2 w-full">
+            <div
+              class="flex items-center gap-2 w-full px-3 py-2 bg-white rounded-lg border border-gray-300 shadow-sm"
+            >
+              <input
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                placeholder="h"
+              />
+            </div>
+            <div
+              class="flex items-center gap-2 w-full px-3 py-2 bg-white rounded-lg border border-gray-300 shadow-sm"
+            >
+              <input
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                placeholder="min"
+              />
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr class="h-[1px] bg-gray-200" />
+
+  <div class="flex justify-between items-center">
+    <button
+      (click)="backInsideStep.emit()"
+      class="px-4 py-[10px] rounded-lg font-semibold text-sm text-violet-700"
+      type="button"
+    >
+      Voltar
+    </button>
+    <div class="flex gap-x-[15px]">
+      <button
+        class="px-4 py-[10px] rounded-lg font-semibold text-sm text-gray-700 shadow-sm border border-gray-300"
+        type="button"
+        (click)="openCancelModal.emit()"
+      >
+        Cancelar
+      </button>
+      <button
+        class="px-4 py-[10px] rounded-lg font-semibold text-sm text-white bg-violet-700"
+        type="submit"
+      >
+        Próximo
+      </button>
+    </div>
+  </div>
+</form>

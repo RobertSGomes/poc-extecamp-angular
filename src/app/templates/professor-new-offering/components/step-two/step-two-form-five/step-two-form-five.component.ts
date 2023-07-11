@@ -54,6 +54,7 @@ export class StepTwoFormFiveComponent {
 
   @Output() backInsideStep: EventEmitter<void> = new EventEmitter<void>();
   @Output() nextInsideStep: EventEmitter<void> = new EventEmitter<void>();
+  @Output() openCancelModal: EventEmitter<void> = new EventEmitter<void>();
 
   @Input() course!: CourseModel;
 }

@@ -33,6 +33,7 @@ export class StepOneFormFourComponent {
 
   @Output() backInsideStep: EventEmitter<void> = new EventEmitter<void>();
   @Output() nextInsideStep: EventEmitter<void> = new EventEmitter<void>();
+  @Output() openCancelModal: EventEmitter<void> = new EventEmitter<void>();
 
   @Input() course!: CourseModel;
 }
