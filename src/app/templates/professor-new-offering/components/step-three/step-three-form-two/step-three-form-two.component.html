@@ -11,6 +11,134 @@
 
   <h1 class="font-semibold text-lg text-gray-900">Inscrição</h1>
 
+  <div class="flex flex-col gap-y-2">
+    <div class="flex gap-x-[18px]">
+      <p class="w-[494px] font-medium text-sm text-gray-700">Local *</p>
+    </div>
+
+    <div class="flex gap-x-[18px]">
+      <div
+        class="flex gap-2 w-[494px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+      >
+        <input
+          class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+          placeholder="Preencha"
+          name="course_frequencia_minima"
+          [(ngModel)]="course.frequencia_minima"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-col gap-y-2">
+    <div class="flex gap-x-[18px]">
+      <p class="w-[324px] font-medium text-sm text-gray-700">
+        Telefone da Secretaria de Extensão *
+      </p>
+      <p class="w-[324px] font-medium text-sm text-gray-700">
+        Telefone para informações
+      </p>
+    </div>
+
+    <div class="flex gap-x-[18px]">
+      <div
+        class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+      >
+        <select class="font-medium text-base text-gray-800 outline-none">
+          <option selected>BR</option>
+          <option>EN</option>
+          <option>ES</option>
+        </select>
+        <input
+          class="w-[324px] text-gray-800 text-base outline-none placeholder:text-gray-500"
+          placeholder="+55 (DDD) 00000-0000"
+          [(ngModel)]="course.tipo"
+          name="course_telefone"
+        />
+      </div>
+      <div
+        class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+      >
+        <select class="font-medium text-base text-gray-800 outline-none">
+          <option selected>BR</option>
+          <option>EN</option>
+          <option>ES</option>
+        </select>
+        <input
+          class="w-[324px] text-gray-800 text-base outline-none placeholder:text-gray-500"
+          placeholder="+55 (DDD) 00000-0000"
+          [(ngModel)]="course.tipo"
+          name="course_telefone"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-col gap-y-2">
+    <div class="flex gap-x-[18px]">
+      <p class="w-[324px] font-medium text-sm text-gray-700">
+        Abertura das incrições *
+      </p>
+      <p class="w-[324px] font-medium text-sm text-gray-700">
+        Encerramento das incrições *
+      </p>
+    </div>
+
+    <div class="flex gap-x-[18px]">
+      <div
+        class="flex items-center gap-2 w-[324px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+      >
+        <div class="w-5 h-5 rounded-full bg-gray-300"></div>
+        <input
+          class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+          placeholder="dd/mm/aaaa"
+        />
+      </div>
+      <div
+        class="flex items-center gap-2 w-[324px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+      >
+        <div class="w-5 h-5 rounded-full bg-gray-300"></div>
+        <input
+          class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+          placeholder="dd/mm/aaaa"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-col gap-y-2">
+    <p class="font-medium text-sm text-gray-700">
+      O modelo de ficha de inscrição será básico ou completo? *
+    </p>
+
+    <div class="flex items-center gap-x-2">
+      <input
+        type="radio"
+        id="disciplina_eletiva_yes"
+        name="disciplina_eletiva"
+        [value]="'Basico'"
+      />
+      <label
+        for="disciplina_eletiva_yes"
+        class="font-medium text-base text-gray-700"
+        >Básico</label
+      >
+    </div>
+    <div class="flex items-center gap-x-2">
+      <input
+        type="radio"
+        id="disciplina_eletiva_no"
+        name="disciplina_eletiva"
+        [value]="'Completo'"
+      />
+      <label
+        for="disciplina_eletiva_no"
+        class="font-medium text-base text-gray-700"
+        >Completo</label
+      >
+    </div>
+  </div>
+
   <hr class="h-[1px] bg-gray-200" />
 
   <div class="flex justify-between items-center">
