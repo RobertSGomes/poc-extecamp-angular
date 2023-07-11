@@ -13,6 +13,140 @@
     Oferecimento e outras informações
   </h1>
 
+  <div class="flex flex-col gap-y-2">
+    <div class="flex gap-x-[18px]">
+      <p class="w-[494px] font-medium text-sm text-gray-700">
+        Local do oferecimento
+      </p>
+    </div>
+
+    <div class="flex gap-x-[18px]">
+      <div
+        class="flex gap-2 w-[494px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+      >
+        <input
+          class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+          placeholder="Preencha"
+          name="course_frequencia_minima"
+          [(ngModel)]="course.frequencia_minima"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-col gap-y-2">
+    <div class="flex gap-x-[18px]">
+      <p class="w-[323px] font-medium text-sm text-gray-700">UF *</p>
+      <p class="w-[323px] font-medium text-sm text-gray-700">Cidade *</p>
+    </div>
+
+    <div class="flex gap-x-[18px]">
+      <div
+        class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+      >
+        <select class="w-full text-gray-800 text-base outline-none">
+          <option selected [ngValue]="''">Selecione</option>
+          <option [ngValue]="'SP'">SP</option>
+        </select>
+      </div>
+      <div
+        class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+      >
+        <select class="w-full text-gray-800 text-base outline-none">
+          <option selected [ngValue]="''">Selecione</option>
+          <option [ngValue]="'Atibaia'">Atibaia</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-col w-full gap-[6px]">
+    <label class="w-[494px] font-medium text-sm text-gray-700"
+      >Dias da semana e horários</label
+    >
+    <div
+      class="flex gap-2 w-[494px] h-[154px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+    >
+      <textarea
+        class="w-full h-full text-gray-800 text-base outline-none resize-none placeholder:text-gray-500"
+        placeholder="Preencha"
+        name="course_ementa"
+        [(ngModel)]="course.ementa"
+      ></textarea>
+    </div>
+  </div>
+
+  <div class="flex flex-col gap-y-2">
+    <div class="flex gap-x-[18px]">
+      <p class="w-[238px] font-medium text-sm text-gray-700">
+        Início do oferecimento
+      </p>
+      <p class="w-[238px] font-medium text-sm text-gray-700">
+        Encerramento do oferecimento
+      </p>
+    </div>
+
+    <div class="flex gap-x-[18px]">
+      <div
+        class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+      >
+        <div class="w-5 h-5 rounded-full bg-gray-300"></div>
+        <input
+          class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+          placeholder="dd/mm/aaaa"
+        />
+      </div>
+      <div
+        class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+      >
+        <div class="w-5 h-5 rounded-full bg-gray-300"></div>
+        <input
+          class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+          placeholder="dd/mm/aaaa"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-col gap-y-2">
+    <div class="flex gap-x-[18px]">
+      <p class="w-[238px] font-medium text-sm text-gray-700">
+        Número mínimo de vagas *
+      </p>
+      <p class="w-[238px] font-medium text-sm text-gray-700">
+        Número máximo de vagas *
+      </p>
+    </div>
+
+    <div class="flex gap-x-[18px]">
+      <div
+        class="flex gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+      >
+        <input
+          class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+          placeholder="Preencha"
+        />
+      </div>
+      <div
+        class="flex gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+      >
+        <input
+          class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+          placeholder="Preencha"
+        />
+      </div>
+    </div>
+
+    <div class="flex flex-row gap-x-[18px]">
+      <div class="w-[320px]">
+        <p class="font-normal text-sm text-gray-700">
+          (Caso o número mínimo seja atingido é obrigatório a realização do
+          curso)
+        </p>
+      </div>
+    </div>
+  </div>
+
   <hr class="h-[1px] bg-gray-200" />
 
   <div class="flex justify-between items-center">
