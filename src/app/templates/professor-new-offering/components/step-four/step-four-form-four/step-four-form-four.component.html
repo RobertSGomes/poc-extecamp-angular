@@ -6,6 +6,7 @@
 
   <hr class="h-[1px] bg-gray-200" />
 
+  <!-- Condições de pagamento -->
   <h1 class="font-semibold text-lg text-gray-900">Condições de pagamento</h1>
 
   <div class="flex flex-col gap-y-2">
@@ -41,6 +42,7 @@
 
   <hr class="h-[1px] bg-gray-200" />
 
+  <!-- À vista -->
   <h1 class="font-semibold text-lg text-gray-900">À vista</h1>
 
   <div class="flex gap-x-[18px]">
@@ -49,9 +51,9 @@
       <div
         class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
+        <p class="font-normal text-base text-gray-500">R$</p>
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-          placeholder="R$"
         />
       </div>
     </div>
@@ -70,6 +72,107 @@
       </div>
     </div>
   </div>
+
+  <hr class="h-[1px] bg-gray-200" />
+
+  <!-- Parcelado (Boleto) -->
+  <div class="flex flex-col gap-y-2">
+    <h1 class="font-semibold text-lg text-gray-900">Parcelado (Boleto)</h1>
+    <p class="font-normal text-sm text-gray-600">Opção 1</p>
+  </div>
+
+  <div class="flex gap-x-[18px]">
+    <div class="flex flex-col gap-[6px]">
+      <label class="font-medium text-sm text-gray-700"
+        >Número de parcelas</label
+      >
+      <div
+        class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+      >
+        <select class="w-full text-gray-800 text-base outline-none">
+          <option selected [ngValue]="''">Selecione</option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+          <option>6</option>
+          <option>7</option>
+          <option>8</option>
+          <option>9</option>
+          <option>10</option>
+          <option>11</option>
+          <option>12</option>
+        </select>
+      </div>
+    </div>
+    <div class="flex flex-col gap-[6px]">
+      <label class="font-medium text-sm text-gray-700">Valor</label>
+      <div
+        class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+      >
+        <p class="font-normal text-base text-gray-500">R$</p>
+        <input
+          class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+        />
+      </div>
+    </div>
+    <div class="flex flex-col gap-[6px]">
+      <label class="font-medium text-sm text-gray-700"
+        >Data do vencimento</label
+      >
+      <div
+        class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+      >
+        <div class="w-5 h-5 rounded-full bg-gray-300"></div>
+        <input
+          class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+          placeholder="dd/mm/aaaa"
+        />
+      </div>
+    </div>
+  </div>
+
+  <button class="flex gap-x-2" type="button">
+    <div class="w-5 h-5 rounded-lg bg-violet-700"></div>
+    <p class="font-semibold text-sm text-violet-700">
+      Inserir nova opção de parcelamento
+    </p>
+  </button>
+
+  <hr class="h-[1px] bg-gray-200" />
+
+  <!-- Cartão de crédito -->
+  <h1 class="font-semibold text-lg text-gray-900">Cartão de crédito</h1>
+
+  <div class="flex flex-col gap-[6px]">
+    <label class="font-medium text-sm text-gray-700"
+      >Número máximo de parcelas</label
+    >
+    <div
+      class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+    >
+      <select class="w-full text-gray-800 text-base outline-none">
+        <option selected [ngValue]="''">Selecione</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+        <option>8</option>
+        <option>9</option>
+        <option>10</option>
+        <option>11</option>
+        <option>12</option>
+      </select>
+    </div>
+  </div>
+
+  <hr class="h-[1px] bg-gray-200" />
+
+  <h1 class="font-semibold text-lg text-gray-900">Descontos especiais</h1>
 
   <hr class="h-[1px] bg-gray-200" />
 
