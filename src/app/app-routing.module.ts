@@ -1,7 +1,7 @@
 import { StudentHomeComponent } from './features/student/templates/student-home/student-home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './templates/home/home.component';
+import { HomeComponent } from './features/home/templates/home/home.component';
 import { SigninComponent } from './features/auth/templates/signin/signin.component';
 import { SignupComponent } from './features/auth/templates/signup/signup.component';
 import { ProfessorHomeComponent } from './features/professor/templates/professor-home/professor-home.component';

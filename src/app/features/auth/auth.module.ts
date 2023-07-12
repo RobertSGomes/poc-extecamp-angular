@@ -9,5 +9,6 @@ import { CommonModule } from '@angular/common';
 @NgModule({
   declarations: [SigninComponent, SignupComponent],
   imports: [AppRoutingModule, FormsModule, CommonModule, SharedModule],
+  exports: [SigninComponent, SignupComponent],
 })
 export class AuthModule {}

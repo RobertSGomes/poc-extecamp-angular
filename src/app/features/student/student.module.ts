@@ -24,5 +24,11 @@ import { CommonModule } from '@angular/common';
     CourseSubscriptionStepFourComponent,
   ],
   imports: [AppRoutingModule, FormsModule, SharedModule, CommonModule],
+  exports: [
+    StudentAllCoursesComponent,
+    StudentCourseDetailComponent,
+    StudentCourseRegistrationComponent,
+    StudentHomeComponent,
+  ],
 })
 export class StudentModule {}

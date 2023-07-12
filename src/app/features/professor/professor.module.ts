@@ -54,5 +54,10 @@ import { CommonModule } from '@angular/common';
     StepFiveFormOneComponent,
   ],
   imports: [AppRoutingModule, FormsModule, SharedModule, CommonModule],
+  exports: [
+    ProfessorHomeComponent,
+    ProfessorNewOfferingComponent,
+    ProfessorOfferingComponent,
+  ],
 })
 export class ProfessorModule {}
