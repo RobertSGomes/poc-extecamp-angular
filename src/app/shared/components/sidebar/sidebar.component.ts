@@ -12,9 +12,11 @@ type NavItem = {
   styleUrls: ['./sidebar.component.css'],
 })
 export class SidebarComponent implements OnInit {
-  @Input()
-  navItens: NavItem[] = [];
   currentUrl: string = '';
+
+  @Input() name: string = '';
+  @Input() email: string = '';
+  @Input() navItens: NavItem[] = [];
 
   constructor(private router: Router) {}
 

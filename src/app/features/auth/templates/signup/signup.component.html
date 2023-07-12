@@ -1,5 +1,11 @@
-<section class="relative flex h-screen w-screen items-center justify-center">
-  <div class="flex flex-col p-2 items-center gap-8">
+<section
+  class="relative flex h-screen w-screen items-center justify-center overflow-x-hidden"
+>
+  <form
+    class="flex flex-col p-2 items-center gap-8"
+    [formGroup]="signUpForm"
+    (submit)="handleSignUp()"
+  >
     <img
       src="../../../assets/extecamp_logo_colored.png"
       class="w-[286px] h-[90px]"
@@ -19,8 +25,17 @@
                 class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
                 placeholder="Preencha"
                 required
+                type="text"
+                formControlName="nome"
               />
               <img src="../../../../../assets/svgs/help.svg" class="w-4 h-4" />
+            </div>
+            <div
+              *ngIf="signUpForm.get('nome')?.errors?.['required'] && signUpForm.get('nome')?.touched"
+            >
+              <p class="font-normal text-sm text-red-600">
+                Informe seu nome completo
+              </p>
             </div>
           </div>
           <div class="flex flex-col gap-[6px] w-[500px]">
@@ -37,7 +52,16 @@
                 class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
                 placeholder="+55 (DDD) 00000-0000"
                 required
+                type="text"
+                formControlName="telefone"
               />
+            </div>
+            <div
+              *ngIf="signUpForm.get('telefone')?.errors?.['required'] && signUpForm.get('telefone')?.touched"
+            >
+              <p class="font-normal text-sm text-red-600">
+                Informe seu telefone
+              </p>
             </div>
           </div>
           <div class="flex flex-col gap-[6px] w-[500px]">
@@ -47,10 +71,55 @@
             >
               <input
                 class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-                placeholder="E-mail ou número de matrícula"
+                placeholder="E-mail"
                 required
+                type="email"
+                formControlName="email"
               />
               <img src="../../../../../assets/svgs/help.svg" class="w-4 h-4" />
+            </div>
+            <div
+              *ngIf="signUpForm.get('email')?.errors?.['required'] && signUpForm.get('email')?.touched"
+            >
+              <p class="font-normal text-sm text-red-600">Informe seu e-mail</p>
+            </div>
+            <div
+              *ngIf="signUpForm.get('email')?.errors?.['email'] && !signUpForm.get('email')?.errors?.['required'] && signUpForm.get('email')?.touched"
+            >
+              <p class="font-normal text-sm text-red-600">
+                Informe um e-mail válido
+              </p>
+            </div>
+          </div>
+          <div class="flex flex-col gap-[6px] w-[500px]">
+            <label class="font-medium text-sm text-gray-700">Matrícula *</label>
+            <div
+              class="flex gap-2 w-full px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+            >
+              <input
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                placeholder="Número de matrícula"
+                required
+                type="text"
+                formControlName="matricula"
+                minlength="10"
+                maxlength="10"
+              />
+              <img src="../../../../../assets/svgs/help.svg" class="w-4 h-4" />
+            </div>
+            <div
+              *ngIf="signUpForm.get('matricula')?.errors?.['required'] && signUpForm.get('matricula')?.touched"
+            >
+              <p class="font-normal text-sm text-red-600">
+                Informe seu número de matrícula
+              </p>
+            </div>
+            <div
+              *ngIf="(signUpForm.get('matricula')?.errors?.['minlength'] || signUpForm.get('matricula')?.errors?.['maxlength']) && signUpForm.get('matricula')?.touched"
+            >
+              <p class="font-normal text-sm text-red-600">
+                Número de matrícula deve conter 10 caracteres
+              </p>
             </div>
           </div>
           <div class="flex flex-col gap-[6px] w-[500px]">
@@ -59,12 +128,18 @@
               class="flex gap-2 w-full px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
             >
               <input
-                type="password"
                 class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
                 placeholder="Preencha"
                 required
+                type="password"
+                formControlName="senha"
               />
               <img src="../../../../../assets/svgs/help.svg" class="w-4 h-4" />
+            </div>
+            <div
+              *ngIf="signUpForm.get('senha')?.errors?.['required'] && signUpForm.get('senha')?.touched"
+            >
+              <p class="font-normal text-sm text-red-600">Informe uma senha</p>
             </div>
           </div>
           <div class="flex flex-col gap-[6px] w-[500px]">
@@ -79,9 +154,16 @@
                 class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
                 placeholder="Preencha"
                 required
+                type="password"
+                formControlName="confirma_senha"
               />
 
               <img src="../../../../../assets/svgs/help.svg" class="w-4 h-4" />
+            </div>
+            <div
+              *ngIf="signUpForm.get('confirma_senha')?.errors?.['required'] && signUpForm.get('confirma_senha')?.touched"
+            >
+              <p class="font-normal text-sm text-red-600">Confirme a senha</p>
             </div>
           </div>
         </div>
@@ -89,11 +171,12 @@
       <hr class="flex w-[500px] h-[.5px] bg-gray-200" />
       <button
         class="rounded-lg w-fit px-[80px] py-[14px] bg-violet-600 border border-violet-600 font-semibold text-sm text-white shadow-sm"
+        [disabled]="!signUpForm.valid"
       >
         Cadastrar
       </button>
     </div>
-  </div>
+  </form>
 
   <button
     class="absolute left-[65px] top-[65px] px-4 py-[10px] font-semibold text-sm text-violet-700"

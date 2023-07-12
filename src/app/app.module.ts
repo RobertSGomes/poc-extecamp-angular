@@ -6,6 +6,7 @@ import { HomeModule } from './features/home/home.module';
 import { ProfessorModule } from './features/professor/professor.module';
 import { StudentModule } from './features/student/student.module';
 import { AuthModule } from './features/auth/auth.module';
+import { HttpClientModule } from '@angular/common/http';
 
 // Components
 import { AppComponent } from './app.component';
@@ -20,6 +21,7 @@ import { BrowserModule } from '@angular/platform-browser';
     AuthModule,
     ProfessorModule,
     StudentModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

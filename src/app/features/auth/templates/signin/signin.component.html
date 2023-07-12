@@ -1,5 +1,9 @@
 <section class="relative flex h-screen w-screen items-center justify-center">
-  <div class="flex flex-col p-2 items-center gap-8">
+  <form
+    [formGroup]="signInForm"
+    (submit)="handleSignIn()"
+    class="flex flex-col p-2 items-center gap-8"
+  >
     <img
       src="../../../../../assets/extecamp_logo_colored.png"
       class="w-[286px] h-[90px]"
@@ -18,11 +22,21 @@
                   <input
                     class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
                     placeholder="E-mail ou número de matrícula"
+                    type="text"
+                    formControlName="login"
+                    required
                   />
                   <img
                     src="../../../../../assets/svgs/help.svg"
                     class="w-4 h-4"
                   />
+                </div>
+                <div
+                  *ngIf="signInForm.get('login')?.errors?.['required'] && signInForm.get('login')?.touched"
+                >
+                  <p class="font-normal text-sm text-red-600">
+                    Informe um e-mail ou o número de matrícula
+                  </p>
                 </div>
               </div>
               <div class="flex flex-col gap-[6px] w-[500px]">
@@ -31,14 +45,23 @@
                   class="flex gap-2 w-full px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
                 >
                   <input
-                    type="password"
                     class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
                     placeholder="Senha"
+                    type="password"
+                    formControlName="senha"
+                    required
                   />
                   <img
                     src="../../../../../assets/svgs/help.svg"
                     class="w-4 h-4"
                   />
+                </div>
+                <div
+                  *ngIf="signInForm.get('senha')?.errors?.['required'] && signInForm.get('senha')?.touched"
+                >
+                  <p class="font-normal text-sm text-red-600">
+                    Informe a senha
+                  </p>
                 </div>
               </div>
             </div>
@@ -51,6 +74,8 @@
         </div>
         <button
           class="rounded-lg w-fit px-[80px] py-[14px] bg-violet-600 border border-violet-600 font-semibold text-sm text-white shadow-sm"
+          type="submit"
+          [disabled]="!signInForm.valid"
         >
           Entrar
         </button>
@@ -65,7 +90,7 @@
         </p>
       </div>
     </div>
-  </div>
+  </form>
 
   <button
     class="absolute left-[65px] top-[65px] px-4 py-[10px] font-semibold text-sm text-violet-700"

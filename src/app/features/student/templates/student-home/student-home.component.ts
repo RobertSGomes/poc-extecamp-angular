@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { StudentModel } from '../../models/student.model';
+import { StudentService } from '../../student.service';
 
 type RegisteredCourse = {
   sigla: string;
@@ -23,4 +25,21 @@ export class StudentHomeComponent {
     //   inscricao: 'INCOMPLETA',
     // },
   ];
+
+  student!: StudentModel;
+
+  constructor(private readonly studentService: StudentService) {}
+
+  ngOnInit() {
+    const id = this.studentService.getStudentId();
+    this.getStudent(id);
+  }
+
+  getStudent(studentId: string) {
+    const response = this.studentService.getOne(studentId);
+
+    response.subscribe((response) => {
+      this.student = response;
+    });
+  }
 }
