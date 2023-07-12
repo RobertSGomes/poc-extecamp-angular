@@ -9,7 +9,7 @@ type RegisteredCourse = {
 };
 
 @Component({
-  selector: 'app-student-home',
+  selector: 'student-home',
   templateUrl: './student-home.component.html',
   styleUrls: ['./student-home.component.css'],
 })

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CourseRegistrationModel } from './models/course-registration.model';
 
 @Component({
-  selector: 'app-student-course-registration',
+  selector: 'student-course-registration',
   templateUrl: './student-course-registration.component.html',
   styleUrls: ['./student-course-registration.component.css'],
 })

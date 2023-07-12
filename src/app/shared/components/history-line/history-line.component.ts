@@ -1,12 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { HistoryStep } from 'src/app/templates/professor-new-offering/types/history.type';
-
-interface IProps {
-  steps: Array<{
-    title: string;
-    step_index: number;
-  }>;
-}
+import { HistoryStep } from 'src/app/features/professor/templates/professor-new-offering/types/history.type';
 
 @Component({
   selector: 'app-history-line',

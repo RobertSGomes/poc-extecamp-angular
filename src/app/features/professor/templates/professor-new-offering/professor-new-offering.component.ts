@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CourseModel } from './models/course.model';
 
 @Component({
-  selector: 'app-professor-new-offering',
+  selector: 'professor-new-offering',
   templateUrl: './professor-new-offering.component.html',
   styleUrls: ['./professor-new-offering.component.css'],
 })
