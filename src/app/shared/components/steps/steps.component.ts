@@ -4,7 +4,7 @@ interface IProps {
   steps: Array<{
     title: string;
     step_index: number;
-    amount_inside_steps: number;
+    amount_insideSteps: number;
   }>;
 }
 

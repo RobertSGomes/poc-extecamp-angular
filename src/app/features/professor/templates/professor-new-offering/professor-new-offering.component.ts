@@ -6,34 +6,37 @@ import { Component } from '@angular/core';
   styleUrls: ['./professor-new-offering.component.css'],
 })
 export class ProfessorNewOfferingComponent {
-  current_step: number = 0;
-  current_inside_step: number = 0;
-
+  currentStep: number = 0;
+  currentInsideStep: number = 0;
   modalCancelOpened = false;
 
   backInsideStep(): void {
     document.querySelector('#form-section')!.scrollTo(0, 0);
-    this.current_inside_step--;
+    this.currentInsideStep--;
   }
 
   nextInsideStep(): void {
     document.querySelector('#form-section')!.scrollTo(0, 0);
-    this.current_inside_step++;
+    this.currentInsideStep++;
   }
 
   nextStep(): void {
     document.querySelector('#form-section')!.scrollTo(0, 0);
-    this.current_step++;
-    this.current_inside_step = 0;
+    this.currentStep++;
+    this.currentInsideStep = 0;
   }
 
-  backStep(inside_step: number): void {
+  backStep(insideStep: number): void {
     document.querySelector('#form-section')!.scrollTo(0, 0);
-    this.current_step--;
-    this.current_inside_step = inside_step;
+    this.currentStep--;
+    this.currentInsideStep = insideStep;
   }
 
   openCancelModal(): void {
     this.modalCancelOpened = true;
+  }
+
+  handleSubmit(): void {
+    console.log('Criarei o curso');
   }
 }

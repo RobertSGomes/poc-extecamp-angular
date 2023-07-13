@@ -26,34 +26,34 @@
 
     <section class="w-[1072px] mx-auto my-6">
       <app-steps
-        [currentStep]="current_step"
-        [currentInsideStep]="current_inside_step"
+        [currentStep]="currentStep"
+        [currentInsideStep]="currentInsideStep"
         [props]="{
           steps: [
             {
               title: 'Dados do curso',
               step_index: 0,
-              amount_inside_steps: 5
+              amount_insideSteps: 5
             },
             {
               title: 'Professores',
               step_index: 1,
-              amount_inside_steps: 6
+              amount_insideSteps: 6
             },
             {
               title: 'Dados do oferecimento',
               step_index: 2,
-              amount_inside_steps: 4
+              amount_insideSteps: 4
             },
             {
               title: 'Custos do oferecimento',
               step_index: 3,
-              amount_inside_steps: 4
+              amount_insideSteps: 4
             },
             {
               title: 'Envio do oferecimento',
               step_index: 4,
-              amount_inside_steps: 1
+              amount_insideSteps: 1
             }
           ]
         }"
@@ -61,147 +61,147 @@
     </section>
 
     <section>
-      <div *ngIf="current_step === 0">
+      <div *ngIf="currentStep === 0">
         <app-step-one-form-one
-          *ngIf="current_inside_step === 0"
+          *ngIf="currentInsideStep === 0"
           (nextInsideStep)="nextInsideStep()"
           (openCancelModal)="openCancelModal()"
         ></app-step-one-form-one>
 
         <app-step-one-form-two
-          *ngIf="current_inside_step === 1"
+          *ngIf="currentInsideStep === 1"
           (backInsideStep)="backInsideStep()"
           (nextInsideStep)="nextInsideStep()"
           (openCancelModal)="openCancelModal()"
         ></app-step-one-form-two>
 
         <app-step-one-form-three
-          *ngIf="current_inside_step === 2"
+          *ngIf="currentInsideStep === 2"
           (backInsideStep)="backInsideStep()"
           (nextInsideStep)="nextInsideStep()"
           (openCancelModal)="openCancelModal()"
         ></app-step-one-form-three>
 
         <app-step-one-form-four
-          *ngIf="current_inside_step === 3"
+          *ngIf="currentInsideStep === 3"
           (backInsideStep)="backInsideStep()"
           (nextInsideStep)="nextInsideStep()"
           (openCancelModal)="openCancelModal()"
         ></app-step-one-form-four>
 
         <app-step-one-form-five
-          *ngIf="current_inside_step === 4"
+          *ngIf="currentInsideStep === 4"
           (backInsideStep)="backInsideStep()"
           (nextStep)="nextStep()"
           (openCancelModal)="openCancelModal()"
         ></app-step-one-form-five>
       </div>
 
-      <div *ngIf="current_step === 1">
+      <div *ngIf="currentStep === 1">
         <app-step-two-form-one
-          *ngIf="current_inside_step === 0"
+          *ngIf="currentInsideStep === 0"
           (backStep)="backStep(4)"
           (nextInsideStep)="nextInsideStep()"
           (openCancelModal)="openCancelModal()"
         ></app-step-two-form-one>
 
         <app-step-two-form-two
-          *ngIf="current_inside_step === 1"
+          *ngIf="currentInsideStep === 1"
           (backInsideStep)="backInsideStep()"
           (nextInsideStep)="nextInsideStep()"
           (openCancelModal)="openCancelModal()"
         ></app-step-two-form-two>
 
         <app-step-two-form-three
-          *ngIf="current_inside_step === 2"
+          *ngIf="currentInsideStep === 2"
           (backInsideStep)="backInsideStep()"
           (nextInsideStep)="nextInsideStep()"
           (openCancelModal)="openCancelModal()"
         ></app-step-two-form-three>
 
         <app-step-two-form-four
-          *ngIf="current_inside_step === 3"
+          *ngIf="currentInsideStep === 3"
           (backInsideStep)="backInsideStep()"
           (nextInsideStep)="nextInsideStep()"
           (openCancelModal)="openCancelModal()"
         ></app-step-two-form-four>
 
         <app-step-two-form-five
-          *ngIf="current_inside_step === 4"
+          *ngIf="currentInsideStep === 4"
           (backInsideStep)="backInsideStep()"
           (nextInsideStep)="nextInsideStep()"
           (openCancelModal)="openCancelModal()"
         ></app-step-two-form-five>
 
         <app-step-two-form-six
-          *ngIf="current_inside_step === 5"
+          *ngIf="currentInsideStep === 5"
           (backInsideStep)="backInsideStep()"
           (nextStep)="nextStep()"
           (openCancelModal)="openCancelModal()"
         ></app-step-two-form-six>
       </div>
 
-      <div *ngIf="current_step === 2">
+      <div *ngIf="currentStep === 2">
         <app-step-three-form-one
-          *ngIf="current_inside_step === 0"
+          *ngIf="currentInsideStep === 0"
           (backStep)="backStep(5)"
           (nextInsideStep)="nextInsideStep()"
           (openCancelModal)="openCancelModal()"
         ></app-step-three-form-one>
 
         <app-step-three-form-two
-          *ngIf="current_inside_step === 1"
+          *ngIf="currentInsideStep === 1"
           (backInsideStep)="backInsideStep()"
           (nextInsideStep)="nextInsideStep()"
           (openCancelModal)="openCancelModal()"
         ></app-step-three-form-two>
 
         <app-step-three-form-three
-          *ngIf="current_inside_step === 2"
+          *ngIf="currentInsideStep === 2"
           (backInsideStep)="backInsideStep()"
           (nextInsideStep)="nextInsideStep()"
           (openCancelModal)="openCancelModal()"
         ></app-step-three-form-three>
 
         <app-step-three-form-four
-          *ngIf="current_inside_step === 3"
+          *ngIf="currentInsideStep === 3"
           (backInsideStep)="backInsideStep()"
           (nextStep)="nextStep()"
           (openCancelModal)="openCancelModal()"
         ></app-step-three-form-four>
       </div>
 
-      <div *ngIf="current_step === 3">
+      <div *ngIf="currentStep === 3">
         <app-step-four-form-one
-          *ngIf="current_inside_step === 0"
+          *ngIf="currentInsideStep === 0"
           (backStep)="backStep(3)"
           (nextInsideStep)="nextInsideStep()"
           (openCancelModal)="openCancelModal()"
         ></app-step-four-form-one>
 
         <app-step-four-form-two
-          *ngIf="current_inside_step === 1"
+          *ngIf="currentInsideStep === 1"
           (backInsideStep)="backInsideStep()"
           (nextInsideStep)="nextInsideStep()"
           (openCancelModal)="openCancelModal()"
         ></app-step-four-form-two>
 
         <app-step-four-form-three
-          *ngIf="current_inside_step === 2"
+          *ngIf="currentInsideStep === 2"
           (backInsideStep)="backInsideStep()"
           (nextInsideStep)="nextInsideStep()"
           (openCancelModal)="openCancelModal()"
         ></app-step-four-form-three>
 
         <app-step-four-form-four
-          *ngIf="current_inside_step === 3"
+          *ngIf="currentInsideStep === 3"
           (backInsideStep)="backInsideStep()"
           (nextStep)="nextStep()"
           (openCancelModal)="openCancelModal()"
         ></app-step-four-form-four>
       </div>
 
-      <div *ngIf="current_step === 4">
+      <div *ngIf="currentStep === 4">
         <app-step-five-form-one
           (backStep)="backStep(3)"
           (openCancelModal)="openCancelModal()"
