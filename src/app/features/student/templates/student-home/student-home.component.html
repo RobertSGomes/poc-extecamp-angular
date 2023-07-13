@@ -1,7 +1,7 @@
 <div class="grid grid-rows-[108px_1fr] grid-cols-[300px_1fr] h-screen">
   <app-sidebar
-    [name]="student.nome"
-    [email]="student.email"
+    [name]="student?.nome"
+    [email]="student?.email"
     [navItens]="[
       {
         title: 'Página inicial',
@@ -19,7 +19,7 @@
   ></app-sidebar>
 
   <app-header-navbar
-    [name]="student.nome"
+    [name]="student?.nome"
     [description]="'Bem vindo(a) a sua área do aluno EXTECAMP'"
   ></app-header-navbar>
 

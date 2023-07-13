@@ -15,6 +15,8 @@ export class ProfessorService {
   constructor(private readonly http: HttpClient, private router: Router) {}
 
   getOne(professorId: string | null): Observable<ProfessorModel> {
+    this.verifyAccess();
+
     return this.http.get<ProfessorModel>(`${this.apiURL}/${professorId}`, {
       headers: {
         Authorization: `Bearer ${this.accessToken}`,
@@ -23,7 +25,6 @@ export class ProfessorService {
   }
 
   verifyAccess(): void {
-    console.log('OIOI');
     if (!this.accessToken) {
       this.router.navigate(['']);
     }

@@ -10,14 +10,13 @@ import { RegisteredCourseModel } from '../../models/student-course.model';
   styleUrls: ['./student-home.component.css'],
 })
 export class StudentHomeComponent {
-  student!: StudentModel;
+  student?: StudentModel;
   registeredCourses: RegisteredCourseModel[] = [];
   private studentId: string | null = getUserId();
 
   constructor(private readonly studentService: StudentService) {}
 
   ngOnInit(): void {
-    this.studentService.verifyAccess();
     this.getStudent();
   }
 

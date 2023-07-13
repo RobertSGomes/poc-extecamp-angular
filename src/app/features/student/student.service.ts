@@ -27,6 +27,8 @@ export class StudentService {
   }
 
   getOne(studentId: string | null): Observable<StudentModel> {
+    this.verifyAccess();
+
     return this.http.get<StudentModel>(`${this.apiURL}/${studentId}`, {
       headers: {
         Authorization: `Bearer ${this.accessToken}`,

@@ -14,8 +14,8 @@ type NavItem = {
 export class SidebarComponent implements OnInit {
   currentUrl: string = '';
 
-  @Input() name: string = '';
-  @Input() email: string = '';
+  @Input() name: string | undefined = '';
+  @Input() email: string | undefined = '';
   @Input() navItens: NavItem[] = [];
 
   constructor(private router: Router) {}

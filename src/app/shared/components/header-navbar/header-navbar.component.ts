@@ -8,8 +8,8 @@ type HeaederRoutes = Array<string>;
   styleUrls: ['./header-navbar.component.css'],
 })
 export class HeaderNavbarComponent implements OnInit {
+  @Input() name: string | undefined = '';
   @Input() routes: HeaederRoutes = [];
-  @Input() name: string = '';
   @Input() description: string = '';
 
   ngOnInit(): void {
