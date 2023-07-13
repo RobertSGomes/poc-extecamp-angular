@@ -13,7 +13,6 @@
       <input
         class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
         placeholder="00000-000"
-        [(ngModel)]="courseRegistration.endereco_cep"
       />
     </div>
   </div>
@@ -27,7 +26,6 @@
       <input
         class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
         placeholder="Preencha"
-        [(ngModel)]="courseRegistration.endereco_rua"
       />
     </div>
   </div>
@@ -43,7 +41,6 @@
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
           placeholder="0000"
-          [(ngModel)]="courseRegistration.endereco_numero"
         />
       </div>
     </div>
@@ -57,7 +54,6 @@
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
           placeholder="Preencha"
-          [(ngModel)]="courseRegistration.endereco_bairro"
         />
       </div>
     </div>
@@ -71,7 +67,6 @@
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
           placeholder="Casa 2"
-          [(ngModel)]="courseRegistration.endereco_complemento"
         />
       </div>
     </div>
@@ -85,38 +80,35 @@
       <div
         class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
-        <select
-          class="w-full text-gray-800 text-base outline-none"
-          [(ngModel)]="courseRegistration.endereco_estado"
-        >
-          <option selected [ngValue]="''">Selecione</option>
-          <option [ngValue]="'AC'">AC</option>
-          <option [ngValue]="'AL'">AL</option>
-          <option [ngValue]="'AP'">AP</option>
-          <option [ngValue]="'AM'">AM</option>
-          <option [ngValue]="'BA'">BA</option>
-          <option [ngValue]="'CE'">CE</option>
-          <option [ngValue]="'DF'">DF</option>
-          <option [ngValue]="'ES'">ES</option>
-          <option [ngValue]="'GO'">GO</option>
-          <option [ngValue]="'MA'">MA</option>
-          <option [ngValue]="'MT'">MT</option>
-          <option [ngValue]="'MS'">MS</option>
-          <option [ngValue]="'MG'">MG</option>
-          <option [ngValue]="'PA'">PA</option>
-          <option [ngValue]="'PB'">PB</option>
-          <option [ngValue]="'PR'">PR</option>
-          <option [ngValue]="'PE'">PE</option>
-          <option [ngValue]="'PI'">PI</option>
-          <option [ngValue]="'RJ'">RJ</option>
-          <option [ngValue]="'RN'">RN</option>
-          <option [ngValue]="'RS'">RS</option>
-          <option [ngValue]="'RO'">RO</option>
-          <option [ngValue]="'RR'">RR</option>
-          <option [ngValue]="'SC'">SC</option>
-          <option [ngValue]="'SP'">SP</option>
-          <option [ngValue]="'SE'">SE</option>
-          <option [ngValue]="'TO'">TO</option>
+        <select class="w-full text-gray-800 text-base outline-none">
+          <option selected>Selecione</option>
+          <option>AC</option>
+          <option>AL</option>
+          <option>AP</option>
+          <option>AM</option>
+          <option>BA</option>
+          <option>CE</option>
+          <option>DF</option>
+          <option>ES</option>
+          <option>GO</option>
+          <option>MA</option>
+          <option>MT</option>
+          <option>MS</option>
+          <option>MG</option>
+          <option>PA</option>
+          <option>PB</option>
+          <option>PR</option>
+          <option>PE</option>
+          <option>PI</option>
+          <option>RJ</option>
+          <option>RN</option>
+          <option>RS</option>
+          <option>RO</option>
+          <option>RR</option>
+          <option>SC</option>
+          <option>SP</option>
+          <option>SE</option>
+          <option>TO</option>
         </select>
       </div>
     </div>
@@ -127,12 +119,9 @@
       <div
         class="flex items-center gap-2 w-[324px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
-        <select
-          class="w-full text-gray-800 text-base outline-none"
-          [(ngModel)]="courseRegistration.endereco_cidade"
-        >
-          <option selected [ngValue]="''">Selecione</option>
-          <option [ngValue]="'Atibaia'">Atibaia</option>
+        <select class="w-full text-gray-800 text-base outline-none">
+          <option selected>Selecione</option>
+          <option>Atibaia</option>
         </select>
       </div>
     </div>
@@ -145,12 +134,9 @@
       <div
         class="flex items-center gap-2 w-[324px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
-        <select
-          class="w-full text-gray-800 text-base outline-none"
-          [(ngModel)]="courseRegistration.pais_residencia"
-        >
-          <option selected [ngValue]="''">Selecione</option>
-          <option [ngValue]="'Brasil'">Brasil</option>
+        <select class="w-full text-gray-800 text-base outline-none">
+          <option selected>Selecione</option>
+          <option>Brasil</option>
         </select>
       </div>
     </div>

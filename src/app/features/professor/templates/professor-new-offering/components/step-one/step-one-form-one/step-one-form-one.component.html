@@ -37,13 +37,9 @@
     <div
       class="flex gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
     >
-      <select
-        class="w-full text-gray-800 text-base outline-none"
-        name="course_tipo"
-        [(ngModel)]="course.tipo"
-      >
-        <option [ngValue]="''">Selecione</option>
-        <option [ngValue]="'Curso de extensão'">Curso de extensão</option>
+      <select class="w-full text-gray-800 text-base outline-none">
+        <option>Selecione</option>
+        <option>Curso de extensão</option>
       </select>
     </div>
   </div>
@@ -56,8 +52,6 @@
       <input
         class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
         placeholder="Preencha"
-        name="course_nome"
-        [(ngModel)]="course.nome"
       />
     </div>
   </div>
@@ -69,13 +63,7 @@
     </p>
 
     <div class="flex items-center gap-x-2">
-      <input
-        type="radio"
-        id="fluxo_continuo_yes"
-        name="curso_fluxo_continuo"
-        [(ngModel)]="course.fluxo_continuo"
-        [value]="true"
-      />
+      <input type="radio" id="fluxo_continuo_yes" />
       <label
         for="fluxo_continuo_yes"
         class="font-medium text-base text-gray-700"
@@ -83,13 +71,7 @@
       >
     </div>
     <div class="flex items-center gap-x-2">
-      <input
-        type="radio"
-        id="fluxo_continuo_no"
-        name="curso_fluxo_continuo"
-        [(ngModel)]="course.fluxo_continuo"
-        [value]="false"
-      />
+      <input type="radio" id="fluxo_continuo_no" />
       <label for="fluxo_continuo_no" class="font-medium text-base text-gray-700"
         >Não</label
       >
@@ -102,13 +84,7 @@
     </p>
 
     <div class="flex items-center gap-x-2">
-      <input
-        type="radio"
-        id="disciplina_eletiva_yes"
-        name="disciplina_eletiva"
-        [(ngModel)]="course.disciplina_eletiva"
-        [value]="true"
-      />
+      <input type="radio" id="disciplina_eletiva_yes" />
       <label
         for="disciplina_eletiva_yes"
         class="font-medium text-base text-gray-700"
@@ -116,13 +92,7 @@
       >
     </div>
     <div class="flex items-center gap-x-2">
-      <input
-        type="radio"
-        id="disciplina_eletiva_no"
-        name="disciplina_eletiva"
-        [(ngModel)]="course.disciplina_eletiva"
-        [value]="false"
-      />
+      <input type="radio" id="disciplina_eletiva_no" />
       <label
         for="disciplina_eletiva_no"
         class="font-medium text-base text-gray-700"
@@ -138,15 +108,11 @@
     <div
       class="flex gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
     >
-      <select
-        class="w-full text-gray-800 text-base outline-none"
-        name="course_forma_realizacao"
-        [(ngModel)]="course.forma_realizacao"
-      >
-        <option [value]="''">Selecione</option>
-        <option [value]="'Presencial'">Presencial</option>
-        <option [value]="'Semipresencial'">Semipresencial</option>
-        <option [value]="'EAD'">EAD</option>
+      <select class="w-full text-gray-800 text-base outline-none">
+        <option>Selecione</option>
+        <option>Presencial</option>
+        <option>Semipresencial</option>
+        <option>EAD</option>
       </select>
     </div>
   </div>
@@ -158,13 +124,9 @@
     <div
       class="flex gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
     >
-      <select
-        class="w-full text-gray-800 text-base outline-none"
-        name="course_plataforma"
-        [(ngModel)]="course.plataforma"
-      >
-        <option [value]="''">Selecione</option>
-        <option [value]="'Extecamp'">Extecamp</option>
+      <select class="w-full text-gray-800 text-base outline-none">
+        <option>Selecione</option>
+        <option>Extecamp</option>
       </select>
     </div>
   </div>
@@ -179,8 +141,6 @@
       <textarea
         class="w-full h-full text-gray-800 text-base outline-none resize-none placeholder:text-gray-500"
         placeholder="Preencha"
-        name="course_mensagem"
-        [(ngModel)]="course.mensagem"
       ></textarea>
     </div>
     <p class="font-normal text-sm text-gray-700">
@@ -211,8 +171,6 @@
         placeholder="Preencha"
         minlength="50"
         maxlength="10000"
-        name="course_descricao"
-        [(ngModel)]="course.descricao"
       ></textarea>
     </div>
     <p class="font-normal text-sm text-gray-700">
@@ -228,8 +186,6 @@
       <input
         class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
         placeholder="Preencha"
-        name="course_unidade"
-        [(ngModel)]="course.unidade"
       />
     </div>
   </div>
@@ -242,8 +198,6 @@
       <input
         class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
         placeholder="Preencha"
-        name="course_departamento"
-        [(ngModel)]="course.departamento"
       />
     </div>
   </div>

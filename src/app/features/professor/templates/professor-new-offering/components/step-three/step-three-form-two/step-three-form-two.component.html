@@ -23,8 +23,6 @@
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
           placeholder="Preencha"
-          name="course_frequencia_minima"
-          [(ngModel)]="course.frequencia_minima"
         />
       </div>
     </div>
@@ -52,8 +50,6 @@
         <input
           class="w-[324px] text-gray-800 text-base outline-none placeholder:text-gray-500"
           placeholder="+55 (DDD) 00000-0000"
-          [(ngModel)]="course.tipo"
-          name="course_telefone"
         />
       </div>
       <div
@@ -67,8 +63,6 @@
         <input
           class="w-[324px] text-gray-800 text-base outline-none placeholder:text-gray-500"
           placeholder="+55 (DDD) 00000-0000"
-          [(ngModel)]="course.tipo"
-          name="course_telefone"
         />
       </div>
     </div>
@@ -112,12 +106,7 @@
     </p>
 
     <div class="flex items-center gap-x-2">
-      <input
-        type="radio"
-        id="disciplina_eletiva_yes"
-        name="disciplina_eletiva"
-        [value]="'Basico'"
-      />
+      <input type="radio" id="disciplina_eletiva_yes" />
       <label
         for="disciplina_eletiva_yes"
         class="font-medium text-base text-gray-700"
@@ -125,12 +114,7 @@
       >
     </div>
     <div class="flex items-center gap-x-2">
-      <input
-        type="radio"
-        id="disciplina_eletiva_no"
-        name="disciplina_eletiva"
-        [value]="'Completo'"
-      />
+      <input type="radio" id="disciplina_eletiva_no" />
       <label
         for="disciplina_eletiva_no"
         class="font-medium text-base text-gray-700"

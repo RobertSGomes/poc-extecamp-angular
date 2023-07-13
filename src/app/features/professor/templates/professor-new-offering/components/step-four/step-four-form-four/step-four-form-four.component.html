@@ -14,12 +14,7 @@
     <p class="font-medium text-sm text-gray-700">Curso gratuíto?</p>
 
     <div class="flex items-center gap-x-2">
-      <input
-        type="radio"
-        id="disciplina_eletiva_yes"
-        name="disciplina_eletiva"
-        [value]="true"
-      />
+      <input type="radio" id="disciplina_eletiva_yes" />
       <label
         for="disciplina_eletiva_yes"
         class="font-medium text-base text-gray-700"
@@ -27,12 +22,7 @@
       >
     </div>
     <div class="flex items-center gap-x-2">
-      <input
-        type="radio"
-        id="disciplina_eletiva_no"
-        name="disciplina_eletiva"
-        [value]="false"
-      />
+      <input type="radio" id="disciplina_eletiva_no" />
       <label
         for="disciplina_eletiva_no"
         class="font-medium text-base text-gray-700"
@@ -97,7 +87,7 @@
         class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
         <select class="w-full text-gray-800 text-base outline-none">
-          <option selected [ngValue]="''">Selecione</option>
+          <option selected>Selecione</option>
           <option>1</option>
           <option>2</option>
           <option>3</option>
@@ -165,7 +155,7 @@
       class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
     >
       <select class="w-full text-gray-800 text-base outline-none">
-        <option selected [ngValue]="''">Selecione</option>
+        <option selected>Selecione</option>
         <option>1</option>
         <option>2</option>
         <option>3</option>
@@ -266,7 +256,6 @@
     >
       <textarea
         class="w-full h-full text-gray-800 text-base outline-none resize-none"
-        name="course_ementa"
       ></textarea>
     </div>
   </div>
@@ -292,7 +281,7 @@
         class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
         <select class="w-full text-gray-800 text-base outline-none">
-          <option selected [ngValue]="''">Selecione</option>
+          <option selected>Selecione</option>
           <option>1</option>
           <option>2</option>
           <option>3</option>
@@ -352,7 +341,7 @@
       class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
     >
       <select class="w-full text-gray-800 text-base outline-none">
-        <option selected [ngValue]="''">Selecione</option>
+        <option selected>Selecione</option>
         <option>1</option>
         <option>2</option>
         <option>3</option>
@@ -399,7 +388,6 @@
     >
       <textarea
         class="w-full h-full text-gray-800 text-base outline-none resize-none"
-        name="course_ementa"
       ></textarea>
     </div>
   </div>

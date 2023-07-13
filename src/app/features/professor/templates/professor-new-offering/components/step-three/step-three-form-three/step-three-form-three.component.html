@@ -27,8 +27,6 @@
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
           placeholder="Preencha"
-          name="course_frequencia_minima"
-          [(ngModel)]="course.frequencia_minima"
         />
       </div>
     </div>
@@ -45,16 +43,16 @@
         class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
         <select class="w-full text-gray-800 text-base outline-none">
-          <option selected [ngValue]="''">Selecione</option>
-          <option [ngValue]="'SP'">SP</option>
+          <option selected>Selecione</option>
+          <option>SP</option>
         </select>
       </div>
       <div
         class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
         <select class="w-full text-gray-800 text-base outline-none">
-          <option selected [ngValue]="''">Selecione</option>
-          <option [ngValue]="'Atibaia'">Atibaia</option>
+          <option selected>Selecione</option>
+          <option>Atibaia</option>
         </select>
       </div>
     </div>
@@ -70,8 +68,6 @@
       <textarea
         class="w-full h-full text-gray-800 text-base outline-none resize-none placeholder:text-gray-500"
         placeholder="Preencha"
-        name="course_ementa"
-        [(ngModel)]="course.ementa"
       ></textarea>
     </div>
   </div>
