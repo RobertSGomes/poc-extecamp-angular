@@ -8,10 +8,10 @@ import { HistoryStep } from '../../../types/history.type';
 })
 export class StepFourFormFourComponent {
   historySteps: HistoryStep[] = [
-    { step_index: 0, title: 'Custos do oferecimento' },
-    { step_index: 1, title: 'Taxas' },
-    { step_index: 2, title: 'Formas de pagamento' },
-    { step_index: 3, title: 'Condições' },
+    { stepIndex: 0, title: 'Custos do oferecimento' },
+    { stepIndex: 1, title: 'Taxas' },
+    { stepIndex: 2, title: 'Formas de pagamento' },
+    { stepIndex: 3, title: 'Condições' },
   ];
 
   @Output() backInsideStep: EventEmitter<void> = new EventEmitter<void>();

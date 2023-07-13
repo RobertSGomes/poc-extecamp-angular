@@ -7,30 +7,30 @@ import { HistoryStep } from '../../../types/history.type';
   styleUrls: ['./step-two-form-six.component.css'],
 })
 export class StepTwoFormSixComponent {
-  history_steps: HistoryStep[] = [
+  historySteps: HistoryStep[] = [
     {
       title: 'Coordenação do curso',
-      step_index: 0,
+      stepIndex: 0,
     },
     {
       title: 'Professores docentes da Unicamp',
-      step_index: 1,
+      stepIndex: 1,
     },
     {
       title: 'Professores com vínculo',
-      step_index: 2,
+      stepIndex: 2,
     },
     {
       title: 'Professores sem vínculo',
-      step_index: 3,
+      stepIndex: 3,
     },
     {
       title: 'Palestrantes',
-      step_index: 4,
+      stepIndex: 4,
     },
     {
       title: 'Validação da carga horaria',
-      step_index: 5,
+      stepIndex: 5,
     },
   ];
 

@@ -1,1 +1,1 @@
-export type HistoryStep = { title: string; step_index: number };
+export type HistoryStep = { title: string; stepIndex: number };

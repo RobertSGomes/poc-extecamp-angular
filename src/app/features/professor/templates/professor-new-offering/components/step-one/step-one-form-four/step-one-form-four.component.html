@@ -2,10 +2,7 @@
   (submit)="nextInsideStep.emit()"
   class="flex flex-col w-[1072px] mx-auto p-8 gap-y-6 bg-white border border-gray-200 rounded-2xl shadow-sm"
 >
-  <app-history-line
-    [currentStep]="3"
-    [steps]="history_steps"
-  ></app-history-line>
+  <app-history-line [currentStep]="3" [steps]="historySteps"></app-history-line>
 
   <hr class="h-[1px] bg-gray-200" />
 

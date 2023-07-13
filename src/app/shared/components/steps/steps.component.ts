@@ -2,8 +2,8 @@ import { Component, Input } from '@angular/core';
 
 type Steps = Array<{
   title: string;
-  step_index: number;
-  amount_insideSteps: number;
+  stepIndex: number;
+  amountInsideSteps: number;
 }>;
 
 @Component({

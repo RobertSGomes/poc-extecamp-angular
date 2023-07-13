@@ -17,23 +17,23 @@
   >
     <div
       [ngClass]="{
-        'border-4 border-violet-600 bg-violet-100 shadow-[0px_0px_0px_4px] shadow-violet-100': step.step_index <= currentStep,
-        'border-2 border-gray-200 bg-white': step.step_index > currentStep,
+        'border-4 border-violet-600 bg-violet-100 shadow-[0px_0px_0px_4px] shadow-violet-100': step.stepIndex <= currentStep,
+        'border-2 border-gray-200 bg-white': step.stepIndex > currentStep,
       }"
       class="flex items-center justify-center w-6 h-6 rounded-full"
     >
       <div
         [ngClass]="{
-            'bg-violet-600': step.step_index <= currentStep,
-            'bg-gray-200': step.step_index > currentStep,
+            'bg-violet-600': step.stepIndex <= currentStep,
+            'bg-gray-200': step.stepIndex > currentStep,
           }"
         class="flex rounded-full w-2 h-2"
       ></div>
     </div>
     <p
       [ngClass]="{
-        'text-violet-600': step.step_index <= currentStep,
-        'text-gray-700': step.step_index > currentStep,
+        'text-violet-600': step.stepIndex <= currentStep,
+        'text-gray-700': step.stepIndex > currentStep,
       }"
       class="flex font-semibold text-sm text-center px-[10px]"
     >

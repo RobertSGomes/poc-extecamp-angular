@@ -7,22 +7,22 @@ import { HistoryStep } from '../../../types/history.type';
   styleUrls: ['./step-three-form-three.component.css'],
 })
 export class StepThreeFormThreeComponent {
-  history_steps: HistoryStep[] = [
+  historySteps: HistoryStep[] = [
     {
       title: 'Divulgação do curso',
-      step_index: 0,
+      stepIndex: 0,
     },
     {
       title: 'Inscrição',
-      step_index: 1,
+      stepIndex: 1,
     },
     {
       title: 'Oferecimento e outras informações',
-      step_index: 2,
+      stepIndex: 2,
     },
     {
       title: 'Critérios de admissão',
-      step_index: 3,
+      stepIndex: 3,
     },
   ];
 
