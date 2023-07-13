@@ -2,10 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { StudentService } from 'src/app/features/student/student.service';
-import {
-  removeProfessorAccessToken,
-  removeStudentAccessToken,
-} from 'src/app/shared/utils/access-token.util';
+import { removeAccessToken } from 'src/app/shared/utils/access-token.util';
+import { removeUserId } from 'src/app/shared/utils/user-id.util';
 
 @Component({
   selector: 'signup',
@@ -22,8 +20,8 @@ export class SignupComponent {
   ) {}
 
   ngOnInit(): void {
-    removeProfessorAccessToken();
-    removeStudentAccessToken();
+    removeAccessToken();
+    removeUserId();
 
     this.signUpForm = this.formBuilder.group({
       nome: ['', [Validators.required]],

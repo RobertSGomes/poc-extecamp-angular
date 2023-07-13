@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ProfessorService } from '../../professor.service';
 import { ProfessorModel } from '../../models/professor.model';
+import { getUserId } from 'src/app/shared/utils/user-id.util';
 
 @Component({
   selector: 'professor-home',
@@ -9,16 +10,17 @@ import { ProfessorModel } from '../../models/professor.model';
 })
 export class ProfessorHomeComponent {
   professor!: ProfessorModel;
+  private professorId: string | null = getUserId();
 
   constructor(private readonly professorService: ProfessorService) {}
 
   ngOnInit(): void {
-    const id = this.professorService.getProfessorId();
-    this.getProfessor(id);
+    this.professorService.verifyAccess();
+    this.getProfessor();
   }
 
-  getProfessor(professorId: string): void {
-    const response = this.professorService.getOne(professorId);
+  getProfessor(): void {
+    const response = this.professorService.getOne(this.professorId);
 
     response.subscribe((response) => {
       this.professor = response;

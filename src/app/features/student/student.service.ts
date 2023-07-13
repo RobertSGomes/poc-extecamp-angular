@@ -1,19 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { SignUpDTO } from '../../shared/dtos/signup.dto';
-import { SignInDTO } from '../../shared/dtos/signin.dto';
+import { SignUpDTO } from '../auth/dtos/signup.dto';
 import { Router } from '@angular/router';
-import jwtDecode from 'jwt-decode';
 import { StudentModel } from './models/student.model';
-import { getStudentAccessToken } from 'src/app/shared/utils/access-token.util';
 import { Observable } from 'rxjs';
-import { AccessModel } from 'src/app/shared/models/access.model';
+import { getAccessToken } from 'src/app/shared/utils/access-token.util';
 
 @Injectable({
   providedIn: 'root',
 })
 export class StudentService {
   private apiURL: string = 'http://localhost:3001/alunos';
+  private accessToken: string | null = getAccessToken('student');
 
   constructor(
     private readonly http: HttpClient,
@@ -28,42 +26,16 @@ export class StudentService {
     });
   }
 
-  signIn(signinDTO: SignInDTO): Observable<AccessModel> {
-    return this.http.post<AccessModel>(`${this.apiURL}/entrar`, signinDTO, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-  }
-
-  getOne(studentId: string): Observable<StudentModel> {
-    const accessToken = getStudentAccessToken();
-
-    this.hasAccessToken(accessToken);
-
+  getOne(studentId: string | null): Observable<StudentModel> {
     return this.http.get<StudentModel>(`${this.apiURL}/${studentId}`, {
       headers: {
-        Authorization: `Bearer ${accessToken}`,
+        Authorization: `Bearer ${this.accessToken}`,
       },
     });
   }
 
-  getStudentId(): string {
-    const accessToken = getStudentAccessToken();
-
-    this.hasAccessToken(accessToken);
-
-    try {
-      const jwtDecoded = jwtDecode<{ sub: string }>(accessToken as string);
-
-      return jwtDecoded.sub;
-    } catch (Error) {
-      return '';
-    }
-  }
-
-  hasAccessToken(accessToken: string | null): void {
-    if (!accessToken) {
+  verifyAccess(): void {
+    if (!this.accessToken) {
       this.router.navigate(['']);
     }
   }

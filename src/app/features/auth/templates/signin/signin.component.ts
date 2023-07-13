@@ -1,14 +1,12 @@
+import { AuthService } from './../../auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { StudentService } from './../../../student/student.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProfessorService } from 'src/app/features/professor/professor.service';
 import {
-  removeStudentAccessToken,
-  removeProfessorAccessToken,
-  setStudentAccessToken,
-  setProfessorAccessToken,
+  removeAccessToken,
+  setAccessToken,
 } from 'src/app/shared/utils/access-token.util';
+import { removeUserId, setUserId } from 'src/app/shared/utils/user-id.util';
 
 @Component({
   selector: 'signin',
@@ -20,14 +18,13 @@ export class SigninComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private readonly studentServive: StudentService,
-    private readonly professorService: ProfessorService,
+    private readonly authService: AuthService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
-    removeProfessorAccessToken();
-    removeStudentAccessToken();
+    removeAccessToken();
+    removeUserId();
 
     this.signInForm = this.formBuilder.group({
       login: ['', [Validators.required]],
@@ -36,28 +33,14 @@ export class SigninComponent implements OnInit {
   }
 
   handleSignIn(): void {
-    const response = this.studentServive.signIn(this.signInForm.value);
+    const response = this.authService.signIn(this.signInForm.value);
 
     response.subscribe(
       (response) => {
-        setStudentAccessToken(response.access_token);
+        setAccessToken(response.access_token, response.path);
+        setUserId(response.user_id);
 
-        this.router.navigate(['/student']);
-      },
-      () => {
-        this.handleSecondSignIn();
-      }
-    );
-  }
-
-  private handleSecondSignIn(): void {
-    const response = this.professorService.signIn(this.signInForm.value);
-
-    response.subscribe(
-      (response) => {
-        setProfessorAccessToken(response.access_token);
-
-        this.router.navigate(['/professor']);
+        this.router.navigate([`/${response.path}`]);
       },
       ({ error }) => {
         alert(error.error);

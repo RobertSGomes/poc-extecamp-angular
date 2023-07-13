@@ -1,14 +1,8 @@
 import { Component } from '@angular/core';
 import { StudentModel } from '../../models/student.model';
 import { StudentService } from '../../student.service';
-
-type RegisteredCourse = {
-  sigla: string;
-  oferecimento: string;
-  nome: string;
-  tipo: string;
-  inscricao: string;
-};
+import { getUserId } from 'src/app/shared/utils/user-id.util';
+import { RegisteredCourseModel } from '../../models/student-course.model';
 
 @Component({
   selector: 'student-home',
@@ -16,27 +10,19 @@ type RegisteredCourse = {
   styleUrls: ['./student-home.component.css'],
 })
 export class StudentHomeComponent {
-  registeredCourses: RegisteredCourse[] = [
-    // {
-    //   sigla: 'BIO-0083',
-    //   oferecimento: '003',
-    //   nome: 'BIOQUÍMICA E FISIOLOGIA APLICADAS AO TREINAMENTO FÍSICO',
-    //   tipo: 'Curso de extensão',
-    //   inscricao: 'INCOMPLETA',
-    // },
-  ];
-
   student!: StudentModel;
+  registeredCourses: RegisteredCourseModel[] = [];
+  private studentId: string | null = getUserId();
 
   constructor(private readonly studentService: StudentService) {}
 
   ngOnInit(): void {
-    const id = this.studentService.getStudentId();
-    this.getStudent(id);
+    this.studentService.verifyAccess();
+    this.getStudent();
   }
 
-  getStudent(studentId: string): void {
-    const response = this.studentService.getOne(studentId);
+  getStudent(): void {
+    const response = this.studentService.getOne(this.studentId);
 
     response.subscribe((response) => {
       this.student = response;

@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  removeProfessorAccessToken,
-  removeStudentAccessToken,
-} from 'src/app/shared/utils/access-token.util';
+import { removeAccessToken } from 'src/app/shared/utils/access-token.util';
+import { removeUserId } from 'src/app/shared/utils/user-id.util';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +9,7 @@ import {
 })
 export class HomeComponent implements OnInit {
   ngOnInit(): void {
-    removeProfessorAccessToken();
-    removeStudentAccessToken();
+    removeAccessToken();
+    removeUserId();
   }
 }

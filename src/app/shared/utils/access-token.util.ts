@@ -1,23 +1,44 @@
-export function getStudentAccessToken(): string | null {
+export function setAccessToken(accessToken: string, path: string): void {
+  if (path === 'student') {
+    setStudentAccessToken(accessToken);
+  } else {
+    setProfessorAccessToken(accessToken);
+  }
+}
+
+export function getAccessToken(path: string): string | null {
+  if (path === 'student') {
+    return getStudentAccessToken();
+  } else {
+    return getProfessorAccessToken();
+  }
+}
+
+export function removeAccessToken() {
+  removeStudentAccessToken();
+  removeProfessorAccessToken();
+}
+
+function getStudentAccessToken(): string | null {
   return localStorage.getItem('@StudentAccessToken');
 }
 
-export function setStudentAccessToken(accessToken: string): void {
+function setStudentAccessToken(accessToken: string): void {
   return localStorage.setItem('@StudentAccessToken', accessToken);
 }
 
-export function removeStudentAccessToken(): void {
+function removeStudentAccessToken(): void {
   return localStorage.removeItem('@StudentAccessToken');
 }
 
-export function getProfessorAccessToken(): string | null {
+function getProfessorAccessToken(): string | null {
   return localStorage.getItem('@ProfessorAccessToken');
 }
 
-export function setProfessorAccessToken(accessToken: string): void {
+function setProfessorAccessToken(accessToken: string): void {
   return localStorage.setItem('@ProfessorAccessToken', accessToken);
 }
 
-export function removeProfessorAccessToken(): void {
+function removeProfessorAccessToken(): void {
   return localStorage.removeItem('@ProfessorAccessToken');
 }
