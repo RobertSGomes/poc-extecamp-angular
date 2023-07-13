@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { SignInDTO } from '../student/dtos/signin.dto';
+import { SignInDTO } from '../../shared/dtos/signin.dto';
 import { getProfessorAccessToken } from 'src/app/shared/utils/access-token.util';
 import jwtDecode from 'jwt-decode';
 import { Router } from '@angular/router';

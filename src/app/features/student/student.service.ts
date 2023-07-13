@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { SignUpDTO } from './dtos/signup.dto';
-import { SignInDTO } from './dtos/signin.dto';
+import { SignUpDTO } from '../../shared/dtos/signup.dto';
+import { SignInDTO } from '../../shared/dtos/signin.dto';
 import { Router } from '@angular/router';
 import jwtDecode from 'jwt-decode';
 import { StudentModel } from './models/student.model';
