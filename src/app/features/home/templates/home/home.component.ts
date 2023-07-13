@@ -10,7 +10,7 @@ import {
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  ngOnInit() {
+  ngOnInit(): void {
     removeProfessorAccessToken();
     removeStudentAccessToken();
   }

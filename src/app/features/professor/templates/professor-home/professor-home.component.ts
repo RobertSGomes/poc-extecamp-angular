@@ -12,12 +12,12 @@ export class ProfessorHomeComponent {
 
   constructor(private readonly professorService: ProfessorService) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     const id = this.professorService.getProfessorId();
     this.getProfessor(id);
   }
 
-  getProfessor(professor_id: string) {
+  getProfessor(professor_id: string): void {
     const response = this.professorService.getOne(professor_id);
 
     response.subscribe((response) => {

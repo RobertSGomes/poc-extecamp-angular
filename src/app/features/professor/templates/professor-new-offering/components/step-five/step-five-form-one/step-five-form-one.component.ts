@@ -11,7 +11,7 @@ export class StepFiveFormOneComponent {
   @Output() backStep: EventEmitter<void> = new EventEmitter<void>();
   @Output() openCancelModal: EventEmitter<void> = new EventEmitter<void>();
 
-  openSubmitModal() {
+  openSubmitModal(): void {
     this.submitModalOpened = true;
   }
 }

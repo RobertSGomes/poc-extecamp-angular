@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import jwtDecode from 'jwt-decode';
 import { StudentModel } from './models/student.model';
 import { getStudentAccessToken } from 'src/app/shared/utils/access-token.util';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +19,7 @@ export class StudentService {
     private readonly router: Router
   ) {}
 
-  signUp(sigupDTO: SignUpDTO) {
+  signUp(sigupDTO: SignUpDTO): Observable<Object> {
     return this.http.post(`${this.apiURL}/cadastrar`, sigupDTO, {
       headers: {
         'Content-Type': 'application/json',
@@ -26,7 +27,7 @@ export class StudentService {
     });
   }
 
-  signIn(signinDTO: SignInDTO) {
+  signIn(signinDTO: SignInDTO): Observable<{ access_token: string }> {
     return this.http.post<{ access_token: string }>(
       `${this.apiURL}/entrar`,
       signinDTO,
@@ -38,7 +39,7 @@ export class StudentService {
     );
   }
 
-  getOne(studentId: string) {
+  getOne(studentId: string): Observable<StudentModel> {
     const accessToken = getStudentAccessToken();
 
     this.hasAccessToken(accessToken);
@@ -50,7 +51,7 @@ export class StudentService {
     });
   }
 
-  getStudentId() {
+  getStudentId(): string {
     const accessToken = getStudentAccessToken();
 
     this.hasAccessToken(accessToken);
@@ -64,7 +65,7 @@ export class StudentService {
     }
   }
 
-  hasAccessToken(access_token: string | null) {
+  hasAccessToken(access_token: string | null): void {
     if (!access_token) {
       this.router.navigate(['']);
     }

@@ -35,7 +35,7 @@ export class SigninComponent implements OnInit {
     });
   }
 
-  handleSignIn() {
+  handleSignIn(): void {
     const response = this.studentServive.signIn(this.signInForm.value);
 
     response.subscribe(
@@ -50,7 +50,7 @@ export class SigninComponent implements OnInit {
     );
   }
 
-  private handleSecondSignIn() {
+  private handleSecondSignIn(): void {
     const response = this.professorService.signIn(this.signInForm.value);
 
     response.subscribe(

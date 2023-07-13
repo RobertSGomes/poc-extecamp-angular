@@ -38,7 +38,7 @@ export class SignupComponent {
     });
   }
 
-  handleSignUp() {
+  handleSignUp(): void {
     const response = this.studentServive.signUp(this.signUpForm.value);
 
     response.subscribe(

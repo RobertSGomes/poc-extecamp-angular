@@ -30,12 +30,12 @@ export class StudentHomeComponent {
 
   constructor(private readonly studentService: StudentService) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     const id = this.studentService.getStudentId();
     this.getStudent(id);
   }
 
-  getStudent(studentId: string) {
+  getStudent(studentId: string): void {
     const response = this.studentService.getOne(studentId);
 
     response.subscribe((response) => {

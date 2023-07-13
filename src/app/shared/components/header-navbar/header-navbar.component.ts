@@ -22,7 +22,7 @@ export class HeaderNavbarComponent implements OnInit {
   @Input()
   routes: HeaederRoutes = [];
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.props.name = `Olá, ${this.props.name}`;
   }
 }

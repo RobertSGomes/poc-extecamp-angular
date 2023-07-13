@@ -20,7 +20,7 @@ export class SidebarComponent implements OnInit {
 
   constructor(private router: Router) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.currentUrl = this.router.url;
   }
 }
