@@ -1,5 +1,6 @@
 <form
   (submit)="nextInsideStep.emit()"
+  [formGroup]="stepOneFormOne"
   class="flex flex-col w-[1072px] mx-auto p-8 gap-y-6 bg-white border border-gray-200 rounded-2xl shadow-sm"
 >
   <app-history-line [currentStep]="0" [steps]="historySteps"></app-history-line>
@@ -15,17 +16,32 @@
       <div
         class="flex gap-2 w-[152px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
       >
-        <select class="w-full text-gray-800 text-base outline-none">
-          <option>ECO</option>
+        <select
+          class="w-full text-gray-800 text-base outline-none"
+          formControlName="sigla_tipo"
+          required
+        >
+          <option value="">Selecione</option>
+          <option value="ECO">ECO</option>
         </select>
       </div>
       <div
         class="flex gap-2 w-[152px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
       >
-        <select class="w-full text-gray-800 text-base outline-none">
-          <option>1234</option>
+        <select
+          class="w-full text-gray-800 text-base outline-none"
+          formControlName="sigla_numero"
+          required
+        >
+          <option value="">Selecione</option>
+          <option value="1234">1234</option>
         </select>
       </div>
+    </div>
+    <div
+      *ngIf="(stepOneFormOne.get('sigla_tipo')?.errors?.['required'] || stepOneFormOne.get('sigla_numero')?.errors?.['required']) && (stepOneFormOne.get('sigla_numero')?.touched && stepOneFormOne.get('sigla_tipo')?.touched)"
+    >
+      <p class="font-normal text-sm text-red-600">Informe a sigla do curso</p>
     </div>
   </div>
 
@@ -34,10 +50,19 @@
     <div
       class="flex gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
     >
-      <select class="w-full text-gray-800 text-base outline-none">
-        <option>Selecione</option>
-        <option>Curso de extensão</option>
+      <select
+        class="w-full text-gray-800 text-base outline-none"
+        formControlName="tipo"
+        required
+      >
+        <option value="">Selecione</option>
+        <option value="Curso de extensão">Curso de extensão</option>
       </select>
+    </div>
+    <div
+      *ngIf="stepOneFormOne.get('tipo')?.errors?.['required']  && stepOneFormOne.get('tipo')?.touched"
+    >
+      <p class="font-normal text-sm text-red-600">Informe o tipo do curso</p>
     </div>
   </div>
 
@@ -49,7 +74,14 @@
       <input
         class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
         placeholder="Preencha"
+        formControlName="nome"
+        required
       />
+    </div>
+    <div
+      *ngIf="stepOneFormOne.get('nome')?.errors?.['required']  && stepOneFormOne.get('nome')?.touched"
+    >
+      <p class="font-normal text-sm text-red-600">Informe o nome do curso</p>
     </div>
   </div>
 
@@ -60,7 +92,12 @@
     </p>
 
     <div class="flex items-center gap-x-2">
-      <input type="radio" id="fluxo_continuo_yes" />
+      <input
+        type="radio"
+        id="fluxo_continuo_yes"
+        formControlName="fluxo_continuo"
+        [value]="true"
+      />
       <label
         for="fluxo_continuo_yes"
         class="font-medium text-base text-gray-700"
@@ -68,7 +105,12 @@
       >
     </div>
     <div class="flex items-center gap-x-2">
-      <input type="radio" id="fluxo_continuo_no" />
+      <input
+        type="radio"
+        id="fluxo_continuo_no"
+        formControlName="fluxo_continuo"
+        [value]="false"
+      />
       <label for="fluxo_continuo_no" class="font-medium text-base text-gray-700"
         >Não</label
       >
@@ -81,7 +123,12 @@
     </p>
 
     <div class="flex items-center gap-x-2">
-      <input type="radio" id="disciplina_eletiva_yes" />
+      <input
+        type="radio"
+        id="disciplina_eletiva_yes"
+        formControlName="disciplina_eletiva"
+        [value]="true"
+      />
       <label
         for="disciplina_eletiva_yes"
         class="font-medium text-base text-gray-700"
@@ -89,7 +136,12 @@
       >
     </div>
     <div class="flex items-center gap-x-2">
-      <input type="radio" id="disciplina_eletiva_no" />
+      <input
+        type="radio"
+        id="disciplina_eletiva_no"
+        formControlName="disciplina_eletiva"
+        [value]="false"
+      />
       <label
         for="disciplina_eletiva_no"
         class="font-medium text-base text-gray-700"
@@ -105,12 +157,22 @@
     <div
       class="flex gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
     >
-      <select class="w-full text-gray-800 text-base outline-none">
-        <option>Selecione</option>
-        <option>Presencial</option>
-        <option>Semipresencial</option>
-        <option>EAD</option>
+      <select
+        class="w-full text-gray-800 text-base outline-none"
+        formControlName="forma_realizacao"
+      >
+        <option value="">Selecione</option>
+        <option value="Presencial">Presencial</option>
+        <option value="Semipresencial">Semipresencial</option>
+        <option value="EAD">EAD</option>
       </select>
+    </div>
+    <div
+      *ngIf="stepOneFormOne.get('forma_realizacao')?.errors?.['required']  && stepOneFormOne.get('forma_realizacao')?.touched"
+    >
+      <p class="font-normal text-sm text-red-600">
+        Informe a forma de realização do curso
+      </p>
     </div>
   </div>
 
@@ -121,10 +183,20 @@
     <div
       class="flex gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
     >
-      <select class="w-full text-gray-800 text-base outline-none">
-        <option>Selecione</option>
-        <option>Extecamp</option>
+      <select
+        class="w-full text-gray-800 text-base outline-none"
+        formControlName="plataforma"
+      >
+        <option value="">Selecione</option>
+        <option value="Extecamp">Extecamp</option>
       </select>
+    </div>
+    <div
+      *ngIf="stepOneFormOne.get('plataforma')?.errors?.['required']  && stepOneFormOne.get('plataforma')?.touched"
+    >
+      <p class="font-normal text-sm text-red-600">
+        Informe a plataforma de gestão dos alunos do curso
+      </p>
     </div>
   </div>
 
@@ -138,6 +210,7 @@
       <textarea
         class="w-full h-full text-gray-800 text-base outline-none resize-none placeholder:text-gray-500"
         placeholder="Preencha"
+        formControlName="mensagem"
       ></textarea>
     </div>
     <p class="font-normal text-sm text-gray-700">
@@ -168,11 +241,28 @@
         placeholder="Preencha"
         minlength="50"
         maxlength="10000"
+        formControlName="descricao"
       ></textarea>
     </div>
     <p class="font-normal text-sm text-gray-700">
       Mínimo de 50 e máximo de 10000 caracteres
     </p>
+    <div
+      *ngIf="stepOneFormOne.get('descricao')?.errors?.['required']  && stepOneFormOne.get('descricao')?.touched"
+    >
+      <p class="font-normal text-sm text-red-600">
+        Informe uma descrição ao aluno sobre o ambiente virtual de aprendizagem
+        do curso
+      </p>
+    </div>
+    <div
+      *ngIf="(stepOneFormOne.get('descricao')?.errors?.['minlength'] || stepOneFormOne.get('descricao')?.errors?.['maxlength']) && stepOneFormOne.get('descricao')?.touched"
+    >
+      <p class="font-normal text-sm text-red-600">
+        A descrição ao aluno sobre o ambiente virtual de aprendizagem do curso
+        deve conter no mínimo 50 caracteres e no máximo 10000
+      </p>
+    </div>
   </div>
 
   <div class="flex flex-col gap-[6px]">
@@ -183,7 +273,13 @@
       <input
         class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
         placeholder="Preencha"
+        formControlName="unidade"
       />
+    </div>
+    <div
+      *ngIf="stepOneFormOne.get('unidade')?.errors?.['required']  && stepOneFormOne.get('unidade')?.touched"
+    >
+      <p class="font-normal text-sm text-red-600">Informe a unidade do curso</p>
     </div>
   </div>
 
@@ -195,7 +291,15 @@
       <input
         class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
         placeholder="Preencha"
+        formControlName="departamento"
       />
+    </div>
+    <div
+      *ngIf="stepOneFormOne.get('departamento')?.errors?.['required']  && stepOneFormOne.get('departamento')?.touched"
+    >
+      <p class="font-normal text-sm text-red-600">
+        Informe o departamento do curso
+      </p>
     </div>
   </div>
 
@@ -219,6 +323,7 @@
       <button
         class="px-4 py-[10px] rounded-lg font-semibold text-sm text-white bg-violet-700"
         type="submit"
+        [disabled]="!stepOneFormOne.valid"
       >
         Próximo
       </button>

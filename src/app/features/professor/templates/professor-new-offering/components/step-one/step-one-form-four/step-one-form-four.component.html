@@ -1,5 +1,6 @@
 <form
   (submit)="nextInsideStep.emit()"
+  [formGroup]="stepOneFormFour"
   class="flex flex-col w-[1072px] mx-auto p-8 gap-y-6 bg-white border border-gray-200 rounded-2xl shadow-sm"
 >
   <app-history-line [currentStep]="3" [steps]="historySteps"></app-history-line>
@@ -19,9 +20,17 @@
       <textarea
         class="w-full h-full text-gray-800 text-base outline-none resize-none placeholder:text-gray-500"
         placeholder="Preencha"
+        maxlength="1500"
+        formControlName="ementa"
       ></textarea>
     </div>
     <p class="font-normal text-sm text-gray-700">Máximo de 1500 caracteres</p>
+
+    <div *ngIf="stepOneFormFour.get('ementa')?.errors?.['maxlength']">
+      <p class="font-normal text-sm text-red-600">
+        A ementa do curso deve conter no máximo 1500 caracteres
+      </p>
+    </div>
   </div>
 
   <div class="flex flex-col w-full gap-[6px]">
@@ -34,11 +43,29 @@
       <textarea
         class="w-full h-full text-gray-800 text-base outline-none resize-none placeholder:text-gray-500"
         placeholder="Preencha"
+        minlength="50"
+        maxlength="10000"
+        formControlName="bibliografia"
       ></textarea>
     </div>
     <p class="font-normal text-sm text-gray-700">
       Mínimo de 50 e máximo de 10000 caracteres
     </p>
+    <div
+      *ngIf="stepOneFormFour.get('bibliografia')?.errors?.['required'] && stepOneFormFour.get('bibliografia')?.touched"
+    >
+      <p class="font-normal text-sm text-red-600">
+        Informe a bibliografia do curso
+      </p>
+    </div>
+    <div
+      *ngIf="(stepOneFormFour.get('bibliografia')?.errors?.['minlength'] || stepOneFormFour.get('bibliografia')?.errors?.['maxlength']) && stepOneFormFour.get('bibliografia')?.touched"
+    >
+      <p class="font-normal text-sm text-red-600">
+        A bibliografia do curso deve conter no mínimo 50 caracteres e no máximo
+        máximo 1500
+      </p>
+    </div>
   </div>
 
   <div class="flex flex-col w-full gap-[6px]">
@@ -51,11 +78,30 @@
       <textarea
         class="w-full h-full text-gray-800 text-base outline-none resize-none placeholder:text-gray-500"
         placeholder="Preencha"
+        minlength="50"
+        maxlength="10000"
+        formControlName="procedimentos"
       ></textarea>
     </div>
     <p class="font-normal text-sm text-gray-700">
       Mínimo de 50 e máximo de 10000 caracteres
     </p>
+
+    <div
+      *ngIf="stepOneFormFour.get('procedimentos')?.errors?.['required']  && stepOneFormFour.get('procedimentos')?.touched"
+    >
+      <p class="font-normal text-sm text-red-600">
+        Informe os procedimentos metodológicos do curso
+      </p>
+    </div>
+    <div
+      *ngIf="(stepOneFormFour.get('procedimentos')?.errors?.['minlength'] || stepOneFormFour.get('procedimentos')?.errors?.['maxlength']) && stepOneFormFour.get('procedimentos')?.touched"
+    >
+      <p class="font-normal text-sm text-red-600">
+        A descrição dos procedimentos metodológicos do curso deve conter no
+        mínimo 50 caracteres e no máximo máximo 10000
+      </p>
+    </div>
   </div>
 
   <div class="flex flex-col w-full gap-[6px]">
@@ -66,11 +112,30 @@
       <textarea
         class="w-full h-full text-gray-800 text-base outline-none resize-none placeholder:text-gray-500"
         placeholder="Preencha"
+        minlength="50"
+        maxlength="1000"
+        formControlName="objetivo"
       ></textarea>
     </div>
     <p class="font-normal text-sm text-gray-700">
       Mínimo de 50 e máximo de 1000 caracteres
     </p>
+
+    <div
+      *ngIf="stepOneFormFour.get('objetivo')?.errors?.['required']  && stepOneFormFour.get('objetivo')?.touched"
+    >
+      <p class="font-normal text-sm text-red-600">
+        Informe o objetivo do curso
+      </p>
+    </div>
+    <div
+      *ngIf="(stepOneFormFour.get('objetivo')?.errors?.['minlength'] || stepOneFormFour.get('objetivo')?.errors?.['maxlength']) && stepOneFormFour.get('objetivo')?.touched"
+    >
+      <p class="font-normal text-sm text-red-600">
+        O objetivo do curso deve conter no mínimo 50 caracteres e no máximo
+        máximo 1000
+      </p>
+    </div>
   </div>
 
   <div class="flex flex-col w-full gap-[6px]">
@@ -84,11 +149,30 @@
       <textarea
         class="w-full h-full text-gray-800 text-base outline-none resize-none placeholder:text-gray-500"
         placeholder="Preencha"
+        minlength="10"
+        maxlength="1000"
+        formControlName="publico_alvo"
       ></textarea>
     </div>
     <p class="font-normal text-sm text-gray-700">
       Mínimo de 10 e máximo de 1000 caracteres
     </p>
+
+    <div
+      *ngIf="stepOneFormFour.get('publico_alvo')?.errors?.['required']  && stepOneFormFour.get('publico_alvo')?.touched"
+    >
+      <p class="font-normal text-sm text-red-600">
+        Informe o público alvo do curso
+      </p>
+    </div>
+    <div
+      *ngIf="(stepOneFormFour.get('publico_alvo')?.errors?.['minlength'] || stepOneFormFour.get('publico_alvo')?.errors?.['maxlength']) && stepOneFormFour.get('publico_alvo')?.touched"
+    >
+      <p class="font-normal text-sm text-red-600">
+        A descrição do público alvo do curso deve conter no mínimo 10 caracteres
+        e no máximo máximo 1000
+      </p>
+    </div>
   </div>
 
   <hr class="h-[1px] bg-gray-200" />
@@ -112,6 +196,7 @@
       <button
         class="px-4 py-[10px] rounded-lg font-semibold text-sm text-white bg-violet-700"
         type="submit"
+        [disabled]="!stepOneFormFour.valid"
       >
         Próximo
       </button>

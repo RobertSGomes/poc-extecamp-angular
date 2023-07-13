@@ -1,5 +1,6 @@
 <form
   (submit)="nextInsideStep.emit()"
+  [formGroup]="stepOneFormTwo"
   class="flex flex-col w-[1072px] mx-auto p-8 gap-y-6 bg-white border border-gray-200 rounded-2xl shadow-sm"
 >
   <app-history-line [currentStep]="1" [steps]="historySteps"></app-history-line>
@@ -8,26 +9,34 @@
 
   <h1 class="font-semibold text-lg text-gray-900">Palavras-chave e áreas</h1>
 
-  <div class="flex flex-col gap-y-2">
+  <div class="flex flex-col gap-y-2" formArrayName="palavras_chave">
     <p class="font-medium text-sm text-gray-700">Palavras-chave *</p>
 
     <div class="flex gap-x-[18px]">
       <div
         class="flex gap-2 w-[324px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+        [formGroupName]="0"
       >
-        <select class="w-full text-gray-800 text-base outline-none">
-          <option>Selecione</option>
-          <option>Economia</option>
-          <option>Tecnologia</option>
+        <select
+          class="w-full text-gray-800 text-base outline-none"
+          formControlName="palavra_chave"
+        >
+          <option value="">Selecione</option>
+          <option value="Economia">Economia</option>
+          <option value="Tecnologia">Tecnologia</option>
         </select>
       </div>
       <div
         class="flex gap-2 w-[324px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+        [formGroupName]="1"
       >
-        <select class="w-full text-gray-800 text-base outline-none">
-          <option>Selecione</option>
-          <option>Economia</option>
-          <option>Tecnologia</option>
+        <select
+          class="w-full text-gray-800 text-base outline-none"
+          formControlName="palavra_chave"
+        >
+          <option value="">Selecione</option>
+          <option value="Economia">Economia</option>
+          <option value="Tecnologia">Tecnologia</option>
         </select>
       </div>
     </div>
@@ -35,22 +44,38 @@
     <div class="flex gap-x-[18px]">
       <div
         class="flex gap-2 w-[324px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+        [formGroupName]="2"
       >
-        <select class="w-full text-gray-800 text-base outline-none">
-          <option>Selecione</option>
-          <option>Economia</option>
-          <option>Tecnologia</option>
+        <select
+          class="w-full text-gray-800 text-base outline-none"
+          formControlName="palavra_chave"
+        >
+          <option value="">Selecione</option>
+          <option value="Economia">Economia</option>
+          <option value="Tecnologia">Tecnologia</option>
         </select>
       </div>
       <div
         class="flex gap-2 w-[324px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+        [formGroupName]="3"
       >
-        <select class="w-full text-gray-800 text-base outline-none">
-          <option>Selecione</option>
-          <option>Economia</option>
-          <option>Tecnologia</option>
+        <select
+          class="w-full text-gray-800 text-base outline-none"
+          formControlName="palavra_chave"
+        >
+          <option value="">Selecione</option>
+          <option value="Economia">Economia</option>
+          <option value="Tecnologia">Tecnologia</option>
         </select>
       </div>
+    </div>
+
+    <div
+      *ngIf="palavras_chave.controls[0].get('palavra_chave')?.errors?.['required']  && palavras_chave.controls[0].get('palavra_chave')?.touched"
+    >
+      <p class="font-normal text-sm text-red-600">
+        Informe ao menos uma palavra chave
+      </p>
     </div>
   </div>
 
@@ -61,37 +86,64 @@
       <div
         class="flex gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
       >
-        <select class="w-full text-gray-800 text-base outline-none">
-          <option>Selecione</option>
-          <option>Economia</option>
-          <option>Tecnologia</option>
+        <select
+          class="w-full text-gray-800 text-base outline-none"
+          formControlName="area_geral"
+        >
+          <option value="">Selecione</option>
+          <option value="Economia">Economia</option>
+          <option value="Tecnologia">Tecnologia</option>
         </select>
       </div>
     </div>
+
+    <div
+      *ngIf="stepOneFormTwo.get('area_geral')?.errors?.['required']  && stepOneFormTwo.get('area_geral')?.touched"
+    >
+      <p class="font-normal text-sm text-red-600">
+        Informe a área geral do curso
+      </p>
+    </div>
   </div>
 
-  <div class="flex flex-col gap-y-2">
+  <div class="flex flex-col gap-y-2" formArrayName="areas_tematicas">
     <p class="font-medium text-sm text-gray-700">Área temáticas *</p>
 
     <div class="flex gap-x-[18px]">
       <div
         class="flex gap-2 w-[324px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+        [formGroupName]="0"
       >
-        <select class="w-full text-gray-800 text-base outline-none">
-          <option>Selecione</option>
-          <option>Front-End</option>
-          <option>Back-End</option>
+        <select
+          class="w-full text-gray-800 text-base outline-none"
+          formControlName="area_tematica"
+        >
+          <option value="">Selecione</option>
+          <option value="Front-End">Front-End</option>
+          <option value="Back-End">Back-End</option>
         </select>
       </div>
       <div
         class="flex gap-2 w-[324px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+        [formGroupName]="1"
       >
-        <select class="w-full text-gray-800 text-base outline-none">
-          <option>Selecione</option>
-          <option>Front-End</option>
-          <option>Back-End</option>
+        <select
+          class="w-full text-gray-800 text-base outline-none"
+          formControlName="area_tematica"
+        >
+          <option value="">Selecione</option>
+          <option value="Front-End">Front-End</option>
+          <option value="Back-End">Back-End</option>
         </select>
       </div>
+    </div>
+
+    <div
+      *ngIf="areas_tematicas.controls[0].get('area_tematica')?.errors?.['required']  && areas_tematicas.controls[0].get('area_tematica')?.touched"
+    >
+      <p class="font-normal text-sm text-red-600">
+        Informe ao menos uma área temática
+      </p>
     </div>
   </div>
 
@@ -116,6 +168,7 @@
       <button
         class="px-4 py-[10px] rounded-lg font-semibold text-sm text-white bg-violet-700"
         type="submit"
+        [disabled]="!stepOneFormTwo.valid"
       >
         Próximo
       </button>

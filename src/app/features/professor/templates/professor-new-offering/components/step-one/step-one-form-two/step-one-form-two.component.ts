@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output, Input } from '@angular/core';
 import { HistoryStep } from '../../../types/history.type';
+import { FormArray, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-step-one-form-two',
@@ -33,4 +34,18 @@ export class StepOneFormTwoComponent {
   @Output() backInsideStep: EventEmitter<void> = new EventEmitter<void>();
   @Output() nextInsideStep: EventEmitter<void> = new EventEmitter<void>();
   @Output() openCancelModal: EventEmitter<void> = new EventEmitter<void>();
+
+  @Input() stepOneFormTwo!: FormGroup;
+
+  get palavras_chave() {
+    return this.stepOneFormTwo.get('palavras_chave') as FormArray;
+  }
+
+  get areas_tematicas() {
+    return this.stepOneFormTwo.get('areas_tematicas') as FormArray;
+  }
+
+  handleClick() {
+    console.log(JSON.stringify(this.stepOneFormTwo.value));
+  }
 }

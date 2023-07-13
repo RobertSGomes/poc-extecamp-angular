@@ -24,7 +24,7 @@ import { StepFourFormFourComponent } from './templates/professor-new-offering/co
 import { StepFiveFormOneComponent } from './templates/professor-new-offering/components/step-five/step-five-form-one/step-five-form-one.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { AppRoutingModule } from 'src/app/app-routing.module';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 @NgModule({
@@ -53,7 +53,7 @@ import { CommonModule } from '@angular/common';
     StepFourFormFourComponent,
     StepFiveFormOneComponent,
   ],
-  imports: [AppRoutingModule, FormsModule, SharedModule, CommonModule],
+  imports: [AppRoutingModule, ReactiveFormsModule, SharedModule, CommonModule],
   exports: [
     ProfessorHomeComponent,
     ProfessorNewOfferingComponent,

@@ -1,5 +1,6 @@
 <form
   (submit)="nextInsideStep.emit()"
+  [formGroup]="stepOneFormThree"
   class="flex flex-col w-[1072px] mx-auto p-8 gap-y-6 bg-white border border-gray-200 rounded-2xl shadow-sm"
 >
   <app-history-line [currentStep]="2" [steps]="historySteps"></app-history-line>
@@ -25,6 +26,7 @@
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
           placeholder="Preencha"
+          formControlName="carga_horaria_presencial_pratica"
         />
       </div>
       <div
@@ -33,6 +35,7 @@
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
           placeholder="Preencha"
+          formControlName="carga_horaria_presencial_teorica"
         />
       </div>
     </div>
@@ -55,6 +58,7 @@
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
           placeholder="Preencha"
+          formControlName="carga_horaria_ead_pratica"
         />
       </div>
       <div
@@ -63,6 +67,7 @@
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
           placeholder="Preencha"
+          formControlName="carga_horaria_ead_teorica"
         />
       </div>
     </div>
