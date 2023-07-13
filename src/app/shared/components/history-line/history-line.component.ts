@@ -7,9 +7,6 @@ import { HistoryStep } from 'src/app/features/professor/templates/professor-new-
   styleUrls: ['./history-line.component.css'],
 })
 export class HistoryLineComponent {
-  @Input()
-  steps: HistoryStep[] = [];
-
-  @Input()
-  currentStep = 0;
+  @Input() steps: HistoryStep[] = [];
+  @Input() currentStep = 0;
 }

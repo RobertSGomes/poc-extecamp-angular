@@ -19,10 +19,8 @@
   ></app-sidebar>
 
   <app-header-navbar
-    [props]="{
-      name: student.nome,
-      description: 'Bem vindo(a) a sua área do aluno EXTECAMP'
-    }"
+    [name]="student.nome"
+    [description]="'Bem vindo(a) a sua área do aluno EXTECAMP'"
   ></app-header-navbar>
 
   <div class="col-start-2 overflow-y-auto">

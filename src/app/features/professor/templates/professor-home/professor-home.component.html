@@ -15,10 +15,8 @@
   ></app-sidebar>
 
   <app-header-navbar
-    [props]="{
-      name: professor.nome,
-      description: 'Bem vindo(a) a sua área do docente EXTECAMP'
-    }"
+    [name]="professor.nome"
+    [description]="'Bem vindo(a) a sua área do docente EXTECAMP'"
   ></app-header-navbar>
 
   <div class="col-start-2 overflow-y-auto w-full px-8 py-16 bg-gray-50"></div>

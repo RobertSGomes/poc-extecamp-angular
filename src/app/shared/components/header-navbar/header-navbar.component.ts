@@ -1,10 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-interface IProps {
-  name: string;
-  description: string;
-}
-
 type HeaederRoutes = Array<string>;
 
 @Component({
@@ -13,16 +8,11 @@ type HeaederRoutes = Array<string>;
   styleUrls: ['./header-navbar.component.css'],
 })
 export class HeaderNavbarComponent implements OnInit {
-  @Input()
-  props: IProps = {
-    name: '',
-    description: '',
-  };
-
-  @Input()
-  routes: HeaederRoutes = [];
+  @Input() routes: HeaederRoutes = [];
+  @Input() name: string = '';
+  @Input() description: string = '';
 
   ngOnInit(): void {
-    this.props.name = `Olá, ${this.props.name}`;
+    this.name = `Olá, ${this.name}`;
   }
 }

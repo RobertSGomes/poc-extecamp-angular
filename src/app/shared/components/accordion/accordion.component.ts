@@ -8,15 +8,8 @@ import { Component, ContentChildren, Input, QueryList } from '@angular/core';
 export class AccordionComponent {
   isOpened: boolean = false;
 
-  @Input()
-  title: string = '';
-
-  @Input()
-  content: string = '';
-
-  @Input()
-  isBlocked: boolean = false;
-
-  @Input()
-  noBorder: boolean = false;
+  @Input() title: string = '';
+  @Input() content: string = '';
+  @Input() isBlocked: boolean = false;
+  @Input() noBorder: boolean = false;
 }
