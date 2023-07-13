@@ -17,8 +17,8 @@ export class ProfessorHomeComponent {
     this.getProfessor(id);
   }
 
-  getProfessor(professor_id: string): void {
-    const response = this.professorService.getOne(professor_id);
+  getProfessor(professorId: string): void {
+    const response = this.professorService.getOne(professorId);
 
     response.subscribe((response) => {
       this.professor = response;

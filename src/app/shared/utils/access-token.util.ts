@@ -2,8 +2,8 @@ export function getStudentAccessToken(): string | null {
   return localStorage.getItem('@StudentAccessToken');
 }
 
-export function setStudentAccessToken(access_token: string): void {
-  return localStorage.setItem('@StudentAccessToken', access_token);
+export function setStudentAccessToken(accessToken: string): void {
+  return localStorage.setItem('@StudentAccessToken', accessToken);
 }
 
 export function removeStudentAccessToken(): void {
@@ -14,8 +14,8 @@ export function getProfessorAccessToken(): string | null {
   return localStorage.getItem('@ProfessorAccessToken');
 }
 
-export function setProfessorAccessToken(access_token: string): void {
-  return localStorage.setItem('@ProfessorAccessToken', access_token);
+export function setProfessorAccessToken(accessToken: string): void {
+  return localStorage.setItem('@ProfessorAccessToken', accessToken);
 }
 
 export function removeProfessorAccessToken(): void {

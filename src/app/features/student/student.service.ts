@@ -7,6 +7,7 @@ import jwtDecode from 'jwt-decode';
 import { StudentModel } from './models/student.model';
 import { getStudentAccessToken } from 'src/app/shared/utils/access-token.util';
 import { Observable } from 'rxjs';
+import { AccessModel } from 'src/app/shared/models/access.model';
 
 @Injectable({
   providedIn: 'root',
@@ -27,16 +28,12 @@ export class StudentService {
     });
   }
 
-  signIn(signinDTO: SignInDTO): Observable<{ access_token: string }> {
-    return this.http.post<{ access_token: string }>(
-      `${this.apiURL}/entrar`,
-      signinDTO,
-      {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
-    );
+  signIn(signinDTO: SignInDTO): Observable<AccessModel> {
+    return this.http.post<AccessModel>(`${this.apiURL}/entrar`, signinDTO, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
   }
 
   getOne(studentId: string): Observable<StudentModel> {
@@ -65,8 +62,8 @@ export class StudentService {
     }
   }
 
-  hasAccessToken(access_token: string | null): void {
-    if (!access_token) {
+  hasAccessToken(accessToken: string | null): void {
+    if (!accessToken) {
       this.router.navigate(['']);
     }
   }

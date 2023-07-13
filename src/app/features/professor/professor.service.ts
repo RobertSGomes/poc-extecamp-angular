@@ -6,6 +6,7 @@ import jwtDecode from 'jwt-decode';
 import { Router } from '@angular/router';
 import { ProfessorModel } from './models/professor.model';
 import { Observable } from 'rxjs';
+import { AccessModel } from 'src/app/shared/models/access.model';
 
 @Injectable({
   providedIn: 'root',
@@ -15,16 +16,12 @@ export class ProfessorService {
 
   constructor(private readonly http: HttpClient, private router: Router) {}
 
-  signIn(signinDTO: SignInDTO): Observable<{ access_token: string }> {
-    return this.http.post<{ access_token: string }>(
-      `${this.apiURL}/entrar`,
-      signinDTO,
-      {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
-    );
+  signIn(signinDTO: SignInDTO): Observable<AccessModel> {
+    return this.http.post<AccessModel>(`${this.apiURL}/entrar`, signinDTO, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
   }
 
   getOne(professorId: string): Observable<ProfessorModel> {
@@ -53,8 +50,8 @@ export class ProfessorService {
     }
   }
 
-  hasAccessToken(access_token: string | null): void {
-    if (!access_token) {
+  hasAccessToken(accessToken: string | null): void {
+    if (!accessToken) {
       this.router.navigate(['']);
     }
   }
