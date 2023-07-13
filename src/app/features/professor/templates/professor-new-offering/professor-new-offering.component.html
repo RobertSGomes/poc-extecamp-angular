@@ -64,14 +64,12 @@
       <div *ngIf="current_step === 0">
         <app-step-one-form-one
           *ngIf="current_inside_step === 0"
-          [course]="course"
           (nextInsideStep)="nextInsideStep()"
           (openCancelModal)="openCancelModal()"
         ></app-step-one-form-one>
 
         <app-step-one-form-two
           *ngIf="current_inside_step === 1"
-          [course]="course"
           (backInsideStep)="backInsideStep()"
           (nextInsideStep)="nextInsideStep()"
           (openCancelModal)="openCancelModal()"
@@ -79,7 +77,6 @@
 
         <app-step-one-form-three
           *ngIf="current_inside_step === 2"
-          [course]="course"
           (backInsideStep)="backInsideStep()"
           (nextInsideStep)="nextInsideStep()"
           (openCancelModal)="openCancelModal()"
@@ -87,7 +84,6 @@
 
         <app-step-one-form-four
           *ngIf="current_inside_step === 3"
-          [course]="course"
           (backInsideStep)="backInsideStep()"
           (nextInsideStep)="nextInsideStep()"
           (openCancelModal)="openCancelModal()"
@@ -95,7 +91,6 @@
 
         <app-step-one-form-five
           *ngIf="current_inside_step === 4"
-          [course]="course"
           (backInsideStep)="backInsideStep()"
           (nextStep)="nextStep()"
           (openCancelModal)="openCancelModal()"
@@ -105,7 +100,6 @@
       <div *ngIf="current_step === 1">
         <app-step-two-form-one
           *ngIf="current_inside_step === 0"
-          [course]="course"
           (backStep)="backStep(4)"
           (nextInsideStep)="nextInsideStep()"
           (openCancelModal)="openCancelModal()"
@@ -113,7 +107,6 @@
 
         <app-step-two-form-two
           *ngIf="current_inside_step === 1"
-          [course]="course"
           (backInsideStep)="backInsideStep()"
           (nextInsideStep)="nextInsideStep()"
           (openCancelModal)="openCancelModal()"
@@ -121,7 +114,6 @@
 
         <app-step-two-form-three
           *ngIf="current_inside_step === 2"
-          [course]="course"
           (backInsideStep)="backInsideStep()"
           (nextInsideStep)="nextInsideStep()"
           (openCancelModal)="openCancelModal()"
@@ -129,7 +121,6 @@
 
         <app-step-two-form-four
           *ngIf="current_inside_step === 3"
-          [course]="course"
           (backInsideStep)="backInsideStep()"
           (nextInsideStep)="nextInsideStep()"
           (openCancelModal)="openCancelModal()"
@@ -137,7 +128,6 @@
 
         <app-step-two-form-five
           *ngIf="current_inside_step === 4"
-          [course]="course"
           (backInsideStep)="backInsideStep()"
           (nextInsideStep)="nextInsideStep()"
           (openCancelModal)="openCancelModal()"
@@ -145,7 +135,6 @@
 
         <app-step-two-form-six
           *ngIf="current_inside_step === 5"
-          [course]="course"
           (backInsideStep)="backInsideStep()"
           (nextStep)="nextStep()"
           (openCancelModal)="openCancelModal()"
@@ -155,7 +144,6 @@
       <div *ngIf="current_step === 2">
         <app-step-three-form-one
           *ngIf="current_inside_step === 0"
-          [course]="course"
           (backStep)="backStep(5)"
           (nextInsideStep)="nextInsideStep()"
           (openCancelModal)="openCancelModal()"
@@ -163,7 +151,6 @@
 
         <app-step-three-form-two
           *ngIf="current_inside_step === 1"
-          [course]="course"
           (backInsideStep)="backInsideStep()"
           (nextInsideStep)="nextInsideStep()"
           (openCancelModal)="openCancelModal()"
@@ -171,7 +158,6 @@
 
         <app-step-three-form-three
           *ngIf="current_inside_step === 2"
-          [course]="course"
           (backInsideStep)="backInsideStep()"
           (nextInsideStep)="nextInsideStep()"
           (openCancelModal)="openCancelModal()"
@@ -179,7 +165,6 @@
 
         <app-step-three-form-four
           *ngIf="current_inside_step === 3"
-          [course]="course"
           (backInsideStep)="backInsideStep()"
           (nextStep)="nextStep()"
           (openCancelModal)="openCancelModal()"
@@ -189,7 +174,6 @@
       <div *ngIf="current_step === 3">
         <app-step-four-form-one
           *ngIf="current_inside_step === 0"
-          [course]="course"
           (backStep)="backStep(3)"
           (nextInsideStep)="nextInsideStep()"
           (openCancelModal)="openCancelModal()"

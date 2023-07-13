@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { CourseModel } from './models/course.model';
 
 @Component({
   selector: 'professor-new-offering',
@@ -9,8 +8,6 @@ import { CourseModel } from './models/course.model';
 export class ProfessorNewOfferingComponent {
   current_step: number = 0;
   current_inside_step: number = 0;
-
-  course: CourseModel = new CourseModel();
 
   modalCancelOpened = false;
 

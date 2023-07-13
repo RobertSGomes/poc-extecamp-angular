@@ -1,4 +1,3 @@
-import { CourseRegistrationModel } from './../../models/course-registration.model';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
@@ -7,8 +6,6 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./course-subscription-step-two.component.css'],
 })
 export class CourseSubscriptionStepTwoComponent {
-  @Input() courseRegistration!: CourseRegistrationModel;
-
   @Output() backStep: EventEmitter<void> = new EventEmitter<void>();
   @Output() nextStep: EventEmitter<void> = new EventEmitter<void>();
 }

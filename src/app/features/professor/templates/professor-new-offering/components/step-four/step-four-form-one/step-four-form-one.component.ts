@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { HistoryStep } from '../../../types/history.type';
-import { CourseModel } from '../../../models/course.model';
 
 @Component({
   selector: 'app-step-four-form-one',
@@ -14,8 +13,6 @@ export class StepFourFormOneComponent {
     { step_index: 2, title: 'Formas de pagamento' },
     { step_index: 3, title: 'Condições' },
   ];
-
-  @Input() course!: CourseModel;
 
   @Output() backStep: EventEmitter<void> = new EventEmitter<void>();
   @Output() nextInsideStep: EventEmitter<void> = new EventEmitter<void>();

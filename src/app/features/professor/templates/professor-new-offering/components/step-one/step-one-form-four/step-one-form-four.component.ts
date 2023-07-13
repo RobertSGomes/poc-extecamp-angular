@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { CourseModel } from '../../../models/course.model';
 import { HistoryStep } from '../../../types/history.type';
 
 @Component({
@@ -34,6 +33,4 @@ export class StepOneFormFourComponent {
   @Output() backInsideStep: EventEmitter<void> = new EventEmitter<void>();
   @Output() nextInsideStep: EventEmitter<void> = new EventEmitter<void>();
   @Output() openCancelModal: EventEmitter<void> = new EventEmitter<void>();
-
-  @Input() course!: CourseModel;
 }

@@ -71,14 +71,12 @@
       <!--Formulário - Step1 -->
       <app-course-subscription-step-one
         *ngIf="currentStep === 0"
-        [courseRegistration]="courseRegistration"
         (nextStep)="nextStep()"
       ></app-course-subscription-step-one>
 
       <!--Formulário - Step2 -->
       <app-course-subscription-step-two
         *ngIf="currentStep === 1"
-        [courseRegistration]="courseRegistration"
         (backStep)="backStep()"
         (nextStep)="nextStep()"
       ></app-course-subscription-step-two>

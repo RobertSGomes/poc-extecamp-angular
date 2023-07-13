@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { HistoryStep } from '../../../types/history.type';
-import { CourseModel } from '../../../models/course.model';
 import { Professor } from '../../../types/professor.type';
 
 @Component({
@@ -56,6 +55,4 @@ export class StepTwoFormFiveComponent {
   @Output() backInsideStep: EventEmitter<void> = new EventEmitter<void>();
   @Output() nextInsideStep: EventEmitter<void> = new EventEmitter<void>();
   @Output() openCancelModal: EventEmitter<void> = new EventEmitter<void>();
-
-  @Input() course!: CourseModel;
 }

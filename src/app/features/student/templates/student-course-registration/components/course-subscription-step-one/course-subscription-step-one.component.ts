@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { CourseRegistrationModel } from '../../models/course-registration.model';
 
 @Component({
   selector: 'app-course-subscription-step-one',
@@ -7,7 +6,5 @@ import { CourseRegistrationModel } from '../../models/course-registration.model'
   styleUrls: ['./course-subscription-step-one.component.css'],
 })
 export class CourseSubscriptionStepOneComponent {
-  @Input() courseRegistration!: CourseRegistrationModel;
-
   @Output() nextStep: EventEmitter<void> = new EventEmitter<void>();
 }

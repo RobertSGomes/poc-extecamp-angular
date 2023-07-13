@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { CourseRegistrationModel } from './models/course-registration.model';
 
 @Component({
   selector: 'student-course-registration',
@@ -7,7 +6,6 @@ import { CourseRegistrationModel } from './models/course-registration.model';
   styleUrls: ['./student-course-registration.component.css'],
 })
 export class StudentCourseRegistrationComponent {
-  courseRegistration = new CourseRegistrationModel();
   currentStep: number = 0;
 
   nextStep(): void {
