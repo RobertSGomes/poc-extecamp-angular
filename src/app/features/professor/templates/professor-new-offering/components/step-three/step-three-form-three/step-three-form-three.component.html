@@ -1,5 +1,6 @@
 <form
   (submit)="nextInsideStep.emit()"
+  [formGroup]="stepThreeFormThree"
   class="flex flex-col gap-y-6 w-[1072px] mx-auto p-8 bg-white border border-gray-200 rounded-2xl shadow-sm"
 >
   <app-history-line [currentStep]="2" [steps]="historySteps"></app-history-line>
@@ -13,7 +14,7 @@
   <div class="flex flex-col gap-y-2">
     <div class="flex gap-x-[18px]">
       <p class="w-[494px] font-medium text-sm text-gray-700">
-        Local do oferecimento
+        Local do oferecimento *
       </p>
     </div>
 
@@ -24,8 +25,18 @@
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
           placeholder="Preencha"
+          formControlName="local"
+          required
         />
       </div>
+    </div>
+
+    <div
+      *ngIf="stepThreeFormThree.get('local')?.errors?.['required']  && stepThreeFormThree.get('local')?.touched"
+    >
+      <p class="font-normal text-sm text-red-600">
+        Informe o local do oferecimento do curso
+      </p>
     </div>
   </div>
 
@@ -39,18 +50,45 @@
       <div
         class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
-        <select class="w-full text-gray-800 text-base outline-none">
-          <option selected>Selecione</option>
-          <option>SP</option>
+        <select
+          class="w-full text-gray-800 text-base outline-none"
+          formControlName="uf"
+        >
+          <option selected value="">Selecione</option>
+          <option value="SP">SP</option>
         </select>
       </div>
       <div
         class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
-        <select class="w-full text-gray-800 text-base outline-none">
-          <option selected>Selecione</option>
-          <option>Atibaia</option>
+        <select
+          class="w-full text-gray-800 text-base outline-none"
+          formControlName="cidade"
+        >
+          <option selected value="">Selecione</option>
+          <option value="Atibaia">Atibaia</option>
         </select>
+      </div>
+    </div>
+
+    <div class="flex gap-x-[18px]">
+      <div class="w-[323px]">
+        <div
+          *ngIf="stepThreeFormThree.get('uf')?.errors?.['required']  && stepThreeFormThree.get('uf')?.touched"
+        >
+          <p class="font-normal text-sm text-red-600">
+            Informe a UF do oferecimento do curso
+          </p>
+        </div>
+      </div>
+      <div class="w-[323px]">
+        <div
+          *ngIf="stepThreeFormThree.get('cidade')?.errors?.['required']  && stepThreeFormThree.get('cidade')?.touched"
+        >
+          <p class="font-normal text-sm text-red-600">
+            Informe a cidade do oferecimento do curso
+          </p>
+        </div>
       </div>
     </div>
   </div>
@@ -65,6 +103,7 @@
       <textarea
         class="w-full h-full text-gray-800 text-base outline-none resize-none placeholder:text-gray-500"
         placeholder="Preencha"
+        formControlName="dias_semana_horarios"
       ></textarea>
     </div>
   </div>
@@ -83,19 +122,31 @@
       <div
         class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
-        <div class="w-5 h-5 rounded-full bg-gray-300"></div>
+        <img
+          class="w-5 h-5"
+          src="../../../../../../../../assets/svgs/calendar.svg"
+        />
         <input
           class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
           placeholder="dd/mm/aaaa"
+          type="date"
+          formControlName="data_inicio"
+          onfocus="this.showPicker()"
         />
       </div>
       <div
         class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
-        <div class="w-5 h-5 rounded-full bg-gray-300"></div>
+        <img
+          class="w-5 h-5"
+          src="../../../../../../../../assets/svgs/calendar.svg"
+        />
         <input
           class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
           placeholder="dd/mm/aaaa"
+          type="date"
+          formControlName="data_encerramento"
+          onfocus="this.showPicker()"
         />
       </div>
     </div>
@@ -118,6 +169,8 @@
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
           placeholder="Preencha"
+          formControlName="min_vagas"
+          required
         />
       </div>
       <div
@@ -126,6 +179,8 @@
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
           placeholder="Preencha"
+          formControlName="max_vagas"
+          required
         />
       </div>
     </div>
@@ -136,6 +191,27 @@
           (Caso o número mínimo seja atingido é obrigatório a realização do
           curso)
         </p>
+      </div>
+    </div>
+
+    <div class="flex gap-x-[18px]">
+      <div class="w-[238px]">
+        <div
+          *ngIf="stepThreeFormThree.get('min_vagas')?.errors?.['required']  && stepThreeFormThree.get('min_vagas')?.touched"
+        >
+          <p class="font-normal text-sm text-red-600">
+            Informe o número mínimo de vagas do oferecimento
+          </p>
+        </div>
+      </div>
+      <div class="w-[238px]">
+        <div
+          *ngIf="stepThreeFormThree.get('max_vagas')?.errors?.['required']  && stepThreeFormThree.get('max_vagas')?.touched"
+        >
+          <p class="font-normal text-sm text-red-600">
+            Informe o número máximo de vagas do oferecimento
+          </p>
+        </div>
       </div>
     </div>
   </div>
@@ -161,6 +237,7 @@
       <button
         class="px-4 py-[10px] rounded-lg font-semibold text-sm text-white bg-violet-700"
         type="submit"
+        [disabled]="!stepThreeFormThree.valid"
       >
         Próximo
       </button>

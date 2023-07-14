@@ -1,5 +1,6 @@
 <form
   (submit)="nextInsideStep.emit()"
+  [formGroup]="stepThreeFormOne"
   class="flex flex-col gap-y-6 w-[1072px] mx-auto p-8 bg-white border border-gray-200 rounded-2xl shadow-sm"
 >
   <app-history-line [currentStep]="0" [steps]="historySteps"></app-history-line>
@@ -17,17 +18,27 @@
     </p>
 
     <div class="flex items-center gap-x-2">
-      <input type="radio" id="disciplina_eletiva_yes" />
+      <input
+        type="radio"
+        id="divulgar_extecamp_yes"
+        formControlName="divulgar_extecamp"
+        [value]="true"
+      />
       <label
-        for="disciplina_eletiva_yes"
+        for="divulgar_extecamp_yes"
         class="font-medium text-base text-gray-700"
         >Sim</label
       >
     </div>
     <div class="flex items-center gap-x-2">
-      <input type="radio" id="disciplina_eletiva_no" />
+      <input
+        type="radio"
+        id="divulgar_extecamp_no"
+        formControlName="divulgar_extecamp"
+        [value]="false"
+      />
       <label
-        for="disciplina_eletiva_no"
+        for="divulgar_extecamp_no"
         class="font-medium text-base text-gray-700"
         >Não</label
       >
@@ -48,9 +59,18 @@
       <textarea
         class="w-full h-full text-gray-800 text-base outline-none resize-none placeholder:text-gray-500"
         placeholder="Preencha"
+        maxlength="200"
+        formControlName="explicacao"
       ></textarea>
     </div>
     <p class="font-normal text-sm text-gray-700">Máximo de 200 caracteres</p>
+    <div
+      *ngIf="stepThreeFormOne.get('explicacao')?.errors?.['maxlength'] && stepThreeFormOne.get('explicacao')?.touched"
+    >
+      <p class="font-normal text-sm text-red-600">
+        A explicação deve conter no máximo 200 caracteres
+      </p>
+    </div>
   </div>
 
   <div class="flex flex-col gap-y-2">
@@ -67,6 +87,7 @@
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
           placeholder="http://"
+          formControlName="host"
         />
       </div>
     </div>
@@ -86,6 +107,7 @@
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
           placeholder="http://"
+          formControlName="pagina_facebook"
         />
       </div>
     </div>
@@ -112,6 +134,7 @@
       <button
         class="px-4 py-[10px] rounded-lg font-semibold text-sm text-white bg-violet-700"
         type="submit"
+        [disabled]="!stepThreeFormOne.valid"
       >
         Próximo
       </button>

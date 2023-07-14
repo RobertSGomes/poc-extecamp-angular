@@ -1,5 +1,6 @@
 <form
   (submit)="nextInsideStep.emit()"
+  [formGroup]="stepThreeFormTwo"
   class="flex flex-col gap-y-6 w-[1072px] mx-auto p-8 bg-white border border-gray-200 rounded-2xl shadow-sm"
 >
   <app-history-line [currentStep]="1" [steps]="historySteps"></app-history-line>
@@ -20,8 +21,18 @@
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
           placeholder="Preencha"
+          formControlName="local"
+          required
         />
       </div>
+    </div>
+
+    <div
+      *ngIf="stepThreeFormTwo.get('local')?.errors?.['required']  && stepThreeFormTwo.get('local')?.touched"
+    >
+      <p class="font-normal text-sm text-red-600">
+        Informe o local de inscrição do curso
+      </p>
     </div>
   </div>
 
@@ -39,29 +50,55 @@
       <div
         class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
-        <select class="font-medium text-base text-gray-800 outline-none">
-          <option selected>BR</option>
-          <option>EN</option>
-          <option>ES</option>
+        <select
+          class="font-medium text-base text-gray-800 outline-none"
+          formControlName="telefone_secretaria_pais"
+        >
+          <option selected value="+55 (XX) XXXX-XXXX">BR</option>
+          <option value="+1 (XXX) XXX-XXXX">EN</option>
+          <option value="+34 XXX XXX XXX">ES</option>
         </select>
         <input
           class="w-[324px] text-gray-800 text-base outline-none placeholder:text-gray-500"
-          placeholder="+55 (DDD) 00000-0000"
+          [placeholder]="
+            stepThreeFormTwo.get('telefone_secretaria_pais')?.value
+          "
+          formControlName="telefone_secretaria"
+          required
         />
       </div>
       <div
         class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
-        <select class="font-medium text-base text-gray-800 outline-none">
-          <option selected>BR</option>
-          <option>EN</option>
-          <option>ES</option>
+        <select
+          class="font-medium text-base text-gray-800 outline-none"
+          formControlName="telefone_informacoes_pais"
+        >
+          <option selected value="+55 (XX) XXXX-XXXX">BR</option>
+          <option value="+1 (XXX) XXX-XXXX">EN</option>
+          <option value="+34 XXX XXX XXX">ES</option>
         </select>
         <input
           class="w-[324px] text-gray-800 text-base outline-none placeholder:text-gray-500"
-          placeholder="+55 (DDD) 00000-0000"
+          [placeholder]="
+            stepThreeFormTwo.get('telefone_informacoes_pais')?.value
+          "
+          formControlName="telefone_informacoes"
         />
       </div>
+    </div>
+
+    <div class="flex gap-x-[18px]">
+      <div class="w-[323px]">
+        <div
+          *ngIf="stepThreeFormTwo.get('telefone_secretaria')?.errors?.['required']  && stepThreeFormTwo.get('telefone_secretaria')?.touched"
+        >
+          <p class="font-normal text-sm text-red-600">
+            Informe o telefone da secretaria de extensão
+          </p>
+        </div>
+      </div>
+      <div class="w-[323px]"></div>
     </div>
   </div>
 
@@ -74,25 +111,59 @@
         Encerramento das incrições *
       </p>
     </div>
-
     <div class="flex gap-x-[18px]">
       <div
         class="flex items-center gap-2 w-[324px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
-        <div class="w-5 h-5 rounded-full bg-gray-300"></div>
+        <img
+          class="w-5 h-5"
+          src="../../../../../../../../assets/svgs/calendar.svg"
+        />
         <input
           class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
           placeholder="dd/mm/aaaa"
+          type="date"
+          formControlName="data_abertura"
+          required
+          onfocus="this.showPicker()"
         />
       </div>
       <div
         class="flex items-center gap-2 w-[324px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
-        <div class="w-5 h-5 rounded-full bg-gray-300"></div>
+        <img
+          class="w-5 h-5"
+          src="../../../../../../../../assets/svgs/calendar.svg"
+        />
         <input
           class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
           placeholder="dd/mm/aaaa"
+          type="date"
+          formControlName="data_encerramento"
+          required
+          onfocus="this.showPicker()"
         />
+      </div>
+    </div>
+
+    <div class="flex gap-x-[18px]">
+      <div class="w-[324px]">
+        <div
+          *ngIf="stepThreeFormTwo.get('data_abertura')?.errors?.['required']  && stepThreeFormTwo.get('data_abertura')?.touched"
+        >
+          <p class="font-normal text-sm text-red-600">
+            Informe a data de abertura da inscrição
+          </p>
+        </div>
+      </div>
+      <div class="w-[324px]">
+        <div
+          *ngIf="stepThreeFormTwo.get('data_encerramento')?.errors?.['required']  && stepThreeFormTwo.get('data_encerramento')?.touched"
+        >
+          <p class="font-normal text-sm text-red-600">
+            Informe a data de encerramento da inscrição
+          </p>
+        </div>
       </div>
     </div>
   </div>
@@ -103,18 +174,24 @@
     </p>
 
     <div class="flex items-center gap-x-2">
-      <input type="radio" id="disciplina_eletiva_yes" />
-      <label
-        for="disciplina_eletiva_yes"
-        class="font-medium text-base text-gray-700"
+      <input
+        type="radio"
+        id="modelo_basico"
+        formControlName="modelo"
+        value="Basico"
+      />
+      <label for="modelo_yes" class="font-medium text-base text-gray-700"
         >Básico</label
       >
     </div>
     <div class="flex items-center gap-x-2">
-      <input type="radio" id="disciplina_eletiva_no" />
-      <label
-        for="disciplina_eletiva_no"
-        class="font-medium text-base text-gray-700"
+      <input
+        type="radio"
+        id="modelo_completo"
+        formControlName="modelo"
+        value="Completo"
+      />
+      <label for="modelo_no" class="font-medium text-base text-gray-700"
         >Completo</label
       >
     </div>
@@ -141,6 +218,7 @@
       <button
         class="px-4 py-[10px] rounded-lg font-semibold text-sm text-white bg-violet-700"
         type="submit"
+        [disabled]="!stepThreeFormTwo.valid"
       >
         Próximo
       </button>

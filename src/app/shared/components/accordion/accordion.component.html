@@ -13,13 +13,24 @@
     (click)="isOpened = !isOpened"
   >
     <div class="flex gap-x-3 items-center">
-      <div *ngIf="isBlocked" class="w-5 h-5 rounded-sm bg-red-300"></div>
+      <img
+        src="../../../../assets/svgs/slash-octagon.svg"
+        *ngIf="isBlocked"
+        class="w-5 h-5"
+      />
       <h1 class="flex flex-1 font-semibold text-base text-gray-600">
         {{ title }}
       </h1>
     </div>
 
-    <div class="w-[24px] h-[24px] rounded-sm bg-gray-300"></div>
+    <img
+      src="../../../../assets/svgs/chevron-down.svg"
+      [ngClass]="{
+        'rotate-180': isOpened,
+        'rotate-0': !isOpened
+      }"
+      class="w-[24px] h-[24px]"
+    />
   </div>
   <div
     [ngClass]="{

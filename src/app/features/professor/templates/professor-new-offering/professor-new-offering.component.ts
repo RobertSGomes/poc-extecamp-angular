@@ -7,8 +7,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./professor-new-offering.component.css'],
 })
 export class ProfessorNewOfferingComponent implements OnInit {
-  currentStep: number = 0;
-  currentInsideStep: number = 0;
+  currentStep: number = 2;
+  currentInsideStep: number = 3;
   modalCancelOpened = false;
 
   stepOneFormOne!: FormGroup;
@@ -16,6 +16,13 @@ export class ProfessorNewOfferingComponent implements OnInit {
   stepOneFormThree!: FormGroup;
   stepOneFormFour!: FormGroup;
   stepOneFormFive!: FormGroup;
+
+  // TODO: STEP TWO
+
+  stepThreeFormOne!: FormGroup;
+  stepThreeFormTwo!: FormGroup;
+  stepThreeFormThree!: FormGroup;
+  stepThreeFormFour!: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {}
 
@@ -96,6 +103,39 @@ export class ProfessorNewOfferingComponent implements OnInit {
       nota_minima: ['', [Validators.required]],
       grau_escolaridade: ['', [Validators.required]],
       divulgacao_corporativa: [false],
+    });
+
+    this.stepThreeFormOne = this.formBuilder.group({
+      divulgar_extecamp: [false],
+      explicacao: ['', Validators.maxLength],
+      host: [''],
+      pagina_facebook: [''],
+    });
+
+    this.stepThreeFormTwo = this.formBuilder.group({
+      local: ['', [Validators.required]],
+      telefone_secretaria_pais: ['+55 (XX) XXXX-XXXX'],
+      telefone_secretaria: ['', [Validators.required]],
+      telefone_informacoes_pais: ['+55 (XX) XXXX-XXXX'],
+      telefone_informacoes: [''],
+      data_abertura: ['', [Validators.required]],
+      data_encerramento: ['', [Validators.required]],
+      modelo: ['Basico'],
+    });
+
+    this.stepThreeFormThree = this.formBuilder.group({
+      local: ['', [Validators.required]],
+      uf: ['', [Validators.required]],
+      cidade: ['', [Validators.required]],
+      dias_semana_horarios: [''],
+      data_inicio: [''],
+      data_encerramento: [''],
+      min_vagas: ['', [Validators.required]],
+      max_vagas: ['', [Validators.required]],
+    });
+
+    this.stepThreeFormFour = this.formBuilder.group({
+      tem_criterios: [false],
     });
   }
 

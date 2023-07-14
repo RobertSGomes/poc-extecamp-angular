@@ -13,13 +13,14 @@
   >
     <div class="flex flex-col gap-y-1 mt-4 h-[42px]">
       <div class="flex gap-x-2">
-        <div
+        <img
+          src="../../../../assets/svgs/check-outiline-emerald.svg"
           [ngClass]="{
             'block': currentStep > step.stepIndex,
             'hidden': currentStep <= step.stepIndex,
           }"
-          class="w-5 h-5 rounded-full bg-emerald-500"
-        ></div>
+          class="w-5 h-5"
+        />
         <p
           [ngClass]="{
           'font-normal': currentStep !== step.stepIndex,

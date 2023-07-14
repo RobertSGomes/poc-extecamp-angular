@@ -10,20 +10,22 @@
       class="flex items-center gap-x-3"
       *ngFor="let route of routes; let i = index"
     >
-      <div
+      <img
+        src="../../../../assets/svgs/home-line.svg"
         [ngClass]="{
           hidden: i > 0,
           flex: i === 0
         }"
-        class="w-4 h-4 bg-gray-300 rounded-sm"
-      ></div>
-      <div
+        class="w-5 h-5"
+      />
+      <img
+        src="../../../../assets/svgs/chevron-right.svg"
         [ngClass]="{
           hidden: i > 0,
           flex: i === 0
         }"
-        class="w-4 h-4 bg-gray-300 rounded-sm"
-      ></div>
+        class="w-4 h-4"
+      />
       <p
         [ngClass]="{
         'font-semibold  text-violet-700': i === routes.length - 1,
@@ -33,13 +35,14 @@
       >
         {{ route }}
       </p>
-      <div
+      <img
+        src="../../../../assets/svgs/chevron-right.svg"
         [ngClass]="{
           hidden: i === routes.length - 1,
-          flex: i === routes.length - 1
+          flex: i >= 0
         }"
-        class="w-4 h-4 bg-gray-300 rounded-sm"
-      ></div>
+        class="w-4 h-4"
+      />
     </div>
   </div>
   <div class="flex gap-x-1">

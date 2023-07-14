@@ -15,9 +15,15 @@
     class="flex flex-col items-center gap-y-4 w-full z-[1]"
     *ngFor="let step of steps"
   >
+    <img
+      *ngIf="step.stepIndex < currentStep"
+      src="../../../../assets/svgs/check-outline-violet.svg"
+      class="w-6 h-6"
+    />
     <div
+      *ngIf="step.stepIndex >= currentStep"
       [ngClass]="{
-        'border-4 border-violet-600 bg-violet-100 shadow-[0px_0px_0px_4px] shadow-violet-100': step.stepIndex <= currentStep,
+        'border-4 border-violet-600 bg-violet-100 shadow-[0px_0px_0px_4px] shadow-violet-100': step.stepIndex == currentStep,
         'border-2 border-gray-200 bg-white': step.stepIndex > currentStep,
       }"
       class="flex items-center justify-center w-6 h-6 rounded-full"

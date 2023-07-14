@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { HistoryStep } from '../../../types/history.type';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-step-three-form-four',
@@ -29,4 +30,6 @@ export class StepThreeFormFourComponent {
   @Output() backInsideStep: EventEmitter<void> = new EventEmitter<void>();
   @Output() nextStep: EventEmitter<void> = new EventEmitter<void>();
   @Output() openCancelModal: EventEmitter<void> = new EventEmitter<void>();
+
+  @Input() stepThreeFormFour!: FormGroup;
 }

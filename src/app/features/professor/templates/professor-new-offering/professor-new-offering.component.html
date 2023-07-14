@@ -14,7 +14,7 @@
 
   <div class="col-start-2 row-start-2 w-full">
     <app-header-navbar
-      [routes]="['Cursos', 'Novo oferecimento']"
+      [routes]="['Oferecimentos', 'Novo oferecimento']"
     ></app-header-navbar>
   </div>
 
@@ -147,6 +147,7 @@
       <div *ngIf="currentStep === 2">
         <app-step-three-form-one
           *ngIf="currentInsideStep === 0"
+          [stepThreeFormOne]="stepThreeFormOne"
           (backStep)="backStep(5)"
           (nextInsideStep)="nextInsideStep()"
           (openCancelModal)="openCancelModal()"
@@ -154,6 +155,7 @@
 
         <app-step-three-form-two
           *ngIf="currentInsideStep === 1"
+          [stepThreeFormTwo]="stepThreeFormTwo"
           (backInsideStep)="backInsideStep()"
           (nextInsideStep)="nextInsideStep()"
           (openCancelModal)="openCancelModal()"
@@ -161,6 +163,7 @@
 
         <app-step-three-form-three
           *ngIf="currentInsideStep === 2"
+          [stepThreeFormThree]="stepThreeFormThree"
           (backInsideStep)="backInsideStep()"
           (nextInsideStep)="nextInsideStep()"
           (openCancelModal)="openCancelModal()"
@@ -168,6 +171,7 @@
 
         <app-step-three-form-four
           *ngIf="currentInsideStep === 3"
+          [stepThreeFormFour]="stepThreeFormFour"
           (backInsideStep)="backInsideStep()"
           (nextStep)="nextStep()"
           (openCancelModal)="openCancelModal()"
