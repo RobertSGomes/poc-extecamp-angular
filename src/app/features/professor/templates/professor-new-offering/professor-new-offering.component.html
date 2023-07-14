@@ -93,6 +93,7 @@
 
         <app-step-one-form-five
           *ngIf="currentInsideStep === 4"
+          [stepOneFormFive]="stepOneFormFive"
           (backInsideStep)="backInsideStep()"
           (nextStep)="nextStep()"
           (openCancelModal)="openCancelModal()"

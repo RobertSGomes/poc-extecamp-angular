@@ -1,5 +1,6 @@
 <form
   (submit)="nextStep.emit()"
+  [formGroup]="stepOneFormFive"
   class="flex flex-col w-[1072px] mx-auto gap-y-6 p-8 bg-white border border-gray-200 rounded-2xl shadow-sm"
 >
   <app-history-line [currentStep]="4" [steps]="historySteps"></app-history-line>
@@ -47,6 +48,8 @@
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
           placeholder="%"
+          formControlName="frequencia_minima"
+          required
         />
       </div>
       <div
@@ -55,6 +58,8 @@
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
           placeholder="Preencha"
+          formControlName="nota_minima"
+          required
         />
       </div>
     </div>
@@ -65,6 +70,27 @@
         <p class="font-normal text-sm text-gray-700">
           Para cursos de Difusão o valor será "0"
         </p>
+      </div>
+    </div>
+
+    <div class="flex flex-row gap-x-[18px]">
+      <div class="w-[324px]">
+        <div
+          *ngIf="stepOneFormFive.get('frequencia_minima')?.errors?.['required'] && stepOneFormFive.get('frequencia_minima')?.touched"
+        >
+          <p class="font-normal text-sm text-red-600">
+            Informe a frequência mínima do curso
+          </p>
+        </div>
+      </div>
+      <div class="w-[324px]">
+        <div
+          *ngIf="stepOneFormFive.get('nota_minima')?.errors?.['required'] && stepOneFormFive.get('nota_minima')?.touched"
+        >
+          <p class="font-normal text-sm text-red-600">
+            Informe a nota mínima do curso
+          </p>
+        </div>
       </div>
     </div>
   </div>
@@ -78,15 +104,25 @@
     <div
       class="flex gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
     >
-      <select class="w-full text-gray-800 text-base outline-none">
-        <option>Selecione</option>
-        <option>Bacharelado</option>
+      <select
+        class="w-full text-gray-800 text-base outline-none"
+        formControlName="grau_escolaridade"
+      >
+        <option value="">Selecione</option>
+        <option value="Bacharelado">Bacharelado</option>
       </select>
     </div>
     <p class="font-normal text-sm text-gray-700">
       Obrigatória a entrega, pelo aluno, de cópias dos comprovantes no ato da
       matrícula
     </p>
+    <div
+      *ngIf="stepOneFormFive.get('grau_escolaridade')?.errors?.['required'] && stepOneFormFive.get('grau_escolaridade')?.touched"
+    >
+      <p class="font-normal text-sm text-red-600">
+        Informe o grau de escolaridade do curso
+      </p>
+    </div>
   </div>
 
   <section
@@ -119,7 +155,12 @@
     </p>
 
     <div class="flex items-center gap-x-2">
-      <input type="radio" id="divulgacao_corporativa_yes" />
+      <input
+        type="radio"
+        id="divulgacao_corporativa_yes"
+        formControlName="divulgacao_corporativa"
+        [value]="true"
+      />
       <label
         for="divulgacao_corporativa_yes"
         class="font-medium text-base text-gray-700"
@@ -127,7 +168,12 @@
       >
     </div>
     <div class="flex items-center gap-x-2">
-      <input type="radio" id="divulgacao_corporativa_no" />
+      <input
+        type="radio"
+        id="divulgacao_corporativa_no"
+        formControlName="divulgacao_corporativa"
+        [value]="false"
+      />
       <label
         for="divulgacao_corporativa_no"
         class="font-medium text-base text-gray-700"
@@ -157,6 +203,7 @@
       <button
         class="px-4 py-[10px] rounded-lg font-semibold text-sm text-white bg-violet-700"
         type="submit"
+        [disabled]="!stepOneFormFive.valid"
       >
         Próximo
       </button>

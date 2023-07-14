@@ -15,6 +15,7 @@ export class ProfessorNewOfferingComponent implements OnInit {
   stepOneFormTwo!: FormGroup;
   stepOneFormThree!: FormGroup;
   stepOneFormFour!: FormGroup;
+  stepOneFormFive!: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {}
 
@@ -88,6 +89,13 @@ export class ProfessorNewOfferingComponent implements OnInit {
         '',
         [Validators.required, Validators.minLength, Validators.maxLength],
       ],
+    });
+
+    this.stepOneFormFive = this.formBuilder.group({
+      frequencia_minima: ['', [Validators.required]],
+      nota_minima: ['', [Validators.required]],
+      grau_escolaridade: ['', [Validators.required]],
+      divulgacao_corporativa: [false],
     });
   }
 
