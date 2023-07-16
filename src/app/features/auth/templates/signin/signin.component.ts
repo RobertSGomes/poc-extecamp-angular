@@ -17,8 +17,8 @@ export class SigninComponent implements OnInit {
   signInForm!: FormGroup;
 
   constructor(
-    private formBuilder: FormBuilder,
     private readonly authService: AuthService,
+    private formBuilder: FormBuilder,
     private router: Router
   ) {}
 
@@ -32,19 +32,16 @@ export class SigninComponent implements OnInit {
     });
   }
 
-  handleSignIn(): void {
-    const response = this.authService.signIn(this.signInForm.value);
+  async handleSignIn(): Promise<void> {
+    try {
+      const response = await this.authService.signIn(this.signInForm.value);
 
-    response.subscribe(
-      (response) => {
-        setAccessToken(response.access_token, response.path);
-        setUserId(response.user_id);
+      setUserId(response.user_id);
+      setAccessToken(response.access_token, response.path);
 
-        this.router.navigate([`/${response.path}`]);
-      },
-      ({ error }) => {
-        alert(error.error);
-      }
-    );
+      this.router.navigate([`/${response.path}`]);
+    } catch (error: any) {
+      alert(error.error);
+    }
   }
 }

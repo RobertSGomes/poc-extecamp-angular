@@ -18,11 +18,7 @@ export class ProfessorHomeComponent implements OnInit {
     this.getProfessor();
   }
 
-  getProfessor(): void {
-    const response = this.professorService.getOne(this.professorId);
-
-    response.subscribe((response) => {
-      this.professor = response;
-    });
+  async getProfessor(): Promise<void> {
+    this.professor = await this.professorService.getOne(this.professorId);
   }
 }

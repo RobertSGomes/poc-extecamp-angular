@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { getAccessToken } from 'src/app/shared/utils/access-token.util';
 import { Router } from '@angular/router';
 import { ProfessorModel } from './models/professor.model';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -14,13 +13,24 @@ export class ProfessorService {
 
   constructor(private readonly http: HttpClient, private router: Router) {}
 
-  getOne(professorId: string | null): Observable<ProfessorModel> {
+  async getOne(professorId: string | null): Promise<ProfessorModel> {
     this.verifyAccess();
 
-    return this.http.get<ProfessorModel>(`${this.apiURL}/${professorId}`, {
-      headers: {
-        Authorization: `Bearer ${this.accessToken}`,
-      },
+    return new Promise((resolve, reject) => {
+      this.http
+        .get<ProfessorModel>(`${this.apiURL}/${professorId}`, {
+          headers: {
+            Authorization: `Bearer ${this.accessToken}`,
+          },
+        })
+        .subscribe(
+          (response) => {
+            resolve(response);
+          },
+          ({ error }) => {
+            reject(error);
+          }
+        );
     });
   }
 

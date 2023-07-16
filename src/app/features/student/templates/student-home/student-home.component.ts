@@ -22,16 +22,8 @@ export class StudentHomeComponent {
 
   constructor(private readonly studentService: StudentService) {}
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.studentId = getUserId();
-    this.getStudent();
-  }
-
-  getStudent(): void {
-    const response = this.studentService.getOne(this.studentId);
-
-    response.subscribe((response) => {
-      this.student = response;
-    });
+    this.student = await this.studentService.getOne(this.studentId);
   }
 }

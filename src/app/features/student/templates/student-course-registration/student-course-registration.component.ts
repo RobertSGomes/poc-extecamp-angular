@@ -23,10 +23,13 @@ export class StudentCourseRegistrationComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {}
 
-  ngOnInit(): void {
-    this.studentId = getUserId();
-    this.getStudent();
+  async ngOnInit(): Promise<void> {
     this.loadForms();
+
+    await this.studentService.getOne(getUserId()).then((student) => {
+      this.student = student;
+      this.fillInputs();
+    });
   }
 
   loadForms() {
@@ -167,15 +170,6 @@ export class StudentCourseRegistrationComponent implements OnInit {
     if (value) {
       form.get(input)?.setValue(value);
     }
-  }
-
-  getStudent() {
-    const response = this.studentService.getOne(this.studentId);
-
-    response.subscribe((response) => {
-      this.student = response;
-      this.fillInputs();
-    });
   }
 
   nextStep(): void {
