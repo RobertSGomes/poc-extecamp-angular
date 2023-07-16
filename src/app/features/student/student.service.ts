@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { SignUpDTO } from '../auth/dtos/signup.dto';
 import { Router } from '@angular/router';
 import { StudentModel } from './models/student.model';
-import { Observable } from 'rxjs';
 import { getAccessToken } from 'src/app/shared/utils/access-token.util';
 
 @Injectable({
@@ -18,21 +17,43 @@ export class StudentService {
     private readonly router: Router
   ) {}
 
-  signUp(sigupDTO: SignUpDTO): Observable<Object> {
-    return this.http.post(`${this.apiURL}/cadastrar`, sigupDTO, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
+  async signUp(sigupDTO: SignUpDTO): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.http
+        .post(`${this.apiURL}/cadastrar`, sigupDTO, {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        })
+        .subscribe(
+          (response) => {
+            resolve(response);
+          },
+          ({ error }) => {
+            reject(error);
+          }
+        );
     });
   }
 
-  getOne(studentId: string | null | undefined): Observable<StudentModel> {
+  async getOne(studentId: string | null | undefined): Promise<StudentModel> {
     this.verifyAccess();
 
-    return this.http.get<StudentModel>(`${this.apiURL}/${studentId}`, {
-      headers: {
-        Authorization: `Bearer ${this.accessToken}`,
-      },
+    return new Promise((resolve, reject) => {
+      this.http
+        .get<StudentModel>(`${this.apiURL}/${studentId}`, {
+          headers: {
+            Authorization: `Bearer ${this.accessToken}`,
+          },
+        })
+        .subscribe(
+          (response) => {
+            resolve(response);
+          },
+          ({ error }) => {
+            reject(error);
+          }
+        );
     });
   }
 

@@ -16,7 +16,7 @@ export class LocationService {
         (response) => {
           resolve(response);
         },
-        (error) => {
+        ({ error }) => {
           reject(error);
         }
       );
@@ -41,7 +41,7 @@ export class LocationService {
           (response) => {
             resolve(response.data.states);
           },
-          (error) => {
+          ({ error }) => {
             reject(error);
           }
         );

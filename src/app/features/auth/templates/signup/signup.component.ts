@@ -36,16 +36,12 @@ export class SignupComponent {
     });
   }
 
-  handleSignUp(): void {
-    const response = this.studentServive.signUp(this.signUpForm.value);
-
-    response.subscribe(
-      (response) => {
-        this.router.navigate(['/signin']);
-      },
-      ({ error }) => {
-        alert(JSON.stringify(error.error));
-      }
-    );
+  async handleSignUp(): Promise<void> {
+    try {
+      await this.studentServive.signUp(this.signUpForm.value);
+      this.router.navigate(['/signin']);
+    } catch (error: any) {
+      alert(JSON.stringify(error.error));
+    }
   }
 }
