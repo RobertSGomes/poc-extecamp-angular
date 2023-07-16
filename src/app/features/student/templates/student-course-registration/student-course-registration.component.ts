@@ -26,10 +26,10 @@ export class StudentCourseRegistrationComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     this.loadForms();
 
-    await this.studentService.getOne(getUserId()).then((student) => {
-      this.student = student;
-      this.fillInputs();
-    });
+    const student = this.studentService.getOne(getUserId());
+
+    this.student = student;
+    this.fillInputs();
   }
 
   loadForms() {

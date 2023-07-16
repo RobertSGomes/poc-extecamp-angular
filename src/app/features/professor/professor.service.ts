@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { getAccessToken } from 'src/app/shared/utils/access-token.util';
 import { Router } from '@angular/router';
 import { ProfessorModel } from './models/professor.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -13,36 +14,40 @@ export class ProfessorService {
 
   constructor(private readonly http: HttpClient, private router: Router) {}
 
-  async getOne(professorId: string | null): Promise<ProfessorModel> {
+  getOne(professorId: string | null): ProfessorModel | undefined {
     this.verifyAccess();
 
-    return new Promise((resolve, reject) => {
-      this.http
-        .get<ProfessorModel>(`${this.apiURL}/${professorId}`, {
-          headers: {
-            Authorization: `Bearer ${this.accessToken}`,
-          },
-        })
-        .subscribe(
-          (response) => {
-            resolve(response);
-          },
-          ({ error }) => {
-            reject(error);
-          }
-        );
-    });
-  }
+    let professor: ProfessorModel | undefined = undefined;
 
-  getAll() {
-    return this.http.get<{ result: ProfessorModel[]; total: number }>(
-      `${this.apiURL}/`,
-      {
+    this.http
+      .get<ProfessorModel>(`${this.apiURL}/${professorId}`, {
         headers: {
           Authorization: `Bearer ${this.accessToken}`,
         },
-      }
-    );
+      })
+      .subscribe((response) => {
+        professor = response;
+      });
+
+    return professor;
+  }
+
+  getAll(): ProfessorModel[] {
+    this.verifyAccess();
+
+    const professors: ProfessorModel[] = [];
+
+    this.http
+      .get<{ result: ProfessorModel[]; total: number }>(`${this.apiURL}/`, {
+        headers: {
+          Authorization: `Bearer ${this.accessToken}`,
+        },
+      })
+      .subscribe((response) => {
+        professors.push(...response.result);
+      });
+
+    return professors;
   }
 
   verifyAccess(): void {

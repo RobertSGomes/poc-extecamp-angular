@@ -7,12 +7,8 @@ type HeaederRoutes = Array<string>;
   templateUrl: './header-navbar.component.html',
   styleUrls: ['./header-navbar.component.css'],
 })
-export class HeaderNavbarComponent implements OnInit {
+export class HeaderNavbarComponent {
   @Input() name: string | undefined = '';
   @Input() routes: HeaederRoutes = [];
   @Input() description: string = '';
-
-  ngOnInit(): void {
-    this.name = `Olá, ${this.name}`;
-  }
 }

@@ -32,16 +32,18 @@ export class SigninComponent implements OnInit {
     });
   }
 
-  async handleSignIn(): Promise<void> {
-    try {
-      const response = await this.authService.signIn(this.signInForm.value);
+  handleSignIn(): void {
+    const result = this.authService.signIn(this.signInForm.value);
 
-      setUserId(response.user_id);
-      setAccessToken(response.access_token, response.path);
-
-      this.router.navigate([`/${response.path}`]);
-    } catch (error: any) {
-      alert(error.error);
-    }
+    result.subscribe(
+      (response) => {
+        setUserId(response.user_id);
+        setAccessToken(response.access_token, response.path);
+        this.router.navigate([`/${response.path}`]);
+      },
+      ({ error }) => {
+        alert(error.error);
+      }
+    );
   }
 }

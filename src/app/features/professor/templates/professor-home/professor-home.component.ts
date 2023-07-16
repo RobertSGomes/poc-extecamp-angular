@@ -9,16 +9,16 @@ import { getUserId } from 'src/app/shared/utils/user-id.util';
   styleUrls: ['./professor-home.component.css'],
 })
 export class ProfessorHomeComponent implements OnInit {
+  professorId: string | null = getUserId();
   professor?: ProfessorModel;
-  private professorId: string | null = getUserId();
 
   constructor(private readonly professorService: ProfessorService) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.getProfessor();
   }
 
-  async getProfessor(): Promise<void> {
-    this.professor = await this.professorService.getOne(this.professorId);
+  getProfessor(): void {
+    this.professor = this.professorService.getOne(this.professorId);
   }
 }

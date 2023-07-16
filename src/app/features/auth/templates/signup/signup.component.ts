@@ -37,11 +37,15 @@ export class SignupComponent {
   }
 
   async handleSignUp(): Promise<void> {
-    try {
-      await this.studentServive.signUp(this.signUpForm.value);
-      this.router.navigate(['/signin']);
-    } catch (error: any) {
-      alert(JSON.stringify(error.error));
-    }
+    const result = this.studentServive.signUp(this.signUpForm.value);
+
+    result.subscribe(
+      () => {
+        this.router.navigate(['/signin']);
+      },
+      ({ error }) => {
+        alert(error.error);
+      }
+    );
   }
 }

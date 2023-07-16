@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ProfessorService } from '../../professor.service';
+import { ProfessorModel } from '../../models/professor.model';
+import { getUserId } from 'src/app/shared/utils/user-id.util';
 
 @Component({
   selector: 'professor-new-offering',
@@ -7,6 +10,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./professor-new-offering.component.css'],
 })
 export class ProfessorNewOfferingComponent implements OnInit {
+  professor?: ProfessorModel;
+  professorId: string | null = getUserId();
+
   currentStep: number = 1;
   currentInsideStep: number = 0;
   modalCancelOpened = false;
@@ -29,9 +35,14 @@ export class ProfessorNewOfferingComponent implements OnInit {
   stepFourFormThree!: FormGroup;
   stepFourFormFour!: FormGroup;
 
-  constructor(private readonly formBuilder: FormBuilder) {}
+  constructor(
+    private readonly professorService: ProfessorService,
+    private readonly formBuilder: FormBuilder
+  ) {}
 
   ngOnInit(): void {
+    this.getProfessor();
+
     this.stepOneFormOne = this.formBuilder.group({
       sigla_tipo: ['', [Validators.required]],
       sigla_numero: ['', [Validators.required]],
@@ -217,6 +228,10 @@ export class ProfessorNewOfferingComponent implements OnInit {
       empresa_fax: [''],
       empresa_email: ['', Validators.email],
     });
+  }
+
+  getProfessor(): void {
+    this.professor = this.professorService.getOne(this.professorId);
   }
 
   backInsideStep(): void {

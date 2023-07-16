@@ -24,6 +24,6 @@ export class StudentHomeComponent {
 
   async ngOnInit(): Promise<void> {
     this.studentId = getUserId();
-    this.student = await this.studentService.getOne(this.studentId);
+    this.student = this.studentService.getOne(this.studentId);
   }
 }

@@ -10,42 +10,38 @@ export class LocationService {
 
   constructor(private readonly http: HttpClient) {}
 
-  getCountries(): Promise<any> {
-    return new Promise((resolve, reject) => {
-      this.http.get<any>(`${this.baseUrlRestCountries}/all`).subscribe(
-        (response) => {
-          resolve(response);
-        },
-        ({ error }) => {
-          reject(error);
-        }
-      );
-    });
+  getCountries(): any {
+    const countries: any[] = [];
+
+    this.http
+      .get<any>(`${this.baseUrlRestCountries}/all`)
+      .subscribe((response) => {
+        countries.push(...response);
+      });
+
+    return countries;
   }
 
-  getStates(country: string): Promise<any> {
-    return new Promise((resolve, reject) => {
-      this.http
-        .post<any>(
-          `${this.baseUrlCountriesNow}/countries/states`,
-          {
-            country,
+  getStates(country: string): any {
+    const states: any = [];
+
+    this.http
+      .post<any>(
+        `${this.baseUrlCountriesNow}/countries/states`,
+        {
+          country,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
           },
-          {
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          }
-        )
-        .subscribe(
-          (response) => {
-            resolve(response.data.states);
-          },
-          ({ error }) => {
-            reject(error);
-          }
-        );
-    });
+        }
+      )
+      .subscribe((response) => {
+        states.push(...response.data.states);
+      });
+
+    return states;
   }
 
   getCities() {}
