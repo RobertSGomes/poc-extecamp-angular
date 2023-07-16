@@ -189,6 +189,7 @@
 
         <app-step-four-form-two
           *ngIf="currentInsideStep === 1"
+          [stepFourFormTwo]="stepFourFormTwo"
           (backInsideStep)="backInsideStep()"
           (nextInsideStep)="nextInsideStep()"
           (openCancelModal)="openCancelModal()"
@@ -196,6 +197,7 @@
 
         <app-step-four-form-three
           *ngIf="currentInsideStep === 2"
+          [stepFourFormThree]="stepFourFormThree"
           (backInsideStep)="backInsideStep()"
           (nextInsideStep)="nextInsideStep()"
           (openCancelModal)="openCancelModal()"
@@ -203,6 +205,7 @@
 
         <app-step-four-form-four
           *ngIf="currentInsideStep === 3"
+          [stepFourFormFour]="stepFourFormFour"
           (backInsideStep)="backInsideStep()"
           (nextStep)="nextStep()"
           (openCancelModal)="openCancelModal()"

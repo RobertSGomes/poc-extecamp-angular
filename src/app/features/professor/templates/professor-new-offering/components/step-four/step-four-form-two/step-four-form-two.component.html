@@ -1,5 +1,6 @@
 <form
   class="flex flex-col gap-y-6 w-[1072px] mx-auto p-8 bg-white border border-gray-200 rounded-2xl shadow-sm"
+  [formGroup]="stepFourFormTwo"
   (submit)="nextInsideStep.emit()"
 >
   <app-history-line [currentStep]="1" [steps]="historySteps"></app-history-line>
@@ -35,6 +36,9 @@
             <p class="font-normal text-base text-gray-500">R$</p>
             <input
               class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+              formControlName="fixas"
+              [inputMask]="currencyInputMask"
+              placeholder="0.00"
             />
           </div>
         </td>
@@ -56,6 +60,9 @@
             <p class="font-normal text-base text-gray-500">%</p>
             <input
               class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+              formControlName="aiu_unidade_porcentagem"
+              [inputMask]="percentageInputMask"
+              placeholder="0.00"
             />
           </div>
         </td>
@@ -68,6 +75,9 @@
             <p class="font-normal text-base text-gray-500">R$</p>
             <input
               class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+              formControlName="aiu_unidade_valor"
+              [inputMask]="currencyInputMask"
+              placeholder="0.00"
             />
           </div>
         </td>
@@ -88,6 +98,9 @@
             <p class="font-normal text-base text-gray-500">%</p>
             <input
               class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+              formControlName="fundo_extensao_porcentagem_away"
+              [inputMask]="percentageInputMask"
+              placeholder="0.00"
             />
           </div>
         </td>
@@ -100,6 +113,9 @@
             <p class="font-normal text-base text-gray-500">R$</p>
             <input
               class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+              formControlName="fundo_extensao_valor_away"
+              [inputMask]="currencyInputMask"
+              placeholder="0.00"
             />
           </div>
         </td>
@@ -118,9 +134,12 @@
             <div
               class="flex items-center gap-2 w-[180px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
             >
-              <select class="w-full text-gray-800 text-base outline-none">
-                <option selected>Selecione</option>
-                <option>Unidade IE</option>
+              <select
+                class="w-full text-gray-800 text-base outline-none"
+                formControlName="fundo_extensao_unidade"
+              >
+                <option selected value="">Selecione</option>
+                <option value="Unidade IE">Unidade IE</option>
               </select>
             </div>
             <div
@@ -129,6 +148,9 @@
               <p class="font-normal text-base text-gray-500">%</p>
               <input
                 class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                formControlName="fundo_extensao_porcentagem"
+                [inputMask]="percentageInputMask"
+                placeholder="0.00"
               />
             </div>
           </div>
@@ -142,6 +164,9 @@
             <p class="font-normal text-base text-gray-500">R$</p>
             <input
               class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+              formControlName="fundo_extensao_valor"
+              [inputMask]="currencyInputMask"
+              placeholder="0.00"
             />
           </div>
         </td>
@@ -164,6 +189,9 @@
             <p class="font-normal text-base text-gray-500">R$</p>
             <input
               class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+              formControlName="total"
+              [inputMask]="currencyInputMask"
+              placeholder="0.00"
             />
           </div>
         </td>
@@ -191,6 +219,9 @@
             <p class="font-normal text-base text-gray-500">R$</p>
             <input
               class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+              formControlName="subsidios"
+              [inputMask]="currencyInputMask"
+              placeholder="0.00"
             />
           </div>
         </td>
@@ -220,6 +251,9 @@
             <p class="font-normal text-base text-gray-500">R$</p>
             <input
               class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+              formControlName="custo_total"
+              [inputMask]="currencyInputMask"
+              placeholder="0.00"
             />
           </div>
         </td>
@@ -248,6 +282,9 @@
             >
               <input
                 class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                formControlName="custo_aluno_min_vagas"
+                [inputMask]="currencyInputMask"
+                placeholder="0.00"
               />
             </div>
             <p class="font-normal text-xs text-gray-500">
@@ -265,6 +302,9 @@
             <p class="font-normal text-base text-gray-500">R$</p>
             <input
               class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+              formControlName="custo_aluno_valor"
+              [inputMask]="currencyInputMask"
+              placeholder="0.00"
             />
           </div>
         </td>
@@ -273,12 +313,14 @@
   </table>
 
   <div
+    *ngIf="!alertClosed"
     class="flex justify-between gap-x-4 w-[837px] p-4 rounded-xl bg-orange-50 border border-orange-300"
   >
     <div class="flex flex-1 gap-x-4">
-      <div
-        class="relative w-4 h-4 rounded-full bg-orange-600 before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:w-[28px] before:h-[28px] before:rounded-full before:border-2 before:border-orange-600/30 after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:w-[38px] after:h-[38px] after:rounded-full after:border-2 after:border-orange-600/10"
-      ></div>
+      <img
+        src="../../../../../../../../assets/svgs/alert-triangle.svg"
+        class="w-5 h-5"
+      />
 
       <div class="flex flex-1 flex-col gap-y-1">
         <p class="font-semibold text-sm text-orange-700">Atenção!</p>
@@ -293,7 +335,12 @@
       </div>
     </div>
 
-    <button class="w-5 h-5 bg-orange-300 rounded-sm" type="submit"></button>
+    <button class="w-5 h-5" type="button" (click)="alertClosed = true">
+      <img
+        src="../../../../../../../../assets/svgs/x-close-orange.svg"
+        class="w-5 h-5"
+      />
+    </button>
   </div>
 
   <hr class="h-[1px] bg-gray-200" />
