@@ -1,5 +1,7 @@
-<section
+<form
   class="flex flex-col p-8 gap-y-6 rounded-2xl bg-white border border-gray-200 shadow-sm"
+  [formGroup]="stepOneForm"
+  (submit)="nextStep.emit()"
 >
   <h1 class="font-semibold text-lg text-black">
     Dados pessoais e profissionais
@@ -12,8 +14,10 @@
       class="flex items-center gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
     >
       <input
-        class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+        formControlName="nome"
         placeholder="Seu nome"
+        class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+        required
       />
     </div>
   </div>
@@ -25,9 +29,11 @@
       class="flex items-center gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
     >
       <input
+        formControlName="email"
         type="email"
-        class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
         placeholder="example@extecamp.com"
+        class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+        required
       />
     </div>
   </div>
@@ -44,8 +50,10 @@
         <option>ES</option>
       </select>
       <input
-        class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+        formControlName="telefone"
         placeholder="+55 (DDD) 00000-0000"
+        class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+        required
       />
     </div>
   </div>
@@ -59,15 +67,19 @@
       <div
         class="w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
-        <select class="w-full text-gray-800 text-base outline-none">
+        <select
+          formControlName="documento_identificacao_tipo"
+          class="w-full text-gray-800 text-base outline-none"
+        >
           <option selected value="">Selecione</option>
-          <option>RG</option>
-          <option>CNH</option>
+          <option value="RG">RG</option>
+          <option value="CNH">CNH</option>
         </select>
       </div>
       <input
+        formControlName="documento_identificacao_numero"
+        placeholder="12.345.678-99"
         class="w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm text-gray-800 text-base outline-none placeholder:text-gray-500"
-        placeholder="1234567890"
       />
     </div>
   </div>
@@ -79,11 +91,14 @@
       <div
         class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
-        <select class="w-full text-gray-800 text-base outline-none">
-          <option selected>Selecione</option>
-          <option>SSP</option>
-          <option>MTE-SP</option>
-          <option>MTE-SE</option>
+        <select
+          formControlName="documento_identificacao_orgao_emissor"
+          class="w-full text-gray-800 text-base outline-none"
+        >
+          <option value="" selected>Selecione</option>
+          <option value="SSP">SSP</option>
+          <option value="MTE-SP">MTE-SP</option>
+          <option value="MTE-SE">MTE-SE</option>
         </select>
       </div>
     </div>
@@ -92,35 +107,38 @@
       <div
         class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
-        <select class="w-full text-gray-800 text-base outline-none">
-          <option selected>Selecione</option>
-          <option>AC</option>
-          <option>AL</option>
-          <option>AP</option>
-          <option>AM</option>
-          <option>BA</option>
-          <option>CE</option>
-          <option>DF</option>
-          <option>ES</option>
-          <option>GO</option>
-          <option>MA</option>
-          <option>MT</option>
-          <option>MS</option>
-          <option>MG</option>
-          <option>PA</option>
-          <option>PB</option>
-          <option>PR</option>
-          <option>PE</option>
-          <option>PI</option>
-          <option>RJ</option>
-          <option>RN</option>
-          <option>RS</option>
-          <option>RO</option>
-          <option>RR</option>
-          <option>SC</option>
-          <option>SP</option>
-          <option>SE</option>
-          <option>TO</option>
+        <select
+          formControlName="documento_identificacao_estado_emissor"
+          class="w-full text-gray-800 text-base outline-none"
+        >
+          <option value="" selected>Selecione</option>
+          <option value="AC">AC</option>
+          <option value="AL">AL</option>
+          <option value="AP">AP</option>
+          <option value="AM">AM</option>
+          <option value="BA">BA</option>
+          <option value="CE">CE</option>
+          <option value="DF">DF</option>
+          <option value="ES">ES</option>
+          <option value="GO">GO</option>
+          <option value="MA">MA</option>
+          <option value="MT">MT</option>
+          <option value="MS">MS</option>
+          <option value="MG">MG</option>
+          <option value="PA">PA</option>
+          <option value="PB">PB</option>
+          <option value="PR">PR</option>
+          <option value="PE">PE</option>
+          <option value="PI">PI</option>
+          <option value="RJ">RJ</option>
+          <option value="RN">RN</option>
+          <option value="RS">RS</option>
+          <option value="RO">RO</option>
+          <option value="RR">RR</option>
+          <option value="SC">SC</option>
+          <option value="SP">SP</option>
+          <option value="SE">SE</option>
+          <option value="TO">TO</option>
         </select>
       </div>
     </div>
@@ -134,8 +152,9 @@
         class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
         <input
-          class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+          formControlName="cpf"
           placeholder="000.000.000-00"
+          class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
         />
       </div>
     </div>
@@ -148,8 +167,11 @@
       >
         <div class="w-5 h-5 rounded-full bg-gray-300"></div>
         <input
-          class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+          formControlName="data_nascimento"
+          type="date"
+          onfocus="this.showPicker()"
           placeholder="dd/mm/aaaa"
+          class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
         />
       </div>
     </div>
@@ -162,9 +184,12 @@
       <div
         class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
-        <select class="w-full text-gray-800 text-base outline-none">
-          <option selected>Selecione</option>
-          <option>Brasil</option>
+        <select
+          formControlName="naturalidade_pais"
+          class="w-full text-gray-800 text-base outline-none"
+        >
+          <option value="" selected>Selecione</option>
+          <option value="Brasil">Brasil</option>
         </select>
       </div>
     </div>
@@ -175,9 +200,12 @@
       <div
         class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
-        <select class="w-full text-gray-800 text-base outline-none">
-          <option selected>Selecione</option>
-          <option>SP</option>
+        <select
+          formControlName="naturalidade_estado"
+          class="w-full text-gray-800 text-base outline-none"
+        >
+          <option value="" selected>Selecione</option>
+          <option value="SP">SP</option>
         </select>
       </div>
     </div>
@@ -188,9 +216,13 @@
       <div
         class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
-        <select class="w-full text-gray-800 text-base outline-none">
-          <option selected>Selecione</option>
-          <option>Atibaia</option>
+        <select
+          formControlName="naturalidade_cidade"
+          class="w-full text-gray-800 text-base outline-none"
+        >
+          <option value="" selected>Selecione</option>
+          <option value="Atibaia">Atibaia</option>
+          <option value="Taboão da Serra">Taboão da Serra</option>
         </select>
       </div>
     </div>
@@ -203,11 +235,14 @@
       <div
         class="flex items-center gap-2 w-[324px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
-        <select class="w-full text-gray-800 text-base outline-none">
-          <option selected>Selecione</option>
-          <option>Masculino</option>
-          <option>Feminino</option>
-          <option>Outro</option>
+        <select
+          formControlName="genero"
+          class="w-full text-gray-800 text-base outline-none"
+        >
+          <option value="" selected>Selecione</option>
+          <option value="Masculino">Masculino</option>
+          <option value="Feminino">Feminino</option>
+          <option value="Outro">Outro</option>
         </select>
       </div>
     </div>
@@ -216,11 +251,14 @@
       <div
         class="flex items-center gap-2 w-[324px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
-        <select class="w-full text-gray-800 text-base outline-none">
-          <option selected>Selecione</option>
-          <option>Solteiro</option>
-          <option>Casado</option>
-          <option>União estável</option>
+        <select
+          formControlName="estado_civil"
+          class="w-full text-gray-800 text-base outline-none"
+        >
+          <option value="" selected>Selecione</option>
+          <option value="Solteiro">Solteiro</option>
+          <option value="Casado">Casado</option>
+          <option value="União estável">União estável</option>
         </select>
       </div>
     </div>
@@ -233,7 +271,12 @@
         Possui alguma deficiência?
       </p>
       <div class="flex items-center gap-x-2">
-        <input type="radio" id="deficiencia_true" />
+        <input
+          formControlName="possui_deficiencia"
+          [value]="true"
+          type="radio"
+          id="deficiencia_true"
+        />
         <label
           for="deficiencia_true"
           class="font-medium text-base text-gray-700"
@@ -241,7 +284,12 @@
         >
       </div>
       <div class="flex items-center gap-x-2">
-        <input type="radio" id="deficiencia_false" />
+        <input
+          formControlName="possui_deficiencia"
+          [value]="false"
+          type="radio"
+          id="deficiencia_false"
+        />
         <label
           for="deficiencia_false"
           class="font-medium text-base text-gray-700"
@@ -254,11 +302,14 @@
       <div
         class="flex items-center gap-2 w-[408px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
-        <select class="w-full text-gray-800 text-base outline-none">
-          <option selected>Selecione</option>
-          <option>Visual</option>
-          <option>Motora</option>
-          <option>Psicológica</option>
+        <select
+          formControlName="deficiencia"
+          class="w-full text-gray-800 text-base outline-none"
+        >
+          <option value="" selected>Selecione</option>
+          <option value="Visual">Visual</option>
+          <option value="Motora">Motora</option>
+          <option value="Psicológica">Psicológica</option>
         </select>
       </div>
     </div>
@@ -280,11 +331,12 @@
         Cancelar
       </button>
       <button
+        type="submit"
         class="px-4 py-[10px] rounded-lg font-semibold text-sm text-white bg-violet-700"
-        (click)="nextStep.emit()"
+        [disabled]="!stepOneForm.valid"
       >
         Próximo
       </button>
     </div>
   </div>
-</section>
+</form>

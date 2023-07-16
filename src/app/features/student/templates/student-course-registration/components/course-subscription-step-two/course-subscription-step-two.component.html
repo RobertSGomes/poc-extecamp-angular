@@ -1,4 +1,5 @@
-<section
+<form
+  [formGroup]="stepTwoForm"
   class="flex flex-col p-8 gap-y-6 rounded-2xl bg-white border border-gray-200 shadow-sm"
 >
   <h1 class="font-semibold text-lg text-black">Endereço</h1>
@@ -11,8 +12,9 @@
     >
       <div class="rounded-full bg-gray-300 w-4 h-4"></div>
       <input
-        class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+        formControlName="cep"
         placeholder="00000-000"
+        class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
       />
     </div>
   </div>
@@ -24,8 +26,9 @@
       class="flex items-center gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
     >
       <input
-        class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+        formControlName="logradouro"
         placeholder="Preencha"
+        class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
       />
     </div>
   </div>
@@ -39,8 +42,9 @@
         class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
         <input
-          class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+          formControlName="numero"
           placeholder="0000"
+          class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
         />
       </div>
     </div>
@@ -52,8 +56,9 @@
         class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
         <input
-          class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+          formControlName="bairro"
           placeholder="Preencha"
+          class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
         />
       </div>
     </div>
@@ -65,8 +70,9 @@
         class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
         <input
-          class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+          formControlName="complemento"
           placeholder="Casa 2"
+          class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
         />
       </div>
     </div>
@@ -80,35 +86,38 @@
       <div
         class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
-        <select class="w-full text-gray-800 text-base outline-none">
-          <option selected>Selecione</option>
-          <option>AC</option>
-          <option>AL</option>
-          <option>AP</option>
-          <option>AM</option>
-          <option>BA</option>
-          <option>CE</option>
-          <option>DF</option>
-          <option>ES</option>
-          <option>GO</option>
-          <option>MA</option>
-          <option>MT</option>
-          <option>MS</option>
-          <option>MG</option>
-          <option>PA</option>
-          <option>PB</option>
-          <option>PR</option>
-          <option>PE</option>
-          <option>PI</option>
-          <option>RJ</option>
-          <option>RN</option>
-          <option>RS</option>
-          <option>RO</option>
-          <option>RR</option>
-          <option>SC</option>
-          <option>SP</option>
-          <option>SE</option>
-          <option>TO</option>
+        <select
+          formControlName="estado"
+          class="w-full text-gray-800 text-base outline-none"
+        >
+          <option value="" selected>Selecione</option>
+          <option value="AC">AC</option>
+          <option value="AL">AL</option>
+          <option value="AP">AP</option>
+          <option value="AM">AM</option>
+          <option value="BA">BA</option>
+          <option value="CE">CE</option>
+          <option value="DF">DF</option>
+          <option value="ES">ES</option>
+          <option value="GO">GO</option>
+          <option value="MA">MA</option>
+          <option value="MT">MT</option>
+          <option value="MS">MS</option>
+          <option value="MG">MG</option>
+          <option value="PA">PA</option>
+          <option value="PB">PB</option>
+          <option value="PR">PR</option>
+          <option value="PE">PE</option>
+          <option value="PI">PI</option>
+          <option value="RJ">RJ</option>
+          <option value="RN">RN</option>
+          <option value="RS">RS</option>
+          <option value="RO">RO</option>
+          <option value="RR">RR</option>
+          <option value="SC">SC</option>
+          <option value="SP">SP</option>
+          <option value="SE">SE</option>
+          <option value="TO">TO</option>
         </select>
       </div>
     </div>
@@ -119,9 +128,12 @@
       <div
         class="flex items-center gap-2 w-[324px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
-        <select class="w-full text-gray-800 text-base outline-none">
-          <option selected>Selecione</option>
-          <option>Atibaia</option>
+        <select
+          formControlName="cidade"
+          class="w-full text-gray-800 text-base outline-none"
+        >
+          <option value="" selected>Selecione</option>
+          <option value="Atibaia">Atibaia</option>
         </select>
       </div>
     </div>
@@ -134,9 +146,12 @@
       <div
         class="flex items-center gap-2 w-[324px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
-        <select class="w-full text-gray-800 text-base outline-none">
-          <option selected>Selecione</option>
-          <option>Brasil</option>
+        <select
+          formControlName="pais"
+          class="w-full text-gray-800 text-base outline-none"
+        >
+          <option value="" selected>Selecione</option>
+          <option value="Brasil">Brasil</option>
         </select>
       </div>
     </div>
@@ -165,4 +180,4 @@
       </button>
     </div>
   </div>
-</section>
+</form>
