@@ -7,8 +7,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./professor-new-offering.component.css'],
 })
 export class ProfessorNewOfferingComponent implements OnInit {
-  currentStep: number = 2;
-  currentInsideStep: number = 3;
+  currentStep: number = 3;
+  currentInsideStep: number = 0;
   modalCancelOpened = false;
 
   stepOneFormOne!: FormGroup;
@@ -23,6 +23,8 @@ export class ProfessorNewOfferingComponent implements OnInit {
   stepThreeFormTwo!: FormGroup;
   stepThreeFormThree!: FormGroup;
   stepThreeFormFour!: FormGroup;
+
+  stepFourFormOne!: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {}
 
@@ -136,6 +138,18 @@ export class ProfessorNewOfferingComponent implements OnInit {
 
     this.stepThreeFormFour = this.formBuilder.group({
       tem_criterios: [false],
+    });
+
+    this.stepFourFormOne = this.formBuilder.group({
+      fluxo_continuo: [false],
+      professores_hora_aula: [''],
+      professores_outras_atividades: [''],
+      material_consumo: [''],
+      material_permanente: [''],
+      servico_terceiros: [''],
+      outros_custos: [''],
+      aproveitamento_recursos: [''],
+      total: [''],
     });
   }
 
