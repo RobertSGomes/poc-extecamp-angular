@@ -1,8 +1,14 @@
 import { Component } from '@angular/core';
-import { StudentModel } from '../../models/student.model';
+
+// Services
 import { StudentService } from '../../student.service';
-import { getUserId } from 'src/app/shared/utils/user-id.util';
+
+// Models
+import { StudentModel } from '../../models/student.model';
 import { RegisteredCourseModel } from '../../models/student-course.model';
+
+// Utils
+import { getUserId } from '../../../../../app/shared/utils/user-id.util';
 
 @Component({
   selector: 'student-home',
@@ -10,13 +16,14 @@ import { RegisteredCourseModel } from '../../models/student-course.model';
   styleUrls: ['./student-home.component.css'],
 })
 export class StudentHomeComponent {
+  studentId?: string | null;
   student?: StudentModel;
   registeredCourses: RegisteredCourseModel[] = [];
-  private studentId: string | null = getUserId();
 
   constructor(private readonly studentService: StudentService) {}
 
   ngOnInit(): void {
+    this.studentId = getUserId();
     this.getStudent();
   }
 

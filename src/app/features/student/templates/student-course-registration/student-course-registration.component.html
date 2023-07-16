@@ -69,12 +69,14 @@
       <!--Formulário - Step1 -->
       <app-course-subscription-step-one
         *ngIf="currentStep === 0"
+        [stepOneForm]="stepOneForm"
         (nextStep)="nextStep()"
       ></app-course-subscription-step-one>
 
       <!--Formulário - Step2 -->
       <app-course-subscription-step-two
         *ngIf="currentStep === 1"
+        [stepTwoForm]="stepTwoForm"
         (backStep)="backStep()"
         (nextStep)="nextStep()"
       ></app-course-subscription-step-two>

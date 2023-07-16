@@ -26,7 +26,7 @@ export class StudentService {
     });
   }
 
-  getOne(studentId: string | null): Observable<StudentModel> {
+  getOne(studentId: string | null | undefined): Observable<StudentModel> {
     this.verifyAccess();
 
     return this.http.get<StudentModel>(`${this.apiURL}/${studentId}`, {
