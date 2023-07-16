@@ -103,6 +103,7 @@
       <div *ngIf="currentStep === 1">
         <app-step-two-form-one
           *ngIf="currentInsideStep === 0"
+          [stepTwoFormOne]="stepTwoFormOne"
           (backStep)="backStep(4)"
           (nextInsideStep)="nextInsideStep()"
           (openCancelModal)="openCancelModal()"

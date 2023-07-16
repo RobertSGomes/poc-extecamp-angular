@@ -1,5 +1,6 @@
 <form
   (submit)="nextInsideStep.emit()"
+  [formGroup]="stepTwoFormOne"
   class="flex flex-col gap-y-6 w-[1072px] mx-auto p-8 bg-white border border-gray-200 rounded-2xl shadow-sm"
 >
   <app-history-line [currentStep]="0" [steps]="historySteps"></app-history-line>
@@ -8,7 +9,7 @@
 
   <h1 class="font-semibold text-lg text-gray-900">Coordenação do curso</h1>
 
-  <div class="flex flex-col gap-[6px]">
+  <div class="relative flex flex-col gap-[6px]">
     <label class="font-medium text-sm text-gray-700"
       >Coordenador de extensão *</label
     >
@@ -22,11 +23,33 @@
       <input
         class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
         placeholder="Pesquisar"
+        type="text"
+        formControlName="coordenador"
+        (focus)="unfocusInputs(); focusInputOne = true"
       />
+    </div>
+    <div
+      class="absolute z-[1] top-[70px] left-0 flex flex-col items-center justify-center w-[665px] border border-gray-300 shadow-sm rounded-lg overflow-hidden"
+      *ngIf="focusInputOne"
+    >
+      <p
+        *ngIf="!getFilteredProfessors('coordenador').length"
+        class="w-full font-normal text-base text-gray-700 text-center bg-white px-3 py-2"
+      >
+        Sem resultados
+      </p>
+      <button
+        class="w-full font-normal text-base text-gray-700 bg-white px-3 py-2 hover:bg-violet-600 hover:text-white"
+        *ngFor="let professor of getFilteredProfessors('coordenador')"
+        (click)="handleSelectProfessor(professor, 'coordenador')"
+        type="button"
+      >
+        {{ professor.nome }}
+      </button>
     </div>
   </div>
 
-  <div class="flex flex-col gap-[6px]">
+  <div class="relative flex flex-col gap-[6px]">
     <label class="font-medium text-sm text-gray-700"
       >Diretor da unidade *</label
     >
@@ -40,11 +63,32 @@
       <input
         class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
         placeholder="Pesquisar"
+        formControlName="diretor"
+        (focus)="unfocusInputs(); focusInputTwo = true"
       />
+    </div>
+    <div
+      class="absolute z-[1] top-[70px] left-0 flex flex-col items-center justify-center w-[665px] border border-gray-300 shadow-sm rounded-lg overflow-hidden"
+      *ngIf="focusInputTwo"
+    >
+      <p
+        *ngIf="!getFilteredProfessors('diretor').length"
+        class="w-full font-normal text-base text-gray-700 text-center bg-white px-3 py-2"
+      >
+        Sem resultados
+      </p>
+      <button
+        class="w-full font-normal text-base text-gray-700 bg-white px-3 py-2 hover:bg-violet-600 hover:text-white"
+        *ngFor="let professor of getFilteredProfessors('diretor')"
+        (click)="handleSelectProfessor(professor, 'diretor')"
+        type="button"
+      >
+        {{ professor.nome }}
+      </button>
     </div>
   </div>
 
-  <div class="flex flex-col gap-[6px]">
+  <div class="relative flex flex-col gap-[6px]">
     <label class="font-medium text-sm text-gray-700"
       >Professor responsável *</label
     >
@@ -58,7 +102,28 @@
       <input
         class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
         placeholder="Pesquisar"
+        formControlName="docente_responsavel"
+        (focus)="unfocusInputs(); focusInputThree = true"
       />
+    </div>
+    <div
+      class="absolute z-[1] top-[70px] left-0 flex flex-col items-center justify-center w-[665px] border border-gray-300 shadow-sm rounded-lg overflow-hidden"
+      *ngIf="focusInputThree"
+    >
+      <p
+        *ngIf="!getFilteredProfessors('docente_responsavel').length"
+        class="w-full font-normal text-base text-gray-700 text-center bg-white px-3 py-2"
+      >
+        Sem resultados
+      </p>
+      <button
+        class="w-full font-normal text-base text-gray-700 bg-white px-3 py-2 hover:bg-violet-600 hover:text-white"
+        *ngFor="let professor of getFilteredProfessors('docente_responsavel')"
+        (click)="handleSelectProfessor(professor, 'docente_responsavel')"
+        type="button"
+      >
+        {{ professor.nome }}
+      </button>
     </div>
   </div>
 
@@ -71,6 +136,7 @@
       <input
         class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
         placeholder="Preencha"
+        formControlName="docente_responsavel_email"
       />
     </div>
   </div>
@@ -88,6 +154,7 @@
       <input
         class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
         placeholder="+55 (DDD) 00000-0000"
+        formControlName="docente_responsavel_telefone"
       />
     </div>
   </div>
@@ -104,6 +171,7 @@
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
           placeholder="Preencha"
+          formControlName="docente_responsavel_instituicao"
         />
       </div>
     </div>
@@ -116,10 +184,13 @@
       <div
         class="flex gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
       >
-        <select class="w-full text-gray-800 text-base outline-none">
-          <option>Selecione</option>
-          <option>Economia</option>
-          <option>Tecnologia</option>
+        <select
+          class="w-full text-gray-800 text-base outline-none"
+          formControlName="docente_responsavel_titulacao"
+        >
+          <option value="">Selecione</option>
+          <option value="Economia">Economia</option>
+          <option value="Tecnologia">Tecnologia</option>
         </select>
       </div>
     </div>

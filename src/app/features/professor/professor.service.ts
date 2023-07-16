@@ -24,6 +24,17 @@ export class ProfessorService {
     });
   }
 
+  getAll() {
+    return this.http.get<{ result: ProfessorModel[]; total: number }>(
+      `${this.apiURL}/`,
+      {
+        headers: {
+          Authorization: `Bearer ${this.accessToken}`,
+        },
+      }
+    );
+  }
+
   verifyAccess(): void {
     if (!this.accessToken) {
       this.router.navigate(['']);

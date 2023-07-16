@@ -7,8 +7,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./professor-new-offering.component.css'],
 })
 export class ProfessorNewOfferingComponent implements OnInit {
-  currentStep: number = 3;
-  currentInsideStep: number = 3;
+  currentStep: number = 1;
+  currentInsideStep: number = 0;
   modalCancelOpened = false;
 
   stepOneFormOne!: FormGroup;
@@ -17,7 +17,7 @@ export class ProfessorNewOfferingComponent implements OnInit {
   stepOneFormFour!: FormGroup;
   stepOneFormFive!: FormGroup;
 
-  // TODO: STEP TWO
+  stepTwoFormOne!: FormGroup;
 
   stepThreeFormOne!: FormGroup;
   stepThreeFormTwo!: FormGroup;
@@ -29,7 +29,7 @@ export class ProfessorNewOfferingComponent implements OnInit {
   stepFourFormThree!: FormGroup;
   stepFourFormFour!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private readonly formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
     this.stepOneFormOne = this.formBuilder.group({
@@ -108,6 +108,16 @@ export class ProfessorNewOfferingComponent implements OnInit {
       nota_minima: ['', [Validators.required]],
       grau_escolaridade: ['', [Validators.required]],
       divulgacao_corporativa: [false],
+    });
+
+    this.stepTwoFormOne = this.formBuilder.group({
+      coordenador: ['', [Validators.required]],
+      diretor: ['', [Validators.required]],
+      docente_responsavel: ['', Validators.required],
+      docente_responsavel_email: ['', Validators.required],
+      docente_responsavel_telefone: ['', Validators.required],
+      docente_responsavel_instituicao: ['', Validators.required],
+      docente_responsavel_titulacao: ['', Validators.required],
     });
 
     this.stepThreeFormOne = this.formBuilder.group({
