@@ -1,5 +1,6 @@
 <form
   class="flex flex-col gap-y-6 w-[1072px] mx-auto p-8 bg-white border border-gray-200 rounded-2xl shadow-sm"
+  [formGroup]="stepFourFormFour"
   (submit)="nextStep.emit()"
 >
   <app-history-line [currentStep]="3" [steps]="historySteps"></app-history-line>
@@ -14,18 +15,26 @@
     <p class="font-medium text-sm text-gray-700">Curso gratuíto?</p>
 
     <div class="flex items-center gap-x-2">
-      <input type="radio" id="disciplina_eletiva_yes" />
+      <input
+        type="radio"
+        id="curso_gratuito_yes"
+        formControlName="curso_gratuito"
+        [value]="true"
+      />
       <label
-        for="disciplina_eletiva_yes"
+        for="curso_gratuito_yes"
         class="font-medium text-base text-gray-700"
         >Sim</label
       >
     </div>
     <div class="flex items-center gap-x-2">
-      <input type="radio" id="disciplina_eletiva_no" />
-      <label
-        for="disciplina_eletiva_no"
-        class="font-medium text-base text-gray-700"
+      <input
+        type="radio"
+        id="curso_gratuito_no"
+        formControlName="curso_gratuito"
+        [value]="false"
+      />
+      <label for="curso_gratuito_no" class="font-medium text-base text-gray-700"
         >Não</label
       >
     </div>
@@ -47,6 +56,9 @@
         <p class="font-normal text-base text-gray-500">R$</p>
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+          formControlName="valor_a_vista"
+          [inputMask]="currencyInputMask"
+          placeholder="0.00"
         />
       </div>
     </div>
@@ -59,10 +71,16 @@
       <div
         class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
-        <div class="w-5 h-5 rounded-full bg-gray-300"></div>
+        <img
+          src="../../../../../../../../assets/svgs/calendar.svg"
+          class="w-5 h-5"
+        />
         <input
           class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
           placeholder="dd/mm/aaaa"
+          formControlName="valor_a_vista_vencimento"
+          type="date"
+          onfocus="this.showPicker()"
         />
       </div>
     </div>
@@ -77,69 +95,100 @@
   </div>
 
   <!-- Número parcelas, valor e data vencimento -->
-  <div class="flex gap-x-[18px]">
-    <!-- Número parcelas -->
-    <div class="flex flex-col gap-[6px]">
-      <label class="font-medium text-sm text-gray-700"
-        >Número de parcelas</label
-      >
-      <div
-        class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
-      >
-        <select class="w-full text-gray-800 text-base outline-none">
-          <option selected>Selecione</option>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-          <option>6</option>
-          <option>7</option>
-          <option>8</option>
-          <option>9</option>
-          <option>10</option>
-          <option>11</option>
-          <option>12</option>
-        </select>
+  <div class="flex flex-col w-full gap-y-6" formArrayName="parcelas_boleto">
+    <div
+      class="flex gap-x-[18px]"
+      *ngFor="let parcela_boleto of parcelas_boleto.controls; let i = index"
+      [formGroupName]="i"
+    >
+      <!-- Número parcelas -->
+      <div class="flex flex-col gap-[6px]">
+        <label class="font-medium text-sm text-gray-700"
+          >Número de parcelas</label
+        >
+        <div
+          class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+        >
+          <select
+            class="w-full text-gray-800 text-base outline-none"
+            formControlName="nmr_parcelas"
+          >
+            <option selected value="">Selecione</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+          </select>
+        </div>
       </div>
+
+      <!-- Valor -->
+      <div class="flex flex-col gap-[6px]">
+        <label class="font-medium text-sm text-gray-700">Valor</label>
+        <div
+          class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+        >
+          <p class="font-normal text-base text-gray-500">R$</p>
+          <input
+            class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+            formControlName="valor"
+            [inputMask]="currencyInputMask"
+            placeholder="0.00"
+          />
+        </div>
+      </div>
+
+      <!-- Data vencimento -->
+      <div class="flex flex-col gap-[6px]">
+        <label class="font-medium text-sm text-gray-700"
+          >Data do vencimento</label
+        >
+        <div
+          class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+        >
+          <img
+            src="../../../../../../../../assets/svgs/calendar.svg"
+            class="w-5 h-5"
+          />
+          <input
+            class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+            placeholder="dd/mm/aaaa"
+            formControlName="data_vencimento"
+            type="date"
+            onfocus="this.showPicker()"
+          />
+        </div>
+      </div>
+
+      <button
+        class="flex gap-x-2 self-end py-3"
+        type="button"
+        (click)="removePaymentSlip(i)"
+      >
+        <p class="font-semibold text-sm text-violet-700">
+          Remover opção de parcelamento
+        </p>
+      </button>
     </div>
 
-    <!-- Valor -->
-    <div class="flex flex-col gap-[6px]">
-      <label class="font-medium text-sm text-gray-700">Valor</label>
-      <div
-        class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
-      >
-        <p class="font-normal text-base text-gray-500">R$</p>
-        <input
-          class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-        />
-      </div>
-    </div>
-
-    <!-- Data vencimento -->
-    <div class="flex flex-col gap-[6px]">
-      <label class="font-medium text-sm text-gray-700"
-        >Data do vencimento</label
-      >
-      <div
-        class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
-      >
-        <div class="w-5 h-5 rounded-full bg-gray-300"></div>
-        <input
-          class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-          placeholder="dd/mm/aaaa"
-        />
-      </div>
-    </div>
+    <button class="flex gap-x-2" type="button" (click)="addPaymentSlip()">
+      <img
+        src="../../../../../../../../assets/svgs/plus-violet.svg"
+        class="w-5 h-5"
+      />
+      <p class="font-semibold text-sm text-violet-700">
+        Inserir nova opção de parcelamento
+      </p>
+    </button>
   </div>
-
-  <button class="flex gap-x-2" type="button">
-    <div class="w-5 h-5 rounded-lg bg-violet-700"></div>
-    <p class="font-semibold text-sm text-violet-700">
-      Inserir nova opção de parcelamento
-    </p>
-  </button>
 
   <hr class="h-[1px] bg-gray-200" />
 
@@ -154,20 +203,23 @@
     <div
       class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
     >
-      <select class="w-full text-gray-800 text-base outline-none">
-        <option selected>Selecione</option>
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-        <option>6</option>
-        <option>7</option>
-        <option>8</option>
-        <option>9</option>
-        <option>10</option>
-        <option>11</option>
-        <option>12</option>
+      <select
+        class="w-full text-gray-800 text-base outline-none"
+        formControlName="parcelas_cartao_credito"
+      >
+        <option selected value="">Selecione</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
       </select>
     </div>
   </div>
@@ -187,47 +239,73 @@
     >
       <input
         class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+        formControlName="porcentagem_desconto_estudantes"
+        placeholder="0.00"
+        [inputMask]="percentageInputMask"
       />
       <p class="font-normal text-base text-gray-500">%</p>
     </div>
   </div>
 
   <!-- Para e porcentagem -->
-  <div class="flex gap-x-[18px]">
-    <!-- Para -->
-    <div class="flex flex-col gap-[6px]">
-      <label class="font-medium text-sm text-gray-700">Para</label>
-      <div
-        class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
-      >
-        <input
-          class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-        />
+  <div class="flex flex-col w-full gap-y-6" formArrayName="opcao_desconto">
+    <div
+      *ngFor="let opcao of opcao_desconto.controls; let i = index"
+      class="flex gap-x-[18px]"
+      [formGroupName]="i"
+    >
+      <!-- Para -->
+      <div class="flex flex-col gap-[6px]">
+        <label class="font-medium text-sm text-gray-700">Para</label>
+        <div
+          class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+        >
+          <input
+            class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+            formControlName="para"
+          />
+        </div>
       </div>
+
+      <!-- Porcentagem -->
+      <div class="flex flex-col gap-[6px]">
+        <label class="font-medium text-sm text-gray-700"
+          >Porcentagem de desconto</label
+        >
+        <div
+          class="flex items-center gap-2 w-[150px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+        >
+          <input
+            class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+            placeholder="0.00"
+            formControlName="porcentagem_desconto"
+            [inputMask]="percentageInputMask"
+          />
+          <p class="font-normal text-base text-gray-500">%</p>
+        </div>
+      </div>
+
+      <button
+        class="flex gap-x-2 self-end py-3"
+        type="button"
+        (click)="removeDiscountMethod(i)"
+      >
+        <p class="font-semibold text-sm text-violet-700">
+          Remover opção de desconto
+        </p>
+      </button>
     </div>
 
-    <!-- Porcentagem -->
-    <div class="flex flex-col gap-[6px]">
-      <label class="font-medium text-sm text-gray-700"
-        >Porcentagem de desconto</label
-      >
-      <div
-        class="flex items-center gap-2 w-[150px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
-      >
-        <input
-          class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-        />
-        <p class="font-normal text-base text-gray-500">%</p>
-      </div>
-    </div>
+    <button class="flex gap-x-2" type="button" (click)="addDiscountMethod()">
+      <img
+        src="../../../../../../../../assets/svgs/plus-violet.svg"
+        class="w-5 h-5"
+      />
+      <p class="font-semibold text-sm text-violet-700">
+        Inserir nova opção de desconto
+      </p>
+    </button>
   </div>
-
-  <button class="flex gap-x-2" type="button">
-    <div class="w-5 h-5 rounded-lg bg-violet-700"></div>
-    <p class="font-semibold text-sm text-violet-700">
-      Inserir nova opção de desconto
-    </p>
-  </button>
 
   <hr class="h-[1px] bg-gray-200" />
 
@@ -242,6 +320,7 @@
     >
       <input
         class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+        formControlName="convenio_numero_processo"
       />
     </div>
   </div>
@@ -256,6 +335,7 @@
     >
       <textarea
         class="w-full h-full text-gray-800 text-base outline-none resize-none"
+        formControlName="convenio_empresa"
       ></textarea>
     </div>
   </div>
@@ -270,6 +350,7 @@
       >
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+          formControlName="convenio_cnpj"
         />
       </div>
     </div>
@@ -280,20 +361,23 @@
       <div
         class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
-        <select class="w-full text-gray-800 text-base outline-none">
-          <option selected>Selecione</option>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-          <option>6</option>
-          <option>7</option>
-          <option>8</option>
-          <option>9</option>
-          <option>10</option>
-          <option>11</option>
-          <option>12</option>
+        <select
+          class="w-full text-gray-800 text-base outline-none"
+          formControlName="convenio_tipo"
+        >
+          <option selected value="">Selecione</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
         </select>
       </div>
     </div>
@@ -306,6 +390,7 @@
       >
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+          formControlName="convenio_responsavel"
         />
       </div>
     </div>
@@ -318,6 +403,7 @@
       >
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+          formControlName="convenio_responsavel_cargo"
         />
       </div>
     </div>
@@ -325,7 +411,12 @@
 
   <!-- Infos valor e vencimento -->
   <div class="flex items-start py-4 gap-x-2 w-[323px]">
-    <input type="checkbox" id="checkbox_infos_parcela" class="mt-[3px]" />
+    <input
+      type="checkbox"
+      id="checkbox_infos_parcela"
+      class="mt-[3px]"
+      formControlName="convenio_sem_valor_parcela"
+    />
     <label
       for="checkbox_infos_parcela"
       class="font-medium text-sm text-gray-700"
@@ -340,20 +431,23 @@
     <div
       class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
     >
-      <select class="w-full text-gray-800 text-base outline-none">
-        <option selected>Selecione</option>
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-        <option>6</option>
-        <option>7</option>
-        <option>8</option>
-        <option>9</option>
-        <option>10</option>
-        <option>11</option>
-        <option>12</option>
+      <select
+        class="w-full text-gray-800 text-base outline-none"
+        formControlName="convenio_numero_parcelas"
+      >
+        <option selected value="">Selecione</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
       </select>
     </div>
   </div>
@@ -374,6 +468,9 @@
       <p class="font-normal text-base text-gray-500">R$</p>
       <input
         class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+        formControlName="recurso_valor"
+        [inputMask]="currencyInputMask"
+        placeholder="0.00"
       />
     </div>
   </div>
@@ -388,6 +485,7 @@
     >
       <textarea
         class="w-full h-full text-gray-800 text-base outline-none resize-none"
+        formControlName="recurso_empresa"
       ></textarea>
     </div>
   </div>
@@ -408,6 +506,7 @@
     >
       <input
         class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+        formControlName="empresa_nome"
       />
     </div>
   </div>
@@ -422,6 +521,7 @@
       >
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+          formControlName="empresa_endereco"
         />
       </div>
     </div>
@@ -434,6 +534,7 @@
       >
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+          formControlName="empresa_bairro"
         />
       </div>
     </div>
@@ -449,6 +550,7 @@
       >
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+          formControlName="empresa_cidade"
         />
       </div>
     </div>
@@ -461,6 +563,7 @@
       >
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+          formControlName="empresa_cep"
         />
       </div>
     </div>
@@ -474,6 +577,7 @@
     >
       <input
         class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+        formControlName="empresa_cnpj"
       />
     </div>
   </div>
@@ -486,6 +590,7 @@
     >
       <input
         class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+        formControlName="empresa_ins_estadual"
       />
     </div>
   </div>
@@ -498,6 +603,7 @@
     >
       <input
         class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+        formControlName="empresa_nome_contato"
       />
     </div>
   </div>
@@ -512,6 +618,7 @@
       >
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+          formControlName="empresa_telefone"
         />
       </div>
     </div>
@@ -524,6 +631,7 @@
       >
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+          formControlName="empresa_fax"
         />
       </div>
     </div>
@@ -537,6 +645,8 @@
     >
       <input
         class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+        type="email"
+        formControlName="empresa_email"
       />
     </div>
   </div>
@@ -562,6 +672,7 @@
       <button
         class="px-4 py-[10px] rounded-lg font-semibold text-sm text-white bg-violet-700"
         type="submit"
+        [disabled]="!stepFourFormFour.valid"
       >
         Próximo
       </button>

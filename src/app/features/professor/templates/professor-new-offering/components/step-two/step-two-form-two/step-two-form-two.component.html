@@ -156,10 +156,15 @@
           </p>
         </div>
         <button
-          class="w-5 h-5 rounded-sm bg-gray-300"
+          class="w-5 h-5"
           type="button"
           (click)="openNewProfessorModal = false"
-        ></button>
+        >
+          <img
+            src="../../../../../../../../assets/svgs/x-close.svg"
+            class="w-5 h-5"
+          />
+        </button>
       </div>
       <div class="flex flex-col gap-y-6">
         <div class="flex flex-col gap-[6px]">
@@ -169,7 +174,10 @@
           <div
             class="flex items-center gap-2 w-full px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
           >
-            <div class="w-5 h-5 rounded-full bg-gray-300"></div>
+            <img
+              src="../../../../../../../../assets/svgs/search.svg"
+              class="w-5 h-5"
+            />
             <input
               class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
               placeholder="Pesquisar"

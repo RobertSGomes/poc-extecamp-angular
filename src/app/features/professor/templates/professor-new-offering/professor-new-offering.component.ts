@@ -8,7 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ProfessorNewOfferingComponent implements OnInit {
   currentStep: number = 3;
-  currentInsideStep: number = 0;
+  currentInsideStep: number = 3;
   modalCancelOpened = false;
 
   stepOneFormOne!: FormGroup;
@@ -25,6 +25,9 @@ export class ProfessorNewOfferingComponent implements OnInit {
   stepThreeFormFour!: FormGroup;
 
   stepFourFormOne!: FormGroup;
+  stepFourFormTwo!: FormGroup;
+  stepFourFormThree!: FormGroup;
+  stepFourFormFour!: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {}
 
@@ -150,6 +153,59 @@ export class ProfessorNewOfferingComponent implements OnInit {
       outros_custos: [''],
       aproveitamento_recursos: [''],
       total: [''],
+    });
+
+    this.stepFourFormTwo = this.formBuilder.group({
+      fixas: [''],
+      aiu_unidade_porcentagem: [''],
+      aiu_unidade_valor: [''],
+      fundo_extensao_porcentagem_away: [''],
+      fundo_extensao_valor_away: [''],
+      fundo_extensao_unidade: [''],
+      fundo_extensao_porcentagem: [''],
+      fundo_extensao_valor: [''],
+      total: [''],
+      subsidios: [''],
+      custo_total: [''],
+      custo_aluno_min_vagas: [''],
+      custo_aluno_valor: [''],
+    });
+
+    this.stepFourFormThree = this.formBuilder.group({
+      tipo: ['', [Validators.required]],
+      fonte: ['', [Validators.required]],
+      taxa_inscricao: [''],
+    });
+
+    this.stepFourFormFour = this.formBuilder.group({
+      curso_gratuito: [false],
+      valor_a_vista: [''],
+      valor_a_vista_vencimento: [''],
+      parcelas_boleto: this.formBuilder.array([]),
+      parcelas_cartao_credito: [''],
+      porcentagem_desconto_estudantes: [''],
+      opcao_desconto: this.formBuilder.array([]),
+      convenio_numero_processo: [''],
+      convenio_empresa: [''],
+      convenio_cnpj: [''],
+      convenio_tipo: [''],
+      convenio_responsavel: [''],
+      convenio_responsavel_cargo: [''],
+      convenio_sem_valor_parcela: [false],
+      convenio_numero_parcelas: [''],
+      recurso_valor: [''],
+      recurso_empresa: [''],
+      empresa_nome: [''],
+      empresa_endereco: [''],
+      empresa_bairro: [''],
+      empresa_cidade: [''],
+      empresa_cep: [''],
+      empresa_cnpj: [''],
+      empresa_ins_estadual: [''],
+      empresa_nome_contato: [''],
+      empresa_telefone: [''],
+      empresa_fax: [''],
+      empresa_email: ['', Validators.email],
     });
   }
 
