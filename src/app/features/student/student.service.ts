@@ -26,22 +26,14 @@ export class StudentService {
     });
   }
 
-  getOne(studentId: string | null | undefined): StudentModel | undefined {
+  getOne(studentId: string | null | undefined): Observable<StudentModel> {
     this.verifyAccess();
 
-    let student: StudentModel | undefined = undefined;
-
-    this.http
-      .get<StudentModel>(`${this.apiURL}/${studentId}`, {
-        headers: {
-          Authorization: `Bearer ${this.accessToken}`,
-        },
-      })
-      .subscribe((response) => {
-        student = response;
-      });
-
-    return student;
+    return this.http.get<StudentModel>(`${this.apiURL}/${studentId}`, {
+      headers: {
+        Authorization: `Bearer ${this.accessToken}`,
+      },
+    });
   }
 
   verifyAccess(): void {
