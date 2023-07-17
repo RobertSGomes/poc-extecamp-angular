@@ -2,7 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { StudentModel } from '../../models/student.model';
 import { getUserId } from '../../../../../app/shared/utils/user-id.util';
 import { StudentService } from '../../student.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -14,7 +19,7 @@ export class StudentCourseRegistrationComponent implements OnInit {
   currentStep: number = 0;
 
   student!: StudentModel;
-  form!: FormGroup;
+  form?: FormGroup;
 
   constructor(
     private readonly studentService: StudentService,
@@ -23,15 +28,15 @@ export class StudentCourseRegistrationComponent implements OnInit {
   ) {}
 
   async ngOnInit(): Promise<void> {
-    this.studentService.getOne(getUserId()).subscribe(
-      (data) => {
+    this.studentService.getOne(getUserId()).subscribe({
+      next: (data) => {
         this.student = data;
         this.createForm(data);
       },
-      () => {
+      error: () => {
         this.router.navigate(['']);
-      }
-    );
+      },
+    });
   }
 
   createForm(student: StudentModel) {
@@ -97,11 +102,11 @@ export class StudentCourseRegistrationComponent implements OnInit {
   }
 
   get stepOneForm() {
-    return this.form.get('step1') as FormGroup;
+    return this.form?.get('step1') as FormGroup;
   }
 
   get stepTwoForm() {
-    return this.form.get('step2') as FormGroup;
+    return this.form?.get('step2') as FormGroup;
   }
 
   nextStep(): void {

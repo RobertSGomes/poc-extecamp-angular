@@ -20,6 +20,11 @@
         required
       />
     </div>
+    <div
+      *ngIf="stepOneForm.get('nome')?.errors?.['required'] && stepOneForm.get('nome')?.touched"
+    >
+      <p class="font-normal text-sm text-red-600">Informe seu nome completo</p>
+    </div>
   </div>
 
   <!-- E-mail -->
@@ -35,6 +40,16 @@
         class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
         required
       />
+    </div>
+    <div
+      *ngIf="stepOneForm.get('email')?.errors?.['required'] && stepOneForm.get('email')?.touched"
+    >
+      <p class="font-normal text-sm text-red-600">Informe seu email</p>
+    </div>
+    <div
+      *ngIf="stepOneForm.get('email')?.errors?.['email'] && stepOneForm.get('email')?.touched"
+    >
+      <p class="font-normal text-sm text-red-600">Informe um email válido</p>
     </div>
   </div>
 
@@ -57,6 +72,13 @@
         class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
         required
       />
+    </div>
+    <div
+      *ngIf="stepOneForm.get('telefone')?.errors?.['required'] && stepOneForm.get('telefone')?.touched"
+    >
+      <p class="font-normal text-sm text-red-600">
+        Informe seu número de telefone
+      </p>
     </div>
   </div>
 
@@ -84,6 +106,13 @@
         class="w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm text-gray-800 text-base outline-none placeholder:text-gray-500"
       />
     </div>
+    <div
+      *ngIf="(stepOneForm.get('documento_identificacao_tipo')?.errors?.['required'] || stepOneForm.get('documento_identificacao_numero')?.errors?.['required']) && stepOneForm.get('documento_identificacao_tipo')?.touched && stepOneForm.get('documento_identificacao_numero')?.touched"
+    >
+      <p class="font-normal text-sm text-red-600">
+        Informe seu melhor documento de identificação
+      </p>
+    </div>
   </div>
 
   <!-- Emissor -->
@@ -102,6 +131,13 @@
           <option value="MTE-SP">MTE-SP</option>
           <option value="MTE-SE">MTE-SE</option>
         </select>
+      </div>
+      <div
+        *ngIf="stepOneForm.get('documento_identificacao_orgao_emissor')?.errors?.['required'] && stepOneForm.get('documento_identificacao_orgao_emissor')?.touched"
+      >
+        <p class="font-normal text-sm text-red-600 w-[238px]">
+          Informe o orgão emissor de seu documento
+        </p>
       </div>
     </div>
     <div class="flex flex-col gap-[6px]">
@@ -143,6 +179,13 @@
           <option value="TO">TO</option>
         </select>
       </div>
+      <div
+        *ngIf="stepOneForm.get('documento_identificacao_estado_emissor')?.errors?.['required'] && stepOneForm.get('documento_identificacao_estado_emissor')?.touched"
+      >
+        <p class="font-normal text-sm text-red-600 w-[238px]">
+          Informe o estado de emissão de seu documento
+        </p>
+      </div>
     </div>
   </div>
 
@@ -159,6 +202,11 @@
           placeholder="000.000.000-00"
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
         />
+      </div>
+      <div
+        *ngIf="stepOneForm.get('cpf')?.errors?.['required'] && stepOneForm.get('cpf')?.touched"
+      >
+        <p class="font-normal text-sm text-red-600">Informe seu CPF</p>
       </div>
     </div>
 
@@ -178,6 +226,13 @@
           placeholder="dd/mm/aaaa"
           class="flex-1 w-full text-gray-800 text-base outline-none cursor-pointer placeholder:text-gray-500"
         />
+      </div>
+      <div
+        *ngIf="stepOneForm.get('data_nascimento')?.errors?.['required'] && stepOneForm.get('data_nascimento')?.touched"
+      >
+        <p class="font-normal text-sm text-red-600">
+          Informe sua data de nascimento
+        </p>
       </div>
     </div>
   </div>
@@ -203,6 +258,13 @@
           </option>
         </select>
       </div>
+      <div
+        *ngIf="stepOneForm.get('naturalidade_pais')?.errors?.['required'] && stepOneForm.get('naturalidade_pais')?.touched"
+      >
+        <p class="font-normal text-sm text-red-600">
+          Informe seu país de origem
+        </p>
+      </div>
     </div>
     <div class="flex flex-col gap-[6px]">
       <label class="font-medium text-sm text-gray-700"
@@ -222,6 +284,13 @@
           </option>
         </select>
       </div>
+      <div
+        *ngIf="stepOneForm.get('naturalidade_estado')?.errors?.['required'] && stepOneForm.get('naturalidade_estado')?.touched"
+      >
+        <p class="font-normal text-sm text-red-600">
+          Informe seu estado de origem
+        </p>
+      </div>
     </div>
     <div class="flex flex-col gap-[6px]">
       <label class="font-medium text-sm text-gray-700"
@@ -239,6 +308,13 @@
             {{ city }}
           </option>
         </select>
+      </div>
+      <div
+        *ngIf="stepOneForm.get('naturalidade_cidade')?.errors?.['required'] && stepOneForm.get('naturalidade_cidade')?.touched"
+      >
+        <p class="font-normal text-sm text-red-600">
+          Informe sua cidade de origem
+        </p>
       </div>
     </div>
   </div>
@@ -260,6 +336,11 @@
           <option value="Outro">Outro</option>
         </select>
       </div>
+      <div
+        *ngIf="stepOneForm.get('genero')?.errors?.['required'] && stepOneForm.get('genero')?.touched"
+      >
+        <p class="font-normal text-sm text-red-600">Informe seu gênero</p>
+      </div>
     </div>
     <div class="flex flex-col gap-[6px]">
       <label class="font-medium text-sm text-gray-700">Estado cívil *</label>
@@ -275,6 +356,11 @@
           <option value="Casado">Casado</option>
           <option value="União estável">União estável</option>
         </select>
+      </div>
+      <div
+        *ngIf="stepOneForm.get('estado_civil')?.errors?.['required'] && stepOneForm.get('estado_civil')?.touched"
+      >
+        <p class="font-normal text-sm text-red-600">Informe seu estado cívil</p>
       </div>
     </div>
   </div>
