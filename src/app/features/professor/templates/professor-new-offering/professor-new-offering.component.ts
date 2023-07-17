@@ -236,8 +236,10 @@ export class ProfessorNewOfferingComponent implements OnInit {
   }
 
   getProfessor(): void {
-    this.professorService.getOne(this.professorId).subscribe((response) => {
-      this.professor = response;
+    this.professorService.getOne(this.professorId).subscribe({
+      next: (response) => {
+        this.professor = response;
+      },
     });
   }
 

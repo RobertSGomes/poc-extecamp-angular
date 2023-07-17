@@ -37,13 +37,13 @@ export class SignupComponent {
   }
 
   async handleSignUp(): Promise<void> {
-    this.studentServive.signUp(this.signUpForm.value).subscribe(
-      () => {
+    this.studentServive.signUp(this.signUpForm.value).subscribe({
+      next: () => {
         this.router.navigate(['/signin']);
       },
-      ({ error }) => {
+      error: ({ error }) => {
         alert(error.error);
-      }
-    );
+      },
+    });
   }
 }

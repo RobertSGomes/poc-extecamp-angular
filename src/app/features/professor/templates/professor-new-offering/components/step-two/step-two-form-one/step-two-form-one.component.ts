@@ -69,8 +69,10 @@ export class StepTwoFormOneComponent implements OnInit {
   constructor(private readonly professorService: ProfessorService) {}
 
   async ngOnInit() {
-    this.professorService.getAll().subscribe((response) => {
-      this.professors = response.result;
+    this.professorService.getAll().subscribe({
+      next: (response) => {
+        this.professors = response.result;
+      },
     });
   }
 

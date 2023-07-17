@@ -23,8 +23,10 @@ export class StudentHomeComponent {
   constructor(private readonly studentService: StudentService) {}
 
   async ngOnInit(): Promise<void> {
-    this.studentService.getOne(this.studentId).subscribe((data) => {
-      this.student = data;
+    this.studentService.getOne(this.studentId).subscribe({
+      next: (data) => {
+        this.student = data;
+      },
     });
   }
 }

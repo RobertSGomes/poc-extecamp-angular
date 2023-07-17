@@ -33,15 +33,15 @@ export class SigninComponent implements OnInit {
   }
 
   handleSignIn(): void {
-    this.authService.signIn(this.signInForm.value).subscribe(
-      (response) => {
+    this.authService.signIn(this.signInForm.value).subscribe({
+      next: (response) => {
         setUserId(response.user_id);
         setAccessToken(response.access_token, response.path);
         this.router.navigate([`/${response.path}`]);
       },
-      ({ error }) => {
+      error: ({ error }) => {
         alert(error.error);
-      }
-    );
+      },
+    });
   }
 }
