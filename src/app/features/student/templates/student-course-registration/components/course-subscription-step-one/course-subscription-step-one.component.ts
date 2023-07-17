@@ -1,12 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnChanges,
-  OnInit,
-  Output,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 import { LocationService } from 'src/app/shared/services/location.service';
@@ -17,26 +9,93 @@ import { LocationService } from 'src/app/shared/services/location.service';
   styleUrls: ['./course-subscription-step-one.component.css'],
 })
 export class CourseSubscriptionStepOneComponent implements OnInit {
-  countries!: Array<any>;
-  states!: Array<any>;
+  countries: Array<any> = [];
+  states: Array<any> = [];
+  cities: Array<any> = [];
 
   @Input() stepOneForm!: FormGroup;
   @Output() nextStep: EventEmitter<void> = new EventEmitter<void>();
 
   constructor(private readonly locationService: LocationService) {}
 
-  async ngOnInit(): Promise<void> {
-    this.countries = await this.locationService.getCountries();
-    await this.loadStates(this.stepOneForm.value['naturalidade_pais']);
+  ngOnInit(): void {
+    this.loadCountries();
   }
 
-  async loadStates(countryName: string) {
-    const countryIndex = this.countries.findIndex((country) => {
-      return country.translations['por'].common == countryName;
-    });
+  loadCountries() {
+    this.locationService.getCountries().subscribe({
+      next: (data) => {
+        this.countries = data;
 
-    this.states = await this.locationService.getStates(
-      this.countries[countryIndex]?.name.common
+        this.loadStates();
+      },
+      error: () => {
+        this.countries = [];
+      },
+    });
+  }
+
+  loadStates() {
+    const selectedCountry = this.getSelectedCountry();
+
+    this.locationService.getStates(selectedCountry.name.common).subscribe({
+      next: (response) => {
+        this.states = response.data.states;
+
+        this.loadCities();
+      },
+      error: () => {
+        this.states = [];
+      },
+    });
+  }
+
+  loadCities() {
+    const selectedCountry = this.getSelectedCountry();
+    const selectedState = this.getSelectedState();
+
+    this.locationService
+      .getCities(selectedCountry.name.common, selectedState.name)
+      .subscribe({
+        next: (response) => {
+          this.cities = response.data;
+        },
+        error: () => {
+          this.cities = [];
+        },
+      });
+  }
+
+  handleChangeCountry() {
+    this.cities = [];
+    this.states = [];
+
+    this.stepOneForm.get('naturalidade_estado')?.setValue('');
+    this.stepOneForm.get('naturalidade_cidade')?.setValue('');
+
+    this.loadStates();
+  }
+
+  handleChangeState() {
+    this.cities = [];
+
+    this.stepOneForm.get('naturalidade_cidade')?.setValue('');
+
+    this.loadCities();
+  }
+
+  getSelectedCountry() {
+    return this.countries.find(
+      (country) =>
+        country.translations['por'].common ==
+        this.stepOneForm.get('naturalidade_pais')?.value
+    );
+  }
+
+  getSelectedState() {
+    return this.states.find(
+      (state) =>
+        state.state_code === this.stepOneForm.get('naturalidade_estado')?.value
     );
   }
 }

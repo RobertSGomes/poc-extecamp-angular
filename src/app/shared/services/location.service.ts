@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -10,39 +11,31 @@ export class LocationService {
 
   constructor(private readonly http: HttpClient) {}
 
-  getCountries(): any {
-    const countries: any[] = [];
-
-    this.http
-      .get<any>(`${this.baseUrlRestCountries}/all`)
-      .subscribe((response) => {
-        countries.push(...response);
-      });
-
-    return countries;
+  getCountries(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrlRestCountries}/all`);
   }
 
-  getStates(country: string): any {
-    const states: any = [];
-
-    this.http
-      .post<any>(
-        `${this.baseUrlCountriesNow}/countries/states`,
-        {
-          country,
+  getStates(country: string): Observable<any> {
+    return this.http.post<any>(
+      `${this.baseUrlCountriesNow}/countries/states`,
+      {
+        country,
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
         },
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      )
-      .subscribe((response) => {
-        states.push(...response.data.states);
-      });
-
-    return states;
+      }
+    );
   }
 
-  getCities() {}
+  getCities(country: string, state: string) {
+    return this.http.post<{ error: boolean; msg: string; data: Array<string> }>(
+      `${this.baseUrlCountriesNow}/countries/state/cities`,
+      {
+        country,
+        state,
+      }
+    );
+  }
 }

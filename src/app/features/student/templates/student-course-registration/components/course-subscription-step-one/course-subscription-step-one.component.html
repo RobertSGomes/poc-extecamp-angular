@@ -187,12 +187,12 @@
         <select
           formControlName="naturalidade_pais"
           class="w-full text-gray-800 text-base outline-none"
-          (change)="loadStates(stepOneForm.get('naturalidade_pais')?.value)"
+          (change)="handleChangeCountry()"
         >
           <option value="" selected>Selecione</option>
           <option
-            [value]="country.translations['por'].common"
             *ngFor="let country of countries"
+            [value]="country.translations['por'].common"
           >
             {{ country.translations["por"].common }}
           </option>
@@ -209,9 +209,10 @@
         <select
           formControlName="naturalidade_estado"
           class="w-full text-gray-800 text-base outline-none"
+          (change)="handleChangeState()"
         >
           <option value="" selected>Selecione</option>
-          <option [value]="state.state_code" *ngFor="let state of states">
+          <option *ngFor="let state of states" [value]="state.state_code">
             {{ state.name }}
           </option>
         </select>
@@ -229,8 +230,9 @@
           class="w-full text-gray-800 text-base outline-none"
         >
           <option value="" selected>Selecione</option>
-          <option value="Atibaia">Atibaia</option>
-          <option value="Taboão da Serra">Taboão da Serra</option>
+          <option *ngFor="let city of cities" [value]="city">
+            {{ city }}
+          </option>
         </select>
       </div>
     </div>

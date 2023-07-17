@@ -3,6 +3,7 @@ import { StudentModel } from '../../models/student.model';
 import { getUserId } from '../../../../../app/shared/utils/user-id.util';
 import { StudentService } from '../../student.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'student-course-registration',
@@ -12,164 +13,95 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class StudentCourseRegistrationComponent implements OnInit {
   currentStep: number = 0;
 
-  studentId?: string | null;
-  student?: StudentModel;
-
-  stepOneForm!: FormGroup;
-  stepTwoForm!: FormGroup;
+  student!: StudentModel;
+  form!: FormGroup;
 
   constructor(
     private readonly studentService: StudentService,
-    private formBuilder: FormBuilder
+    private readonly formBuilder: FormBuilder,
+    private readonly router: Router
   ) {}
 
   async ngOnInit(): Promise<void> {
-    this.loadForms();
-
-    const student = this.studentService.getOne(getUserId());
-
-    this.student = student;
-    this.fillInputs();
+    this.studentService.getOne(getUserId()).subscribe(
+      (data) => {
+        this.student = data;
+        this.createForm(data);
+      },
+      () => {
+        this.router.navigate(['']);
+      }
+    );
   }
 
-  loadForms() {
-    this.stepOneForm = this.formBuilder.group({
-      nome: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
-      telefone: ['', [Validators.required]],
-      documento_identificacao_tipo: ['', [Validators.required]],
-      documento_identificacao_numero: ['', [Validators.required]],
-      documento_identificacao_orgao_emissor: ['', [Validators.required]],
-      documento_identificacao_estado_emissor: ['', [Validators.required]],
-      cpf: ['', [Validators.required]],
-      data_nascimento: ['', [Validators.required]],
-      naturalidade_pais: ['', [Validators.required]],
-      naturalidade_estado: ['', [Validators.required]],
-      naturalidade_cidade: ['', [Validators.required]],
-      genero: ['', [Validators.required]],
-      estado_civil: ['', [Validators.required]],
-      possui_deficiencia: [false, [Validators.required]],
-      deficiencia: [''],
+  createForm(student: StudentModel) {
+    this.form = this.formBuilder.group({
+      step1: this.formBuilder.group({
+        nome: [student.nome ?? '', [Validators.required]],
+        email: [student.email ?? '', [Validators.required, Validators.email]],
+        telefone: [student.telefone ?? '', [Validators.required]],
+        documento_identificacao_tipo: [
+          student.documento_identificacao?.tipo ?? '',
+          [Validators.required],
+        ],
+        documento_identificacao_numero: [
+          student.documento_identificacao?.numero ?? '',
+          [Validators.required],
+        ],
+        documento_identificacao_orgao_emissor: [
+          student.documento_identificacao?.orgao_emissor ?? '',
+          [Validators.required],
+        ],
+        documento_identificacao_estado_emissor: [
+          student.documento_identificacao?.uf_emissao ?? '',
+          [Validators.required],
+        ],
+        cpf: [student.cpf ?? '', [Validators.required]],
+        data_nascimento: [
+          student.data_nascimento
+            ? student.data_nascimento.substring(0, 10)
+            : '',
+          [Validators.required],
+        ],
+        naturalidade_pais: [
+          student.naturalidade?.pais ?? '',
+          [Validators.required],
+        ],
+        naturalidade_estado: [
+          student.naturalidade?.estado ?? '',
+          [Validators.required],
+        ],
+        naturalidade_cidade: [
+          student.naturalidade?.cidade ?? '',
+          [Validators.required],
+        ],
+        genero: [student.genero ?? '', [Validators.required]],
+        estado_civil: [student.estado_civil, [Validators.required]],
+        possui_deficiencia: [
+          student.possui_deficiencia ?? false,
+          [Validators.required],
+        ],
+        deficiencia: [student.tipo_deficiencia ?? ''],
+      }),
+      step2: this.formBuilder.group({
+        cep: [student.endereco?.cep ?? '', [Validators.required]],
+        logradouro: [student.endereco?.logradouro ?? '', [Validators.required]],
+        numero: [student.endereco?.numero ?? '', [Validators.required]],
+        bairro: [student.endereco?.bairro ?? '', [Validators.required]],
+        complemento: [student.endereco?.complemento ?? ''],
+        estado: [student.endereco?.estado ?? '', [Validators.required]],
+        cidade: [student.endereco?.cidade ?? '', [Validators.required]],
+        pais: [student.endereco?.pais_residencia ?? '', [Validators.required]],
+      }),
     });
-
-    this.stepTwoForm = this.formBuilder.group({
-      cep: ['', [Validators.required]],
-      logradouro: ['', [Validators.required]],
-      numero: ['', [Validators.required]],
-      bairro: ['', [Validators.required]],
-      complemento: [''],
-      estado: ['', [Validators.required]],
-      cidade: ['', [Validators.required]],
-      pais: ['', [Validators.required]],
-    });
   }
 
-  fillInputs() {
-    // Fill stepOneFormInputs
-    this.setInputValue(this.stepOneForm, 'nome', this.student?.nome);
-    this.setInputValue(this.stepOneForm, 'email', this.student?.email);
-    this.setInputValue(this.stepOneForm, 'telefone', this.student?.telefone);
-    this.setInputValue(
-      this.stepOneForm,
-      'documento_identificacao_tipo',
-      this.student?.documento_identificacao.tipo
-    );
-    this.setInputValue(
-      this.stepOneForm,
-      'documento_identificacao_numero',
-      this.student?.documento_identificacao.numero
-    );
-    this.setInputValue(
-      this.stepOneForm,
-      'documento_identificacao_orgao_emissor',
-      this.student?.documento_identificacao.orgao_emissor
-    );
-    this.setInputValue(
-      this.stepOneForm,
-      'documento_identificacao_estado_emissor',
-      this.student?.documento_identificacao.uf_emissao
-    );
-    this.setInputValue(this.stepOneForm, 'cpf', this.student?.cpf);
-    this.setInputValue(
-      this.stepOneForm,
-      'data_nascimento',
-      this.student?.data_nascimento.substring(0, 10)
-    );
-    this.setInputValue(
-      this.stepOneForm,
-      'naturalidade_pais',
-      this.student?.naturalidade.pais
-    );
-    this.setInputValue(
-      this.stepOneForm,
-      'naturalidade_estado',
-      this.student?.naturalidade.estado
-    );
-    this.setInputValue(
-      this.stepOneForm,
-      'naturalidade_cidade',
-      this.student?.naturalidade.cidade
-    );
-    this.setInputValue(this.stepOneForm, 'genero', this.student?.genero);
-    this.setInputValue(
-      this.stepOneForm,
-      'estado_civil',
-      this.student?.estado_civil
-    );
-    this.setInputValue(
-      this.stepOneForm,
-      'possui_deficiencia',
-      this.student?.possui_deficiencia
-    );
-    this.setInputValue(
-      this.stepOneForm,
-      'deficiencia',
-      this.student?.tipo_deficiencia
-    );
-
-    // Fill stepTwoFormInputs
-    this.setInputValue(this.stepTwoForm, 'cep', this.student?.endereco.cep);
-    this.setInputValue(
-      this.stepTwoForm,
-      'logradouro',
-      this.student?.endereco.logradouro
-    );
-    this.setInputValue(
-      this.stepTwoForm,
-      'numero',
-      this.student?.endereco.numero
-    );
-    this.setInputValue(
-      this.stepTwoForm,
-      'bairro',
-      this.student?.endereco.bairro
-    );
-    this.setInputValue(
-      this.stepTwoForm,
-      'complemento',
-      this.student?.endereco.complemento
-    );
-    this.setInputValue(
-      this.stepTwoForm,
-      'estado',
-      this.student?.endereco.estado
-    );
-    this.setInputValue(
-      this.stepTwoForm,
-      'cidade',
-      this.student?.endereco.cidade
-    );
-    this.setInputValue(
-      this.stepTwoForm,
-      'pais',
-      this.student?.endereco.pais_residencia
-    );
+  get stepOneForm() {
+    return this.form.get('step1') as FormGroup;
   }
 
-  setInputValue(form: FormGroup<any>, input: string, value: any) {
-    if (value) {
-      form.get(input)?.setValue(value);
-    }
+  get stepTwoForm() {
+    return this.form.get('step2') as FormGroup;
   }
 
   nextStep(): void {

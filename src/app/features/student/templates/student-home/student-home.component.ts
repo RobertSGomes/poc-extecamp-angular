@@ -16,14 +16,15 @@ import { getUserId } from '../../../../../app/shared/utils/user-id.util';
   styleUrls: ['./student-home.component.css'],
 })
 export class StudentHomeComponent {
-  studentId?: string | null;
+  studentId: string | null = getUserId();
   student?: StudentModel;
   registeredCourses: RegisteredCourseModel[] = [];
 
   constructor(private readonly studentService: StudentService) {}
 
   async ngOnInit(): Promise<void> {
-    this.studentId = getUserId();
-    this.student = this.studentService.getOne(this.studentId);
+    this.studentService.getOne(this.studentId).subscribe((data) => {
+      this.student = data;
+    });
   }
 }
