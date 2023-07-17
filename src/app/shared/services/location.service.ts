@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 export class LocationService {
   baseUrlRestCountries = 'https://restcountries.com/v3.1/';
   baseUrlCountriesNow = 'https://countriesnow.space/api/v0.1';
+  baseUrlViaCep = 'https://viacep.com.br/ws';
 
   constructor(private readonly http: HttpClient) {}
 
@@ -37,5 +38,9 @@ export class LocationService {
         state,
       }
     );
+  }
+
+  fetchCep(cep: string) {
+    return this.http.get<any>(`${this.baseUrlViaCep}/${cep}/json/`);
   }
 }
