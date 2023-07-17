@@ -14,6 +14,7 @@ import { CourseSubscriptionStepThreeComponent } from './templates/student-course
 import { CourseSubscriptionStepFourComponent } from './templates/student-course-registration/components/course-subscription-step-four/course-subscription-step-four.component';
 
 import { SharedModule } from 'src/app/shared/shared.module';
+import { InputMaskModule } from '@ngneat/input-mask';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,13 @@ import { SharedModule } from 'src/app/shared/shared.module';
     CourseSubscriptionStepThreeComponent,
     CourseSubscriptionStepFourComponent,
   ],
-  imports: [AppRoutingModule, ReactiveFormsModule, SharedModule, CommonModule],
+  imports: [
+    AppRoutingModule,
+    ReactiveFormsModule,
+    SharedModule,
+    CommonModule,
+    InputMaskModule,
+  ],
   exports: [
     StudentAllCoursesComponent,
     StudentCourseDetailComponent,

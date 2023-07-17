@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { createMask } from '@ngneat/input-mask';
 
 import { LocationService } from 'src/app/shared/services/location.service';
 
@@ -9,6 +10,10 @@ import { LocationService } from 'src/app/shared/services/location.service';
   styleUrls: ['./course-subscription-step-one.component.css'],
 })
 export class CourseSubscriptionStepOneComponent implements OnInit {
+  cpfMask = createMask({
+    mask: '999.999.999-99',
+  });
+
   countries: Array<any> = [];
   states: Array<any> = [];
   cities: Array<any> = [];

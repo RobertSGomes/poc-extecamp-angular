@@ -15,6 +15,7 @@
       <input
         formControlName="cep"
         placeholder="00000-000"
+        [inputMask]="cepMask"
         (change)="handleChangeCep()"
         class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
       />

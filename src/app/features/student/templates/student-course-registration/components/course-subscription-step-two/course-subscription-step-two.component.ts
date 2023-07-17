@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { createMask } from '@ngneat/input-mask';
+
 import { LocationService } from 'src/app/shared/services/location.service';
 
 @Component({
@@ -8,6 +10,10 @@ import { LocationService } from 'src/app/shared/services/location.service';
   styleUrls: ['./course-subscription-step-two.component.css'],
 })
 export class CourseSubscriptionStepTwoComponent {
+  cepMask = createMask({
+    mask: '99999-999',
+  });
+
   countries: Array<any> = [];
   states: Array<any> = [];
   cities: Array<any> = [];
@@ -114,7 +120,6 @@ export class CourseSubscriptionStepTwoComponent {
     this.locationService.fetchCep(this.stepTwoForm.value['cep']).subscribe({
       next: (value) => {
         if (value) {
-          this.stepTwoForm.get('cep')?.setValue(value.cep);
           this.stepTwoForm.get('logradouro')?.setValue(value.logradouro);
           this.stepTwoForm.get('bairro')?.setValue(value.bairro);
           this.stepTwoForm.get('estado')?.setValue(value.uf);
