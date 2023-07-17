@@ -122,13 +122,18 @@ export class ProfessorNewOfferingComponent implements OnInit {
     });
 
     this.stepTwoFormOne = this.formBuilder.group({
-      coordenador: ['', [Validators.required]],
-      diretor: ['', [Validators.required]],
-      docente_responsavel: ['', Validators.required],
+      coordenador_id: ['', [Validators.required]],
+      coordenador: [''],
+      diretor_id: ['', [Validators.required]],
+      diretor: [''],
+      docente_responsavel_id: ['', Validators.required],
+      docente_responsavel: [''],
       docente_responsavel_email: ['', Validators.required],
       docente_responsavel_telefone: ['', Validators.required],
       docente_responsavel_instituicao: ['', Validators.required],
       docente_responsavel_titulacao: ['', Validators.required],
+      docente_responsavel_carga_horaria_horas: ['', Validators.required],
+      docente_responsavel_carga_horaria_minutos: ['', Validators.required],
     });
 
     this.stepThreeFormOne = this.formBuilder.group({

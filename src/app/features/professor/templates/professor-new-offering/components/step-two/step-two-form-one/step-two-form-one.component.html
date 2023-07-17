@@ -29,6 +29,13 @@
       />
     </div>
     <div
+      *ngIf="stepTwoFormOne.get('coordenador_id')?.errors?.['required']  && stepTwoFormOne.get('coordenador')?.touched"
+    >
+      <p class="font-normal text-sm text-red-600">
+        Informe o coordenador do curso
+      </p>
+    </div>
+    <div
       class="absolute z-[1] top-[70px] left-0 flex flex-col items-center justify-center w-[665px] border border-gray-300 shadow-sm rounded-lg overflow-hidden"
       *ngIf="focusInputOne"
     >
@@ -41,7 +48,9 @@
       <button
         class="w-full font-normal text-base text-gray-700 bg-white px-3 py-2 hover:bg-violet-600 hover:text-white"
         *ngFor="let professor of getFilteredProfessors('coordenador')"
-        (click)="handleSelectProfessor(professor, 'coordenador')"
+        (click)="
+          handleSelectProfessor(professor, 'coordenador', 'coordenador_id')
+        "
         type="button"
       >
         {{ professor.nome }}
@@ -68,6 +77,13 @@
       />
     </div>
     <div
+      *ngIf="stepTwoFormOne.get('diretor_id')?.errors?.['required']  && stepTwoFormOne.get('diretor')?.touched"
+    >
+      <p class="font-normal text-sm text-red-600">
+        Informe o diretor da unidade
+      </p>
+    </div>
+    <div
       class="absolute z-[1] top-[70px] left-0 flex flex-col items-center justify-center w-[665px] border border-gray-300 shadow-sm rounded-lg overflow-hidden"
       *ngIf="focusInputTwo"
     >
@@ -80,7 +96,7 @@
       <button
         class="w-full font-normal text-base text-gray-700 bg-white px-3 py-2 hover:bg-violet-600 hover:text-white"
         *ngFor="let professor of getFilteredProfessors('diretor')"
-        (click)="handleSelectProfessor(professor, 'diretor')"
+        (click)="handleSelectProfessor(professor, 'diretor', 'diretor_id')"
         type="button"
       >
         {{ professor.nome }}
@@ -107,6 +123,13 @@
       />
     </div>
     <div
+      *ngIf="stepTwoFormOne.get('docente_responsavel_id')?.errors?.['required']  && stepTwoFormOne.get('docente_responsavel')?.touched"
+    >
+      <p class="font-normal text-sm text-red-600">
+        Informe o professor responsável pelo curso
+      </p>
+    </div>
+    <div
       class="absolute z-[1] top-[70px] left-0 flex flex-col items-center justify-center w-[665px] border border-gray-300 shadow-sm rounded-lg overflow-hidden"
       *ngIf="focusInputThree"
     >
@@ -119,7 +142,13 @@
       <button
         class="w-full font-normal text-base text-gray-700 bg-white px-3 py-2 hover:bg-violet-600 hover:text-white"
         *ngFor="let professor of getFilteredProfessors('docente_responsavel')"
-        (click)="handleSelectProfessor(professor, 'docente_responsavel')"
+        (click)="
+          handleSelectProfessor(
+            professor,
+            'docente_responsavel',
+            'docente_responsavel_id'
+          )
+        "
         type="button"
       >
         {{ professor.nome }}
@@ -136,8 +165,16 @@
       <input
         class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
         placeholder="Preencha"
+        type="email"
         formControlName="docente_responsavel_email"
       />
+    </div>
+    <div
+      *ngIf="stepTwoFormOne.get('docente_responsavel_email')?.errors?.['required']  && stepTwoFormOne.get('docente_responsavel_email')?.touched"
+    >
+      <p class="font-normal text-sm text-red-600">
+        Informe o e-mail do professor responsável pelo curso
+      </p>
     </div>
   </div>
 
@@ -157,6 +194,13 @@
         formControlName="docente_responsavel_telefone"
       />
     </div>
+    <div
+      *ngIf="stepTwoFormOne.get('docente_responsavel_telefone')?.errors?.['required']  && stepTwoFormOne.get('docente_responsavel_telefone')?.touched"
+    >
+      <p class="font-normal text-sm text-red-600">
+        Informe o telefone do professor responsável pelo curso
+      </p>
+    </div>
   </div>
 
   <div class="flex flex-col gap-y-2">
@@ -174,6 +218,13 @@
           formControlName="docente_responsavel_instituicao"
         />
       </div>
+    </div>
+    <div
+      *ngIf="stepTwoFormOne.get('docente_responsavel_instituicao')?.errors?.['required']  && stepTwoFormOne.get('docente_responsavel_instituicao')?.touched"
+    >
+      <p class="font-normal text-sm text-red-600">
+        Informe a instituição do professor responsável pelo curso
+      </p>
     </div>
   </div>
 
@@ -194,6 +245,13 @@
         </select>
       </div>
     </div>
+    <div
+      *ngIf="stepTwoFormOne.get('docente_responsavel_titulacao')?.errors?.['required']  && stepTwoFormOne.get('docente_responsavel_titulacao')?.touched"
+    >
+      <p class="font-normal text-sm text-red-600">
+        Informe a titulação do professor responsável pelo curso
+      </p>
+    </div>
   </div>
 
   <div class="flex flex-col gap-y-2">
@@ -206,6 +264,8 @@
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
           placeholder="Horas"
+          formControlName="docente_responsavel_carga_horaria_horas"
+          [inputMask]="hourInputMask"
         />
       </div>
       <div
@@ -214,8 +274,17 @@
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
           placeholder="Minutos"
+          formControlName="docente_responsavel_carga_horaria_minutos"
+          [inputMask]="minuteInputMask"
         />
       </div>
+    </div>
+    <div
+      *ngIf="(stepTwoFormOne.get('docente_responsavel_carga_horaria_horas')?.errors?.['required'] || stepTwoFormOne.get('docente_responsavel_carga_horaria_minutos')?.errors?.['required']) && (stepTwoFormOne.get('docente_responsavel_carga_horaria_horas')?.touched && stepTwoFormOne.get('docente_responsavel_carga_horaria_minutos')?.touched)"
+    >
+      <p class="font-normal text-sm text-red-600">
+        Informe a carga horária individual dos responsáveis pelo curso
+      </p>
     </div>
   </div>
 
@@ -240,6 +309,7 @@
       <button
         class="px-4 py-[10px] rounded-lg font-semibold text-sm text-white bg-violet-700"
         type="submit"
+        [disabled]="!stepTwoFormOne.valid"
       >
         Próximo
       </button>
