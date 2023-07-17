@@ -2,8 +2,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { HistoryStep } from '../../../types/history.type';
 import { ProfessorService } from 'src/app/features/professor/professor.service';
 import { ProfessorModel } from 'src/app/features/professor/models/professor.model';
-import { Professor } from '../../../types/professor.type';
 import { FormGroup } from '@angular/forms';
+import { createMask } from '@ngneat/input-mask';
 
 @Component({
   selector: 'app-step-two-form-one',
@@ -11,6 +11,21 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./step-two-form-one.component.css'],
 })
 export class StepTwoFormOneComponent implements OnInit {
+  hourInputMask = createMask({
+    alias: 'numeric',
+    digits: 0,
+    placeholder: '0',
+    max: 24,
+    min: 0,
+  });
+  minuteInputMask = createMask({
+    alias: 'numeric',
+    digits: 0,
+    placeholder: '0',
+    max: 60,
+    min: 0,
+  });
+
   historySteps: HistoryStep[] = [
     {
       title: 'Coordenação do curso',
@@ -61,15 +76,25 @@ export class StepTwoFormOneComponent implements OnInit {
 
   getFilteredProfessors(formControlName: string): ProfessorModel[] {
     if (this.stepTwoFormOne.get(formControlName)?.value) {
-      return this.professors.filter((professor) =>
-        professor.nome.includes(this.stepTwoFormOne.get(formControlName)?.value)
+      return this.professors.filter(
+        (professor) =>
+          professor.nome.includes(
+            this.stepTwoFormOne.get(formControlName)?.value
+          ) ||
+          professor.matricula.includes(
+            this.stepTwoFormOne.get(formControlName)?.value
+          )
       );
     } else {
       return this.professors;
     }
   }
 
-  handleSelectProfessor(professor: ProfessorModel, formControlName: string) {
+  handleSelectProfessor(
+    professor: ProfessorModel,
+    formControlName: string,
+    formControlIdName?: string
+  ) {
     this.stepTwoFormOne.get(formControlName)?.setValue(professor.nome);
 
     if (formControlName === 'docente_responsavel') {
@@ -85,6 +110,10 @@ export class StepTwoFormOneComponent implements OnInit {
       this.stepTwoFormOne
         .get('docente_responsavel_titulacao')
         ?.setValue(professor.titulacao ?? '');
+    }
+
+    if (formControlIdName) {
+      this.stepTwoFormOne.get(formControlIdName)?.setValue(professor.id);
     }
 
     this.unfocusInputs();

@@ -33,9 +33,7 @@ export class SigninComponent implements OnInit {
   }
 
   handleSignIn(): void {
-    const result = this.authService.signIn(this.signInForm.value);
-
-    result.subscribe(
+    this.authService.signIn(this.signInForm.value).subscribe(
       (response) => {
         setUserId(response.user_id);
         setAccessToken(response.access_token, response.path);
