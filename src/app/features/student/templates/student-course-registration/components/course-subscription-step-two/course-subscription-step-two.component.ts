@@ -45,32 +45,42 @@ export class CourseSubscriptionStepTwoComponent {
         this.loadStates();
       },
       error: () => {
+        this.stepTwoForm.get('pais')?.setValue('');
+
         this.countries = [];
       },
     });
   }
 
   loadStates() {
-    this.locationService.getStates(this.selectedCountry.name.common).subscribe({
-      next: (value) => {
-        this.states = value.data.states;
+    this.locationService
+      .getStates(this.selectedCountry?.name.common)
+      .subscribe({
+        next: (value) => {
+          this.states = value.data.states;
 
-        this.loadCities();
-      },
-      error: () => {
-        this.states = [];
-      },
-    });
+          this.loadCities();
+        },
+        error: () => {
+          this.stepTwoForm.get('pais')?.setValue('');
+          this.stepTwoForm.get('estado')?.setValue('');
+
+          this.states = [];
+        },
+      });
   }
 
   loadCities() {
     this.locationService
-      .getCities(this.selectedCountry.name.common, this.selectedState.name)
+      .getCities(this.selectedCountry?.name.common, this.selectedState?.name)
       .subscribe({
         next: (value) => {
           this.cities = value.data;
         },
         error: () => {
+          this.stepTwoForm.get('estado')?.setValue('');
+          this.stepTwoForm.get('cidade')?.setValue('');
+
           this.cities = [];
         },
       });
@@ -92,5 +102,27 @@ export class CourseSubscriptionStepTwoComponent {
     this.stepTwoForm.get('cidade')?.setValue('');
 
     this.loadCities();
+  }
+
+  handleChangeCep() {
+    Object.keys(this.stepTwoForm.controls).forEach((key) => {
+      if (key !== 'cep' && key !== 'pais') {
+        this.stepTwoForm.get(key)?.setValue('');
+      }
+    });
+
+    this.locationService.fetchCep(this.stepTwoForm.value['cep']).subscribe({
+      next: (value) => {
+        if (value) {
+          this.stepTwoForm.get('cep')?.setValue(value.cep);
+          this.stepTwoForm.get('logradouro')?.setValue(value.logradouro);
+          this.stepTwoForm.get('bairro')?.setValue(value.bairro);
+          this.stepTwoForm.get('estado')?.setValue(value.uf);
+          this.stepTwoForm.get('cidade')?.setValue(value.localidade);
+        }
+
+        this.loadStates();
+      },
+    });
   }
 }

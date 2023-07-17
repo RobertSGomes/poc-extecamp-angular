@@ -1,6 +1,7 @@
 <form
-  [formGroup]="stepTwoForm"
   class="flex flex-col p-8 gap-y-6 rounded-2xl bg-white border border-gray-200 shadow-sm"
+  [formGroup]="stepTwoForm"
+  (submit)="nextStep.emit()"
 >
   <h1 class="font-semibold text-lg text-black">Endereço</h1>
 
@@ -14,6 +15,7 @@
       <input
         formControlName="cep"
         placeholder="00000-000"
+        (change)="handleChangeCep()"
         class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
       />
     </div>
@@ -159,7 +161,8 @@
       </button>
       <button
         class="px-4 py-[10px] rounded-lg font-semibold text-sm text-white bg-violet-700"
-        (click)="nextStep.emit()"
+        type="submit"
+        [disabled]="!stepTwoForm.valid"
       >
         Próximo
       </button>

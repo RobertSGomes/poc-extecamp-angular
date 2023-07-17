@@ -45,32 +45,42 @@ export class CourseSubscriptionStepOneComponent implements OnInit {
         this.loadStates();
       },
       error: () => {
+        this.stepOneForm.get('naturalidade_pais')?.setValue('');
+
         this.countries = [];
       },
     });
   }
 
   loadStates() {
-    this.locationService.getStates(this.selectedCountry.name.common).subscribe({
-      next: (value) => {
-        this.states = value.data.states;
+    this.locationService
+      .getStates(this.selectedCountry?.name.common)
+      .subscribe({
+        next: (value) => {
+          this.states = value.data.states;
 
-        this.loadCities();
-      },
-      error: () => {
-        this.states = [];
-      },
-    });
+          this.loadCities();
+        },
+        error: () => {
+          this.stepOneForm.get('naturalidade_pais')?.setValue('');
+          this.stepOneForm.get('naturalidade_estado')?.setValue('');
+
+          this.states = [];
+        },
+      });
   }
 
   loadCities() {
     this.locationService
-      .getCities(this.selectedCountry.name.common, this.selectedState.name)
+      .getCities(this.selectedCountry?.name.common, this.selectedState?.name)
       .subscribe({
         next: (value) => {
           this.cities = value.data;
         },
         error: () => {
+          this.stepOneForm.get('naturalidade_estado')?.setValue('');
+          this.stepOneForm.get('naturalidade_cidade')?.setValue('');
+
           this.cities = [];
         },
       });
