@@ -54,7 +54,6 @@ export class StepTwoFormOneComponent implements OnInit {
   ];
 
   professors: ProfessorModel[] = [];
-  filteredProfessorsOne: ProfessorModel[] = [];
 
   focusInputOne: boolean = false;
   focusInputTwo: boolean = false;
