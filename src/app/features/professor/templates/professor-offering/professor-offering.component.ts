@@ -19,6 +19,8 @@ export class ProfessorOfferingComponent implements OnInit {
   }
 
   getProfessor(): void {
-    this.professor = this.professorService.getOne(this.professorId);
+    this.professorService.getOne(this.professorId).subscribe((response) => {
+      this.professor = response;
+    });
   }
 }

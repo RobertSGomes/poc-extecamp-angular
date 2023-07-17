@@ -14,40 +14,27 @@ export class ProfessorService {
 
   constructor(private readonly http: HttpClient, private router: Router) {}
 
-  getOne(professorId: string | null): ProfessorModel | undefined {
+  getOne(professorId: string | null): Observable<ProfessorModel> {
     this.verifyAccess();
 
-    let professor: ProfessorModel | undefined = undefined;
-
-    this.http
-      .get<ProfessorModel>(`${this.apiURL}/${professorId}`, {
-        headers: {
-          Authorization: `Bearer ${this.accessToken}`,
-        },
-      })
-      .subscribe((response) => {
-        professor = response;
-      });
-
-    return professor;
+    return this.http.get<ProfessorModel>(`${this.apiURL}/${professorId}`, {
+      headers: {
+        Authorization: `Bearer ${this.accessToken}`,
+      },
+    });
   }
 
-  getAll(): ProfessorModel[] {
+  getAll(): Observable<{ result: ProfessorModel[]; total: number }> {
     this.verifyAccess();
 
-    const professors: ProfessorModel[] = [];
-
-    this.http
-      .get<{ result: ProfessorModel[]; total: number }>(`${this.apiURL}/`, {
+    return this.http.get<{ result: ProfessorModel[]; total: number }>(
+      `${this.apiURL}/`,
+      {
         headers: {
           Authorization: `Bearer ${this.accessToken}`,
         },
-      })
-      .subscribe((response) => {
-        professors.push(...response.result);
-      });
-
-    return professors;
+      }
+    );
   }
 
   verifyAccess(): void {

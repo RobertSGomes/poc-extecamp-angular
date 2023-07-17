@@ -54,7 +54,9 @@ export class StepTwoFormOneComponent implements OnInit {
   constructor(private readonly professorService: ProfessorService) {}
 
   async ngOnInit() {
-    this.professors = this.professorService.getAll();
+    this.professorService.getAll().subscribe((response) => {
+      this.professors = response.result;
+    });
   }
 
   getFilteredProfessors(formControlName: string): ProfessorModel[] {
