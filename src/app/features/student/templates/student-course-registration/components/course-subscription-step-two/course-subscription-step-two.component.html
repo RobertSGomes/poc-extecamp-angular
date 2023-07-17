@@ -88,36 +88,13 @@
       >
         <select
           formControlName="estado"
-          class="w-full text-gray-800 text-base outline-none"
+          class="w-full text-gray-800 text-base outline-none cursor-pointer"
+          (change)="handleChangeState()"
         >
           <option value="" selected>Selecione</option>
-          <option value="AC">AC</option>
-          <option value="AL">AL</option>
-          <option value="AP">AP</option>
-          <option value="AM">AM</option>
-          <option value="BA">BA</option>
-          <option value="CE">CE</option>
-          <option value="DF">DF</option>
-          <option value="ES">ES</option>
-          <option value="GO">GO</option>
-          <option value="MA">MA</option>
-          <option value="MT">MT</option>
-          <option value="MS">MS</option>
-          <option value="MG">MG</option>
-          <option value="PA">PA</option>
-          <option value="PB">PB</option>
-          <option value="PR">PR</option>
-          <option value="PE">PE</option>
-          <option value="PI">PI</option>
-          <option value="RJ">RJ</option>
-          <option value="RN">RN</option>
-          <option value="RS">RS</option>
-          <option value="RO">RO</option>
-          <option value="RR">RR</option>
-          <option value="SC">SC</option>
-          <option value="SP">SP</option>
-          <option value="SE">SE</option>
-          <option value="TO">TO</option>
+          <option *ngFor="let state of states" [value]="state.state_code">
+            {{ state.name }}
+          </option>
         </select>
       </div>
     </div>
@@ -130,10 +107,12 @@
       >
         <select
           formControlName="cidade"
-          class="w-full text-gray-800 text-base outline-none"
+          class="w-full text-gray-800 text-base outline-none cursor-pointer"
         >
           <option value="" selected>Selecione</option>
-          <option value="Atibaia">Atibaia</option>
+          <option *ngFor="let city of cities" [value]="city">
+            {{ city }}
+          </option>
         </select>
       </div>
     </div>
@@ -148,10 +127,16 @@
       >
         <select
           formControlName="pais"
-          class="w-full text-gray-800 text-base outline-none"
+          class="w-full text-gray-800 text-base outline-none cursor-pointer"
+          (change)="handleChangeCountry()"
         >
           <option value="" selected>Selecione</option>
-          <option value="Brasil">Brasil</option>
+          <option
+            *ngFor="let country of countries"
+            [value]="country.translations['por'].common"
+          >
+            {{ country.translations["por"].common }}
+          </option>
         </select>
       </div>
     </div>

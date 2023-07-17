@@ -44,7 +44,9 @@
     <div
       class="flex items-center gap-2 w-[495px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
     >
-      <select class="font-medium text-base text-gray-800 outline-none">
+      <select
+        class="font-medium text-base text-gray-800 outline-none cursor-pointer"
+      >
         <option selected>BR</option>
         <option>EN</option>
         <option>ES</option>
@@ -69,7 +71,7 @@
       >
         <select
           formControlName="documento_identificacao_tipo"
-          class="w-full text-gray-800 text-base outline-none"
+          class="w-full text-gray-800 text-base outline-none cursor-pointer"
         >
           <option selected value="">Selecione</option>
           <option value="RG">RG</option>
@@ -93,7 +95,7 @@
       >
         <select
           formControlName="documento_identificacao_orgao_emissor"
-          class="w-full text-gray-800 text-base outline-none"
+          class="w-full text-gray-800 text-base outline-none cursor-pointer"
         >
           <option value="" selected>Selecione</option>
           <option value="SSP">SSP</option>
@@ -109,7 +111,7 @@
       >
         <select
           formControlName="documento_identificacao_estado_emissor"
-          class="w-full text-gray-800 text-base outline-none"
+          class="w-full text-gray-800 text-base outline-none cursor-pointer"
         >
           <option value="" selected>Selecione</option>
           <option value="AC">AC</option>
@@ -146,6 +148,7 @@
 
   <!-- CPF e Data nascimento -->
   <div class="flex gap-x-[18px]">
+    <!-- CPF -->
     <div class="flex flex-col gap-[6px]">
       <label class="font-medium text-sm text-gray-700">CPF *</label>
       <div
@@ -158,6 +161,8 @@
         />
       </div>
     </div>
+
+    <!-- Data nascimento -->
     <div class="flex flex-col gap-[6px]">
       <label class="font-medium text-sm text-gray-700"
         >Data de nascimento *</label
@@ -171,7 +176,7 @@
           type="date"
           onfocus="this.showPicker()"
           placeholder="dd/mm/aaaa"
-          class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+          class="flex-1 w-full text-gray-800 text-base outline-none cursor-pointer placeholder:text-gray-500"
         />
       </div>
     </div>
@@ -186,7 +191,7 @@
       >
         <select
           formControlName="naturalidade_pais"
-          class="w-full text-gray-800 text-base outline-none"
+          class="w-full text-gray-800 text-base outline-none cursor-pointer"
           (change)="handleChangeCountry()"
         >
           <option value="" selected>Selecione</option>
@@ -208,7 +213,7 @@
       >
         <select
           formControlName="naturalidade_estado"
-          class="w-full text-gray-800 text-base outline-none"
+          class="w-full text-gray-800 text-base outline-none cursor-pointer"
           (change)="handleChangeState()"
         >
           <option value="" selected>Selecione</option>
@@ -227,7 +232,7 @@
       >
         <select
           formControlName="naturalidade_cidade"
-          class="w-full text-gray-800 text-base outline-none"
+          class="w-full text-gray-800 text-base outline-none cursor-pointer"
         >
           <option value="" selected>Selecione</option>
           <option *ngFor="let city of cities" [value]="city">
@@ -247,7 +252,7 @@
       >
         <select
           formControlName="genero"
-          class="w-full text-gray-800 text-base outline-none"
+          class="w-full text-gray-800 text-base outline-none cursor-pointer"
         >
           <option value="" selected>Selecione</option>
           <option value="Masculino">Masculino</option>
@@ -263,7 +268,7 @@
       >
         <select
           formControlName="estado_civil"
-          class="w-full text-gray-800 text-base outline-none"
+          class="w-full text-gray-800 text-base outline-none cursor-pointer"
         >
           <option value="" selected>Selecione</option>
           <option value="Solteiro">Solteiro</option>
@@ -314,7 +319,7 @@
       >
         <select
           formControlName="deficiencia"
-          class="w-full text-gray-800 text-base outline-none"
+          class="w-full text-gray-800 text-base outline-none cursor-pointer"
         >
           <option value="" selected>Selecione</option>
           <option value="Visual">Visual</option>

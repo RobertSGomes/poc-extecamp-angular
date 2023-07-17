@@ -22,10 +22,25 @@ export class CourseSubscriptionStepOneComponent implements OnInit {
     this.loadCountries();
   }
 
+  get selectedCountry() {
+    return this.countries.find(
+      (country) =>
+        country.translations['por'].common ==
+        this.stepOneForm.get('naturalidade_pais')?.value
+    );
+  }
+
+  get selectedState() {
+    return this.states.find(
+      (state) =>
+        state.state_code === this.stepOneForm.get('naturalidade_estado')?.value
+    );
+  }
+
   loadCountries() {
     this.locationService.getCountries().subscribe({
-      next: (data) => {
-        this.countries = data;
+      next: (value) => {
+        this.countries = value;
 
         this.loadStates();
       },
@@ -36,11 +51,9 @@ export class CourseSubscriptionStepOneComponent implements OnInit {
   }
 
   loadStates() {
-    const selectedCountry = this.getSelectedCountry();
-
-    this.locationService.getStates(selectedCountry.name.common).subscribe({
-      next: (response) => {
-        this.states = response.data.states;
+    this.locationService.getStates(this.selectedCountry.name.common).subscribe({
+      next: (value) => {
+        this.states = value.data.states;
 
         this.loadCities();
       },
@@ -51,14 +64,11 @@ export class CourseSubscriptionStepOneComponent implements OnInit {
   }
 
   loadCities() {
-    const selectedCountry = this.getSelectedCountry();
-    const selectedState = this.getSelectedState();
-
     this.locationService
-      .getCities(selectedCountry.name.common, selectedState.name)
+      .getCities(this.selectedCountry.name.common, this.selectedState.name)
       .subscribe({
-        next: (response) => {
-          this.cities = response.data;
+        next: (value) => {
+          this.cities = value.data;
         },
         error: () => {
           this.cities = [];
@@ -82,20 +92,5 @@ export class CourseSubscriptionStepOneComponent implements OnInit {
     this.stepOneForm.get('naturalidade_cidade')?.setValue('');
 
     this.loadCities();
-  }
-
-  getSelectedCountry() {
-    return this.countries.find(
-      (country) =>
-        country.translations['por'].common ==
-        this.stepOneForm.get('naturalidade_pais')?.value
-    );
-  }
-
-  getSelectedState() {
-    return this.states.find(
-      (state) =>
-        state.state_code === this.stepOneForm.get('naturalidade_estado')?.value
-    );
   }
 }
