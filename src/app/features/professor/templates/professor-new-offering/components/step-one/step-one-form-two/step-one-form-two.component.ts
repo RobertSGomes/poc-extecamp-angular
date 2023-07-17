@@ -44,8 +44,4 @@ export class StepOneFormTwoComponent {
   get areas_tematicas() {
     return this.stepOneFormTwo.get('areas_tematicas') as FormArray;
   }
-
-  handleClick() {
-    console.log(JSON.stringify(this.stepOneFormTwo.value));
-  }
 }
