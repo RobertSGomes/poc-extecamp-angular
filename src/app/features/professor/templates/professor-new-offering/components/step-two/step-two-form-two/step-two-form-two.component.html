@@ -73,7 +73,7 @@
           class="font-medium text-xs text-left px-6 py-3 text-gray-600 w-11"
         ></th>
       </thead>
-      <tbody>
+      <!-- <tbody>
         <tr *ngFor="let professor of professors">
           <td class="px-6 py-3 text-left font-medium text-sm text-gray-900">
             {{ professor.matricula }}
@@ -98,7 +98,7 @@
             </div>
           </td>
         </tr>
-      </tbody>
+      </tbody> -->
     </table>
     <div class="w-full bg-gray-50" *ngIf="professors.length === 0">
       <div class="w-[352px] mx-auto py-[48px]">
@@ -144,7 +144,10 @@
   *ngIf="openNewProfessorModal"
   class="flex justify-end items-start w-screen h-screen absolute top-0 left-0 z-40 backdrop-blur-sm bg-black/50"
 >
-  <div class="z-50 w-[798px] h-screen bg-white p-6 overflow-y-auto">
+  <form
+    [formGroup]="modalFormGroup"
+    class="z-50 w-[798px] h-screen bg-white p-6 overflow-y-auto"
+  >
     <div class="flex flex-col gap-y-8">
       <div class="flex justify-between">
         <div>
@@ -155,11 +158,7 @@
             UNICAMP (Cadastro DGRH)
           </p>
         </div>
-        <button
-          class="w-5 h-5"
-          type="button"
-          (click)="openNewProfessorModal = false"
-        >
+        <button class="w-5 h-5" type="button" (click)="handleCloseModal()">
           <img
             src="../../../../../../../../assets/svgs/x-close.svg"
             class="w-5 h-5"
@@ -167,7 +166,7 @@
         </button>
       </div>
       <div class="flex flex-col gap-y-6">
-        <div class="flex flex-col gap-[6px]">
+        <div class="relative flex flex-col gap-[6px]">
           <label class="font-medium text-sm text-gray-700"
             >Pesquisar por docentes*</label
           >
@@ -181,11 +180,32 @@
             <input
               class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
               placeholder="Pesquisar"
+              formControlName="docente"
+              (focus)="focusSearchInput = true"
             />
           </div>
           <p class="font-normal text-sm text-gray-600">
             Pesquisa por nome ou por número de matrícula
           </p>
+          <div
+            class="absolute z-[1] top-[70px] left-0 flex flex-col items-center justify-center w-full border border-gray-300 shadow-sm rounded-lg overflow-hidden"
+            *ngIf="focusSearchInput"
+          >
+            <p
+              *ngIf="!getFilteredProfessors('docente').length"
+              class="w-full font-normal text-base text-gray-700 text-center bg-white px-3 py-2"
+            >
+              Sem resultados
+            </p>
+            <button
+              class="w-full font-normal text-base text-gray-700 bg-white px-3 py-2 hover:bg-violet-600 hover:text-white"
+              *ngFor="let professor of getFilteredProfessors('docente')"
+              (click)="handleSelectProfessor(professor)"
+              type="button"
+            >
+              {{ professor.nome }}
+            </button>
+          </div>
         </div>
         <div class="flex flex-col gap-[6px]">
           <label class="font-medium text-sm text-gray-700">Nome *</label>
@@ -195,6 +215,7 @@
             <input
               class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
               placeholder="Preencha"
+              formControlName="docente_nome"
             />
           </div>
         </div>
@@ -207,6 +228,7 @@
               <input
                 class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
                 placeholder="Preencha"
+                formControlName="docente_matricula"
               />
             </div>
           </div>
@@ -218,6 +240,7 @@
               <input
                 class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
                 placeholder="Preencha"
+                formControlName="docente_titulacao"
               />
             </div>
           </div>
@@ -229,6 +252,7 @@
               <input
                 class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
                 placeholder="Preencha"
+                formControlName="docente_situacao"
               />
             </div>
           </div>
@@ -241,6 +265,7 @@
             <input
               class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
               placeholder="Preencha"
+              formControlName="docente_unidade"
             />
           </div>
         </div>
@@ -254,6 +279,7 @@
             <input
               class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
               placeholder="Preencha"
+              formControlName="docente_departamento"
             />
           </div>
         </div>
@@ -271,6 +297,8 @@
               <input
                 class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
                 placeholder="Horas"
+                formControlName="docente_carga_horaria_horas"
+                [inputMask]="hourInputMask"
               />
             </div>
             <div
@@ -279,6 +307,8 @@
               <input
                 class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
                 placeholder="Minutos"
+                formControlName="docente_carga_horaria_minutos"
+                [inputMask]="minuteInputMask"
               />
             </div>
           </div>
@@ -288,18 +318,19 @@
         <button
           class="px-[14px] py-2 rounded-lg font-semibold text-sm text-violet-700"
           type="button"
-          (click)="openNewProfessorModal = false"
+          (click)="handleCloseModal()"
         >
           Cancelar
         </button>
         <button
           class="px-[14px] py-2 rounded-lg font-semibold text-sm text-white bg-violet-600"
           type="button"
-          (click)="openNewProfessorModal = false"
+          (click)="handleCloseModal()"
+          [disabled]="!modalFormGroup.valid"
         >
           Confirmar docente
         </button>
       </div>
     </div>
-  </div>
+  </form>
 </div>
