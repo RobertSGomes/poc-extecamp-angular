@@ -27,18 +27,25 @@
   >
     <div class="flex items-center gap-x-4">
       <div
-        class="relative w-4 h-4 rounded-full bg-emerald-600 before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:w-[28px] before:h-[28px] before:rounded-full before:border-2 before:border-emerald-600/30 after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:w-[38px] after:h-[38px] after:rounded-full after:border-2 after:border-emerald-600/10"
-      ></div>
+        class="relative w-5 h-5 before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:w-[28px] before:h-[28px] before:rounded-full before:border-2 before:border-emerald-600/30 after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:w-[38px] after:h-[38px] after:rounded-full after:border-2 after:border-emerald-600/10"
+      >
+        <img
+          src="../../../../../../../../assets/svgs/check-circle-emerald.svg"
+          class="w-5 h-5"
+        />
+      </div>
 
       <p class="font-normal text-sm text-emerald-700">
         Docente cadastrado com <b>sucesso!</b>
       </p>
     </div>
 
-    <button
-      class="w-5 h-5 bg-emerald-300 rounded-sm"
-      (click)="hasRecentAdded = false"
-    ></button>
+    <button class="w-5 h-5" (click)="hasRecentAdded = false">
+      <img
+        src="../../../../../../../../assets/svgs/x-close-emerald.svg"
+        class="w-5 h-5"
+      />
+    </button>
   </div>
 
   <div>
@@ -73,32 +80,44 @@
           class="font-medium text-xs text-left px-6 py-3 text-gray-600 w-11"
         ></th>
       </thead>
-      <!-- <tbody>
-        <tr *ngFor="let professor of professors">
+      <tbody>
+        <tr *ngFor="let professor of professors" class="h-[72px]">
           <td class="px-6 py-3 text-left font-medium text-sm text-gray-900">
-            {{ professor.matricula }}
+            {{ professor.docente_matricula }}
           </td>
           <td class="px-6 py-3 text-left font-normal text-sm text-gray-600">
             {{ professor.docente }}
           </td>
           <td class="px-6 py-3 text-left font-normal text-sm text-gray-600">
-            {{ professor.instituicao }}/{{ professor.unidade }}/
-            {{ professor.departamento }}
+            UNICAMP/{{ professor.docente_unidade }}/
+            {{ professor.docente_departamento }}
           </td>
           <td class="px-6 py-3 text-left font-normal text-sm text-gray-600">
-            {{ professor.titulacao }}
+            {{ professor.docente_titulacao }}
           </td>
           <td class="px-6 py-3 text-left font-normal text-sm text-gray-600">
-            {{ professor.carga_horas }}h{{ professor.carga_minutos }}m
+            {{ professor.docente_carga_horaria_horas }}h{{
+              professor.docente_carga_horaria_minutos
+            }}m
           </td>
-          <td class="px-6 py-3 text-left font-normal text-sm text-gray-600">
+          <td>
             <div class="flex gap-x-2">
-              <div class="w-5 h-5 rounded-sm bg-violet-700"></div>
-              <div class="w-5 h-5 rounded-sm bg-violet-700"></div>
+              <button type="button">
+                <img
+                  src="../../../../../../../../assets/svgs/edit-square-violet.svg"
+                  class="w-5 h-5"
+                />
+              </button>
+              <button type="button">
+                <img
+                  src="../../../../../../../../assets/svgs/trash-violet.svg"
+                  class="w-5 h-5"
+                />
+              </button>
             </div>
           </td>
         </tr>
-      </tbody> -->
+      </tbody>
     </table>
     <div class="w-full bg-gray-50" *ngIf="professors.length === 0">
       <div class="w-[352px] mx-auto py-[48px]">
@@ -325,7 +344,7 @@
         <button
           class="px-[14px] py-2 rounded-lg font-semibold text-sm text-white bg-violet-600"
           type="button"
-          (click)="handleCloseModal()"
+          (click)="handleNewProfessor(modalFormGroup)"
           [disabled]="!modalFormGroup.valid"
         >
           Confirmar docente

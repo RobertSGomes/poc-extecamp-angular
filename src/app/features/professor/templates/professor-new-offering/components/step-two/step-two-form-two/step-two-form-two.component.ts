@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProfessorModel } from 'src/app/features/professor/models/professor.model';
 import { ProfessorService } from 'src/app/features/professor/professor.service';
 import { createMask } from '@ngneat/input-mask';
+import { Professor } from '../../../types/professor.type';
 
 @Component({
   selector: 'app-step-two-form-two',
@@ -58,7 +59,9 @@ export class StepTwoFormTwoComponent implements OnInit {
 
   modalFormGroup!: FormGroup;
 
-  professors: ProfessorModel[] = [];
+  professors: Professor[] = [];
+
+  professorsModel: ProfessorModel[] = [];
 
   focusSearchInput: boolean = false;
 
@@ -74,7 +77,7 @@ export class StepTwoFormTwoComponent implements OnInit {
   ngOnInit(): void {
     this.professorService.getAll().subscribe({
       next: (response) => {
-        this.professors = response.result;
+        this.professorsModel = response.result;
       },
     });
 
@@ -94,7 +97,7 @@ export class StepTwoFormTwoComponent implements OnInit {
 
   getFilteredProfessors(formControlName: string): ProfessorModel[] {
     if (this.modalFormGroup.get(formControlName)?.value) {
-      return this.professors.filter(
+      return this.professorsModel.filter(
         (professor) =>
           professor.nome.includes(
             this.modalFormGroup.get(formControlName)?.value
@@ -104,7 +107,7 @@ export class StepTwoFormTwoComponent implements OnInit {
           )
       );
     } else {
-      return this.professors;
+      return this.professorsModel;
     }
   }
 
@@ -157,8 +160,9 @@ export class StepTwoFormTwoComponent implements OnInit {
   handleNewProfessor(form: FormGroup) {
     const formValues = form.value;
 
-    console.log(formValues);
+    this.professors.push(formValues);
+    this.hasRecentAdded = true;
 
-    // this.professors.push()
+    this.handleCloseModal();
   }
 }
