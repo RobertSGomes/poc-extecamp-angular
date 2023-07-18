@@ -1,10 +1,11 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { HistoryStep } from '../../../types/history.type';
-import { ProfessorItem } from '../../../types/professor.type';
 import { createMask } from '@ngneat/input-mask';
 import { ProfessorModel } from 'src/app/features/professor/models/professor.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProfessorService } from 'src/app/features/professor/professor.service';
+import { CourseService } from 'src/app/shared/services/course.service';
+import { AssignAttachedDTO } from 'src/app/shared/dtos/assign-attached.dto';
 
 @Component({
   selector: 'app-step-two-form-three',
@@ -56,26 +57,43 @@ export class StepTwoFormThreeComponent {
     },
   ];
 
+  modalFormGroup!: FormGroup;
+
+  focusSearchInput: boolean = false;
+  professors: ProfessorModel[] = [];
+
+  courseProfessors: Array<
+    ProfessorModel & { funcao: string; carga_horaria: string }
+  > = [];
+
   hasRecentAdded = false;
   openNewProfessorModal = false;
-  modalFormGroup!: FormGroup;
-  professors: Array<ProfessorModel & { carga_horaria: string }> = [];
-  professorsModel: ProfessorModel[] = [];
-  focusSearchInput: boolean = false;
 
   @Output() backInsideStep: EventEmitter<void> = new EventEmitter<void>();
   @Output() nextInsideStep: EventEmitter<void> = new EventEmitter<void>();
   @Output() openCancelModal: EventEmitter<void> = new EventEmitter<void>();
 
+  @Input() courseId!: string;
+
   constructor(
     private readonly professorService: ProfessorService,
+    private readonly courseService: CourseService,
     private readonly formBuilder: FormBuilder
   ) {}
 
   ngOnInit(): void {
     this.professorService.getAll().subscribe({
       next: (response) => {
-        this.professorsModel = response.result;
+        this.professors = response.result;
+      },
+    });
+
+    this.courseService.getOne(this.courseId).subscribe({
+      next: (response) => {
+        this.loadCourseProfessors(response.docentes_vinculo);
+      },
+      error: ({ error }) => {
+        alert(error.error);
       },
     });
 
@@ -95,9 +113,34 @@ export class StepTwoFormThreeComponent {
     });
   }
 
+  loadCourseProfessors(
+    assignedProfessors: Array<{
+      id: string;
+      funcao: string;
+      carga_horaria: string;
+    }>
+  ) {
+    this.courseProfessors = [];
+
+    for (let assignedProfessor of assignedProfessors) {
+      this.professorService.getOne(assignedProfessor.id).subscribe({
+        next: (response) => {
+          this.courseProfessors.push({
+            ...response,
+            funcao: assignedProfessor.funcao,
+            carga_horaria: assignedProfessor.carga_horaria,
+          });
+        },
+        error: ({ error }) => {
+          console.log(error);
+        },
+      });
+    }
+  }
+
   getFilteredProfessors(formControlName: string): ProfessorModel[] {
     if (this.modalFormGroup.get(formControlName)?.value) {
-      return this.professorsModel.filter(
+      return this.professors.filter(
         (professor) =>
           professor.nome.includes(
             this.modalFormGroup.get(formControlName)?.value
@@ -107,7 +150,7 @@ export class StepTwoFormThreeComponent {
           )
       );
     } else {
-      return this.professorsModel;
+      return this.professors;
     }
   }
 
@@ -162,13 +205,32 @@ export class StepTwoFormThreeComponent {
     this.openNewProfessorModal = false;
   }
 
-  // handleNewProfessor(form: FormGroup) {
-  //   const formValues: Array<ProfessorModel & { carga_horaria: string }> =
-  //     form.value;
+  handleAssignAttached() {
+    const assignAttachedDTO = new AssignAttachedDTO(this.modalFormGroup.value);
 
-  //   this.professors.push(formValues);
-  //   this.hasRecentAdded = true;
+    return this.courseService
+      .assignAttached(this.courseId!, assignAttachedDTO)
+      .subscribe({
+        next: (response) => {
+          this.hasRecentAdded = true;
+          this.handleCloseModal();
 
-  //   this.handleCloseModal();
-  // }
+          this.loadCourseProfessors(response);
+        },
+        error: ({ error }) => {
+          alert(error.error);
+        },
+      });
+  }
+
+  handleUnassignAttached(professorId: string) {
+    this.courseService.unassignAttached(this.courseId, professorId).subscribe({
+      next: (response) => {
+        this.loadCourseProfessors(response);
+      },
+      error: ({ error }) => {
+        alert(error.error);
+      },
+    });
+  }
 }

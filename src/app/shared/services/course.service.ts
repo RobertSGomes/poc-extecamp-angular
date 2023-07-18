@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { CourseModel } from '../models/course.model';
 import { AssignCoordinationDTO } from '../dtos/assign-coordination.dto';
 import { AssignUnicampDTO } from '../dtos/assign-unicamp.dto';
+import { AssignAttachedDTO } from '../dtos/assign-attached.dto';
 
 @Injectable({
   providedIn: 'root',
@@ -86,6 +87,32 @@ export class CourseService {
         },
       }
     );
+  }
+
+  assignAttached(courseId: string, assignAttachedDTO: AssignAttachedDTO) {
+    this.verifyAccess();
+
+    return this.http.post<
+      Array<{ id: string; funcao: string; carga_horaria: string }>
+    >(`${this.baseURL}/${courseId}/docentes/com-vinculo`, assignAttachedDTO, {
+      headers: {
+        Authorization: `Bearer ${this.accessToken}`,
+        'Content-Type': 'application/json',
+      },
+    });
+  }
+
+  unassignAttached(courseId: string, professorId: string) {
+    this.verifyAccess();
+
+    return this.http.delete<
+      Array<{ id: string; funcao: string; carga_horaria: string }>
+    >(`${this.baseURL}/${courseId}/docentes/com-vinculo/${professorId}`, {
+      headers: {
+        Authorization: `Bearer ${this.accessToken}`,
+        'Content-Type': 'application/json',
+      },
+    });
   }
 
   verifyAccess(): void {

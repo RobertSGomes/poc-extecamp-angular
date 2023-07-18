@@ -1,5 +1,4 @@
-<form
-  (submit)="nextInsideStep.emit()"
+<div
   class="flex flex-col gap-y-6 w-[1072px] mx-auto p-8 bg-white border border-gray-200 rounded-2xl shadow-sm"
 >
   <app-history-line [currentStep]="2" [steps]="historySteps"></app-history-line>
@@ -79,7 +78,7 @@
         ></th>
       </thead>
       <tbody>
-        <tr *ngFor="let professor of professors">
+        <tr *ngFor="let professor of courseProfessors">
           <td class="px-6 py-3 text-left font-medium text-sm text-gray-900">
             {{ professor.matricula }}
           </td>
@@ -105,7 +104,10 @@
                   class="w-5 h-5"
                 />
               </button>
-              <button type="button">
+              <button
+                type="button"
+                (click)="handleUnassignAttached(professor.id)"
+              >
                 <img
                   src="../../../../../../../../assets/svgs/trash-violet.svg"
                   class="w-5 h-5"
@@ -116,7 +118,7 @@
         </tr>
       </tbody>
     </table>
-    <div class="w-full bg-gray-50" *ngIf="professors.length === 0">
+    <div class="w-full bg-gray-50" *ngIf="courseProfessors.length === 0">
       <div class="w-[352px] mx-auto py-[48px]">
         <p class="font-semibold text-base text-gray-900 text-center">
           Sem docentes cadastrados
@@ -148,13 +150,13 @@
       </button>
       <button
         class="px-4 py-[10px] rounded-lg font-semibold text-sm text-white bg-violet-700"
-        type="submit"
+        (click)="nextInsideStep.emit()"
       >
         Próximo
       </button>
     </div>
   </div>
-</form>
+</div>
 
 <div
   *ngIf="openNewProfessorModal"
@@ -378,7 +380,7 @@
         <button
           class="px-[14px] py-2 rounded-lg font-semibold text-sm text-white bg-violet-600"
           type="button"
-          (click)="handleCloseModal()"
+          (click)="handleAssignAttached()"
           [disabled]="!modalFormGroup.valid"
         >
           Confirmar docente
