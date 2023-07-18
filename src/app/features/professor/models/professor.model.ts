@@ -5,11 +5,11 @@ export interface ProfessorModel {
   telefone: string;
   senha: string;
   matricula: string;
-  instituicao: any;
-  unidade: any;
-  departamento: any;
-  titulacao: any;
-  situacao: any;
+  instituicao: string;
+  unidade: string;
+  departamento: string;
+  titulacao: string;
+  situacao: string;
   created_at: string;
   updated_at: string;
 }
