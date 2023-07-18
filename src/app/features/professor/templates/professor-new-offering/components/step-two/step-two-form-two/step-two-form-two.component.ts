@@ -16,15 +16,17 @@ export class StepTwoFormTwoComponent implements OnInit {
     alias: 'numeric',
     digits: 0,
     placeholder: '0',
-    max: 24,
+    max: 23,
     min: 0,
+    rightAlign: false,
   });
   minuteInputMask = createMask({
     alias: 'numeric',
     digits: 0,
     placeholder: '0',
-    max: 60,
+    max: 59,
     min: 0,
+    rightAlign: false,
   });
 
   historySteps: HistoryStep[] = [
@@ -158,7 +160,7 @@ export class StepTwoFormTwoComponent implements OnInit {
   }
 
   handleNewProfessor(form: FormGroup) {
-    const formValues = form.value;
+    const formValues: Professor = form.value;
 
     this.professors.push(formValues);
     this.hasRecentAdded = true;
