@@ -13,7 +13,7 @@ export class ProfessorNewOfferingComponent implements OnInit {
   professor?: ProfessorModel;
   professorId: string | null = getUserId();
 
-  currentStep: number = 0;
+  currentStep: number = 1;
   currentInsideStep: number = 4;
   modalCancelOpened = false;
 

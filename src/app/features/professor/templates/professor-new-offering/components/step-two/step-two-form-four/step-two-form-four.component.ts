@@ -5,6 +5,7 @@ import { createMask } from '@ngneat/input-mask';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProfessorModel } from 'src/app/features/professor/models/professor.model';
 import { ProfessorService } from 'src/app/features/professor/professor.service';
+import { LocationService } from 'src/app/shared/services/location.service';
 
 @Component({
   selector: 'app-step-two-form-four',
@@ -12,6 +13,9 @@ import { ProfessorService } from 'src/app/features/professor/professor.service';
   styleUrls: ['./step-two-form-four.component.css'],
 })
 export class StepTwoFormFourComponent {
+  rgInputMask = createMask({
+    mask: '99.999.999-9',
+  });
   hourInputMask = createMask({
     alias: 'numeric',
     digits: 0,
@@ -67,12 +71,15 @@ export class StepTwoFormFourComponent {
 
   focusSearchInput: boolean = false;
 
+  countries: any[] = [];
+
   @Output() backInsideStep: EventEmitter<void> = new EventEmitter<void>();
   @Output() nextInsideStep: EventEmitter<void> = new EventEmitter<void>();
   @Output() openCancelModal: EventEmitter<void> = new EventEmitter<void>();
 
   constructor(
     private readonly professorService: ProfessorService,
+    private readonly locationService: LocationService,
     private readonly formBuilder: FormBuilder
   ) {}
 
@@ -80,6 +87,15 @@ export class StepTwoFormFourComponent {
     this.professorService.getAll().subscribe({
       next: (response) => {
         this.professorsModel = response.result;
+      },
+    });
+
+    this.locationService.getCountries().subscribe({
+      next: (response) => {
+        this.countries = response;
+      },
+      error: () => {
+        this.countries = [];
       },
     });
 

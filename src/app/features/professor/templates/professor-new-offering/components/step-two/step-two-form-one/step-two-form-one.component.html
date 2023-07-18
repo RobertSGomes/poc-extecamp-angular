@@ -185,13 +185,12 @@
     >
       <select class="font-medium text-base text-gray-800 outline-none">
         <option selected>BR</option>
-        <option>EN</option>
-        <option>ES</option>
       </select>
       <input
         class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
         placeholder="+55 (DDD) 00000-0000"
         formControlName="docente_responsavel_telefone"
+        [inputMask]="phoneInputMask"
       />
     </div>
     <div
@@ -240,8 +239,18 @@
           formControlName="docente_responsavel_titulacao"
         >
           <option value="">Selecione</option>
-          <option value="Economia">Economia</option>
-          <option value="Tecnologia">Tecnologia</option>
+          <option value="Assistente">Assistente</option>
+          <option value="Associado">Associado</option>
+          <option value="Titular">Titular</option>
+          <option value="Emérito">Emérito</option>
+          <option value="Visitante">Visitante</option>
+          <option value="Adjunto">Adjunto</option>
+          <option value="Mestre">Mestre</option>
+          <option value="Doutor">Doutor</option>
+          <option value="Pesquisador">Pesquisador</option>
+          <option value="Catedrático">Catedrático</option>
+          <option value="Convidado">Convidado</option>
+          <option value="Honorário">Honorário</option>
         </select>
       </div>
     </div>

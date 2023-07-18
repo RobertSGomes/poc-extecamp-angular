@@ -256,6 +256,7 @@
                 class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
                 placeholder="Preencha"
                 formControlName="docente_documento_numero"
+                [inputMask]="rgInputMask"
               />
             </div>
           </div>
@@ -273,7 +274,12 @@
                 formControlName="docente_pais_origem"
               >
                 <option selected value="">Selecione</option>
-                <option value="Brasil">Brasil</option>
+                <option
+                  *ngFor="let country of countries"
+                  [value]="country.translations['por'].common"
+                >
+                  {{ country.translations["por"].common }}
+                </option>
               </select>
             </div>
           </div>
@@ -295,11 +301,24 @@
           <div
             class="flex items-center gap-2 w-full px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
           >
-            <input
+            <select
               class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-              placeholder="Preencha"
               formControlName="docente_titulacao"
-            />
+            >
+              <option value="">Selecione</option>
+              <option value="Assistente">Assistente</option>
+              <option value="Associado">Associado</option>
+              <option value="Titular">Titular</option>
+              <option value="Emérito">Emérito</option>
+              <option value="Visitante">Visitante</option>
+              <option value="Adjunto">Adjunto</option>
+              <option value="Mestre">Mestre</option>
+              <option value="Doutor">Doutor</option>
+              <option value="Pesquisador">Pesquisador</option>
+              <option value="Catedrático">Catedrático</option>
+              <option value="Convidado">Convidado</option>
+              <option value="Honorário">Honorário</option>
+            </select>
           </div>
         </div>
         <div class="flex flex-col gap-[6px]">

@@ -11,6 +11,10 @@ import { createMask } from '@ngneat/input-mask';
   styleUrls: ['./step-two-form-one.component.css'],
 })
 export class StepTwoFormOneComponent implements OnInit {
+  phoneInputMask = createMask({
+    mask: '+55 (99) 9 9999-9999',
+    rightAlign: false,
+  });
   hourInputMask = createMask({
     alias: 'numeric',
     digits: 0,

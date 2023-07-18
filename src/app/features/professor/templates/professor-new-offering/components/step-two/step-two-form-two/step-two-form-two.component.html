@@ -89,8 +89,9 @@
             {{ professor.docente }}
           </td>
           <td class="px-6 py-3 text-left font-normal text-sm text-gray-600">
-            UNICAMP/{{ professor.docente_unidade }}/
-            {{ professor.docente_departamento }}
+            UNICAMP/{{ professor.docente_unidade }}/{{
+              professor.docente_departamento
+            }}
           </td>
           <td class="px-6 py-3 text-left font-normal text-sm text-gray-600">
             {{ professor.docente_titulacao }}
@@ -239,7 +240,7 @@
           </div>
         </div>
         <div class="flex gap-x-8 justify-between">
-          <div class="flex flex-col gap-[6px]">
+          <div class="flex flex-col flex-1 gap-[6px]">
             <label class="font-medium text-sm text-gray-700">Matrícula *</label>
             <div
               class="flex items-center gap-2 w-full px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
@@ -251,19 +252,32 @@
               />
             </div>
           </div>
-          <div class="flex flex-col gap-[6px]">
+          <div class="flex flex-col flex-1 gap-[6px]">
             <label class="font-medium text-sm text-gray-700">Titulação *</label>
             <div
               class="flex items-center gap-2 w-full px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
             >
-              <input
+              <select
                 class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-                placeholder="Preencha"
                 formControlName="docente_titulacao"
-              />
+              >
+                <option value="">Selecione</option>
+                <option value="Assistente">Assistente</option>
+                <option value="Associado">Associado</option>
+                <option value="Titular">Titular</option>
+                <option value="Emérito">Emérito</option>
+                <option value="Visitante">Visitante</option>
+                <option value="Adjunto">Adjunto</option>
+                <option value="Mestre">Mestre</option>
+                <option value="Doutor">Doutor</option>
+                <option value="Pesquisador">Pesquisador</option>
+                <option value="Catedrático">Catedrático</option>
+                <option value="Convidado">Convidado</option>
+                <option value="Honorário">Honorário</option>
+              </select>
             </div>
           </div>
-          <div class="flex flex-col gap-[6px]">
+          <div class="flex flex-col flex-1 gap-[6px]">
             <label class="font-medium text-sm text-gray-700">Situação *</label>
             <div
               class="flex items-center gap-2 w-full px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
