@@ -190,7 +190,7 @@
           *ngIf="currentInsideStep === 0"
           (backStep)="backStep(3)"
           [stepFourFormOne]="stepFourFormOne"
-          (handleCreateOfferingCosts)="handleCreateOfferingCosts()"
+          (handleCreateOfferingCost)="handleCreateOfferingCost()"
           (openCancelModal)="openCancelModal()"
         ></app-step-four-form-one>
 
@@ -198,7 +198,7 @@
           *ngIf="currentInsideStep === 1"
           [stepFourFormTwo]="stepFourFormTwo"
           (backInsideStep)="backInsideStep()"
-          (nextInsideStep)="nextInsideStep()"
+          (handleCreateOfferingCostTax)="handleCreateOfferingCostTax()"
           (openCancelModal)="openCancelModal()"
         ></app-step-four-form-two>
 
@@ -214,7 +214,9 @@
           *ngIf="currentInsideStep === 3"
           [stepFourFormFour]="stepFourFormFour"
           (backInsideStep)="backInsideStep()"
-          (nextStep)="nextStep()"
+          (handleCreateOfferingCostCondition)="
+            handleCreateOfferingCostCondition()
+          "
           (openCancelModal)="openCancelModal()"
         ></app-step-four-form-four>
       </div>

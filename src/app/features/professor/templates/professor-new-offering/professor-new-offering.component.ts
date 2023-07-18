@@ -8,6 +8,8 @@ import { ProfessorService } from '../../professor.service';
 import { ProfessorModel } from '../../models/professor.model';
 import { getUserId } from 'src/app/shared/utils/user-id.util';
 import { AssignCoordinationDTO } from 'src/app/shared/dtos/assign-coordination.dto';
+import { CreateOfferingCostTaxDTO } from 'src/app/shared/dtos/create-offering-cost-tax.dto';
+import { CreateOfferingCostConditionDTO } from 'src/app/shared/dtos/create-offering-cost-condition.dto';
 
 @Component({
   selector: 'professor-new-offering',
@@ -20,7 +22,7 @@ export class ProfessorNewOfferingComponent implements OnInit {
   courseId?: string = '6153c956-069a-40d4-a960-507fe5cad867';
 
   currentStep: number = 3;
-  currentInsideStep: number = 0;
+  currentInsideStep: number = 2;
   modalCancelOpened = false;
 
   stepOneFormOne!: FormGroup;
@@ -340,7 +342,7 @@ export class ProfessorNewOfferingComponent implements OnInit {
       });
   }
 
-  handleCreateOfferingCosts() {
+  handleCreateOfferingCost() {
     const createOfferingCostDTO = new CreateOfferingCostDTO(
       this.stepFourFormOne.value
     );
@@ -353,6 +355,48 @@ export class ProfessorNewOfferingComponent implements OnInit {
           this.nextInsideStep();
         },
         error: ({ error }) => {
+          alert(error.error);
+        },
+      });
+  }
+
+  handleCreateOfferingCostTax() {
+    const createOfferingCostTaxDTO = new CreateOfferingCostTaxDTO(
+      this.stepFourFormTwo.value
+    );
+
+    this.courseService
+      .createOfferingCostTax(this.courseId!, createOfferingCostTaxDTO)
+      .subscribe({
+        next: (response) => {
+          console.log(JSON.stringify(response));
+          this.nextInsideStep();
+        },
+        error: ({ error }) => {
+          console.log('ERRO', error.error);
+          alert(error.error);
+        },
+      });
+  }
+
+  handleCreateOfferingCostCondition() {
+    const createOfferingCostConditionDTO = new CreateOfferingCostConditionDTO({
+      stepFourFormThreeValues: this.stepFourFormThree.value,
+      stepFourFormFourValues: this.stepFourFormFour.value,
+    });
+
+    this.courseService
+      .createOfferingCostCondition(
+        this.courseId!,
+        createOfferingCostConditionDTO
+      )
+      .subscribe({
+        next: (response) => {
+          console.log(JSON.stringify(response));
+          this.nextStep();
+        },
+        error: ({ error }) => {
+          console.log('ERRO', error.error);
           alert(error.error);
         },
       });

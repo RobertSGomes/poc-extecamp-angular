@@ -11,6 +11,8 @@ import { AssignAttachedDTO } from '../dtos/assign-attached.dto';
 import { AssignUnattachedDTO } from '../dtos/assign-unattached.dto';
 import { AssignSpeakerDTO } from '../dtos/assign-speaker.dto';
 import { CreateOfferingCostDTO } from '../dtos/create-offering-cost.dto';
+import { CreateOfferingCostTaxDTO } from '../dtos/create-offering-cost-tax.dto';
+import { CreateOfferingCostConditionDTO } from '../dtos/create-offering-cost-condition.dto';
 
 @Injectable({
   providedIn: 'root',
@@ -238,9 +240,49 @@ export class CourseService {
   ) {
     this.verifyAccess();
 
-    return this.http.post<OfferingModel>(
+    return this.http.post<any>(
       `${this.baseURL}/${courseId}/custos-oferecimento`,
       createOfferingCostDTO,
+      {
+        headers: {
+          Authorization: `Bearer ${this.accessToken}`,
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+  }
+
+  createOfferingCostTax(
+    courseId: string,
+    createOfferingCostTaxDTO: CreateOfferingCostTaxDTO
+  ) {
+    this.verifyAccess();
+
+    console.log(JSON.stringify(createOfferingCostTaxDTO));
+
+    return this.http.post<any>(
+      `${this.baseURL}/${courseId}/custos-oferecimento/taxas`,
+      createOfferingCostTaxDTO,
+      {
+        headers: {
+          Authorization: `Bearer ${this.accessToken}`,
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+  }
+
+  createOfferingCostCondition(
+    courseId: string,
+    createOfferingCostConditionDTO: CreateOfferingCostConditionDTO
+  ) {
+    this.verifyAccess();
+
+    console.log(JSON.stringify(createOfferingCostConditionDTO));
+
+    return this.http.post<any>(
+      `${this.baseURL}/${courseId}/custos-oferecimento/condicoes`,
+      createOfferingCostConditionDTO,
       {
         headers: {
           Authorization: `Bearer ${this.accessToken}`,

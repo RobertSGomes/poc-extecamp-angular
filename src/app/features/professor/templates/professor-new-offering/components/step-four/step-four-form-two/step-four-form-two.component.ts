@@ -37,7 +37,8 @@ export class StepFourFormTwoComponent {
   alertClosed: boolean = false;
 
   @Output() backInsideStep: EventEmitter<void> = new EventEmitter<void>();
-  @Output() nextInsideStep: EventEmitter<void> = new EventEmitter<void>();
+  @Output() handleCreateOfferingCostTax: EventEmitter<void> =
+    new EventEmitter<void>();
   @Output() openCancelModal: EventEmitter<void> = new EventEmitter<void>();
 
   @Input() stepFourFormTwo!: FormGroup;

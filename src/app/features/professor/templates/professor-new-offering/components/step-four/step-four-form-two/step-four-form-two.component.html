@@ -1,7 +1,7 @@
 <form
   class="flex flex-col gap-y-6 w-[1072px] mx-auto p-8 bg-white border border-gray-200 rounded-2xl shadow-sm"
   [formGroup]="stepFourFormTwo"
-  (submit)="nextInsideStep.emit()"
+  (submit)="handleCreateOfferingCostTax.emit()"
 >
   <app-history-line [currentStep]="1" [steps]="historySteps"></app-history-line>
 

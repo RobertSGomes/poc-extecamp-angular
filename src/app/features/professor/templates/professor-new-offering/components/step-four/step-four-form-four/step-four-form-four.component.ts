@@ -50,7 +50,8 @@ export class StepFourFormFourComponent {
   ) {}
 
   @Output() backInsideStep: EventEmitter<void> = new EventEmitter<void>();
-  @Output() nextStep: EventEmitter<void> = new EventEmitter<void>();
+  @Output() handleCreateOfferingCostCondition: EventEmitter<void> =
+    new EventEmitter<void>();
   @Output() openCancelModal: EventEmitter<void> = new EventEmitter<void>();
 
   @Input() stepFourFormFour!: FormGroup;

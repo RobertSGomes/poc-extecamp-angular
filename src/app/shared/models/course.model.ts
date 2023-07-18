@@ -65,7 +65,7 @@ export interface OfferingModel {
   created_at: string;
   updated_at: string;
   inscricao?: InscricaoModel | null;
-  custos_oferecimento?: any | null;
+  custos_oferecimento?: CustosOferecimentoModel | null;
 }
 
 export interface InscricaoModel {
@@ -77,6 +77,43 @@ export interface InscricaoModel {
   data_abertura: string;
   data_encerramento: string;
   modelo: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface CustosOferecimentoModel {
+  id: string;
+  oferecimento_id: string;
+  assinatura_status: string;
+  fluxo_continuo: boolean;
+  professores_hora_aula: number;
+  professores_outras_atividades: number;
+  material_consumo: number;
+  material_permanente: number;
+  servico_terceiros: number;
+  outros_custos: number;
+  aproveitamento_recursos: number;
+  total: number;
+  created_at: string;
+  updated_at: string;
+  taxas_custos_oferecimento?: TaxasCustosOferecimentos | null;
+  condicoes_custos_oferecimento?: any | null;
+}
+
+export interface TaxasCustosOferecimentos {
+  id: string;
+  custos_oferecimento_id: string;
+  fixas: number;
+  aiu_unidade_porcentagem: number;
+  aiu_unidade_valor: number;
+  fundo_extencao_unidade: string | null;
+  fundo_extencao_porcentagem: number;
+  fundo_extencao_valor: number;
+  total: number;
+  subsidios: number;
+  custo_total: number;
+  custo_aluno_min_vagas: number;
+  custo_aluno_valor: number;
   created_at: string;
   updated_at: string;
 }
