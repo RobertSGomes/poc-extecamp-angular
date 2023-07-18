@@ -8,6 +8,7 @@ import { AssignCoordinationDTO } from '../dtos/assign-coordination.dto';
 import { AssignUnicampDTO } from '../dtos/assign-unicamp.dto';
 import { AssignAttachedDTO } from '../dtos/assign-attached.dto';
 import { AssignUnattachedDTO } from '../dtos/assign-unattached.dto';
+import { AssignSpeakerDTO } from '../dtos/assign-speaker.dto';
 
 @Injectable({
   providedIn: 'root',
@@ -161,6 +162,52 @@ export class CourseService {
         carga_horaria: string;
       }>
     >(`${this.baseURL}/${courseId}/docentes/sem-vinculo/${professorId}`, {
+      headers: {
+        Authorization: `Bearer ${this.accessToken}`,
+        'Content-Type': 'application/json',
+      },
+    });
+  }
+
+  assignSpeaker(courseId: string, assignSpeakerDTO: AssignSpeakerDTO) {
+    this.verifyAccess();
+
+    return this.http.post<
+      Array<{
+        id: string;
+        nome: string;
+        matricula: string;
+        instituicao?: string;
+        titulacao?: string;
+        tipo_vinculo: string;
+        nome_palestra: string;
+        valor: string;
+        carga_horaria: string;
+      }>
+    >(`${this.baseURL}/${courseId}/palestrantes`, assignSpeakerDTO, {
+      headers: {
+        Authorization: `Bearer ${this.accessToken}`,
+        'Content-Type': 'application/json',
+      },
+    });
+  }
+
+  unassignSpeaker(courseId: string, speakerId: string) {
+    this.verifyAccess();
+
+    return this.http.delete<
+      Array<{
+        id: string;
+        nome: string;
+        matricula: string;
+        instituicao?: string;
+        titulacao?: string;
+        tipo_vinculo: string;
+        nome_palestra: string;
+        valor: string;
+        carga_horaria: string;
+      }>
+    >(`${this.baseURL}/${courseId}/palestrantes/${speakerId}`, {
       headers: {
         Authorization: `Bearer ${this.accessToken}`,
         'Content-Type': 'application/json',

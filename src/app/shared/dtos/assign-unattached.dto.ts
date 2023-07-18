@@ -39,6 +39,6 @@ export class AssignUnattachedDTO {
     this.instituicao = stepTwoFormFour.docente_instituicao;
     this.titulacao = stepTwoFormFour.docente_titulacao;
     this.funcao = stepTwoFormFour.docente_funcao;
-    this.carga_horaria = `${stepTwoFormFour.docente_carga_horaria_horas}h${stepTwoFormFour.docente_carga_horaria_minutos}`;
+    this.carga_horaria = `${stepTwoFormFour.docente_carga_horaria_horas}h${stepTwoFormFour.docente_carga_horaria_minutos}min`;
   }
 }

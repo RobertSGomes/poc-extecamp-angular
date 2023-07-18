@@ -4,6 +4,8 @@ import { createMask } from '@ngneat/input-mask';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProfessorModel } from 'src/app/features/professor/models/professor.model';
 import { ProfessorService } from 'src/app/features/professor/professor.service';
+import { CourseService } from 'src/app/shared/services/course.service';
+import { AssignSpeakerDTO } from 'src/app/shared/dtos/assign-speaker.dto';
 
 @Component({
   selector: 'app-step-two-form-five',
@@ -63,29 +65,42 @@ export class StepTwoFormFiveComponent {
     },
   ];
 
-  hasRecentAdded = false;
-  openNewProfessorModal = false;
   modalFormGroup!: FormGroup;
-  professors: Array<
-    ProfessorModel & { carga_horaria: string; tipo_vinculo: string }
-  > = [];
-  professorsModel: ProfessorModel[] = [];
 
   focusSearchInput: boolean = false;
+  professors: ProfessorModel[] = [];
+
+  courseSpeakers: Array<{
+    id: string;
+    nome: string;
+    matricula: string;
+    instituicao?: string;
+    titulacao?: string;
+    tipo_vinculo: string;
+    nome_palestra: string;
+    valor: string;
+    carga_horaria: string;
+  }> = [];
+
+  hasRecentAdded = false;
+  openNewProfessorModal = false;
 
   @Output() backInsideStep: EventEmitter<void> = new EventEmitter<void>();
   @Output() nextInsideStep: EventEmitter<void> = new EventEmitter<void>();
   @Output() openCancelModal: EventEmitter<void> = new EventEmitter<void>();
 
+  @Input() courseId!: string;
+
   constructor(
     private readonly professorService: ProfessorService,
+    private readonly courseService: CourseService,
     private readonly formBuilder: FormBuilder
   ) {}
 
   ngOnInit(): void {
     this.professorService.getAll().subscribe({
       next: (response) => {
-        this.professorsModel = response.result;
+        this.professors = response.result;
       },
     });
 
@@ -106,7 +121,7 @@ export class StepTwoFormFiveComponent {
 
   getFilteredProfessors(formControlName: string): ProfessorModel[] {
     if (this.modalFormGroup.get(formControlName)?.value) {
-      return this.professorsModel.filter(
+      return this.professors.filter(
         (professor) =>
           professor.nome.includes(
             this.modalFormGroup.get(formControlName)?.value
@@ -116,7 +131,7 @@ export class StepTwoFormFiveComponent {
           )
       );
     } else {
-      return this.professorsModel;
+      return this.professors;
     }
   }
 
@@ -161,12 +176,32 @@ export class StepTwoFormFiveComponent {
     this.openNewProfessorModal = false;
   }
 
-  // handleNewProfessor(form: FormGroup) {
-  //   const formValues: Professor = form.value;
+  handleAssignSpeaker() {
+    const assignSpeakerDTO = new AssignSpeakerDTO(this.modalFormGroup.value);
 
-  //   this.professors.push(formValues);
-  //   this.hasRecentAdded = true;
+    return this.courseService
+      .assignSpeaker(this.courseId!, assignSpeakerDTO)
+      .subscribe({
+        next: (response) => {
+          this.hasRecentAdded = true;
+          this.handleCloseModal();
 
-  //   this.handleCloseModal();
-  // }
+          this.courseSpeakers = response;
+        },
+        error: ({ error }) => {
+          alert(error.error);
+        },
+      });
+  }
+
+  handleUnassignSpeaker(professorId: string) {
+    this.courseService.unassignSpeaker(this.courseId, professorId).subscribe({
+      next: (response) => {
+        this.courseSpeakers = response;
+      },
+      error: ({ error }) => {
+        alert(error.error);
+      },
+    });
+  }
 }
