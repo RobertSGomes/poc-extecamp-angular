@@ -18,7 +18,7 @@ export class ProfessorNewOfferingComponent implements OnInit {
   courseId?: string = 'ff41d68d-ed12-4e61-8cd8-b67a5512a0fa';
 
   currentStep: number = 1;
-  currentInsideStep: number = 1;
+  currentInsideStep: number = 3;
   modalCancelOpened = false;
 
   stepOneFormOne!: FormGroup;

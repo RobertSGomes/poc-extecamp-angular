@@ -129,6 +129,7 @@
 
         <app-step-two-form-four
           *ngIf="currentInsideStep === 3"
+          [courseId]="courseId!"
           (backInsideStep)="backInsideStep()"
           (nextInsideStep)="nextInsideStep()"
           (openCancelModal)="openCancelModal()"

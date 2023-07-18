@@ -7,6 +7,7 @@ import { CourseModel } from '../models/course.model';
 import { AssignCoordinationDTO } from '../dtos/assign-coordination.dto';
 import { AssignUnicampDTO } from '../dtos/assign-unicamp.dto';
 import { AssignAttachedDTO } from '../dtos/assign-attached.dto';
+import { AssignUnattachedDTO } from '../dtos/assign-unattached.dto';
 
 @Injectable({
   providedIn: 'root',
@@ -108,6 +109,58 @@ export class CourseService {
     return this.http.delete<
       Array<{ id: string; funcao: string; carga_horaria: string }>
     >(`${this.baseURL}/${courseId}/docentes/com-vinculo/${professorId}`, {
+      headers: {
+        Authorization: `Bearer ${this.accessToken}`,
+        'Content-Type': 'application/json',
+      },
+    });
+  }
+
+  assignUnattached(courseId: string, assignUnattachedDTO: AssignUnattachedDTO) {
+    this.verifyAccess();
+
+    return this.http.post<
+      Array<{
+        id: string;
+        matricula: string;
+        nome: string;
+        documento_identificacao: {
+          tipo: string;
+          nmr_documento: string;
+        };
+        pais_origem: string;
+        instituicao: string;
+        titulacao: string;
+        funcao: string;
+        carga_horaria: string;
+      }>
+    >(`${this.baseURL}/${courseId}/docentes/sem-vinculo`, assignUnattachedDTO, {
+      headers: {
+        Authorization: `Bearer ${this.accessToken}`,
+        'Content-Type': 'application/json',
+      },
+    });
+  }
+
+  unassignUnattached(courseId: string, professorId: string) {
+    this.verifyAccess();
+
+    return this.http.delete<
+      Array<{
+        id: string;
+        matricula: string;
+        nome: string;
+        documento_identificacao: {
+          tipo: string;
+          nmr_documento: string;
+        };
+        pais_origem: string;
+        instituicao: string;
+        titulacao: string;
+        funcao: string;
+        carga_horaria: string;
+      }>
+    >(`${this.baseURL}/${courseId}/docentes/sem-vinculo/${professorId}`, {
       headers: {
         Authorization: `Bearer ${this.accessToken}`,
         'Content-Type': 'application/json',

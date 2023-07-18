@@ -5,6 +5,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProfessorModel } from 'src/app/features/professor/models/professor.model';
 import { ProfessorService } from 'src/app/features/professor/professor.service';
 import { LocationService } from 'src/app/shared/services/location.service';
+import { AssignUnattachedDTO } from 'src/app/shared/dtos/assign-unattached.dto';
+import { CourseService } from 'src/app/shared/services/course.service';
 
 @Component({
   selector: 'app-step-two-form-four',
@@ -59,12 +61,28 @@ export class StepTwoFormFourComponent {
     },
   ];
 
+  modalFormGroup!: FormGroup;
+
+  focusSearchInput: boolean = false;
+  professors: ProfessorModel[] = [];
+
+  courseProfessors: Array<{
+    id: string;
+    matricula: string;
+    nome: string;
+    documento_identificacao: {
+      tipo: string;
+      nmr_documento: string;
+    };
+    pais_origem: string;
+    instituicao: string;
+    titulacao: string;
+    funcao: string;
+    carga_horaria: string;
+  }> = [];
+
   hasRecentAdded = false;
   openNewProfessorModal = false;
-  modalFormGroup!: FormGroup;
-  professors: Array<ProfessorModel & { carga_horaria: string }> = [];
-  professorsModel: ProfessorModel[] = [];
-  focusSearchInput: boolean = false;
 
   countries: any[] = [];
 
@@ -72,8 +90,11 @@ export class StepTwoFormFourComponent {
   @Output() nextInsideStep: EventEmitter<void> = new EventEmitter<void>();
   @Output() openCancelModal: EventEmitter<void> = new EventEmitter<void>();
 
+  @Input() courseId!: string;
+
   constructor(
     private readonly professorService: ProfessorService,
+    private readonly courseService: CourseService,
     private readonly locationService: LocationService,
     private readonly formBuilder: FormBuilder
   ) {}
@@ -81,7 +102,7 @@ export class StepTwoFormFourComponent {
   ngOnInit(): void {
     this.professorService.getAll().subscribe({
       next: (response) => {
-        this.professorsModel = response.result;
+        this.professors = response.result;
       },
     });
 
@@ -91,6 +112,15 @@ export class StepTwoFormFourComponent {
       },
       error: () => {
         this.countries = [];
+      },
+    });
+
+    this.courseService.getOne(this.courseId).subscribe({
+      next: (response) => {
+        this.courseProfessors = response.docentes_sem_vinculo;
+      },
+      error: ({ error }) => {
+        alert(error.error);
       },
     });
 
@@ -112,7 +142,7 @@ export class StepTwoFormFourComponent {
 
   getFilteredProfessors(formControlName: string): ProfessorModel[] {
     if (this.modalFormGroup.get(formControlName)?.value) {
-      return this.professorsModel.filter(
+      return this.professors.filter(
         (professor) =>
           professor.nome.includes(
             this.modalFormGroup.get(formControlName)?.value
@@ -122,7 +152,7 @@ export class StepTwoFormFourComponent {
           )
       );
     } else {
-      return this.professorsModel;
+      return this.professors;
     }
   }
 
@@ -168,12 +198,36 @@ export class StepTwoFormFourComponent {
     this.openNewProfessorModal = false;
   }
 
-  // handleNewProfessor(form: FormGroup) {
-  //   const formValues: ProfessorModel = form.value;
+  handleAssignUnattached() {
+    const assignUnattachedDTO = new AssignUnattachedDTO(
+      this.modalFormGroup.value
+    );
 
-  //   this.professors.push(formValues);
-  //   this.hasRecentAdded = true;
+    return this.courseService
+      .assignUnattached(this.courseId!, assignUnattachedDTO)
+      .subscribe({
+        next: (response) => {
+          this.hasRecentAdded = true;
+          this.handleCloseModal();
 
-  //   this.handleCloseModal();
-  // }
+          this.courseProfessors = response;
+        },
+        error: ({ error }) => {
+          alert(error.error);
+        },
+      });
+  }
+
+  handleUnassignUnattached(professorId: string) {
+    this.courseService
+      .unassignUnattached(this.courseId, professorId)
+      .subscribe({
+        next: (response) => {
+          this.courseProfessors = response;
+        },
+        error: ({ error }) => {
+          alert(error.error);
+        },
+      });
+  }
 }
