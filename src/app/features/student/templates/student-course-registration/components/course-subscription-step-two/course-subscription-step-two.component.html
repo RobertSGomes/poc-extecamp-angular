@@ -20,6 +20,11 @@
         class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
       />
     </div>
+    <div
+      *ngIf="stepTwoForm.get('cep')?.errors?.['required'] && stepTwoForm.get('cep')?.touched"
+    >
+      <p class="font-normal text-sm text-red-600">Informe seu CEP</p>
+    </div>
   </div>
 
   <!-- Logradouro -->
@@ -34,6 +39,11 @@
         class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
       />
     </div>
+    <div
+      *ngIf="stepTwoForm.get('logradouro')?.errors?.['required'] && stepTwoForm.get('logradouro')?.touched"
+    >
+      <p class="font-normal text-sm text-red-600">Informe o logradouro</p>
+    </div>
   </div>
 
   <!-- Número, bairro e complemento -->
@@ -46,9 +56,18 @@
       >
         <input
           formControlName="numero"
+          type="text"
           placeholder="0000"
+          [inputMask]="numeric"
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
         />
+      </div>
+      <div
+        *ngIf="stepTwoForm.get('numero')?.errors?.['required'] && stepTwoForm.get('numero')?.touched"
+      >
+        <p class="font-normal text-sm text-red-600">
+          Informe o número de sua residência
+        </p>
       </div>
     </div>
 
@@ -63,6 +82,11 @@
           placeholder="Preencha"
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
         />
+      </div>
+      <div
+        *ngIf="stepTwoForm.get('bairro')?.errors?.['required'] && stepTwoForm.get('bairro')?.touched"
+      >
+        <p class="font-normal text-sm text-red-600">Informe o bairro</p>
       </div>
     </div>
 
@@ -81,13 +105,42 @@
     </div>
   </div>
 
-  <!-- Estado, cidade e país -->
+  <!-- País, estado e cidade -->
   <div class="flex gap-x-[18px]">
+    <!-- País residência -->
+    <div class="flex flex-col gap-[6px]">
+      <label class="font-medium text-sm text-gray-700"
+        >País de residência *</label
+      >
+      <div
+        class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+      >
+        <select
+          formControlName="pais"
+          class="w-full text-gray-800 text-base outline-none cursor-pointer"
+          (change)="handleChangeCountry()"
+        >
+          <option value="" selected>Selecione</option>
+          <option
+            *ngFor="let country of countries"
+            [value]="country.translations['por'].common"
+          >
+            {{ country.translations["por"].common }}
+          </option>
+        </select>
+      </div>
+      <div
+        *ngIf="stepTwoForm.get('pais')?.errors?.['required'] && stepTwoForm.get('pais')?.touched"
+      >
+        <p class="font-normal text-sm text-red-600">Informe o país</p>
+      </div>
+    </div>
+
     <!-- Estado -->
     <div class="flex flex-col gap-[6px]">
       <label class="font-medium text-sm text-gray-700">Estado *</label>
       <div
-        class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+        class="flex items-center gap-2 w-[324px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
         <select
           formControlName="estado"
@@ -99,6 +152,11 @@
             {{ state.name }}
           </option>
         </select>
+      </div>
+      <div
+        *ngIf="stepTwoForm.get('estado')?.errors?.['required'] && stepTwoForm.get('estado')?.touched"
+      >
+        <p class="font-normal text-sm text-red-600">Informe o estado</p>
       </div>
     </div>
 
@@ -118,29 +176,10 @@
           </option>
         </select>
       </div>
-    </div>
-
-    <!-- País residência -->
-    <div class="flex flex-col gap-[6px]">
-      <label class="font-medium text-sm text-gray-700"
-        >País de residência *</label
-      >
       <div
-        class="flex items-center gap-2 w-[324px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+        *ngIf="stepTwoForm.get('cidade')?.errors?.['required'] && stepTwoForm.get('cidade')?.touched"
       >
-        <select
-          formControlName="pais"
-          class="w-full text-gray-800 text-base outline-none cursor-pointer"
-          (change)="handleChangeCountry()"
-        >
-          <option value="" selected>Selecione</option>
-          <option
-            *ngFor="let country of countries"
-            [value]="country.translations['por'].common"
-          >
-            {{ country.translations["por"].common }}
-          </option>
-        </select>
+        <p class="font-normal text-sm text-red-600">Informe a cidade</p>
       </div>
     </div>
   </div>
