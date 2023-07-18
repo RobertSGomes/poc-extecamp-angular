@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { HistoryStep } from '../../../types/history.type';
-import { Professor } from '../../../types/professor.type';
 import { createMask } from '@ngneat/input-mask';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProfessorModel } from 'src/app/features/professor/models/professor.model';
@@ -62,13 +61,9 @@ export class StepTwoFormFourComponent {
 
   hasRecentAdded = false;
   openNewProfessorModal = false;
-
   modalFormGroup!: FormGroup;
-
-  professors: Professor[] = [];
-
+  professors: Array<ProfessorModel & { carga_horaria: string }> = [];
   professorsModel: ProfessorModel[] = [];
-
   focusSearchInput: boolean = false;
 
   countries: any[] = [];
@@ -173,12 +168,12 @@ export class StepTwoFormFourComponent {
     this.openNewProfessorModal = false;
   }
 
-  handleNewProfessor(form: FormGroup) {
-    const formValues: Professor = form.value;
+  // handleNewProfessor(form: FormGroup) {
+  //   const formValues: ProfessorModel = form.value;
 
-    this.professors.push(formValues);
-    this.hasRecentAdded = true;
+  //   this.professors.push(formValues);
+  //   this.hasRecentAdded = true;
 
-    this.handleCloseModal();
-  }
+  //   this.handleCloseModal();
+  // }
 }

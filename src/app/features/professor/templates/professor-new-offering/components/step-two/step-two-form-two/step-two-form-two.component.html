@@ -81,25 +81,21 @@
         ></th>
       </thead>
       <tbody>
-        <tr *ngFor="let professor of professors" class="h-[72px]">
+        <tr *ngFor="let professor of courseProfessors" class="h-[72px]">
           <td class="px-6 py-3 text-left font-medium text-sm text-gray-900">
-            {{ professor.docente_matricula }}
+            {{ professor.matricula }}
           </td>
           <td class="px-6 py-3 text-left font-normal text-sm text-gray-600">
-            {{ professor.docente }}
+            {{ professor.nome }}
           </td>
           <td class="px-6 py-3 text-left font-normal text-sm text-gray-600">
-            UNICAMP/{{ professor.docente_unidade }}/{{
-              professor.docente_departamento
-            }}
+            UNICAMP/{{ professor.unidade }}/{{ professor.departamento }}
           </td>
           <td class="px-6 py-3 text-left font-normal text-sm text-gray-600">
-            {{ professor.docente_titulacao }}
+            {{ professor.titulacao }}
           </td>
           <td class="px-6 py-3 text-left font-normal text-sm text-gray-600">
-            {{ professor.docente_carga_horaria_horas }}h{{
-              professor.docente_carga_horaria_minutos
-            }}m
+            {{ professor.carga_horaria }}
           </td>
           <td>
             <div class="flex gap-x-2">
@@ -109,7 +105,10 @@
                   class="w-5 h-5"
                 />
               </button>
-              <button type="button">
+              <button
+                type="button"
+                (click)="handleUnassignUnicamp(professor.id)"
+              >
                 <img
                   src="../../../../../../../../assets/svgs/trash-violet.svg"
                   class="w-5 h-5"
@@ -120,7 +119,7 @@
         </tr>
       </tbody>
     </table>
-    <div class="w-full bg-gray-50" *ngIf="professors.length === 0">
+    <div class="w-full bg-gray-50" *ngIf="courseProfessors.length === 0">
       <div class="w-[352px] mx-auto py-[48px]">
         <p class="font-semibold text-base text-gray-900 text-center">
           Sem docentes cadastrados
@@ -358,7 +357,7 @@
         <button
           class="px-[14px] py-2 rounded-lg font-semibold text-sm text-white bg-violet-600"
           type="button"
-          (click)="handleNewProfessor(modalFormGroup)"
+          (click)="handleAssignUnicamp()"
           [disabled]="!modalFormGroup.valid"
         >
           Confirmar docente

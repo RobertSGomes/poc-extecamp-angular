@@ -66,7 +66,8 @@ export class StepTwoFormOneComponent implements OnInit {
   focusInputThree: boolean = false;
 
   @Output() backStep: EventEmitter<void> = new EventEmitter<void>();
-  @Output() nextInsideStep: EventEmitter<void> = new EventEmitter<void>();
+  @Output() handleAssignCoordination: EventEmitter<void> =
+    new EventEmitter<void>();
   @Output() openCancelModal: EventEmitter<void> = new EventEmitter<void>();
 
   @Input() stepTwoFormOne!: FormGroup;

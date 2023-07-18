@@ -81,23 +81,21 @@
       <tbody>
         <tr *ngFor="let professor of professors">
           <td class="px-6 py-3 text-left font-medium text-sm text-gray-900">
-            {{ professor.docente_matricula }}
+            {{ professor.matricula }}
           </td>
           <td class="px-6 py-3 text-left font-normal text-sm text-gray-600">
-            {{ professor.docente }}
+            {{ professor.nome }}
           </td>
           <td class="px-6 py-3 text-left font-normal text-sm text-gray-600">
-            {{ professor.docente_instituicao }}/{{
-              professor.docente_unidade
-            }}/{{ professor.docente_departamento }}
+            {{ professor.instituicao }}/{{ professor.unidade }}/{{
+              professor.departamento
+            }}
           </td>
           <td class="px-6 py-3 text-left font-normal text-sm text-gray-600">
-            {{ professor.docente_titulacao }}
+            {{ professor.titulacao }}
           </td>
           <td class="px-6 py-3 text-left font-normal text-sm text-gray-600">
-            {{ professor.docente_carga_horaria_horas }}h{{
-              professor.docente_carga_horaria_minutos
-            }}m
+            {{ professor.carga_horaria }}
           </td>
           <td>
             <div class="flex gap-x-2">
@@ -380,7 +378,7 @@
         <button
           class="px-[14px] py-2 rounded-lg font-semibold text-sm text-white bg-violet-600"
           type="button"
-          (click)="handleNewProfessor(modalFormGroup)"
+          (click)="handleCloseModal()"
           [disabled]="!modalFormGroup.valid"
         >
           Confirmar docente

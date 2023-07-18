@@ -4,7 +4,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProfessorModel } from 'src/app/features/professor/models/professor.model';
 import { ProfessorService } from 'src/app/features/professor/professor.service';
 import { createMask } from '@ngneat/input-mask';
-import { Professor } from '../../../types/professor.type';
+import { CourseService } from 'src/app/shared/services/course.service';
+import { AssignUnicampDTO } from 'src/app/shared/dtos/assign-unicamp.dto';
 
 @Component({
   selector: 'app-step-two-form-two',
@@ -56,30 +57,41 @@ export class StepTwoFormTwoComponent implements OnInit {
     },
   ];
 
-  hasRecentAdded = false;
-  openNewProfessorModal = false;
-
   modalFormGroup!: FormGroup;
 
-  professors: Professor[] = [];
-
-  professorsModel: ProfessorModel[] = [];
-
   focusSearchInput: boolean = false;
+  professors: ProfessorModel[] = [];
+
+  courseProfessors: Array<ProfessorModel & { carga_horaria: string }> = [];
+
+  hasRecentAdded = false;
+  openNewProfessorModal = false;
 
   @Output() backInsideStep: EventEmitter<void> = new EventEmitter<void>();
   @Output() nextInsideStep: EventEmitter<void> = new EventEmitter<void>();
   @Output() openCancelModal: EventEmitter<void> = new EventEmitter<void>();
 
+  @Input() courseId!: string;
+
   constructor(
     private readonly professorService: ProfessorService,
+    private readonly courseService: CourseService,
     private readonly formBuilder: FormBuilder
   ) {}
 
   ngOnInit(): void {
     this.professorService.getAll().subscribe({
       next: (response) => {
-        this.professorsModel = response.result;
+        this.professors = response.result;
+      },
+    });
+
+    this.courseService.getOne(this.courseId).subscribe({
+      next: (response) => {
+        this.loadCourseProfessors(response.docentes_unicamp);
+      },
+      error: ({ error }) => {
+        alert(error.error);
       },
     });
 
@@ -97,9 +109,29 @@ export class StepTwoFormTwoComponent implements OnInit {
     });
   }
 
+  loadCourseProfessors(
+    assignedProfessors: Array<{ id: string; carga_horaria: string }>
+  ) {
+    this.courseProfessors = [];
+
+    for (let assignedProfessor of assignedProfessors) {
+      this.professorService.getOne(assignedProfessor.id).subscribe({
+        next: (response) => {
+          this.courseProfessors.push({
+            ...response,
+            carga_horaria: assignedProfessor.carga_horaria,
+          });
+        },
+        error: ({ error }) => {
+          console.log(error);
+        },
+      });
+    }
+  }
+
   getFilteredProfessors(formControlName: string): ProfessorModel[] {
     if (this.modalFormGroup.get(formControlName)?.value) {
-      return this.professorsModel.filter(
+      return this.professors.filter(
         (professor) =>
           professor.nome.includes(
             this.modalFormGroup.get(formControlName)?.value
@@ -109,7 +141,7 @@ export class StepTwoFormTwoComponent implements OnInit {
           )
       );
     } else {
-      return this.professorsModel;
+      return this.professors;
     }
   }
 
@@ -155,16 +187,35 @@ export class StepTwoFormTwoComponent implements OnInit {
     });
 
     this.unfocusInputs();
-
     this.openNewProfessorModal = false;
   }
 
-  handleNewProfessor(form: FormGroup) {
-    const formValues: Professor = form.value;
+  handleAssignUnicamp() {
+    const assignUnicampDTO = new AssignUnicampDTO(this.modalFormGroup.value);
 
-    this.professors.push(formValues);
-    this.hasRecentAdded = true;
+    return this.courseService
+      .assignUnicamp(this.courseId!, assignUnicampDTO)
+      .subscribe({
+        next: (response) => {
+          this.hasRecentAdded = true;
+          this.handleCloseModal();
 
-    this.handleCloseModal();
+          this.loadCourseProfessors(response);
+        },
+        error: ({ error }) => {
+          alert(error.error);
+        },
+      });
+  }
+
+  handleUnassignUnicamp(professorId: string) {
+    this.courseService.unassignUnicamp(this.courseId, professorId).subscribe({
+      next: (response) => {
+        this.loadCourseProfessors(response);
+      },
+      error: ({ error }) => {
+        alert(error.error);
+      },
+    });
   }
 }

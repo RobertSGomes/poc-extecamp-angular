@@ -96,8 +96,8 @@
         <app-step-one-form-five
           *ngIf="currentInsideStep === 4"
           [stepOneFormFive]="stepOneFormFive"
+          (handleCreateCourse)="handleCreateCourse()"
           (backInsideStep)="backInsideStep()"
-          (nextStep)="nextStep()"
           (openCancelModal)="openCancelModal()"
         ></app-step-one-form-five>
       </div>
@@ -106,13 +106,14 @@
         <app-step-two-form-one
           *ngIf="currentInsideStep === 0"
           [stepTwoFormOne]="stepTwoFormOne"
+          (handleAssignCoordination)="handleAssignCoordination()"
           (backStep)="backStep(4)"
-          (nextInsideStep)="nextInsideStep()"
           (openCancelModal)="openCancelModal()"
         ></app-step-two-form-one>
 
         <app-step-two-form-two
           *ngIf="currentInsideStep === 1"
+          [courseId]="courseId!"
           (backInsideStep)="backInsideStep()"
           (nextInsideStep)="nextInsideStep()"
           (openCancelModal)="openCancelModal()"

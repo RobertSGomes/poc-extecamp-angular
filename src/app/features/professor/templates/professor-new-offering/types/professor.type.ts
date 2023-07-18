@@ -1,4 +1,4 @@
-export type Professor = {
+export type ProfessorItem = {
   docente_id: string;
   docente: string;
   docente_nome: string;

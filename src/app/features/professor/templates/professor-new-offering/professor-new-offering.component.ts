@@ -1,8 +1,11 @@
+import { CourseService } from './../../../../shared/services/course.service';
+import { CreateCourseDTO } from './../../../../shared/dtos/create-course.dto';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProfessorService } from '../../professor.service';
 import { ProfessorModel } from '../../models/professor.model';
 import { getUserId } from 'src/app/shared/utils/user-id.util';
+import { AssignCoordinationDTO } from 'src/app/shared/dtos/assign-coordination.dto';
 
 @Component({
   selector: 'professor-new-offering',
@@ -12,9 +15,10 @@ import { getUserId } from 'src/app/shared/utils/user-id.util';
 export class ProfessorNewOfferingComponent implements OnInit {
   professor?: ProfessorModel;
   professorId: string | null = getUserId();
+  courseId?: string = 'ff41d68d-ed12-4e61-8cd8-b67a5512a0fa';
 
-  currentStep: number = 3;
-  currentInsideStep: number = 3;
+  currentStep: number = 1;
+  currentInsideStep: number = 1;
   modalCancelOpened = false;
 
   stepOneFormOne!: FormGroup;
@@ -37,6 +41,7 @@ export class ProfessorNewOfferingComponent implements OnInit {
 
   constructor(
     private readonly professorService: ProfessorService,
+    private readonly courseService: CourseService,
     private readonly formBuilder: FormBuilder
   ) {}
 
@@ -269,7 +274,47 @@ export class ProfessorNewOfferingComponent implements OnInit {
     this.modalCancelOpened = true;
   }
 
-  handleSubmit(): void {
-    console.log('Criarei o curso');
+  handleCreateCourse(): void {
+    const createCourseDTO = new CreateCourseDTO({
+      stepOneFormOneValues: this.stepOneFormOne.value,
+      stepOneFormTwoValues: this.stepOneFormTwo.value,
+      stepOneFormThreeValues: this.stepOneFormThree.value,
+      stepOneFormFourValues: this.stepOneFormFour.value,
+      stepOneFormFiveValues: this.stepOneFormFive.value,
+    });
+
+    this.courseService.createCourse(createCourseDTO).subscribe({
+      next: (response) => {
+        this.courseId = response.id;
+
+        this.nextStep();
+      },
+      error: ({ error }) => {
+        console.log(error);
+        alert(
+          'Não foi possível prosseguir, preencha todos os campos obrigatórios e tente novamente.'
+        );
+      },
+    });
+  }
+
+  handleAssignCoordination() {
+    const assignCoordinationDTO = new AssignCoordinationDTO(
+      this.stepTwoFormOne.value
+    );
+
+    this.courseService
+      .assignCoordination(this.courseId!, assignCoordinationDTO)
+      .subscribe({
+        next: () => {
+          this.nextInsideStep();
+        },
+        error: ({ error }) => {
+          console.log(error);
+          alert(
+            'Não foi possível prosseguir, preencha todos os campos obrigatórios e tente novamente.'
+          );
+        },
+      });
   }
 }

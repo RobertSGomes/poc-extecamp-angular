@@ -88,34 +88,32 @@
       <tbody>
         <tr *ngFor="let professor of professors">
           <td class="px-6 py-3 text-left font-medium text-sm text-gray-900">
-            {{ professor.docente_matricula }}
+            {{ professor.matricula }}
           </td>
           <td class="px-6 py-3 text-left font-normal text-sm text-gray-600">
-            {{ professor.docente }}
+            {{ professor.nome }}
           </td>
           <td class="px-6 py-3 text-left font-normal text-sm text-gray-600">
-            {{ professor.docente_instituicao }}
+            {{ professor.instituicao }}
           </td>
           <td class="px-6 py-3 text-left font-normal text-sm text-gray-600">
-            {{ professor.docente_titulacao }}
+            {{ professor.titulacao }}
           </td>
           <td class="px-6 py-3 text-left font-normal text-sm text-gray-600">
             <div
               [ngClass]="{
                 'border-emerald-300 bg-emerald-50 text-emerald-700':
-                  professor.docente_vinculo === 'Sim',
+                  professor.tipo_vinculo === 'Sim',
                 'border-red-300 bg-red-50 text-red-700':
-                  professor.docente_vinculo === 'Não'
+                  professor.tipo_vinculo === 'Não'
               }"
               class="w-fit border px-[6px] py-0.5 rounded-[6px] font-medium text-xs"
             >
-              <p>{{ professor.docente_vinculo }}</p>
+              <p>{{ professor.tipo_vinculo }}</p>
             </div>
           </td>
           <td class="px-6 py-3 text-left font-normal text-sm text-gray-600">
-            {{ professor.docente_carga_horaria_horas }}h{{
-              professor.docente_carga_horaria_minutos
-            }}m
+            {{ professor.carga_horaria }}h{{ professor.carga_horaria }}m
           </td>
           <td>
             <div class="flex gap-x-2">
@@ -340,7 +338,7 @@
         <button
           class="px-[14px] py-2 rounded-lg font-semibold text-sm text-white bg-violet-600"
           type="button"
-          (click)="handleNewProfessor(modalFormGroup)"
+          (click)="handleCloseModal()"
           [disabled]="!modalFormGroup.valid"
         >
           Confirmar docente
