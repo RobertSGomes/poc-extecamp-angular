@@ -10,5 +10,5 @@ export type Professor = {
   docente_departamento: string;
   docente_carga_horaria_horas: string;
   docente_carga_horaria_minutos: string;
-  vinculo?: string;
+  docente_vinculo?: string;
 };

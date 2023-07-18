@@ -16,15 +16,17 @@ export class StepTwoFormThreeComponent {
     alias: 'numeric',
     digits: 0,
     placeholder: '0',
-    max: 24,
+    max: 23,
     min: 0,
+    rightAlign: false,
   });
   minuteInputMask = createMask({
     alias: 'numeric',
     digits: 0,
     placeholder: '0',
-    max: 60,
+    max: 59,
     min: 0,
+    rightAlign: false,
   });
 
   historySteps: HistoryStep[] = [
