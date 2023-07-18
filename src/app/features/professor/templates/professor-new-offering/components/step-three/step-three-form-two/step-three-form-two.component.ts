@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { HistoryStep } from '../../../types/history.type';
 import { FormGroup } from '@angular/forms';
+import { createMask } from '@ngneat/input-mask';
 
 @Component({
   selector: 'app-step-three-form-two',
@@ -15,6 +16,11 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./step-three-form-two.component.css'],
 })
 export class StepThreeFormTwoComponent {
+  phoneInputMask = createMask({
+    mask: '+55 (99) 9 9999-9999',
+    rightAlign: false,
+  });
+
   historySteps: HistoryStep[] = [
     {
       title: 'Divulgação do curso',

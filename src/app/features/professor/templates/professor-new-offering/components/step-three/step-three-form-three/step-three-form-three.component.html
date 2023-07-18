@@ -53,9 +53,12 @@
         <select
           class="w-full text-gray-800 text-base outline-none"
           formControlName="uf"
+          (change)="handleChangeState()"
         >
           <option selected value="">Selecione</option>
-          <option value="SP">SP</option>
+          <option *ngFor="let state of states" [value]="state.state_code">
+            {{ state.name }}
+          </option>
         </select>
       </div>
       <div
@@ -66,7 +69,9 @@
           formControlName="cidade"
         >
           <option selected value="">Selecione</option>
-          <option value="Atibaia">Atibaia</option>
+          <option *ngFor="let city of cities" [value]="city">
+            {{ city }}
+          </option>
         </select>
       </div>
     </div>
@@ -171,6 +176,7 @@
           placeholder="Preencha"
           formControlName="min_vagas"
           required
+          [inputMask]="numericInputMask"
         />
       </div>
       <div
@@ -181,6 +187,7 @@
           placeholder="Preencha"
           formControlName="max_vagas"
           required
+          [inputMask]="numericInputMask"
         />
       </div>
     </div>

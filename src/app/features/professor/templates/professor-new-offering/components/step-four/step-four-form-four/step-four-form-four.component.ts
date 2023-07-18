@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { HistoryStep } from '../../../types/history.type';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { createMask } from '@ngneat/input-mask';
+import { LocationService } from 'src/app/shared/services/location.service';
 
 @Component({
   selector: 'app-step-four-form-four',
@@ -9,6 +10,15 @@ import { createMask } from '@ngneat/input-mask';
   styleUrls: ['./step-four-form-four.component.css'],
 })
 export class StepFourFormFourComponent {
+  cepInputMask = createMask({
+    mask: '99999-999',
+  });
+  phoneInputMask = createMask({
+    mask: '+55 (99) 9 9999-9999',
+  });
+  cnpjInputMask = createMask({
+    mask: '99.999.999/9999-99',
+  });
   currencyInputMask = createMask({
     alias: 'numeric',
     groupSeparator: ',',
@@ -34,7 +44,10 @@ export class StepFourFormFourComponent {
     { stepIndex: 3, title: 'Condições' },
   ];
 
-  constructor(private readonly formBuilder: FormBuilder) {}
+  constructor(
+    private readonly locationService: LocationService,
+    private readonly formBuilder: FormBuilder
+  ) {}
 
   @Output() backInsideStep: EventEmitter<void> = new EventEmitter<void>();
   @Output() nextStep: EventEmitter<void> = new EventEmitter<void>();
@@ -52,8 +65,8 @@ export class StepFourFormFourComponent {
 
   addPaymentSlip(): void {
     const newPaymentSlip = this.formBuilder.group({
-      nmr_parcelas: [''],
-      valor: [''],
+      nmr_parcelas: ['', Validators.required],
+      valor: ['', Validators.required],
       data_vencimento: ['', [Validators.required]],
     });
 
@@ -67,7 +80,7 @@ export class StepFourFormFourComponent {
   addDiscountMethod(): void {
     const newDiscountMethod = this.formBuilder.group({
       para: ['', Validators.required],
-      porcentagem_desconto: [''],
+      porcentagem_desconto: ['', Validators.required],
     });
 
     this.opcao_desconto.push(newDiscountMethod);
@@ -75,5 +88,33 @@ export class StepFourFormFourComponent {
 
   removeDiscountMethod(index: number): void {
     this.opcao_desconto.removeAt(index);
+  }
+
+  handleChangeCep() {
+    Object.keys(this.stepFourFormFour.controls).forEach((key) => {
+      if (
+        key === 'empresa_endereco' ||
+        key === 'empresa_bairro' ||
+        key === 'empresa_cidade'
+      ) {
+        this.stepFourFormFour.get(key)?.setValue('');
+      }
+    });
+
+    this.locationService
+      .fetchCep(this.stepFourFormFour.value['empresa_cep'])
+      .subscribe({
+        next: (value) => {
+          if (value) {
+            this.stepFourFormFour
+              .get('empresa_endereco')
+              ?.setValue(value.logradouro);
+            this.stepFourFormFour.get('empresa_bairro')?.setValue(value.bairro);
+            this.stepFourFormFour
+              .get('empresa_cidade')
+              ?.setValue(value.localidade);
+          }
+        },
+      });
   }
 }

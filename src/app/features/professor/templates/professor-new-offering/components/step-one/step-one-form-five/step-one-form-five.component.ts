@@ -12,7 +12,6 @@ export class StepOneFormFiveComponent {
   percentageInputMask = createMask({
     alias: 'numeric',
     max: 100,
-    suffix: '%',
     rightAlign: false,
   });
   notaInputMask = createMask({

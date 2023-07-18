@@ -104,7 +104,7 @@
       <!-- Número parcelas -->
       <div class="flex flex-col gap-[6px]">
         <label class="font-medium text-sm text-gray-700"
-          >Número de parcelas</label
+          >Número de parcelas *</label
         >
         <div
           class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
@@ -132,7 +132,7 @@
 
       <!-- Valor -->
       <div class="flex flex-col gap-[6px]">
-        <label class="font-medium text-sm text-gray-700">Valor</label>
+        <label class="font-medium text-sm text-gray-700">Valor *</label>
         <div
           class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
         >
@@ -149,7 +149,7 @@
       <!-- Data vencimento -->
       <div class="flex flex-col gap-[6px]">
         <label class="font-medium text-sm text-gray-700"
-          >Data do vencimento</label
+          >Data do vencimento *</label
         >
         <div
           class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
@@ -256,7 +256,7 @@
     >
       <!-- Para -->
       <div class="flex flex-col gap-[6px]">
-        <label class="font-medium text-sm text-gray-700">Para</label>
+        <label class="font-medium text-sm text-gray-700">Para *</label>
         <div
           class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
         >
@@ -270,7 +270,7 @@
       <!-- Porcentagem -->
       <div class="flex flex-col gap-[6px]">
         <label class="font-medium text-sm text-gray-700"
-          >Porcentagem de desconto</label
+          >Porcentagem de desconto *</label
         >
         <div
           class="flex items-center gap-2 w-[150px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
@@ -351,6 +351,7 @@
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
           formControlName="convenio_cnpj"
+          [inputMask]="cnpjInputMask"
         />
       </div>
     </div>
@@ -366,18 +367,20 @@
           formControlName="convenio_tipo"
         >
           <option selected value="">Selecione</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-          <option value="10">10</option>
-          <option value="11">11</option>
-          <option value="12">12</option>
+          <option value="intercambio">Intercâmbio estudantil</option>
+          <option value="pesquisa">Pesquisa</option>
+          <option value="estagio">Estágio</option>
+          <option value="coop_academica">Cooperação acadêmica</option>
+          <option value="dupla_titulacao">Dupla titulação</option>
+          <option value="mobilidade_docente">Mobilidade docente</option>
+          <option value="acesso_bibliotecas">
+            Acesso a bibliotecas e recursos
+          </option>
+          <option value="parceria_empresarial">Parceria empresarial</option>
+          <option value="intercambio_cultural">
+            Intercâmbio cultural e esportivo
+          </option>
+          <option value="assistencia_estudantil">Assistência estudantil</option>
         </select>
       </div>
     </div>
@@ -511,37 +514,23 @@
     </div>
   </div>
 
-  <!-- Endereço e bairro -->
+  <!-- CEP e Cidade -->
   <div class="flex gap-x-[18px]">
-    <!-- Endereço -->
+    <!-- CEP -->
     <div class="flex flex-col gap-[6px]">
-      <label class="font-medium text-sm text-gray-700">Endereço</label>
+      <label class="font-medium text-sm text-gray-700">CEP</label>
       <div
         class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-          formControlName="empresa_endereco"
+          formControlName="empresa_cep"
+          [inputMask]="cepInputMask"
+          (change)="handleChangeCep()"
         />
       </div>
     </div>
 
-    <!-- Bairro -->
-    <div class="flex flex-col gap-[6px]">
-      <label class="font-medium text-sm text-gray-700">Bairro</label>
-      <div
-        class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
-      >
-        <input
-          class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-          formControlName="empresa_bairro"
-        />
-      </div>
-    </div>
-  </div>
-
-  <!-- Cidade e CEP -->
-  <div class="flex gap-x-[18px]">
     <!-- Cidade -->
     <div class="flex flex-col gap-[6px]">
       <label class="font-medium text-sm text-gray-700">Cidade</label>
@@ -554,16 +543,32 @@
         />
       </div>
     </div>
+  </div>
 
-    <!-- CEP -->
+  <!-- Bairro e Endereço -->
+  <div class="flex gap-x-[18px]">
+    <!-- Bairro -->
     <div class="flex flex-col gap-[6px]">
-      <label class="font-medium text-sm text-gray-700">CEP</label>
+      <label class="font-medium text-sm text-gray-700">Bairro</label>
       <div
         class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-          formControlName="empresa_cep"
+          formControlName="empresa_bairro"
+        />
+      </div>
+    </div>
+
+    <!-- Endereço -->
+    <div class="flex flex-col gap-[6px]">
+      <label class="font-medium text-sm text-gray-700">Endereço</label>
+      <div
+        class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+      >
+        <input
+          class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+          formControlName="empresa_endereco"
         />
       </div>
     </div>
@@ -571,13 +576,14 @@
 
   <!-- CNPJ -->
   <div class="flex flex-col gap-[6px]">
-    <label class="font-medium text-sm text-gray-700">CNPJ </label>
+    <label class="font-medium text-sm text-gray-700">CNPJ</label>
     <div
       class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
     >
       <input
         class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
         formControlName="empresa_cnpj"
+        [inputMask]="cnpjInputMask"
       />
     </div>
   </div>
@@ -619,6 +625,7 @@
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
           formControlName="empresa_telefone"
+          [inputMask]="phoneInputMask"
         />
       </div>
     </div>
@@ -632,6 +639,7 @@
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
           formControlName="empresa_fax"
+          [inputMask]="phoneInputMask"
         />
       </div>
     </div>

@@ -55,16 +55,13 @@
           formControlName="telefone_secretaria_pais"
         >
           <option selected value="+55 (XX) XXXX-XXXX">BR</option>
-          <option value="+1 (XXX) XXX-XXXX">EN</option>
-          <option value="+34 XXX XXX XXX">ES</option>
         </select>
         <input
           class="w-[324px] text-gray-800 text-base outline-none placeholder:text-gray-500"
-          [placeholder]="
-            stepThreeFormTwo.get('telefone_secretaria_pais')?.value
-          "
+          placeholder="+55 (DDD) 0 0000-0000"
           formControlName="telefone_secretaria"
           required
+          [inputMask]="phoneInputMask"
         />
       </div>
       <div
@@ -75,15 +72,12 @@
           formControlName="telefone_informacoes_pais"
         >
           <option selected value="+55 (XX) XXXX-XXXX">BR</option>
-          <option value="+1 (XXX) XXX-XXXX">EN</option>
-          <option value="+34 XXX XXX XXX">ES</option>
         </select>
         <input
           class="w-[324px] text-gray-800 text-base outline-none placeholder:text-gray-500"
-          [placeholder]="
-            stepThreeFormTwo.get('telefone_informacoes_pais')?.value
-          "
+          placeholder="+55 (DDD) 0 0000-0000"
           formControlName="telefone_informacoes"
+          [inputMask]="phoneInputMask"
         />
       </div>
     </div>
@@ -180,7 +174,7 @@
         formControlName="modelo"
         value="Basico"
       />
-      <label for="modelo_yes" class="font-medium text-base text-gray-700"
+      <label for="modelo_basico" class="font-medium text-base text-gray-700"
         >Básico</label
       >
     </div>
@@ -191,7 +185,7 @@
         formControlName="modelo"
         value="Completo"
       />
-      <label for="modelo_no" class="font-medium text-base text-gray-700"
+      <label for="modelo_completo" class="font-medium text-base text-gray-700"
         >Completo</label
       >
     </div>
