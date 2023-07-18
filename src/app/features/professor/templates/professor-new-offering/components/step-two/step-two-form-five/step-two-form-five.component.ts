@@ -104,6 +104,15 @@ export class StepTwoFormFiveComponent {
       },
     });
 
+    this.courseService.getOne(this.courseId).subscribe({
+      next: (response) => {
+        this.courseSpeakers = response.palestrantes;
+      },
+      error: ({ error }) => {
+        alert(error.error);
+      },
+    });
+
     this.modalFormGroup = this.formBuilder.group({
       docente_id: ['', Validators.required],
       docente: [''],
