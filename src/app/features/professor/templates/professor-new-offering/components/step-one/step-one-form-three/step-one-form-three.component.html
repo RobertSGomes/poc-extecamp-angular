@@ -27,6 +27,7 @@
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
           placeholder="Preencha"
           formControlName="carga_horaria_presencial_pratica"
+          [inputMask]="hourInputMask"
         />
       </div>
       <div
@@ -36,6 +37,7 @@
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
           placeholder="Preencha"
           formControlName="carga_horaria_presencial_teorica"
+          [inputMask]="hourInputMask"
         />
       </div>
     </div>
@@ -59,6 +61,7 @@
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
           placeholder="Preencha"
           formControlName="carga_horaria_ead_pratica"
+          [inputMask]="hourInputMask"
         />
       </div>
       <div
@@ -68,6 +71,7 @@
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
           placeholder="Preencha"
           formControlName="carga_horaria_ead_teorica"
+          [inputMask]="hourInputMask"
         />
       </div>
     </div>

@@ -1,6 +1,7 @@
 import { Component, Output, Input, EventEmitter } from '@angular/core';
 import { HistoryStep } from '../../../types/history.type';
 import { FormGroup } from '@angular/forms';
+import { createMask } from '@ngneat/input-mask';
 
 @Component({
   selector: 'app-step-one-form-three',
@@ -8,6 +9,11 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./step-one-form-three.component.css'],
 })
 export class StepOneFormThreeComponent {
+  hourInputMask = createMask({
+    mask: '999h',
+    rightAlign: false,
+  });
+
   historySteps: HistoryStep[] = [
     {
       title: 'Dados iniciais',

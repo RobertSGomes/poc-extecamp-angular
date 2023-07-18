@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { HistoryStep } from '../../../types/history.type';
 import { FormGroup } from '@angular/forms';
+import { createMask } from '@ngneat/input-mask';
 
 @Component({
   selector: 'app-step-one-form-five',
@@ -8,6 +9,18 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./step-one-form-five.component.css'],
 })
 export class StepOneFormFiveComponent {
+  percentageInputMask = createMask({
+    alias: 'numeric',
+    max: 100,
+    suffix: '%',
+    rightAlign: false,
+  });
+  notaInputMask = createMask({
+    alias: 'numeric',
+    max: 1000,
+    rightAlign: false,
+  });
+
   historySteps: HistoryStep[] = [
     {
       title: 'Dados iniciais',
