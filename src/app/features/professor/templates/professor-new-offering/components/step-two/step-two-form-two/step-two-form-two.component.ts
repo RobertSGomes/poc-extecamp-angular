@@ -158,7 +158,7 @@ export class StepTwoFormTwoComponent implements OnInit {
   }
 
   handleNewProfessor(form: FormGroup) {
-    const formValues = form.value;
+    const formValues: Professor = form.value;
 
     this.professors.push(formValues);
     this.hasRecentAdded = true;
