@@ -1,7 +1,7 @@
 <form
   class="flex flex-col gap-y-6 w-[1072px] mx-auto p-8 bg-white border border-gray-200 rounded-2xl shadow-sm"
   [formGroup]="stepFourFormOne"
-  (submit)="nextInsideStep.emit()"
+  (submit)="handleCreateOfferingCosts.emit()"
 >
   <app-history-line [currentStep]="0" [steps]="historySteps"></app-history-line>
 
@@ -17,7 +17,7 @@
     <div class="flex items-center gap-x-2">
       <input
         type="radio"
-        id="disciplina_eletiva_yes"
+        id="fluxo_continuo_yes"
         formControlName="fluxo_continuo"
         [value]="true"
       />

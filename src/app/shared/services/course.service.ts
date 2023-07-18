@@ -10,6 +10,7 @@ import { AssignUnicampDTO } from '../dtos/assign-unicamp.dto';
 import { AssignAttachedDTO } from '../dtos/assign-attached.dto';
 import { AssignUnattachedDTO } from '../dtos/assign-unattached.dto';
 import { AssignSpeakerDTO } from '../dtos/assign-speaker.dto';
+import { CreateOfferingCostDTO } from '../dtos/create-offering-cost.dto';
 
 @Injectable({
   providedIn: 'root',
@@ -222,6 +223,24 @@ export class CourseService {
     return this.http.post<OfferingModel>(
       `${this.baseURL}/${courseId}/oferecimento`,
       createOfferingDTO,
+      {
+        headers: {
+          Authorization: `Bearer ${this.accessToken}`,
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+  }
+
+  createOfferingCost(
+    courseId: string,
+    createOfferingCostDTO: CreateOfferingCostDTO
+  ) {
+    this.verifyAccess();
+
+    return this.http.post<OfferingModel>(
+      `${this.baseURL}/${courseId}/custos-oferecimento`,
+      createOfferingCostDTO,
       {
         headers: {
           Authorization: `Bearer ${this.accessToken}`,
