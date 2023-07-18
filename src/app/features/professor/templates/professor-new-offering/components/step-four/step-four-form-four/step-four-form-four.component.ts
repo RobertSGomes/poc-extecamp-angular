@@ -15,6 +15,7 @@ export class StepFourFormFourComponent {
     digits: 2,
     digitsOptional: false,
     placeholder: '0',
+    rightAlign: false,
   });
 
   percentageInputMask = createMask({
@@ -23,6 +24,7 @@ export class StepFourFormFourComponent {
     digits: 2,
     digitsOptional: false,
     max: 100,
+    rightAlign: false,
   });
 
   historySteps: HistoryStep[] = [

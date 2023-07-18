@@ -15,6 +15,7 @@ export class StepFourFormOneComponent {
     digits: 2,
     digitsOptional: false,
     placeholder: '0',
+    rightAlign: false,
   });
 
   historySteps: HistoryStep[] = [
