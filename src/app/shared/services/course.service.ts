@@ -1,9 +1,10 @@
+import { CreateOfferingDTO } from './../dtos/create-offering.dto';
 import { Injectable } from '@angular/core';
 import { CreateCourseDTO } from '../dtos/create-course.dto';
 import { HttpClient } from '@angular/common/http';
 import { getAccessToken } from '../utils/access-token.util';
 import { Router } from '@angular/router';
-import { CourseModel } from '../models/course.model';
+import { CourseModel, OfferingModel } from '../models/course.model';
 import { AssignCoordinationDTO } from '../dtos/assign-coordination.dto';
 import { AssignUnicampDTO } from '../dtos/assign-unicamp.dto';
 import { AssignAttachedDTO } from '../dtos/assign-attached.dto';
@@ -213,6 +214,21 @@ export class CourseService {
         'Content-Type': 'application/json',
       },
     });
+  }
+
+  createOffering(courseId: string, createOfferingDTO: CreateOfferingDTO) {
+    this.verifyAccess();
+
+    return this.http.post<OfferingModel>(
+      `${this.baseURL}/${courseId}/oferecimento`,
+      createOfferingDTO,
+      {
+        headers: {
+          Authorization: `Bearer ${this.accessToken}`,
+          'Content-Type': 'application/json',
+        },
+      }
+    );
   }
 
   verifyAccess(): void {

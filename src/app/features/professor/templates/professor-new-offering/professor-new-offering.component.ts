@@ -1,3 +1,4 @@
+import { CreateOfferingDTO } from './../../../../shared/dtos/create-offering.dto';
 import { CourseService } from './../../../../shared/services/course.service';
 import { CreateCourseDTO } from './../../../../shared/dtos/create-course.dto';
 import { Component, OnInit } from '@angular/core';
@@ -15,10 +16,10 @@ import { AssignCoordinationDTO } from 'src/app/shared/dtos/assign-coordination.d
 export class ProfessorNewOfferingComponent implements OnInit {
   professor?: ProfessorModel;
   professorId: string | null = getUserId();
-  courseId?: string = 'ff41d68d-ed12-4e61-8cd8-b67a5512a0fa';
+  courseId?: string = '6153c956-069a-40d4-a960-507fe5cad867';
 
-  currentStep: number = 1;
-  currentInsideStep: number = 3;
+  currentStep: number = 2;
+  currentInsideStep: number = 0;
   modalCancelOpened = false;
 
   stepOneFormOne!: FormGroup;
@@ -314,6 +315,26 @@ export class ProfessorNewOfferingComponent implements OnInit {
           alert(
             'Não foi possível prosseguir, preencha todos os campos obrigatórios e tente novamente.'
           );
+        },
+      });
+  }
+
+  handleCreateOffering() {
+    const createOfferingDTO = new CreateOfferingDTO({
+      stepThreeFormOneValues: this.stepThreeFormOne.value,
+      stepThreeFormTwoValues: this.stepThreeFormTwo.value,
+      stepThreeFormThreeValues: this.stepThreeFormThree.value,
+      stepThreeFormFourValues: this.stepThreeFormFour.value,
+    });
+
+    this.courseService
+      .createOffering(this.courseId!, createOfferingDTO)
+      .subscribe({
+        next: (response) => {
+          console.log(JSON.stringify(response));
+        },
+        error: ({ error }) => {
+          alert(error.error);
         },
       });
   }

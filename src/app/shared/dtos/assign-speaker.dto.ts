@@ -27,14 +27,8 @@ export class AssignSpeakerDTO {
     this.id = stepTwoFormFive.docente_id;
     this.nome = stepTwoFormFive.docente_nome;
     this.matricula = stepTwoFormFive.docente_matricula;
-    this.instituicao =
-      stepTwoFormFive.docente_instituicao === ''
-        ? undefined
-        : stepTwoFormFive.docente_instituicao;
-    this.titulacao =
-      stepTwoFormFive.docente_titulacao === ''
-        ? undefined
-        : stepTwoFormFive.docente_titulacao;
+    this.instituicao = stepTwoFormFive.docente_instituicao || undefined;
+    this.titulacao = stepTwoFormFive.docente_titulacao || undefined;
     this.tipo_vinculo = stepTwoFormFive.docente_vinculo;
     this.nome_palestra = stepTwoFormFive.docente_nome_palestra;
     this.valor = stepTwoFormFive.docente_valor_palestra;

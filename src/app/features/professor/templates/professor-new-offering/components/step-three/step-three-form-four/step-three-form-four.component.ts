@@ -28,7 +28,7 @@ export class StepThreeFormFourComponent {
   ];
 
   @Output() backInsideStep: EventEmitter<void> = new EventEmitter<void>();
-  @Output() nextStep: EventEmitter<void> = new EventEmitter<void>();
+  @Output() handleCreateOffering: EventEmitter<void> = new EventEmitter<void>();
   @Output() openCancelModal: EventEmitter<void> = new EventEmitter<void>();
 
   @Input() stepThreeFormFour!: FormGroup;

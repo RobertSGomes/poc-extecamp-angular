@@ -36,7 +36,47 @@ export interface CourseModel {
   docentes_sem_vinculo: any[];
   palestrantes: any[];
   alunos: any[];
+  oferecimento?: OfferingModel | null;
   created_by: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface OfferingModel {
+  id: string;
+  curso_id: string;
+  assinatura_status: string;
+  divulgar_extecamp: boolean;
+  explicacao: string;
+  host: string;
+  pagina_facebook: string;
+  local: string;
+  uf: string;
+  cidade: string;
+  dias_semana_horarios: string;
+  data_inicio: string;
+  data_encerramento: string;
+  min_vagas: number;
+  max_vagas: number;
+  tem_criterios: boolean;
+  parametros: any[];
+  documentos_extras: any[];
+  curso_parceria: any[];
+  created_at: string;
+  updated_at: string;
+  inscricao?: InscricaoModel | null;
+  custos_oferecimento?: any | null;
+}
+
+export interface InscricaoModel {
+  id: string;
+  oferecimento_id: string;
+  local: string;
+  telefone_secretaria: string;
+  telefone_informacoes: any;
+  data_abertura: string;
+  data_encerramento: string;
+  modelo: string;
   created_at: string;
   updated_at: string;
 }

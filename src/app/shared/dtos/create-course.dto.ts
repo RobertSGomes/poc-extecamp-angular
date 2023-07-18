@@ -90,10 +90,7 @@ export class CreateCourseDTO {
     this.disciplina_eletiva = stepOneFormOneValues.disciplina_eletiva;
     this.forma_realizacao = stepOneFormOneValues.forma_realizacao;
     this.plataforma = stepOneFormOneValues.plataforma;
-    this.mensagem =
-      stepOneFormOneValues.mensagem === ''
-        ? undefined
-        : stepOneFormOneValues.mensagem;
+    this.mensagem = stepOneFormOneValues.mensagem || undefined;
     this.descricao = stepOneFormOneValues.descricao;
     this.unidade = stepOneFormOneValues.unidade;
     this.departamento = stepOneFormOneValues.departamento;
@@ -105,25 +102,14 @@ export class CreateCourseDTO {
       .filter((item) => item.area_tematica !== '')
       .map((item) => item.area_tematica);
     this.carga_horaria_presencial_pratica =
-      stepOneFormThreeValues.carga_horaria_presencial_pratica === ''
-        ? undefined
-        : stepOneFormThreeValues.carga_horaria_presencial_pratica;
+      stepOneFormThreeValues.carga_horaria_presencial_pratica || undefined;
     this.carga_horaria_presencial_teorica =
-      stepOneFormThreeValues.carga_horaria_presencial_teorica === ''
-        ? undefined
-        : stepOneFormThreeValues.carga_horaria_presencial_teorica;
+      stepOneFormThreeValues.carga_horaria_presencial_teorica || undefined;
     this.carga_horaria_ead_pratica =
-      stepOneFormThreeValues.carga_horaria_ead_pratica === ''
-        ? undefined
-        : stepOneFormThreeValues.carga_horaria_ead_pratica;
+      stepOneFormThreeValues.carga_horaria_ead_pratica || undefined;
     this.carga_horaria_ead_teorica =
-      stepOneFormThreeValues.carga_horaria_ead_teorica === ''
-        ? undefined
-        : stepOneFormThreeValues.carga_horaria_ead_teorica;
-    this.ementa =
-      stepOneFormFourValues.ementa === ''
-        ? undefined
-        : stepOneFormFourValues.ementa;
+      stepOneFormThreeValues.carga_horaria_ead_teorica || undefined;
+    this.ementa = stepOneFormFourValues.ementa || undefined;
     this.bibliografia = stepOneFormFourValues.bibliografia;
     this.procedimentos = stepOneFormFourValues.procedimentos;
     this.objetivo = stepOneFormFourValues.objetivo;
