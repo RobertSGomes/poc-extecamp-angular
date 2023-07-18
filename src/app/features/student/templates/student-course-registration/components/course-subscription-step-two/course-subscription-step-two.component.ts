@@ -13,6 +13,11 @@ export class CourseSubscriptionStepTwoComponent {
   cepMask = createMask({
     mask: '99999-999',
   });
+  numeric = createMask({
+    alias: 'numeric',
+    allowMinus: false,
+    rightAlign: false,
+  });
 
   countries: Array<any> = [];
   states: Array<any> = [];
