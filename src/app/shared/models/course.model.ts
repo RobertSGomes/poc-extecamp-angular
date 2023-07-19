@@ -59,16 +59,16 @@ export interface OfferingModel {
   min_vagas: number;
   max_vagas: number;
   tem_criterios: boolean;
-  parametros: any[];
-  documentos_extras: any[];
-  curso_parceria: any[];
+  parametros?: string[];
+  documentos_extras?: string[];
+  curso_parceria?: string[];
   created_at: string;
   updated_at: string;
-  inscricao?: InscricaoModel | null;
-  custos_oferecimento?: CustosOferecimentoModel | null;
+  inscricao?: SubscriptionModel | null;
+  custos_oferecimento?: OfferingCostModel | null;
 }
 
-export interface InscricaoModel {
+export interface SubscriptionModel {
   id: string;
   oferecimento_id: string;
   local: string;
@@ -81,7 +81,7 @@ export interface InscricaoModel {
   updated_at: string;
 }
 
-export interface CustosOferecimentoModel {
+export interface OfferingCostModel {
   id: string;
   oferecimento_id: string;
   assinatura_status: string;
@@ -96,11 +96,11 @@ export interface CustosOferecimentoModel {
   total: number;
   created_at: string;
   updated_at: string;
-  taxas_custos_oferecimento?: TaxasCustosOferecimentos | null;
+  taxas_custos_oferecimento?: OfferingCostTaxModel | null;
   condicoes_custos_oferecimento?: any | null;
 }
 
-export interface TaxasCustosOferecimentos {
+export interface OfferingCostTaxModel {
   id: string;
   custos_oferecimento_id: string;
   fixas: number;
@@ -114,6 +114,49 @@ export interface TaxasCustosOferecimentos {
   custo_total: number;
   custo_aluno_min_vagas: number;
   custo_aluno_valor: number;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface OfferingCostConditionModel {
+  id: string;
+  custos_oferecimento_id: string;
+  forma_pagamento: { tipo: string; fonte: string; taxa_inscricao: number };
+  curso_gratuito: boolean;
+  valor_a_vista: number;
+  valor_a_vista_vencimento: string;
+  parcelas_boleto: Array<{
+    valor: number;
+    nmr_parcelas: number;
+    data_vencimento: string;
+  }>;
+  parcelas_cartao_credito: number;
+  porcentagem_desconto_estudantes: number;
+  opcao_desconto: Array<{ para: string; porcentagem_desconto: number }>;
+  convenio: {
+    numero_processo?: string;
+    empresa?: string;
+    cnpj?: string;
+    tipo?: string;
+    responsavel?: string;
+    responsavel_cargo?: string;
+    sem_valor_parcela?: boolean;
+    numero_parcelas?: number;
+  };
+  recurso: { valor?: number; empresa?: string };
+  empresa: {
+    nome?: string;
+    endereco?: string;
+    bairro?: string;
+    cidade?: string;
+    cep?: string;
+    cnpj?: string;
+    ins_estadual?: string;
+    nome_contato?: string;
+    telefone?: string;
+    fax?: string;
+    email?: string;
+  };
   created_at: string;
   updated_at: string;
 }

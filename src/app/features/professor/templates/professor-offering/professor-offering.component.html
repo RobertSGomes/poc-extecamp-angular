@@ -145,21 +145,21 @@
         ></th>
       </thead>
       <tbody>
-        <tr>
+        <tr *ngFor="let course of courses; let i = index">
           <td
             class="p-3 bg-white text-left font-medium text-sm text-gray-900 border-b border-b-gray-200"
           >
-            ECO-0290
+            {{ course.sigla }}
           </td>
           <td
             class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200 w-[121px]"
           >
-            001
+            {{ formatIndex(i) }}
           </td>
           <td
             class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200 w-[272px]"
           >
-            PRÁTICAS INOVADORAS EM GESTÃO PÚBLICA
+            {{ course.nome }}
           </td>
           <td
             class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200"
@@ -169,48 +169,7 @@
             >
               <div class="w-[6px] h-[6px] rounded-full bg-emerald-500"></div>
               <p class="font-medium text-xs text-emerald-800">
-                Cursos múltiplos
-              </p>
-            </div>
-          </td>
-          <td
-            class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200"
-          >
-            ANDAMENTO
-          </td>
-          <td
-            class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200 w-[72px]"
-          >
-            <button class="flex items-center justify-center">
-              <img src="../../../../../assets/svgs/more.svg" class="w-4 h-4" />
-            </button>
-          </td>
-        </tr>
-        <tr>
-          <td
-            class="p-3 bg-white text-left font-medium text-sm text-gray-900 border-b border-b-gray-200"
-          >
-            ECO-0290
-          </td>
-          <td
-            class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200 w-[121px]"
-          >
-            002
-          </td>
-          <td
-            class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200 w-[272px]"
-          >
-            ECONOMIA BRASILEIRA CONTEMPORÂNEA
-          </td>
-          <td
-            class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200"
-          >
-            <div
-              class="flex flex-row items-center gap-x-[6px] rounded-2xl bg-sky-50 pl-[6px] pr-2 py-0.5 w-fit"
-            >
-              <div class="w-[6px] h-[6px] rounded-full bg-sky-500"></div>
-              <p class="font-medium text-xs text-sky-800">
-                Cursos simples/disciplina
+                {{ course.tipo }}
               </p>
             </div>
           </td>

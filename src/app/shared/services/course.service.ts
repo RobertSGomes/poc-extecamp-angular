@@ -4,7 +4,13 @@ import { CreateCourseDTO } from '../dtos/create-course.dto';
 import { HttpClient } from '@angular/common/http';
 import { getAccessToken } from '../utils/access-token.util';
 import { Router } from '@angular/router';
-import { CourseModel, OfferingModel } from '../models/course.model';
+import {
+  CourseModel,
+  OfferingCostConditionModel,
+  OfferingCostModel,
+  OfferingCostTaxModel,
+  OfferingModel,
+} from '../models/course.model';
 import { AssignCoordinationDTO } from '../dtos/assign-coordination.dto';
 import { AssignUnicampDTO } from '../dtos/assign-unicamp.dto';
 import { AssignAttachedDTO } from '../dtos/assign-attached.dto';
@@ -27,6 +33,20 @@ export class CourseService {
     private readonly router: Router,
     private readonly http: HttpClient
   ) {}
+
+  getAll() {
+    this.verifyAccess();
+
+    return this.http.get<{ result: CourseModel[]; total: number }>(
+      `${this.baseURL}`,
+      {
+        headers: {
+          Authorization: `Bearer ${this.accessToken}`,
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+  }
 
   getOne(courseId: string) {
     this.verifyAccess();
@@ -257,7 +277,7 @@ export class CourseService {
   ) {
     this.verifyAccess();
 
-    return this.http.post<any>(
+    return this.http.post<OfferingCostModel>(
       `${this.baseURL}/${courseId}/custos-oferecimento`,
       createOfferingCostDTO,
       {
@@ -275,7 +295,7 @@ export class CourseService {
   ) {
     this.verifyAccess();
 
-    return this.http.put<any>(
+    return this.http.put<OfferingCostModel>(
       `${this.baseURL}/${courseId}/custos-oferecimento`,
       updateOfferingCostDTO,
       {
@@ -295,7 +315,7 @@ export class CourseService {
 
     console.log(JSON.stringify(createOfferingCostTaxDTO));
 
-    return this.http.post<any>(
+    return this.http.post<OfferingCostTaxModel>(
       `${this.baseURL}/${courseId}/custos-oferecimento/taxas`,
       createOfferingCostTaxDTO,
       {
@@ -315,7 +335,7 @@ export class CourseService {
 
     console.log(JSON.stringify(createOfferingCostConditionDTO));
 
-    return this.http.post<any>(
+    return this.http.post<OfferingCostConditionModel>(
       `${this.baseURL}/${courseId}/custos-oferecimento/condicoes`,
       createOfferingCostConditionDTO,
       {

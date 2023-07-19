@@ -19,9 +19,9 @@ import { CreateOfferingCostConditionDTO } from 'src/app/shared/dtos/create-offer
 export class ProfessorNewOfferingComponent implements OnInit {
   professor?: ProfessorModel;
   professorId: string | null = getUserId();
-  courseId?: string = '6153c956-069a-40d4-a960-507fe5cad867';
+  courseId?: string;
 
-  currentStep: number = 4;
+  currentStep: number = 0;
   currentInsideStep: number = 0;
   modalCancelOpened = false;
 
