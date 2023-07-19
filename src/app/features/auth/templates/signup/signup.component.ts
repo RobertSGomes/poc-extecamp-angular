@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { createMask } from '@ngneat/input-mask';
 import { StudentService } from 'src/app/features/student/student.service';
 import { removeAccessToken } from 'src/app/shared/utils/access-token.util';
 import { removeUserId } from 'src/app/shared/utils/user-id.util';
@@ -11,6 +12,10 @@ import { removeUserId } from 'src/app/shared/utils/user-id.util';
   styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent {
+  phoneInputMask = createMask({
+    mask: '+55 (99) 9 9999-9999',
+  });
+
   signUpForm!: FormGroup;
 
   constructor(
