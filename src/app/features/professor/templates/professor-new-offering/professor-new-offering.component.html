@@ -223,6 +223,7 @@
 
       <div *ngIf="currentStep === 4">
         <app-step-five-form-one
+          [courseId]="courseId!"
           (backStep)="backStep(3)"
           (openCancelModal)="openCancelModal()"
         ></app-step-five-form-one>
