@@ -13,6 +13,8 @@ import { AssignSpeakerDTO } from '../dtos/assign-speaker.dto';
 import { CreateOfferingCostDTO } from '../dtos/create-offering-cost.dto';
 import { CreateOfferingCostTaxDTO } from '../dtos/create-offering-cost-tax.dto';
 import { CreateOfferingCostConditionDTO } from '../dtos/create-offering-cost-condition.dto';
+import { UpdateOfferingDTO } from '../dtos/update-offering.dto';
+import { UpdateOfferingCostDTO } from '../dtos/update-offering-cost.dto';
 
 @Injectable({
   providedIn: 'root',
@@ -234,6 +236,21 @@ export class CourseService {
     );
   }
 
+  updateOffering(courseId: string, updateOfferingDTO: UpdateOfferingDTO) {
+    this.verifyAccess();
+
+    return this.http.put<OfferingModel>(
+      `${this.baseURL}/${courseId}/oferecimento`,
+      updateOfferingDTO,
+      {
+        headers: {
+          Authorization: `Bearer ${this.accessToken}`,
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+  }
+
   createOfferingCost(
     courseId: string,
     createOfferingCostDTO: CreateOfferingCostDTO
@@ -243,6 +260,24 @@ export class CourseService {
     return this.http.post<any>(
       `${this.baseURL}/${courseId}/custos-oferecimento`,
       createOfferingCostDTO,
+      {
+        headers: {
+          Authorization: `Bearer ${this.accessToken}`,
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+  }
+
+  updateOfferingCost(
+    courseId: string,
+    updateOfferingCostDTO: UpdateOfferingCostDTO
+  ) {
+    this.verifyAccess();
+
+    return this.http.put<any>(
+      `${this.baseURL}/${courseId}/custos-oferecimento`,
+      updateOfferingCostDTO,
       {
         headers: {
           Authorization: `Bearer ${this.accessToken}`,

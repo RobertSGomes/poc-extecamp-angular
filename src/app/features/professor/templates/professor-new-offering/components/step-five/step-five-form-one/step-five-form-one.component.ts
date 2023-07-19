@@ -10,6 +10,8 @@ import {
   ViewChild,
 } from '@angular/core';
 import { CourseModel } from 'src/app/shared/models/course.model';
+import { UpdateOfferingDTO } from 'src/app/shared/dtos/update-offering.dto';
+import { UpdateOfferingCostDTO } from 'src/app/shared/dtos/update-offering-cost.dto';
 
 @Component({
   selector: 'app-step-five-form-one',
@@ -24,8 +26,8 @@ export class StepFiveFormOneComponent implements OnInit, AfterViewInit {
 
   course?: CourseModel;
 
-  signatureType: string = '';
-  signatureModalOpened: boolean = true;
+  signatureType: '' | 'offering' | 'cost' = '';
+  signatureModalOpened: boolean = false;
   submitModalOpened: boolean = false;
 
   // Variáveis para o canvas
@@ -44,6 +46,14 @@ export class StepFiveFormOneComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+    this.loadCourse();
+  }
+
+  ngAfterViewInit(): void {
+    this.loadSignatureCanvas();
+  }
+
+  loadCourse() {
     this.courseService.getOne(this.courseId).subscribe({
       next: (response) => {
         this.course = response;
@@ -52,10 +62,6 @@ export class StepFiveFormOneComponent implements OnInit, AfterViewInit {
         alert(error.error);
       },
     });
-  }
-
-  ngAfterViewInit(): void {
-    this.loadSignatureCanvas();
   }
 
   openSubmitModal(): void {
@@ -81,6 +87,10 @@ export class StepFiveFormOneComponent implements OnInit, AfterViewInit {
     this.canvasContext!.fillRect(0, 0, this.canvas.width, this.canvas.height);
     this.canvasContext!.strokeStyle = '#000';
     this.canvasContext!.lineWidth = 3;
+  }
+
+  clearSignatureCanvas() {
+    this.loadSignatureCanvas();
   }
 
   startDrawing(event: MouseEvent): void {
@@ -114,11 +124,53 @@ export class StepFiveFormOneComponent implements OnInit, AfterViewInit {
     this.isDrawing = false;
   }
 
-  exportCanvas(): void {
+  exportSignature(type: 'oferecimento' | 'custo-oferecimento'): void {
     const anchor = document.createElement('a');
 
     anchor.href = this.canvas.toDataURL('image/jpeg', 1.0);
-    anchor.download = 'my-canvas.jpeg';
+    anchor.download = `${this.courseId}-assinatura-${type}.jpeg`;
     anchor.click();
+
+    this.clearSignatureCanvas();
+  }
+
+  handleSendSignature() {
+    if (this.signatureType === 'offering') {
+      const updateOfferingDTO = new UpdateOfferingDTO({
+        stepFiveFormOneValues: { assinatura_status: 'Assinado' },
+      });
+
+      this.courseService
+        .updateOffering(this.courseId, updateOfferingDTO)
+        .subscribe({
+          next: () => {
+            this.loadCourse();
+            this.exportSignature('oferecimento');
+            this.closeSignatureModal();
+          },
+          error: ({ error }) => {
+            alert(error.error);
+          },
+        });
+    }
+
+    if (this.signatureType === 'cost') {
+      const updateOfferingCostDTO = new UpdateOfferingCostDTO({
+        stepFiveFormOneValues: { assinatura_status: 'Assinado' },
+      });
+
+      this.courseService
+        .updateOfferingCost(this.courseId, updateOfferingCostDTO)
+        .subscribe({
+          next: () => {
+            this.loadCourse();
+            this.exportSignature('custo-oferecimento');
+            this.closeSignatureModal();
+          },
+          error: ({ error }) => {
+            alert(error.error);
+          },
+        });
+    }
   }
 }

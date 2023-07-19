@@ -34,6 +34,7 @@
           type="button"
           class="flex items-center px-[14px] py-2 gap-2"
           (click)="openSignatureModal('offering')"
+          [disabled]="course?.oferecimento?.assinatura_status === 'Assinado'"
         >
           <img
             src="../../../../../../../../assets/svgs/edit.svg"
@@ -43,8 +44,24 @@
             Dados do oferecimento
           </p>
         </button>
-        <div class="h-fit px-2 py-0.5 rounded-2xl bg-orange-100">
-          <p class="font-medium text-xs text-orange-500">
+        <div
+          [ngClass]="{
+            'bg-orange-100':
+              course?.oferecimento?.assinatura_status === 'Pendente',
+            'bg-emerald-100':
+              course?.oferecimento?.assinatura_status === 'Assinado'
+          }"
+          class="h-fit px-2 py-0.5 rounded-2xl"
+        >
+          <p
+            [ngClass]="{
+              'text-orange-600':
+                course?.oferecimento?.assinatura_status === 'Pendente',
+              'text-emerald-600':
+                course?.oferecimento?.assinatura_status === 'Assinado'
+            }"
+            class="font-medium text-xs"
+          >
             {{ course?.oferecimento?.assinatura_status }}
           </p>
         </div>
@@ -54,6 +71,10 @@
           type="button"
           class="flex items-center px-[14px] py-2 gap-2"
           (click)="openSignatureModal('cost')"
+          [disabled]="
+            course?.oferecimento?.custos_oferecimento?.assinatura_status ===
+            'Assinado'
+          "
         >
           <img
             src="../../../../../../../../assets/svgs/edit.svg"
@@ -63,8 +84,28 @@
             Custos do oferecimento
           </p>
         </button>
-        <div class="h-fit px-2 py-0.5 rounded-2xl bg-orange-100">
-          <p class="font-medium text-xs text-orange-500">
+        <div
+          [ngClass]="{
+            'bg-orange-100':
+              course?.oferecimento?.custos_oferecimento?.assinatura_status ===
+              'Pendente',
+            'bg-emerald-100':
+              course?.oferecimento?.custos_oferecimento?.assinatura_status ===
+              'Assinado'
+          }"
+          class="h-fit px-2 py-0.5 rounded-2xl"
+        >
+          <p
+            [ngClass]="{
+              'text-orange-600':
+                course?.oferecimento?.custos_oferecimento?.assinatura_status ===
+                'Pendente',
+              'text-emerald-600':
+                course?.oferecimento?.custos_oferecimento?.assinatura_status ===
+                'Assinado'
+            }"
+            class="font-medium text-xs"
+          >
             {{ course?.oferecimento?.custos_oferecimento?.assinatura_status }}
           </p>
         </div>
@@ -149,6 +190,11 @@
       <button
         [routerLink]="['/professor', 'offerings']"
         class="px-4 py-[10px] rounded-lg bg-violet-600 font-semibold text-sm text-white"
+        [disabled]="
+          course?.oferecimento?.assinatura_status === 'Pendente' ||
+          course?.oferecimento?.custos_oferecimento?.assinatura_status ===
+            'Pendente'
+        "
       >
         Confimar
       </button>
@@ -167,8 +213,17 @@
     class="flex flex-col gap-y-6 p-6 bg-white rounded-2xl w-[1000px] h-[630px]"
   >
     <div class="flex justify-between">
-      <h1 class="font-semibold text-lg text-gray-900">
+      <h1
+        *ngIf="signatureType === 'offering'"
+        class="font-semibold text-lg text-gray-900"
+      >
         Assinatura de Dados do oferecimento
+      </h1>
+      <h1
+        *ngIf="signatureType === 'cost'"
+        class="font-semibold text-lg text-gray-900"
+      >
+        Assinatura de Custos do Oferecimento
       </h1>
       <div class="flex items-center justify-center w-11 h-11">
         <button (click)="closeSignatureModal()" class="w-6 h-6">
@@ -192,12 +247,15 @@
       <div class="absolute bottom-6 gap-x-4 left-1/2 -translate-x-1/2 z-50">
         <button
           class="px-4 py-[10px] rounded-lg font-semibold text-sm text-violet-700"
+          type="button"
+          (click)="clearSignatureCanvas()"
         >
-          Opções
+          Limpar
         </button>
         <button
           class="px-4 py-[10px] rounded-lg bg-violet-600 font-semibold text-sm text-white"
-          (click)="exportCanvas()"
+          type="button"
+          (click)="handleSendSignature()"
         >
           Assinar
         </button>
