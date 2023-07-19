@@ -22,7 +22,7 @@
         'Cursos',
         'Meus cursos',
         'Ver todos os cursos',
-        '{{course.name}}',
+        course?.nome,
         'Inscrição'
       ]"
     ></app-header-navbar>
@@ -34,10 +34,11 @@
   >
     <h1 class="px-8 py-6 font-semibold text-lg text-gray-900">Inscrição</h1>
     <p class="px-8 font-normal text-sm text-black">
-      FOP-0472 - BIOQUÍMICA E FISIOLOGIA APLICADAS AO TREINAMENTO FÍSICO<br />
-      Oferecimento 005<br />
-      24 de abril a 16 de julho<br />
-      Curso de extensão<br />
+      {{ course?.sigla }} - {{ course?.nome }}<br />
+      Oferecimento 001<br />
+      {{ formatDate(course?.oferecimento?.data_inicio) }} a
+      {{ formatDate(course?.oferecimento?.data_encerramento) }}<br />
+      {{ course?.tipo }}<br />
     </p>
     <div class="flex flex-col py-6 gap-8 mx-auto w-[1072px]">
       <app-steps
@@ -84,6 +85,8 @@
       <!--Formulário - Step3 -->
       <app-course-subscription-step-three
         *ngIf="currentStep === 2"
+        [courseId]="courseId"
+        [stepThreeForm]="stepThreeForm"
         (backStep)="backStep()"
         (nextStep)="nextStep()"
       ></app-course-subscription-step-three>
@@ -91,8 +94,9 @@
       <!--Formulário - Step4 -->
       <app-course-subscription-step-four
         *ngIf="currentStep === 3"
+        [stepFourForm]="stepFourForm"
+        (handleSubscribeToCourse)="handleSubscribeToCourse()"
         (backStep)="backStep()"
-        (nextStep)="nextStep()"
       ></app-course-subscription-step-four>
     </div>
   </div>

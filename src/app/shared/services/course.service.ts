@@ -21,6 +21,7 @@ import { CreateOfferingCostTaxDTO } from '../dtos/create-offering-cost-tax.dto';
 import { CreateOfferingCostConditionDTO } from '../dtos/create-offering-cost-condition.dto';
 import { UpdateOfferingDTO } from '../dtos/update-offering.dto';
 import { UpdateOfferingCostDTO } from '../dtos/update-offering-cost.dto';
+import { SubscribeCourseDTO } from '../dtos/subscribe-course.dto';
 
 @Injectable({
   providedIn: 'root',
@@ -339,6 +340,23 @@ export class CourseService {
     return this.http.post<OfferingCostConditionModel>(
       `${this.baseURL}/${courseId}/custos-oferecimento/condicoes`,
       createOfferingCostConditionDTO,
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+  }
+
+  subscribeToCourse(courseId: string, subscribeCourseDTO: SubscribeCourseDTO) {
+    const accessToken = this.verifyAccess();
+
+    console.log(JSON.stringify(subscribeCourseDTO));
+
+    return this.http.post<OfferingCostConditionModel>(
+      `${this.baseURL}/${courseId}/inscrever`,
+      subscribeCourseDTO,
       {
         headers: {
           Authorization: `Bearer ${accessToken}`,

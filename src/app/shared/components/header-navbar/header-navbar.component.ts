@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
-type HeaederRoutes = Array<string>;
+type HeaederRoutes = Array<string | undefined>;
 
 @Component({
   selector: 'app-header-navbar',

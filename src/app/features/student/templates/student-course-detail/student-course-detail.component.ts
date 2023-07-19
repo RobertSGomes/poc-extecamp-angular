@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CourseModel } from 'src/app/shared/models/course.model';
 import { formatDate } from 'src/app/shared/utils/format-date.util';
 import { ProfessorModel } from 'src/app/features/professor/models/professor.model';
+import { getUserId } from 'src/app/shared/utils/user-id.util';
 
 @Component({
   selector: 'student-course-detail',
@@ -12,11 +13,12 @@ import { ProfessorModel } from 'src/app/features/professor/models/professor.mode
   styleUrls: ['./student-course-detail.component.css'],
 })
 export class StudentCourseDetailComponent implements OnInit {
+  studentId: string | null = getUserId();
   course?: CourseModel;
 
   constructor(
     private readonly router: Router,
-    private activatedRoute: ActivatedRoute,
+    private readonly activatedRoute: ActivatedRoute,
     private readonly professorService: ProfessorService,
     private readonly courseService: CourseService
   ) {}
@@ -40,6 +42,10 @@ export class StudentCourseDetailComponent implements OnInit {
         this.router.navigate(['/student', 'courses']);
       },
     });
+  }
+
+  isAlreadySubscribed() {
+    return !this.course!.alunos.find((aluno) => aluno.id === this.studentId);
   }
 
   formatDate = formatDate;

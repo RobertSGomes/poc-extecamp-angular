@@ -1,14 +1,13 @@
+import { SubscribeCourseDTO } from './../../../../shared/dtos/subscribe-course.dto';
+import { CourseService } from 'src/app/shared/services/course.service';
 import { Component, OnInit } from '@angular/core';
 import { StudentModel } from '../../models/student.model';
 import { getUserId } from '../../../../../app/shared/utils/user-id.util';
 import { StudentService } from '../../student.service';
-import {
-  AbstractControl,
-  FormBuilder,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
+import { CourseModel } from 'src/app/shared/models/course.model';
+import { formatDate } from 'src/app/shared/utils/format-date.util';
 
 @Component({
   selector: 'student-course-registration',
@@ -21,11 +20,24 @@ export class StudentCourseRegistrationComponent implements OnInit {
   student!: StudentModel;
   form?: FormGroup;
 
+  course?: CourseModel;
+
+  signature = false;
+  documentosUpload = false;
+  cpfUpload = false;
+  declaracaoUpload = false;
+
   constructor(
     private readonly studentService: StudentService,
+    private readonly courseService: CourseService,
     private readonly formBuilder: FormBuilder,
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly activatedRoute: ActivatedRoute
   ) {}
+
+  get courseId() {
+    return this.activatedRoute.snapshot.paramMap.get('course_id') as string;
+  }
 
   async ngOnInit(): Promise<void> {
     this.studentService.getOne(getUserId()).subscribe({
@@ -35,6 +47,19 @@ export class StudentCourseRegistrationComponent implements OnInit {
       },
       error: () => {
         this.router.navigate(['']);
+      },
+    });
+
+    this.loadCourse();
+  }
+
+  loadCourse() {
+    this.courseService.getOne(this.courseId).subscribe({
+      next: (response) => {
+        this.course = response;
+      },
+      error: () => {
+        this.router.navigate(['/student', 'courses']);
       },
     });
   }
@@ -98,6 +123,14 @@ export class StudentCourseRegistrationComponent implements OnInit {
         cidade: [student.endereco?.cidade ?? '', [Validators.required]],
         pais: [student.endereco?.pais_residencia ?? '', [Validators.required]],
       }),
+      step3: this.formBuilder.group({
+        termo_compromisso_assinado: [false],
+      }),
+      step4: this.formBuilder.group({
+        documentos_upload: [false],
+        cpf_upload: [false],
+        declaracao_upload: [false],
+      }),
     });
   }
 
@@ -109,6 +142,16 @@ export class StudentCourseRegistrationComponent implements OnInit {
     return this.form?.get('step2') as FormGroup;
   }
 
+  get stepThreeForm() {
+    return this.form?.get('step3') as FormGroup;
+  }
+
+  get stepFourForm() {
+    return this.form?.get('step4') as FormGroup;
+  }
+
+  formatDate = formatDate;
+
   nextStep(): void {
     document.querySelector('#form-student')!.scrollTo(0, 0);
     this.currentStep++;
@@ -117,5 +160,25 @@ export class StudentCourseRegistrationComponent implements OnInit {
   backStep(): void {
     document.querySelector('#form-student')!.scrollTo(0, 0);
     this.currentStep--;
+  }
+
+  handleSubscribeToCourse() {
+    const subscribeCourseDTO = new SubscribeCourseDTO({
+      stepOneValues: this.stepOneForm.value,
+      stepTwoValues: this.stepTwoForm.value,
+      stepThreeValues: this.stepThreeForm.value,
+      stepFourValues: this.stepFourForm.value,
+    });
+
+    this.courseService
+      .subscribeToCourse(this.courseId, subscribeCourseDTO)
+      .subscribe({
+        next: () => {
+          this.router.navigate(['/student']);
+        },
+        error: ({ error }) => {
+          alert(error.error);
+        },
+      });
   }
 }

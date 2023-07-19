@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { createMask } from '@ngneat/input-mask';
@@ -10,6 +11,12 @@ import { LocationService } from 'src/app/shared/services/location.service';
   styleUrls: ['./course-subscription-step-one.component.css'],
 })
 export class CourseSubscriptionStepOneComponent implements OnInit {
+  rgMask = createMask({
+    mask: '99.999.999-9',
+  });
+  phoneMask = createMask({
+    mask: '+55 (99) 9 9999-9999',
+  });
   cpfMask = createMask({
     mask: '999.999.999-99',
   });
@@ -21,10 +28,17 @@ export class CourseSubscriptionStepOneComponent implements OnInit {
   @Input() stepOneForm!: FormGroup;
   @Output() nextStep: EventEmitter<void> = new EventEmitter<void>();
 
-  constructor(private readonly locationService: LocationService) {}
+  constructor(
+    private readonly locationService: LocationService,
+    private readonly activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.loadCountries();
+  }
+
+  get courseId() {
+    return this.activatedRoute.snapshot.paramMap.get('course_id') as string;
   }
 
   get selectedCountry() {

@@ -18,12 +18,7 @@
 
   <div class="col-start-2 row-start-2 w-full">
     <app-header-navbar
-      [routes]="[
-        'Cursos',
-        'Meus cursos',
-        'Ver todos os cursos',
-        '{{course.name}}'
-      ]"
+      [routes]="['Cursos', 'Meus cursos', 'Ver todos os cursos', course?.nome]"
     ></app-header-navbar>
   </div>
 
@@ -84,6 +79,7 @@
               </div>
             </div>
             <button
+              *ngIf="isAlreadySubscribed()"
               class="rounded-lg w-fit h-fit px-[18px] py-[10px] bg-violet-600 border border-violet-600 font-semibold text-base text-white shadow-sm"
               [routerLink]="['/student', 'courses', courseId, 'register']"
             >
