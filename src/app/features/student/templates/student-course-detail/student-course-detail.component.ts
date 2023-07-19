@@ -6,6 +6,8 @@ import { CourseModel } from 'src/app/shared/models/course.model';
 import { formatDate } from 'src/app/shared/utils/format-date.util';
 import { ProfessorModel } from 'src/app/features/professor/models/professor.model';
 import { getUserId } from 'src/app/shared/utils/user-id.util';
+import { StudentModel } from '../../models/student.model';
+import { StudentService } from '../../student.service';
 
 @Component({
   selector: 'student-course-detail',
@@ -14,11 +16,13 @@ import { getUserId } from 'src/app/shared/utils/user-id.util';
 })
 export class StudentCourseDetailComponent implements OnInit {
   studentId: string | null = getUserId();
+  student!: StudentModel;
   course?: CourseModel;
 
   constructor(
     private readonly router: Router,
     private readonly activatedRoute: ActivatedRoute,
+    private readonly studentService: StudentService,
     private readonly professorService: ProfessorService,
     private readonly courseService: CourseService
   ) {}
@@ -28,6 +32,15 @@ export class StudentCourseDetailComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.studentService.getOne(getUserId()).subscribe({
+      next: (data) => {
+        this.student = data;
+      },
+      error: () => {
+        this.router.navigate(['']);
+      },
+    });
+
     this.loadCourse();
   }
 

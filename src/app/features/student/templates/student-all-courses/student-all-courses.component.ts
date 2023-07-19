@@ -2,6 +2,10 @@ import { CourseService } from 'src/app/shared/services/course.service';
 import { Component, OnInit } from '@angular/core';
 import { CourseModel } from 'src/app/shared/models/course.model';
 import { formatDate } from 'src/app/shared/utils/format-date.util';
+import { getUserId } from 'src/app/shared/utils/user-id.util';
+import { StudentModel } from '../../models/student.model';
+import { StudentService } from '../../student.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'student-all-courses',
@@ -9,11 +13,27 @@ import { formatDate } from 'src/app/shared/utils/format-date.util';
   styleUrls: ['./student-all-courses.component.css'],
 })
 export class StudentAllCoursesComponent implements OnInit {
-  constructor(private readonly courseService: CourseService) {}
+  studentId: string | null = getUserId();
+  student!: StudentModel;
+
+  constructor(
+    private readonly studentService: StudentService,
+    private readonly courseService: CourseService,
+    private readonly router: Router
+  ) {}
 
   courses: { result: CourseModel[]; total: number } = { result: [], total: 0 };
 
   ngOnInit(): void {
+    this.studentService.getOne(getUserId()).subscribe({
+      next: (data) => {
+        this.student = data;
+      },
+      error: () => {
+        this.router.navigate(['']);
+      },
+    });
+
     this.loadAllCourses();
   }
 

@@ -35,7 +35,13 @@ export interface CourseModel {
   docentes_vinculo: any[];
   docentes_sem_vinculo: any[];
   palestrantes: any[];
-  alunos: any[];
+  alunos: {
+    id: string;
+    termo_compromisso_assinado: boolean;
+    documentos_upload: boolean;
+    cpf_upload: boolean;
+    declaracao_upload: boolean;
+  }[];
   oferecimento?: OfferingModel | null;
   created_by: string;
   created_at: string;

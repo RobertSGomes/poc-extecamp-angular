@@ -371,9 +371,8 @@ export class CourseService {
       this.router.navigate(['']);
     }
 
-    return (
-      (this.accessTokenProfessor as string) ??
-      (this.accessTokenStudent as string)
-    );
+    return this.accessTokenProfessor
+      ? (this.accessTokenProfessor as string)
+      : (this.accessTokenStudent as string);
   }
 }

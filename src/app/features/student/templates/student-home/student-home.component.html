@@ -32,20 +32,42 @@
     >
       <!-- Notificação 1 -->
       <section
-        *ngIf="registeredCourses.length > 0"
+        *ngIf="nextCourseWithTermNotification"
         class="flex p-4 gap-x-6 rounded-xl bg-orange-50 border border-orange-300 shadow-sm"
       >
         <div
-          class="relative w-4 h-4 rounded-full bg-orange-600 before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:w-[28px] before:h-[28px] before:rounded-full before:border-2 before:border-orange-600/30 after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:w-[38px] after:h-[38px] after:rounded-full after:border-2 after:border-orange-600/10"
-        ></div>
+          class="relative w-5 h-5 rounded-full before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:w-[28px] before:h-[28px] before:rounded-full before:border-2 before:border-orange-600/30 after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:w-[38px] after:h-[38px] after:rounded-full after:border-2 after:border-orange-600/10"
+        >
+          <img
+            src="../../../../../assets/svgs/alert-circle.svg"
+            class="w-5 h-5"
+          />
+        </div>
         <div class="flex flex-1 flex-col gap-y-3">
           <div class="flex flex-col gap-1">
-            <h1 class="font-semibold text-sm text-orange-700">
-              Atenção! Termo de compromisso disponível para assinatura
-            </h1>
+            <div class="flex items-start justify-between">
+              <h1 class="font-semibold text-sm text-orange-700">
+                Atenção! Termo de compromisso disponível para assinatura
+              </h1>
+              <button
+                type="button"
+                (click)="
+                  handleCloseNotification(
+                    nextCourseWithTermNotification.id,
+                    'termo'
+                  )
+                "
+              >
+                <img
+                  src="../../../../../assets/svgs/x-close-orange.svg"
+                  class="w-5 h-5"
+                />
+              </button>
+            </div>
             <p class="flex-1 font-normal text-sm text-orange-600">
               Sua assinatura é necessária para confirmar sua inscrição no curso
-              BIO-0083 - BIOQUÍMICA E FISIOLOGIA APLICADAS AO TREINAMENTO FÍSICO
+              {{ nextCourseWithTermNotification.sigla }} -
+              {{ nextCourseWithTermNotification.nome }}
               e garantir que você esteja ciente das responsabilidades e
               obrigações envolvidas.
               <br /><br />
@@ -66,22 +88,43 @@
 
       <!-- Notificação 2 -->
       <section
-        *ngIf="registeredCourses.length > 0"
+        *ngIf="nextCourseWithUploadNotification"
         class="flex p-4 gap-x-6 rounded-xl bg-orange-50 border border-orange-300 shadow-sm"
       >
         <div
-          class="relative w-4 h-4 rounded-full bg-orange-600 before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:w-[28px] before:h-[28px] before:rounded-full before:border-2 before:border-orange-600/30 after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:w-[38px] after:h-[38px] after:rounded-full after:border-2 after:border-orange-600/10"
-        ></div>
+          class="relative w-5 h-5 rounded-full before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:w-[28px] before:h-[28px] before:rounded-full before:border-2 before:border-orange-600/30 after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:w-[38px] after:h-[38px] after:rounded-full after:border-2 after:border-orange-600/10"
+        >
+          <img
+            src="../../../../../assets/svgs/alert-circle.svg"
+            class="w-5 h-5"
+          />
+        </div>
         <div class="flex flex-1 flex-col gap-y-3">
           <div class="flex flex-col gap-1">
-            <h1 class="font-semibold text-sm text-orange-700">
-              Atenção! Realize o upload de documentos obrigatórios para
-              finalização da sua inscrição.
-            </h1>
+            <div class="flex items-start justify-between">
+              <h1 class="flex-1 font-semibold text-sm text-orange-700">
+                Atenção! Realize o upload de documentos obrigatórios para
+                finalização da sua inscrição.
+              </h1>
+              <button
+                type="button"
+                (click)="
+                  handleCloseNotification(
+                    nextCourseWithUploadNotification.id,
+                    'uploads'
+                  )
+                "
+              >
+                <img
+                  src="../../../../../assets/svgs/x-close-orange.svg"
+                  class="w-5 h-5"
+                />
+              </button>
+            </div>
             <p class="flex-1 font-normal text-sm text-orange-600">
               O envio dos documentos é necessário para confirmar sua inscrição
-              no curso BIO-0083 - BIOQUÍMICA E FISIOLOGIA APLICADAS AO
-              TREINAMENTO FÍSICO.
+              no curso {{ nextCourseWithUploadNotification.sigla }} -
+              {{ nextCourseWithUploadNotification.nome }}.
             </p>
           </div>
           <div class="flex gap-x-3">
@@ -150,7 +193,9 @@
               class="p-3 bg-gray-100 text-left font-medium text-xs text-gray-700"
             ></th>
           </thead>
-          <tbody *ngFor="let registeredCourse of registeredCourses">
+          <tbody
+            *ngFor="let registeredCourse of registeredCourses; let i = index"
+          >
             <tr>
               <td
                 class="p-3 bg-white text-left font-medium text-sm text-gray-900 border-b border-b-gray-200"
@@ -160,7 +205,7 @@
               <td
                 class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200 w-[121px]"
               >
-                {{ registeredCourse.oferecimento }}
+                {{ formatIndex(i) }}
               </td>
               <td
                 class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200 w-[297px]"
@@ -182,14 +227,19 @@
                 </div>
               </td>
               <td
-                class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200"
+                class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200 uppercase"
               >
-                {{ registeredCourse.inscricao }}
+                {{ verifySubscription(registeredCourse.aluno_inscricao) }}
               </td>
               <td
                 class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200 w-[72px]"
               >
-                <button class="w-4 h-4 rounded-sm bg-gray-300"></button>
+                <button class="flex items-center justify-center">
+                  <img
+                    src="../../../../../assets/svgs/more.svg"
+                    class="w-4 h-4"
+                  />
+                </button>
               </td>
             </tr>
           </tbody>

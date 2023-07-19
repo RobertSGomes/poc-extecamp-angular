@@ -1,5 +1,7 @@
 <div class="grid grid-rows-[0px_auto_1fr] grid-cols-[300px_1fr] h-screen">
   <app-sidebar
+    [name]="student.nome"
+    [email]="student.email"
     [navItens]="[
       {
         title: 'Página inicial',
