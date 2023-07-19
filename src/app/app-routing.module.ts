@@ -20,9 +20,12 @@ const routes: Routes = [
   { path: 'professor/offerings/new', component: ProfessorNewOfferingComponent },
   { path: 'student', component: StudentHomeComponent },
   { path: 'student/courses', component: StudentAllCoursesComponent },
-  { path: 'student/courses/:id', component: StudentCourseDetailComponent },
   {
-    path: 'student/courses/:id/register',
+    path: 'student/courses/:course_id',
+    component: StudentCourseDetailComponent,
+  },
+  {
+    path: 'student/courses/:course_id/register',
     component: StudentCourseRegistrationComponent,
   },
 ];

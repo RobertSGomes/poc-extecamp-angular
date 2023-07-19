@@ -10,36 +10,42 @@ import { Observable } from 'rxjs';
 })
 export class ProfessorService {
   private apiURL: string = 'http://localhost:3000/professores';
-  private accessToken: string | null = getAccessToken('professor');
+  private accessTokenProfessor: string | null = getAccessToken('professor');
+  private accessTokenStudent: string | null = getAccessToken('student');
 
   constructor(private readonly http: HttpClient, private router: Router) {}
 
   getOne(professorId: string | null): Observable<ProfessorModel> {
-    this.verifyAccess();
+    const accessToken = this.verifyAccess();
 
     return this.http.get<ProfessorModel>(`${this.apiURL}/${professorId}`, {
       headers: {
-        Authorization: `Bearer ${this.accessToken}`,
+        Authorization: `Bearer ${accessToken}`,
       },
     });
   }
 
   getAll(): Observable<{ result: ProfessorModel[]; total: number }> {
-    this.verifyAccess();
+    const accessToken = this.verifyAccess();
 
     return this.http.get<{ result: ProfessorModel[]; total: number }>(
       `${this.apiURL}/`,
       {
         headers: {
-          Authorization: `Bearer ${this.accessToken}`,
+          Authorization: `Bearer ${accessToken}`,
         },
       }
     );
   }
 
-  verifyAccess(): void {
-    if (!this.accessToken) {
+  verifyAccess(): string {
+    if (!this.accessTokenProfessor && !this.accessTokenStudent) {
       this.router.navigate(['']);
     }
+
+    return (
+      (this.accessTokenProfessor as string) ??
+      (this.accessTokenStudent as string)
+    );
   }
 }

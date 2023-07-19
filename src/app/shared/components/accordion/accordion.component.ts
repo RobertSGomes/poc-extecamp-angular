@@ -1,4 +1,11 @@
-import { Component, ContentChildren, Input, QueryList } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ContentChildren,
+  Input,
+  OnInit,
+  QueryList,
+} from '@angular/core';
 
 @Component({
   selector: 'app-accordion',

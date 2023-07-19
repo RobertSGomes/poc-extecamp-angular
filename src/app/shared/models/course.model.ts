@@ -97,7 +97,7 @@ export interface OfferingCostModel {
   created_at: string;
   updated_at: string;
   taxas_custos_oferecimento?: OfferingCostTaxModel | null;
-  condicoes_custos_oferecimento?: any | null;
+  condicoes_custos_oferecimento?: OfferingCostConditionModel | null;
 }
 
 export interface OfferingCostTaxModel {

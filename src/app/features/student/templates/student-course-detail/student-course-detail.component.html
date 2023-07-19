@@ -37,30 +37,43 @@
       >
         <div class="flex flex-col flex-1 gap-y-8">
           <div class="flex flex-col gap-2">
-            <h2 class="font-normal text-base text-black h-[40px]">
-              CURSO DE EXTENSÃO
+            <h2 class="font-normal text-base text-black h-[40px] uppercase">
+              {{ course?.tipo }}
             </h2>
-            <h1 class="font-semibold text-2xl text-black">
-              BIOQUÍMICA E FISIOLOGIA APLICADAS AO TREINAMENTO FÍSICO
+            <h1 class="font-semibold text-2xl text-black uppercase">
+              {{ course?.nome }}
             </h1>
           </div>
           <p class="font-normal text-base text-gray-600">
-            Oferecer um curso que forneça uma visão integrada das respostas
-            metabólicas e fisiológicas em diferentes situações de exercícios,
-            que possa ser facilmente transposta para a prática profissional.
-            Esse conhecimento constitui o alicerce para que os profissionais
-            tenham maior segurança nas tomadas de decisões sobre os meios e
-            métodos de treino
+            {{ course?.objetivo }}
           </p>
           <p class="font-medium text-lg text-black uppercase">
-            Inscrições de 24 de abril a 16 de julho
+            Inscrições de
+            {{ formatDate(course?.oferecimento?.inscricao?.data_abertura) }}
+            a
+            {{ formatDate(course?.oferecimento?.inscricao?.data_encerramento) }}
           </p>
           <div class="flex justify-between items-center">
-            <div class="flex flex-col gap-2">
+            <div
+              *ngIf="
+                course?.oferecimento?.custos_oferecimento
+                  ?.condicoes_custos_oferecimento?.curso_gratuito
+              "
+              class="flex flex-col gap-2"
+            >
+              <h1 class="font-semibold text-5xl">GRATUITO</h1>
+            </div>
+            <div
+              *ngIf="
+                !course?.oferecimento?.custos_oferecimento
+                  ?.condicoes_custos_oferecimento?.curso_gratuito
+              "
+              class="flex flex-col gap-2"
+            >
               <p class="font-normal text-base text-black">
                 Em até 10 parcelas de
               </p>
-              <h1 class="font-semibold text-5xl">R$ 249,00*</h1>
+              <h1 class="font-semibold text-5xl">R$ 249,90*</h1>
               <div>
                 <p class="font-normal text-sm text-black">
                   Boleto bancário ou cartão de crédito
@@ -72,7 +85,7 @@
             </div>
             <button
               class="rounded-lg w-fit h-fit px-[18px] py-[10px] bg-violet-600 border border-violet-600 font-semibold text-base text-white shadow-sm"
-              [routerLink]="['/student', 'courses', '123456', 'register']"
+              [routerLink]="['/student', 'courses', courseId, 'register']"
             >
               Inscreva-se
             </button>
@@ -88,22 +101,36 @@
             <div class="flex items-center justify-center w-[66px] h-[66px]">
               <div
                 class="flex items-center justify-center w-[56px] h-[56px] rounded-full bg-gray-100 border-[10px] border-gray-50"
-              ></div>
+              >
+                <img
+                  src="../../../../../assets/svgs/book-open.svg"
+                  class="w-[28px] h-[28px]"
+                />
+              </div>
             </div>
             <div class="flex flex-col justify-center gap-2 w-[234px]">
               <p class="font-bold text-sm text-gray-700">Modalidade</p>
-              <p class="font-normal text-sm text-gray-600">Online</p>
+              <p class="font-normal text-sm text-gray-600">
+                {{ course?.forma_realizacao }}
+              </p>
             </div>
           </div>
           <div class="flex gap-5">
             <div class="flex items-center justify-center w-[66px] h-[66px]">
               <div
                 class="flex items-center justify-center w-[56px] h-[56px] rounded-full bg-gray-100 border-[10px] border-gray-50"
-              ></div>
+              >
+                <img
+                  src="../../../../../assets/svgs/calendar-check.svg"
+                  class="w-[28px] h-[28px]"
+                />
+              </div>
             </div>
             <div class="flex flex-col justify-center gap-2 w-[234px]">
               <p class="font-bold text-sm text-gray-700">Duração</p>
-              <p class="font-normal text-sm text-gray-600">8 semanas</p>
+              <p class="font-normal text-sm text-gray-600">
+                {{ getWeekAmountByHours() }} semanas
+              </p>
             </div>
           </div>
         </div>
@@ -112,18 +139,30 @@
             <div class="flex items-center justify-center w-[66px] h-[66px]">
               <div
                 class="flex items-center justify-center w-[56px] h-[56px] rounded-full bg-gray-100 border-[10px] border-gray-50"
-              ></div>
+              >
+                <img
+                  src="../../../../../assets/svgs/clock-stopwatch.svg"
+                  class="w-[28px] h-[28px]"
+                />
+              </div>
             </div>
             <div class="flex flex-col justify-center gap-2 w-[234px]">
               <p class="font-bold text-sm text-gray-700">Carga horária</p>
-              <p class="font-normal text-sm text-gray-600">40 horas</p>
+              <p class="font-normal text-sm text-gray-600">
+                {{ getCargaHoraria() }} horas
+              </p>
             </div>
           </div>
           <div class="flex gap-5">
             <div class="flex items-center justify-center w-[66px] h-[66px]">
               <div
                 class="flex items-center justify-center w-[56px] h-[56px] rounded-full bg-gray-100 border-[10px] border-gray-50"
-              ></div>
+              >
+                <img
+                  src="../../../../../assets/svgs/certificate.svg"
+                  class="w-[28px] h-[28px]"
+                />
+              </div>
             </div>
             <div class="flex flex-col justify-center gap-2 w-[234px]">
               <p class="font-bold text-sm text-gray-700">Certificado</p>
@@ -139,58 +178,50 @@
       <section class="flex flex-col w-[912px] gap-8">
         <app-accordion
           title="Ementa"
-          content="
-            Uniformizando a linguagem da prática de atividade física com os
-            processos fisiológicos participantes; <br /><br />
-            Ativação neural fundamentada nas capacidades de força, potência e
-            resistência; <br /><br />
-            Entendendo a transmissão do impulso nervoso; <br /><br />
-            Ações Musculares: concêntrica, excêntrica e isométrica; <br /><br />
-            Recrutamento de Unidades Motoras em diferentes domínios de
-            intensidade; <br /><br />
-            Entendendo molecularmente os métodos de treino de força e potência e
-            as possíveis respostas neuromusculares produzidas; <br /><br />
-            Degradação de reservas corporais em diferentes tempos e intensidades
-            de exercício: ATP e noções de termodinâmica; Fosfocreatina,
-            Glicogênio e Lipídeos como fonte de energia aeróbia e anaeróbia; <br /><br />
-            Caracterização dos metabolismos predominantes durante exercícios
-            incrementais, intervalados e exercícios contínuos de longa
-            duração; <br /><br />
-            Hormônios envolvidos na resposta a diferentes tipos de exercício.
-            Integração metabólica; <br /><br />
-            Entendendo molecularmente os métodos de treino de resistência e as
-            possíveis respostas neuromusculares produzidas.
-          "
+          content="{{ formatHTML(course?.ementa) }}"
         ></app-accordion>
         <app-accordion
           title="Professores"
           content="
-            Professor(a) responsável: DENISE VAZ DE MACEDO <br /><br />
+            Professor(a) responsável:  <br /><br />
             Professor(es) do curso: DENISE VAZ DE MACEDO , BERNARDO NEME IDE , JULIANA PASCUOTTE CANDIDO.
           "
         ></app-accordion>
         <app-accordion
           title="Dados do curso"
           content="
-            Período de inscrições: 24/04/2023 até 16/07/2023. <br /><br />
-            Período de oferecimento: 31/07/2023 até 06/12/2023. <br /><br />
-            Local do curso: CURSO ONLINE <br /><br />
-            Horas a Distância: 30 horas teóricas e 60 horas práticas. <br /><br />
-            Quantidade de alunos: Mínimo de 30 e máximo de 40 alunos matriculados. <br /><br />
-            Tipo do curso: CURSO DE EXTENSÃO. <br /><br />
+            Período de inscrições: {{
+            formatDateDDMMAA(course?.oferecimento?.inscricao?.data_abertura)
+          }} até {{
+            formatDateDDMMAA(course?.oferecimento?.inscricao?.data_encerramento)
+          }}. <br /><br />
+            Período de oferecimento: {{
+            formatDateDDMMAA(course?.oferecimento?.data_inicio)
+          }} até {{
+            formatDateDDMMAA(course?.oferecimento?.data_encerramento)
+          }}. <br /><br />
+            Local do curso: {{ course?.oferecimento?.local }} <br /><br />
+            Horas Presenciais: {{ getPresencialHours() }} <br /><br />
+            Horas a Distância: {{ getEadHours() }} <br /><br />
+            Quantidade de alunos: Mínimo de {{
+            course?.oferecimento?.min_vagas
+          }} e máximo de {{
+            course?.oferecimento?.max_vagas
+          }} alunos matriculados. <br /><br />
+            Tipo do curso: {{ course?.tipo }}. <br /><br />
             Certificação: Certificado.
           "
         ></app-accordion>
         <app-accordion
           title="Horários"
           content="
-            2A FEIRA E 4A FEIRA DAS 13:30H AS 16:00H E 1 SABADO POR MÊS (SET, OUT, NOV) DAS 8:30H AS 12:00H
+            {{ formatHTML(course?.oferecimento?.dias_semana_horarios) }}
           "
         ></app-accordion>
         <app-accordion
           title="Pré-requisitos"
           content="
-            Nível superior
+            {{ course?.grau_escolaridade }}
           "
         ></app-accordion>
         <app-accordion

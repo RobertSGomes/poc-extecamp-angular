@@ -33,7 +33,7 @@
             class="rounded-2xl h-fit px-2 py-0.5 bg-violet-50 border border-violet-200"
           >
             <p class="font-medium text-xs text-violet-700 whitespace-nowrap">
-              157 Cursos cadastrados
+              {{ courses.total }} Cursos cadastrados
             </p>
           </div>
         </div>
@@ -44,142 +44,55 @@
       <div
         class="flex items-center gap-2 w-[320px] h-fit px-[14px] py-[10px] rounded-lg border border-gray-300 bg-white shadow-sm"
       >
-        <div class="rounded-full bg-gray-300 w-4 h-4"></div>
+        <img src="../../../../../assets/svgs/search.svg" class="w-4 h-4" />
         <input
-          class="w-full font-normal text-base text-gray-800 outline-none placeholder:text-gray-500"
+          class="flex-1 w-full font-normal text-base text-gray-800 outline-none placeholder:text-gray-500"
           placeholder="O que você gostaria de aprender?"
         />
       </div>
       <button
         class="flex items-center gap-2 rounded-lg px-[18px] py-[10px] border h-fit bg-white border-gray-300 shadow-sm font-semibold text-base text-gray-700"
       >
-        <div class="rounded-sm bg-gray-300 w-4 h-4"></div>
+        <img
+          src="../../../../../assets/svgs/filter-lines.svg"
+          class="w-4 h-4"
+        />
         Filtros
       </button>
     </section>
     <section class="flex flex-col px-4 py-4 gap-6 w-[1072px] mx-auto">
-      <a [routerLink]="['/student', 'courses', '123456']">
+      <a
+        *ngFor="let course of courses.result"
+        [routerLink]="['/student', 'courses', course.id]"
+      >
         <div
-          class="flex px-4 py-4 gap-8 rounded-[32px] bg-white border border-gray-200 shadow-sm overflow-hidden"
+          class="flex px-4 py-4 gap-8 rounded-[32px] h-[232px] bg-white border border-gray-200 shadow-sm"
         >
           <div class="rounded-2xl w-[320px] h-[200px] bg-gray-300"></div>
-          <div class="flex flex-1 flex-col gap-6">
+          <div class="flex flex-1 flex-col gap-6 w-[656px]">
             <div class="flex flex-col gap-2">
               <p class="font-semibold text-sm text-gray-500">
-                Inscrições de 24 de abril a 16 de julho
+                Inscrições de
+                {{ formatDate(course.oferecimento?.inscricao?.data_abertura) }}
+                a
+                {{
+                  formatDate(course.oferecimento?.inscricao?.data_encerramento)
+                }}
               </p>
-              <h1 class="font-semibold text-2xl text-gray-900">
-                BIOQUÍMICA E FISIOLOGIA APLICADAS AO TREINAMENTO FÍSICO
+              <h1
+                class="font-semibold text-2xl text-gray-900 uppercase truncate"
+              >
+                {{ course.nome }}
               </h1>
             </div>
-            <p class="font-normal text-base text-gray-600">
-              Oferecer um curso que forneça uma visão integrada das respostas
-              metabólicas e fisiológicas em diferentes situações de exercícios,
-              que possa ser facilmente transposta para a prática profissional.
+            <p
+              class="font-normal text-base text-gray-600 text-ellipsis overflow-hidden h-[100px]"
+            >
+              {{ course.objetivo }}
             </p>
           </div>
         </div>
       </a>
-      <div
-        class="flex px-4 py-4 gap-8 rounded-[32px] bg-white border border-gray-200 shadow-sm overflow-hidden"
-      >
-        <div class="rounded-2xl w-[320px] h-[200px] bg-gray-300"></div>
-        <div class="flex flex-1 flex-col gap-6">
-          <div class="flex flex-col gap-2">
-            <p class="font-semibold text-sm text-gray-500">
-              Inscrições 01 a 14 Jan 2024
-            </p>
-            <h1 class="font-semibold text-2xl text-gray-900">
-              Título do Curso
-            </h1>
-          </div>
-          <p class="font-normal text-base text-gray-600">
-            Descrição do Curso: Adicione uma breve descrição do curso que
-            destaque os principais benefícios, tópicos abordados ou habilidades
-            adquiridas.
-          </p>
-        </div>
-      </div>
-      <div
-        class="flex px-4 py-4 gap-8 rounded-[32px] bg-white border border-gray-200 shadow-sm overflow-hidden"
-      >
-        <div class="rounded-2xl w-[320px] h-[200px] bg-gray-300"></div>
-        <div class="flex flex-1 flex-col gap-6">
-          <div class="flex flex-col gap-2">
-            <p class="font-semibold text-sm text-gray-500">
-              Inscrições 01 a 14 Jan 2024
-            </p>
-            <h1 class="font-semibold text-2xl text-gray-900">
-              Título do Curso
-            </h1>
-          </div>
-          <p class="font-normal text-base text-gray-600">
-            Descrição do Curso: Adicione uma breve descrição do curso que
-            destaque os principais benefícios, tópicos abordados ou habilidades
-            adquiridas.
-          </p>
-        </div>
-      </div>
-      <div
-        class="flex px-4 py-4 gap-8 rounded-[32px] bg-white border border-gray-200 shadow-sm overflow-hidden"
-      >
-        <div class="rounded-2xl w-[320px] h-[200px] bg-gray-300"></div>
-        <div class="flex flex-1 flex-col gap-6">
-          <div class="flex flex-col gap-2">
-            <p class="font-semibold text-sm text-gray-500">
-              Inscrições 01 a 14 Jan 2024
-            </p>
-            <h1 class="font-semibold text-2xl text-gray-900">
-              Título do Curso
-            </h1>
-          </div>
-          <p class="font-normal text-base text-gray-600">
-            Descrição do Curso: Adicione uma breve descrição do curso que
-            destaque os principais benefícios, tópicos abordados ou habilidades
-            adquiridas.
-          </p>
-        </div>
-      </div>
-      <div
-        class="flex px-4 py-4 gap-8 rounded-[32px] bg-white border border-gray-200 shadow-sm overflow-hidden"
-      >
-        <div class="rounded-2xl w-[320px] h-[200px] bg-gray-300"></div>
-        <div class="flex flex-1 flex-col gap-6">
-          <div class="flex flex-col gap-2">
-            <p class="font-semibold text-sm text-gray-500">
-              Inscrições 01 a 14 Jan 2024
-            </p>
-            <h1 class="font-semibold text-2xl text-gray-900">
-              Título do Curso
-            </h1>
-          </div>
-          <p class="font-normal text-base text-gray-600">
-            Descrição do Curso: Adicione uma breve descrição do curso que
-            destaque os principais benefícios, tópicos abordados ou habilidades
-            adquiridas.
-          </p>
-        </div>
-      </div>
-      <div
-        class="flex px-4 py-4 gap-8 rounded-[32px] bg-white border border-gray-200 shadow-sm overflow-hidden"
-      >
-        <div class="rounded-2xl w-[320px] h-[200px] bg-gray-300"></div>
-        <div class="flex flex-1 flex-col gap-6">
-          <div class="flex flex-col gap-2">
-            <p class="font-semibold text-sm text-gray-500">
-              Inscrições 01 a 14 Jan 2024
-            </p>
-            <h1 class="font-semibold text-2xl text-gray-900">
-              Título do Curso
-            </h1>
-          </div>
-          <p class="font-normal text-base text-gray-600">
-            Descrição do Curso: Adicione uma breve descrição do curso que
-            destaque os principais benefícios, tópicos abordados ou habilidades
-            adquiridas.
-          </p>
-        </div>
-      </div>
     </section>
   </div>
 </div>

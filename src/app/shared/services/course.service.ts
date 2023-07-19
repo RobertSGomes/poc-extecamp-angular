@@ -27,7 +27,8 @@ import { UpdateOfferingCostDTO } from '../dtos/update-offering-cost.dto';
 })
 export class CourseService {
   baseURL: string = 'http://localhost:3003/cursos';
-  accessToken: string | null = getAccessToken('professor');
+  accessTokenProfessor: string | null = getAccessToken('professor');
+  accessTokenStudent: string | null = getAccessToken('student');
 
   constructor(
     private readonly router: Router,
@@ -35,13 +36,13 @@ export class CourseService {
   ) {}
 
   getAll() {
-    this.verifyAccess();
+    const accessToken = this.verifyAccess();
 
     return this.http.get<{ result: CourseModel[]; total: number }>(
       `${this.baseURL}`,
       {
         headers: {
-          Authorization: `Bearer ${this.accessToken}`,
+          Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'application/json',
         },
       }
@@ -49,22 +50,22 @@ export class CourseService {
   }
 
   getOne(courseId: string) {
-    this.verifyAccess();
+    const accessToken = this.verifyAccess();
 
     return this.http.get<CourseModel>(`${this.baseURL}/${courseId}`, {
       headers: {
-        Authorization: `Bearer ${this.accessToken}`,
+        Authorization: `Bearer ${accessToken}`,
         'Content-Type': 'application/json',
       },
     });
   }
 
   createCourse(createCourseDTO: CreateCourseDTO) {
-    this.verifyAccess();
+    const accessToken = this.verifyAccess();
 
     return this.http.post<CourseModel>(`${this.baseURL}`, createCourseDTO, {
       headers: {
-        Authorization: `Bearer ${this.accessToken}`,
+        Authorization: `Bearer ${accessToken}`,
         'Content-Type': 'application/json',
       },
     });
@@ -74,14 +75,14 @@ export class CourseService {
     courseId: string,
     assignCoordinationDTO: AssignCoordinationDTO
   ) {
-    this.verifyAccess();
+    const accessToken = this.verifyAccess();
 
     return this.http.post<CourseModel>(
       `${this.baseURL}/${courseId}/coordenacao`,
       assignCoordinationDTO,
       {
         headers: {
-          Authorization: `Bearer ${this.accessToken}`,
+          Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'application/json',
         },
       }
@@ -89,14 +90,14 @@ export class CourseService {
   }
 
   assignUnicamp(courseId: string, assignUnicampDTO: AssignUnicampDTO) {
-    this.verifyAccess();
+    const accessToken = this.verifyAccess();
 
     return this.http.post<Array<{ id: string; carga_horaria: string }>>(
       `${this.baseURL}/${courseId}/docentes/unicamp`,
       assignUnicampDTO,
       {
         headers: {
-          Authorization: `Bearer ${this.accessToken}`,
+          Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'application/json',
         },
       }
@@ -104,13 +105,13 @@ export class CourseService {
   }
 
   unassignUnicamp(courseId: string, professorId: string) {
-    this.verifyAccess();
+    const accessToken = this.verifyAccess();
 
     return this.http.delete<Array<{ id: string; carga_horaria: string }>>(
       `${this.baseURL}/${courseId}/docentes/unicamp/${professorId}`,
       {
         headers: {
-          Authorization: `Bearer ${this.accessToken}`,
+          Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'application/json',
         },
       }
@@ -118,33 +119,33 @@ export class CourseService {
   }
 
   assignAttached(courseId: string, assignAttachedDTO: AssignAttachedDTO) {
-    this.verifyAccess();
+    const accessToken = this.verifyAccess();
 
     return this.http.post<
       Array<{ id: string; funcao: string; carga_horaria: string }>
     >(`${this.baseURL}/${courseId}/docentes/com-vinculo`, assignAttachedDTO, {
       headers: {
-        Authorization: `Bearer ${this.accessToken}`,
+        Authorization: `Bearer ${accessToken}`,
         'Content-Type': 'application/json',
       },
     });
   }
 
   unassignAttached(courseId: string, professorId: string) {
-    this.verifyAccess();
+    const accessToken = this.verifyAccess();
 
     return this.http.delete<
       Array<{ id: string; funcao: string; carga_horaria: string }>
     >(`${this.baseURL}/${courseId}/docentes/com-vinculo/${professorId}`, {
       headers: {
-        Authorization: `Bearer ${this.accessToken}`,
+        Authorization: `Bearer ${accessToken}`,
         'Content-Type': 'application/json',
       },
     });
   }
 
   assignUnattached(courseId: string, assignUnattachedDTO: AssignUnattachedDTO) {
-    this.verifyAccess();
+    const accessToken = this.verifyAccess();
 
     return this.http.post<
       Array<{
@@ -163,14 +164,14 @@ export class CourseService {
       }>
     >(`${this.baseURL}/${courseId}/docentes/sem-vinculo`, assignUnattachedDTO, {
       headers: {
-        Authorization: `Bearer ${this.accessToken}`,
+        Authorization: `Bearer ${accessToken}`,
         'Content-Type': 'application/json',
       },
     });
   }
 
   unassignUnattached(courseId: string, professorId: string) {
-    this.verifyAccess();
+    const accessToken = this.verifyAccess();
 
     return this.http.delete<
       Array<{
@@ -189,14 +190,14 @@ export class CourseService {
       }>
     >(`${this.baseURL}/${courseId}/docentes/sem-vinculo/${professorId}`, {
       headers: {
-        Authorization: `Bearer ${this.accessToken}`,
+        Authorization: `Bearer ${accessToken}`,
         'Content-Type': 'application/json',
       },
     });
   }
 
   assignSpeaker(courseId: string, assignSpeakerDTO: AssignSpeakerDTO) {
-    this.verifyAccess();
+    const accessToken = this.verifyAccess();
 
     return this.http.post<
       Array<{
@@ -212,14 +213,14 @@ export class CourseService {
       }>
     >(`${this.baseURL}/${courseId}/palestrantes`, assignSpeakerDTO, {
       headers: {
-        Authorization: `Bearer ${this.accessToken}`,
+        Authorization: `Bearer ${accessToken}`,
         'Content-Type': 'application/json',
       },
     });
   }
 
   unassignSpeaker(courseId: string, speakerId: string) {
-    this.verifyAccess();
+    const accessToken = this.verifyAccess();
 
     return this.http.delete<
       Array<{
@@ -235,21 +236,21 @@ export class CourseService {
       }>
     >(`${this.baseURL}/${courseId}/palestrantes/${speakerId}`, {
       headers: {
-        Authorization: `Bearer ${this.accessToken}`,
+        Authorization: `Bearer ${accessToken}`,
         'Content-Type': 'application/json',
       },
     });
   }
 
   createOffering(courseId: string, createOfferingDTO: CreateOfferingDTO) {
-    this.verifyAccess();
+    const accessToken = this.verifyAccess();
 
     return this.http.post<OfferingModel>(
       `${this.baseURL}/${courseId}/oferecimento`,
       createOfferingDTO,
       {
         headers: {
-          Authorization: `Bearer ${this.accessToken}`,
+          Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'application/json',
         },
       }
@@ -257,14 +258,14 @@ export class CourseService {
   }
 
   updateOffering(courseId: string, updateOfferingDTO: UpdateOfferingDTO) {
-    this.verifyAccess();
+    const accessToken = this.verifyAccess();
 
     return this.http.put<OfferingModel>(
       `${this.baseURL}/${courseId}/oferecimento`,
       updateOfferingDTO,
       {
         headers: {
-          Authorization: `Bearer ${this.accessToken}`,
+          Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'application/json',
         },
       }
@@ -275,14 +276,14 @@ export class CourseService {
     courseId: string,
     createOfferingCostDTO: CreateOfferingCostDTO
   ) {
-    this.verifyAccess();
+    const accessToken = this.verifyAccess();
 
     return this.http.post<OfferingCostModel>(
       `${this.baseURL}/${courseId}/custos-oferecimento`,
       createOfferingCostDTO,
       {
         headers: {
-          Authorization: `Bearer ${this.accessToken}`,
+          Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'application/json',
         },
       }
@@ -293,14 +294,14 @@ export class CourseService {
     courseId: string,
     updateOfferingCostDTO: UpdateOfferingCostDTO
   ) {
-    this.verifyAccess();
+    const accessToken = this.verifyAccess();
 
     return this.http.put<OfferingCostModel>(
       `${this.baseURL}/${courseId}/custos-oferecimento`,
       updateOfferingCostDTO,
       {
         headers: {
-          Authorization: `Bearer ${this.accessToken}`,
+          Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'application/json',
         },
       }
@@ -311,7 +312,7 @@ export class CourseService {
     courseId: string,
     createOfferingCostTaxDTO: CreateOfferingCostTaxDTO
   ) {
-    this.verifyAccess();
+    const accessToken = this.verifyAccess();
 
     console.log(JSON.stringify(createOfferingCostTaxDTO));
 
@@ -320,7 +321,7 @@ export class CourseService {
       createOfferingCostTaxDTO,
       {
         headers: {
-          Authorization: `Bearer ${this.accessToken}`,
+          Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'application/json',
         },
       }
@@ -331,7 +332,7 @@ export class CourseService {
     courseId: string,
     createOfferingCostConditionDTO: CreateOfferingCostConditionDTO
   ) {
-    this.verifyAccess();
+    const accessToken = this.verifyAccess();
 
     console.log(JSON.stringify(createOfferingCostConditionDTO));
 
@@ -340,16 +341,21 @@ export class CourseService {
       createOfferingCostConditionDTO,
       {
         headers: {
-          Authorization: `Bearer ${this.accessToken}`,
+          Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'application/json',
         },
       }
     );
   }
 
-  verifyAccess(): void {
-    if (!this.accessToken) {
+  verifyAccess(): string {
+    if (!this.accessTokenProfessor && !this.accessTokenStudent) {
       this.router.navigate(['']);
     }
+
+    return (
+      (this.accessTokenProfessor as string) ??
+      (this.accessTokenStudent as string)
+    );
   }
 }
