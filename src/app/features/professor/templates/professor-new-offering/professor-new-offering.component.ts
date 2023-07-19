@@ -335,6 +335,7 @@ export class ProfessorNewOfferingComponent implements OnInit {
       .subscribe({
         next: (response) => {
           console.log(JSON.stringify(response));
+          this.nextStep();
         },
         error: ({ error }) => {
           alert(error.error);
