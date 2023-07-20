@@ -10,6 +10,7 @@ import { StudentModel } from '../../models/student.model';
 // Utils
 import { getUserId } from '../../../../../app/shared/utils/user-id.util';
 import { CourseModel } from 'src/app/shared/models/course.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'student-home',
@@ -33,9 +34,12 @@ export class StudentHomeComponent {
     };
   })[] = [];
 
+  openedDropdownOptions = '';
+
   constructor(
     private readonly studentService: StudentService,
-    private readonly courseService: CourseService
+    private readonly courseService: CourseService,
+    private readonly router: Router
   ) {}
 
   get nextCourseWithTermNotification() {
@@ -132,5 +136,25 @@ export class StudentHomeComponent {
     );
 
     this.registeredCourses[courseIndex].notifications[type] = false;
+  }
+
+  handleSwitchDropdownOptionsState(courseId: string) {
+    this.openedDropdownOptions =
+      this.openedDropdownOptions === courseId ? '' : courseId;
+  }
+
+  handleEdit(courseId: string) {
+    this.router.navigate(['/student', 'courses', courseId, 'register']);
+  }
+
+  handleUnsubscribe(courseId: string) {
+    this.courseService.unsubscribeFromCourse(courseId).subscribe({
+      next: () => {
+        this.loadCourses();
+      },
+      error: ({ error }) => {
+        alert(error.error);
+      },
+    });
   }
 }

@@ -10,7 +10,8 @@ import { createMask } from '@ngneat/input-mask';
 })
 export class StepOneFormThreeComponent {
   hourInputMask = createMask({
-    mask: '999h',
+    alias: 'numeric',
+    suffix: 'h',
     rightAlign: false,
   });
 

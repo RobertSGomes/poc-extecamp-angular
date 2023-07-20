@@ -1,3 +1,4 @@
+import { UpdateCourseDTO } from './../../../../shared/dtos/update-course.dto';
 import { CreateOfferingCostDTO } from './../../../../shared/dtos/create-offering-cost.dto';
 import { CreateOfferingDTO } from './../../../../shared/dtos/create-offering.dto';
 import { CourseService } from './../../../../shared/services/course.service';
@@ -279,7 +280,34 @@ export class ProfessorNewOfferingComponent implements OnInit {
   }
 
   handleCreateCourse(): void {
-    const createCourseDTO = new CreateCourseDTO({
+    if (this.courseId) {
+      this.handleUpdateCourse();
+    } else {
+      const createCourseDTO = new CreateCourseDTO({
+        stepOneFormOneValues: this.stepOneFormOne.value,
+        stepOneFormTwoValues: this.stepOneFormTwo.value,
+        stepOneFormThreeValues: this.stepOneFormThree.value,
+        stepOneFormFourValues: this.stepOneFormFour.value,
+        stepOneFormFiveValues: this.stepOneFormFive.value,
+      });
+
+      this.courseService.createCourse(createCourseDTO).subscribe({
+        next: (response) => {
+          this.courseId = response.id;
+
+          this.nextStep();
+        },
+        error: () => {
+          alert(
+            'Não foi possível prosseguir, preencha todos os campos obrigatórios e tente novamente.'
+          );
+        },
+      });
+    }
+  }
+
+  handleUpdateCourse() {
+    const updateCourseDTO = new UpdateCourseDTO({
       stepOneFormOneValues: this.stepOneFormOne.value,
       stepOneFormTwoValues: this.stepOneFormTwo.value,
       stepOneFormThreeValues: this.stepOneFormThree.value,
@@ -287,14 +315,11 @@ export class ProfessorNewOfferingComponent implements OnInit {
       stepOneFormFiveValues: this.stepOneFormFive.value,
     });
 
-    this.courseService.createCourse(createCourseDTO).subscribe({
-      next: (response) => {
-        this.courseId = response.id;
-
+    this.courseService.updateCourse(this.courseId!, updateCourseDTO).subscribe({
+      next: () => {
         this.nextStep();
       },
-      error: ({ error }) => {
-        console.log(error);
+      error: () => {
         alert(
           'Não foi possível prosseguir, preencha todos os campos obrigatórios e tente novamente.'
         );

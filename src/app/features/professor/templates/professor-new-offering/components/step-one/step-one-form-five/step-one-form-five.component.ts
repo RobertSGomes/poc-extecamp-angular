@@ -16,7 +16,7 @@ export class StepOneFormFiveComponent {
   });
   notaInputMask = createMask({
     alias: 'numeric',
-    max: 1000,
+    max: 10,
     rightAlign: false,
   });
 

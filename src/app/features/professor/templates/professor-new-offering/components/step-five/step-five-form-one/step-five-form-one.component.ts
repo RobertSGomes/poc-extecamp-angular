@@ -1,3 +1,4 @@
+import { UpdateCourseDTO } from './../../../../../../../shared/dtos/update-course.dto';
 import { CourseService } from 'src/app/shared/services/course.service';
 import {
   AfterViewInit,
@@ -12,6 +13,7 @@ import {
 import { CourseModel } from 'src/app/shared/models/course.model';
 import { UpdateOfferingDTO } from 'src/app/shared/dtos/update-offering.dto';
 import { UpdateOfferingCostDTO } from 'src/app/shared/dtos/update-offering-cost.dto';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-step-five-form-one',
@@ -39,7 +41,10 @@ export class StepFiveFormOneComponent implements OnInit, AfterViewInit {
     y: 0,
   };
 
-  constructor(private readonly courseService: CourseService) {}
+  constructor(
+    private readonly courseService: CourseService,
+    private readonly router: Router
+  ) {}
 
   get canvas() {
     return this.canvasRef.nativeElement as HTMLCanvasElement;
@@ -172,5 +177,18 @@ export class StepFiveFormOneComponent implements OnInit, AfterViewInit {
           },
         });
     }
+  }
+
+  handleUpdateCourseStatus() {
+    const updateCourseDTO = new UpdateCourseDTO({ curso_status: 'Pendente' });
+
+    this.courseService.updateCourse(this.courseId, updateCourseDTO).subscribe({
+      next: () => {
+        this.router.navigate(['/professor', 'offerings']);
+      },
+      error: ({ error }) => {
+        alert(error.error);
+      },
+    });
   }
 }

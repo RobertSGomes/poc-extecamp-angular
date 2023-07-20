@@ -188,8 +188,8 @@
         Voltar
       </button>
       <button
-        [routerLink]="['/professor', 'offerings']"
         class="px-4 py-[10px] rounded-lg bg-violet-600 font-semibold text-sm text-white"
+        (click)="handleUpdateCourseStatus()"
         [disabled]="
           course?.oferecimento?.assinatura_status === 'Pendente' ||
           course?.oferecimento?.custos_oferecimento?.assinatura_status ===

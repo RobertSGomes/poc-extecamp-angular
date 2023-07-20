@@ -21,6 +21,14 @@ export class ProfessorOfferingComponent implements OnInit {
     private readonly professorService: ProfessorService
   ) {}
 
+  get incompleteCourses() {
+    return this.courses.filter((course) => course.curso_status !== 'Andamento');
+  }
+
+  get completedCourses() {
+    return this.courses.filter((course) => course.curso_status === 'Andamento');
+  }
+
   ngOnInit() {
     this.getProfessor();
     this.loadAllCourses();

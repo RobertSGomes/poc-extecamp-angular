@@ -22,6 +22,7 @@ import { CreateOfferingCostConditionDTO } from '../dtos/create-offering-cost-con
 import { UpdateOfferingDTO } from '../dtos/update-offering.dto';
 import { UpdateOfferingCostDTO } from '../dtos/update-offering-cost.dto';
 import { SubscribeCourseDTO } from '../dtos/subscribe-course.dto';
+import { UpdateCourseDTO } from '../dtos/update-course.dto';
 
 @Injectable({
   providedIn: 'root',
@@ -70,6 +71,21 @@ export class CourseService {
         'Content-Type': 'application/json',
       },
     });
+  }
+
+  updateCourse(courseId: string, updateCourseDTO: UpdateCourseDTO) {
+    const accessToken = this.verifyAccess();
+
+    return this.http.put<CourseModel>(
+      `${this.baseURL}/${courseId}`,
+      updateCourseDTO,
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          'Content-Type': 'application/json',
+        },
+      }
+    );
   }
 
   assignCoordination(
@@ -354,9 +370,23 @@ export class CourseService {
 
     console.log(JSON.stringify(subscribeCourseDTO));
 
-    return this.http.post<OfferingCostConditionModel>(
+    return this.http.post<Array<CourseModel['alunos']>>(
       `${this.baseURL}/${courseId}/inscrever`,
       subscribeCourseDTO,
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+  }
+
+  unsubscribeFromCourse(courseId: string) {
+    const accessToken = this.verifyAccess();
+
+    return this.http.delete<Array<CourseModel['alunos']>>(
+      `${this.baseURL}/${courseId}/desinscrever`,
       {
         headers: {
           Authorization: `Bearer ${accessToken}`,

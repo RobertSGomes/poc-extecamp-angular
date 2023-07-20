@@ -147,7 +147,7 @@
         ></th>
       </thead>
       <tbody>
-        <tr *ngFor="let course of courses; let i = index">
+        <tr *ngFor="let course of completedCourses; let i = index">
           <td
             class="p-3 bg-white text-left font-medium text-sm text-gray-900 border-b border-b-gray-200"
           >
@@ -226,21 +226,21 @@
         ></th>
       </thead>
       <tbody>
-        <tr>
+        <tr *ngFor="let course of incompleteCourses; let i = index">
           <td
             class="p-3 bg-white text-left font-medium text-sm text-gray-900 border-b border-b-gray-200"
           >
-            ECO-0290
+            {{ course.sigla }}
           </td>
           <td
             class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200 w-[121px]"
           >
-            002
+            {{ formatIndex(i) }}
           </td>
           <td
             class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200 w-[272px]"
           >
-            ECONOMIA BRASILEIRA CONTEMPORÂNEA
+            {{ course.nome }}
           </td>
           <td
             class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200"
@@ -250,14 +250,14 @@
             >
               <div class="w-[6px] h-[6px] rounded-full bg-sky-500"></div>
               <p class="font-medium text-xs text-sky-800">
-                Cursos simples/disciplina
+                {{ course.tipo }}
               </p>
             </div>
           </td>
           <td
             class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200"
           >
-            ANDAMENTO
+            {{ course.curso_status }}
           </td>
           <td
             class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200 w-[72px]"
