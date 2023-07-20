@@ -27,6 +27,8 @@ export class CourseSubscriptionStepTwoComponent {
 
   @Output() backStep: EventEmitter<void> = new EventEmitter<void>();
   @Output() nextStep: EventEmitter<void> = new EventEmitter<void>();
+  @Output() handleOpenCancelModal: EventEmitter<void> =
+    new EventEmitter<void>();
 
   constructor(private readonly locationService: LocationService) {}
 

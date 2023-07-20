@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output, Input } from '@angular/core';
 import { HistoryStep } from '../../../types/history.type';
 import { FormGroup } from '@angular/forms';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-step-one-form-one',
@@ -35,4 +36,10 @@ export class StepOneFormOneComponent {
   @Output() openCancelModal: EventEmitter<void> = new EventEmitter<void>();
 
   @Input() stepOneFormOne!: FormGroup;
+
+  constructor(private readonly locationNavigation: Location) {}
+
+  get location() {
+    return this.locationNavigation;
+  }
 }

@@ -4,6 +4,7 @@ import { FormGroup } from '@angular/forms';
 import { createMask } from '@ngneat/input-mask';
 
 import { LocationService } from 'src/app/shared/services/location.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-course-subscription-step-one',
@@ -27,14 +28,21 @@ export class CourseSubscriptionStepOneComponent implements OnInit {
 
   @Input() stepOneForm!: FormGroup;
   @Output() nextStep: EventEmitter<void> = new EventEmitter<void>();
+  @Output() handleOpenCancelModal: EventEmitter<void> =
+    new EventEmitter<void>();
 
   constructor(
     private readonly locationService: LocationService,
-    private readonly activatedRoute: ActivatedRoute
+    private readonly activatedRoute: ActivatedRoute,
+    private readonly locationNavigator: Location
   ) {}
 
   ngOnInit(): void {
     this.loadCountries();
+  }
+
+  get location() {
+    return this.locationNavigator;
   }
 
   get courseId() {

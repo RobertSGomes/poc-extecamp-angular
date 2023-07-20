@@ -8,6 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CourseModel } from 'src/app/shared/models/course.model';
 import { formatDate } from 'src/app/shared/utils/format-date.util';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'student-course-registration',
@@ -27,13 +28,20 @@ export class StudentCourseRegistrationComponent implements OnInit {
   cpfUpload = false;
   declaracaoUpload = false;
 
+  modalCancelOpened = false;
+
   constructor(
     private readonly studentService: StudentService,
     private readonly courseService: CourseService,
     private readonly formBuilder: FormBuilder,
     private readonly router: Router,
-    private readonly activatedRoute: ActivatedRoute
+    private readonly activatedRoute: ActivatedRoute,
+    private readonly locationNavigation: Location
   ) {}
+
+  get location() {
+    return this.locationNavigation;
+  }
 
   get courseId() {
     return this.activatedRoute.snapshot.paramMap.get('course_id') as string;

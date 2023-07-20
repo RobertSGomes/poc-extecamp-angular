@@ -424,7 +424,8 @@
   <div class="flex justify-between items-center">
     <button
       class="px-4 py-[10px] rounded-lg font-semibold text-sm text-violet-700"
-      [routerLink]="['/student', 'courses', courseId]"
+      type="button"
+      (click)="location.back()"
     >
       Voltar
     </button>
@@ -432,6 +433,7 @@
       <button
         class="px-4 py-[10px] rounded-lg font-semibold text-sm text-gray-700 shadow-sm border border-gray-300"
         type="button"
+        (click)="handleOpenCancelModal.emit()"
       >
         Cancelar
       </button>
