@@ -15,17 +15,11 @@
     </p>
 
     <div class="flex items-center gap-x-2">
-      <input type="radio" id="tem_criterios_yes" [disabled]="true" />
+      <input type="radio" id="tem_criterios_yes" disabled />
       <label class="font-medium text-base text-gray-700">Sim</label>
     </div>
     <div class="flex items-center gap-x-2">
-      <input
-        type="radio"
-        id="tem_criterios_no"
-        formControlName="tem_criterios"
-        [disabled]="true"
-        [value]="false"
-      />
+      <input type="radio" id="tem_criterios_no" checked disabled />
       <label class="font-medium text-base text-gray-700">Não</label>
     </div>
   </div>

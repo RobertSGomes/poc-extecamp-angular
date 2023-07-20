@@ -30,8 +30,8 @@ export class ProfessorNewOfferingComponent implements OnInit {
   courseId?: string;
   course?: CourseModel;
 
-  currentStep: number = 0;
-  currentInsideStep: number = 0;
+  currentStep: number = 2;
+  currentInsideStep: number = 2;
   modalCancelOpened = false;
 
   form?: FormGroup;
@@ -420,7 +420,12 @@ export class ProfessorNewOfferingComponent implements OnInit {
               '',
           ],
           total: [
-            (course && course.oferecimento?.custos_oferecimento?.total) ?? '',
+            {
+              value:
+                (course && course.oferecimento?.custos_oferecimento?.total) ??
+                '',
+              disabled: true,
+            },
           ],
         }),
         formTwo: this.formBuilder.group({
@@ -874,9 +879,10 @@ export class ProfessorNewOfferingComponent implements OnInit {
     if (this.course?.oferecimento?.custos_oferecimento) {
       this.handleUpdateOfferingCost();
     } else {
-      const createOfferingCostDTO = new CreateOfferingCostDTO(
-        this.stepFourFormOne.value
-      );
+      const createOfferingCostDTO = new CreateOfferingCostDTO({
+        total: this.stepFourFormOne.controls['total']?.value,
+        ...this.stepFourFormOne.value,
+      });
 
       this.courseService
         .createOfferingCost(this.courseId!, createOfferingCostDTO)
@@ -892,8 +898,13 @@ export class ProfessorNewOfferingComponent implements OnInit {
   }
 
   handleUpdateOfferingCost() {
+    console.log(this.stepFourFormOne);
+
     const updateOfferingCostDTO = new UpdateOfferingCostDTO({
-      stepFourFormOneValues: this.stepFourFormOne.value,
+      stepFourFormOneValues: {
+        total: this.stepFourFormOne.controls['total']?.value,
+        ...this.stepFourFormOne.value,
+      },
       stepFiveFormOneValues: { assinatura_status: 'Pendente' },
     });
 

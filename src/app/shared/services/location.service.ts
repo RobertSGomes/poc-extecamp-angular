@@ -30,12 +30,19 @@ export class LocationService {
     );
   }
 
-  getCities(country: string, state: string) {
+  getCities(country?: string, state?: string) {
+    console.log(state);
+
     return this.http.post<{ error: boolean; msg: string; data: Array<string> }>(
       `${this.baseUrlCountriesNow}/countries/state/cities`,
       {
         country,
         state,
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
       }
     );
   }

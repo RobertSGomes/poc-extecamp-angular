@@ -33,6 +33,8 @@ export class UpdateOfferingCostDTO {
     stepFourFormOneValues?: IStepFourFormOne;
     stepFiveFormOneValues?: IStepFiveFormOne;
   }) {
+    console.log(stepFourFormOneValues?.total);
+
     if (stepFourFormOneValues) {
       this.fluxo_continuo = stepFourFormOneValues.fluxo_continuo;
       this.professores_hora_aula = stepFourFormOneValues.professores_hora_aula

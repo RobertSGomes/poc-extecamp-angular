@@ -36,7 +36,7 @@
         <td
           class="border-b border-b-gray-200 px-4 py-3 font-normal text-sm text-gray-700"
         >
-          Maria da Silva
+          {{ getProfessorName(course?.docente_responsavel?.id) }}
         </td>
         <td class="border-b border-b-gray-200 px-4 py-3">
           <div
@@ -53,16 +53,20 @@
               class="flex items-center gap-2 w-full px-3 py-2 bg-white rounded-lg border border-gray-300 shadow-sm"
             >
               <input
-                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500 disabled:bg-white"
                 placeholder="h"
+                [value]="getHour(course?.docente_responsavel.carga_horaria)"
+                disabled
               />
             </div>
             <div
               class="flex items-center gap-2 w-full px-3 py-2 bg-white rounded-lg border border-gray-300 shadow-sm"
             >
               <input
-                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500 disabled:bg-white"
                 placeholder="min"
+                [value]="getMinutes(course?.docente_responsavel.carga_horaria)"
+                disabled
               />
             </div>
           </div>
@@ -73,26 +77,90 @@
               class="flex items-center gap-2 w-full px-3 py-2 bg-white rounded-lg border border-gray-300 shadow-sm"
             >
               <input
-                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500 disabled:bg-white"
                 placeholder="h"
+                disabled
               />
             </div>
             <div
               class="flex items-center gap-2 w-full px-3 py-2 bg-white rounded-lg border border-gray-300 shadow-sm"
             >
               <input
-                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500 disabled:bg-white"
                 placeholder="min"
+                disabled
               />
             </div>
           </div>
         </td>
       </tr>
-      <tr>
+      <tr *ngFor="let professor of course?.docentes_unicamp">
         <td
           class="border-b border-b-gray-200 px-4 py-3 font-normal text-sm text-gray-700"
         >
-          Maria da Silva
+          {{ getProfessorName(professor.id) }}
+        </td>
+        <td class="border-b border-b-gray-200 px-4 py-3">
+          <div
+            class="w-fit px-[6px] py-0.5 rounded-[6px] bg-blue-50 border border-blue-300"
+          >
+            <p class="font-medium text-xs text-blue-700 whitespace-nowrap">
+              Professores Unicamp
+            </p>
+          </div>
+        </td>
+        <td class="border-b border-b-gray-200 px-4 py-3">
+          <div class="flex gap-x-2 w-full">
+            <div
+              class="flex items-center gap-2 w-full px-3 py-2 bg-white rounded-lg border border-gray-300 shadow-sm"
+            >
+              <input
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500 disabled:bg-white"
+                placeholder="h"
+                [value]="getHour(professor.carga_horaria)"
+                disabled
+              />
+            </div>
+            <div
+              class="flex items-center gap-2 w-full px-3 py-2 bg-white rounded-lg border border-gray-300 shadow-sm"
+            >
+              <input
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500 disabled:bg-white"
+                placeholder="min"
+                [value]="getMinutes(professor.carga_horaria)"
+                disabled
+              />
+            </div>
+          </div>
+        </td>
+        <td class="border-b border-b-gray-200 px-4 py-3">
+          <div class="flex gap-x-2 w-full">
+            <div
+              class="flex items-center gap-2 w-full px-3 py-2 bg-white rounded-lg border border-gray-300 shadow-sm"
+            >
+              <input
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500 disabled:bg-white"
+                placeholder="h"
+                disabled
+              />
+            </div>
+            <div
+              class="flex items-center gap-2 w-full px-3 py-2 bg-white rounded-lg border border-gray-300 shadow-sm"
+            >
+              <input
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500 disabled:bg-white"
+                placeholder="min"
+                disabled
+              />
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr *ngFor="let professor of course?.docentes_vinculo">
+        <td
+          class="border-b border-b-gray-200 px-4 py-3 font-normal text-sm text-gray-700"
+        >
+          {{ getProfessorName(professor.id) }}
         </td>
         <td class="border-b border-b-gray-200 px-4 py-3">
           <div
@@ -109,16 +177,20 @@
               class="flex items-center gap-2 w-full px-3 py-2 bg-white rounded-lg border border-gray-300 shadow-sm"
             >
               <input
-                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500 disabled:bg-white"
                 placeholder="h"
+                [value]="getHour(professor.carga_horaria)"
+                disabled
               />
             </div>
             <div
               class="flex items-center gap-2 w-full px-3 py-2 bg-white rounded-lg border border-gray-300 shadow-sm"
             >
               <input
-                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500 disabled:bg-white"
                 placeholder="min"
+                [value]="getMinutes(professor.carga_horaria)"
+                disabled
               />
             </div>
           </div>
@@ -129,26 +201,28 @@
               class="flex items-center gap-2 w-full px-3 py-2 bg-white rounded-lg border border-gray-300 shadow-sm"
             >
               <input
-                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500 disabled:bg-white"
                 placeholder="h"
+                disabled
               />
             </div>
             <div
               class="flex items-center gap-2 w-full px-3 py-2 bg-white rounded-lg border border-gray-300 shadow-sm"
             >
               <input
-                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500 disabled:bg-white"
                 placeholder="min"
+                disabled
               />
             </div>
           </div>
         </td>
       </tr>
-      <tr>
+      <tr *ngFor="let professor of course?.docentes_sem_vinculo">
         <td
           class="border-b border-b-gray-200 px-4 py-3 font-normal text-sm text-gray-700"
         >
-          Maria da Silva
+          {{ professor.nome }}
         </td>
         <td class="border-b border-b-gray-200 px-4 py-3">
           <div
@@ -165,16 +239,20 @@
               class="flex items-center gap-2 w-full px-3 py-2 bg-white rounded-lg border border-gray-300 shadow-sm"
             >
               <input
-                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500 disabled:bg-white"
                 placeholder="h"
+                [value]="getHour(professor.carga_horaria)"
+                disabled
               />
             </div>
             <div
               class="flex items-center gap-2 w-full px-3 py-2 bg-white rounded-lg border border-gray-300 shadow-sm"
             >
               <input
-                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500 disabled:bg-white"
                 placeholder="min"
+                [value]="getMinutes(professor.carga_horaria)"
+                disabled
               />
             </div>
           </div>
@@ -185,16 +263,80 @@
               class="flex items-center gap-2 w-full px-3 py-2 bg-white rounded-lg border border-gray-300 shadow-sm"
             >
               <input
-                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500 disabled:bg-white"
                 placeholder="h"
+                disabled
               />
             </div>
             <div
               class="flex items-center gap-2 w-full px-3 py-2 bg-white rounded-lg border border-gray-300 shadow-sm"
             >
               <input
-                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500 disabled:bg-white"
                 placeholder="min"
+                disabled
+              />
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr *ngFor="let palestrante of course?.palestrantes">
+        <td
+          class="border-b border-b-gray-200 px-4 py-3 font-normal text-sm text-gray-700"
+        >
+          {{ palestrante.nome }}
+        </td>
+        <td class="border-b border-b-gray-200 px-4 py-3">
+          <div
+            class="w-fit px-[6px] py-0.5 rounded-[6px] bg-blue-50 border border-blue-300"
+          >
+            <p class="font-medium text-xs text-blue-700 whitespace-nowrap">
+              Palestrante
+            </p>
+          </div>
+        </td>
+        <td class="border-b border-b-gray-200 px-4 py-3">
+          <div class="flex gap-x-2 w-full">
+            <div
+              class="flex items-center gap-2 w-full px-3 py-2 bg-white rounded-lg border border-gray-300 shadow-sm"
+            >
+              <input
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500 disabled:bg-white"
+                placeholder="h"
+                [value]="getHour(palestrante.carga_horaria)"
+                disabled
+              />
+            </div>
+            <div
+              class="flex items-center gap-2 w-full px-3 py-2 bg-white rounded-lg border border-gray-300 shadow-sm"
+            >
+              <input
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500 disabled:bg-white"
+                placeholder="min"
+                [value]="getMinutes(palestrante.carga_horaria)"
+                disabled
+              />
+            </div>
+          </div>
+        </td>
+        <td class="border-b border-b-gray-200 px-4 py-3">
+          <div class="flex gap-x-2 w-full">
+            <div
+              class="flex items-center gap-2 w-full px-3 py-2 bg-white rounded-lg border border-gray-300 shadow-sm"
+            >
+              <input
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500 disabled:bg-white"
+                placeholder="h"
+                disabled
+              />
+            </div>
+            <div
+              class="flex items-center gap-2 w-full px-3 py-2 bg-white rounded-lg border border-gray-300 shadow-sm"
+            >
+              <input
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500 disabled:bg-white"
+                placeholder="min"
+                disabled
               />
             </div>
           </div>
@@ -204,6 +346,7 @@
   </table>
 
   <div
+    *ngIf="isNotValid() && notificationShow"
     class="flex justify-between gap-x-4 w-full p-4 rounded-xl bg-orange-50 border border-orange-300"
   >
     <div class="flex gap-x-4">
@@ -221,7 +364,7 @@
       </div>
     </div>
 
-    <button class="w-5 h-5" type="button">
+    <button class="w-5 h-5" type="button" (click)="notificationShow = false">
       <img
         src="../../../../../../../../assets/svgs/x-close-orange.svg"
         class="w-5 h-5"
@@ -255,16 +398,20 @@
               class="flex items-center gap-2 w-full px-3 py-2 bg-white rounded-lg border border-gray-300 shadow-sm"
             >
               <input
-                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500 disabled:bg-white"
                 placeholder="h"
+                [value]="getTotalHour()"
+                disabled
               />
             </div>
             <div
               class="flex items-center gap-2 w-full px-3 py-2 bg-white rounded-lg border border-gray-300 shadow-sm"
             >
               <input
-                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500 disabled:bg-white"
                 placeholder="min"
+                [value]="getTotalMinutes()"
+                disabled
               />
             </div>
           </div>
@@ -282,16 +429,20 @@
               class="flex items-center gap-2 w-full px-3 py-2 bg-white rounded-lg border border-gray-300 shadow-sm"
             >
               <input
-                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500 disabled:bg-white"
                 placeholder="h"
+                [value]="getCargaHorariaTotal()"
+                disabled
               />
             </div>
             <div
               class="flex items-center gap-2 w-full px-3 py-2 bg-white rounded-lg border border-gray-300 shadow-sm"
             >
               <input
-                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500 disabled:bg-white"
                 placeholder="min"
+                [value]="0"
+                disabled
               />
             </div>
           </div>
@@ -321,6 +472,7 @@
       <button
         class="px-4 py-[10px] rounded-lg font-semibold text-sm text-white bg-violet-700"
         type="submit"
+        [disabled]="isNotValid()"
       >
         Próximo
       </button>

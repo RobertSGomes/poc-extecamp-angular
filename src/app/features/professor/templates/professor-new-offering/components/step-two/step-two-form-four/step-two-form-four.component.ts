@@ -20,9 +20,6 @@ export class StepTwoFormFourComponent {
   hourInputMask = createMask({
     alias: 'numeric',
     digits: 0,
-    placeholder: '0',
-    max: 23,
-    min: 0,
     rightAlign: false,
   });
   minuteInputMask = createMask({

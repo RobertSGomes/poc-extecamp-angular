@@ -45,14 +45,14 @@ export class StepThreeFormThreeComponent implements OnInit {
 
   constructor(private readonly locationService: LocationService) {}
 
-  ngOnInit(): void {
-    this.loadStates();
-  }
-
   get selectedState() {
     return this.states.find(
       (state) => state.state_code === this.stepThreeFormThree.get('uf')?.value
     );
+  }
+
+  ngOnInit(): void {
+    this.loadStates();
   }
 
   loadStates() {
@@ -71,6 +71,8 @@ export class StepThreeFormThreeComponent implements OnInit {
   }
 
   loadCities() {
+    if (!this.selectedState?.name) return;
+
     this.locationService
       .getCities('Brazil', this.selectedState?.name)
       .subscribe({

@@ -67,13 +67,22 @@
               "
               class="flex flex-col gap-2"
             >
-              <p class="font-normal text-base text-black">
-                Em até 10 parcelas de
+              <p
+                *ngIf="courseValue.parcelas > 0"
+                class="font-normal text-base text-black"
+              >
+                Em até {{ courseValue.parcelas }} parcelas de
               </p>
-              <h1 class="font-semibold text-5xl">R$ 249,90*</h1>
+              <p
+                *ngIf="courseValue.parcelas === 0"
+                class="font-normal text-base text-black"
+              >
+                Valor à vista de
+              </p>
+              <h1 class="font-semibold text-5xl">{{ courseValue.valor }}*</h1>
               <div>
                 <p class="font-normal text-sm text-black">
-                  Boleto bancário ou cartão de crédito
+                  {{ courseValue.formaPagamento }}
                 </p>
                 <p class="font-normal text-sm text-black">
                   *Consulte as formas de pagamento
@@ -181,8 +190,10 @@
         <app-accordion
           title="Professores"
           content="
-            Professor(a) responsável:  <br /><br />
-            Professor(es) do curso: DENISE VAZ DE MACEDO , BERNARDO NEME IDE , JULIANA PASCUOTTE CANDIDO.
+            Professor(a) responsável: {{
+            getProfessorName(course?.docente_responsavel?.id)
+          }} <br /><br />
+            Professor(es) do curso: {{ getProfessorsName() }}.
           "
         ></app-accordion>
         <app-accordion
