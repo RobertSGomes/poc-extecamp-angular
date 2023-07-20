@@ -14,8 +14,7 @@ import { StudentService } from '../../student.service';
   styleUrls: ['./student-course-detail.component.css'],
 })
 export class StudentCourseDetailComponent implements OnInit {
-  studentId: string | null = getUserId();
-  student!: StudentModel;
+  student?: StudentModel;
   course?: CourseModel;
 
   constructor(
@@ -55,7 +54,11 @@ export class StudentCourseDetailComponent implements OnInit {
   }
 
   isAlreadySubscribed() {
-    return !this.course!.alunos.find((aluno) => aluno.id === this.studentId);
+    if (!this.course) {
+      return false;
+    } else {
+      return !this.course.alunos.find((aluno) => aluno.id === this.student?.id);
+    }
   }
 
   formatDate = formatDate;

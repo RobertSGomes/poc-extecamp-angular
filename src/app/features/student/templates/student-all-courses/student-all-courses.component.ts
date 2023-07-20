@@ -13,8 +13,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./student-all-courses.component.css'],
 })
 export class StudentAllCoursesComponent implements OnInit {
-  studentId: string | null = getUserId();
-  student!: StudentModel;
+  student?: StudentModel;
 
   constructor(
     private readonly studentService: StudentService,

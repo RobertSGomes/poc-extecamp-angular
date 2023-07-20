@@ -25,7 +25,7 @@ import { UpdateOfferingCostConditionDTO } from 'src/app/shared/dtos/update-offer
 })
 export class ProfessorNewOfferingComponent implements OnInit {
   professor?: ProfessorModel;
-  professorId: string | null = getUserId();
+  professorId?: string;
   courseId?: string;
   course?: CourseModel;
 
@@ -99,6 +99,7 @@ export class ProfessorNewOfferingComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.professorId = getUserId() as string;
     this.courseId =
       this.activatedRoute.snapshot.paramMap.get('course_id') ?? undefined;
 
@@ -476,7 +477,7 @@ export class ProfessorNewOfferingComponent implements OnInit {
   }
 
   getProfessor(): void {
-    this.professorService.getOne(this.professorId).subscribe({
+    this.professorService.getOne(this.professorId!).subscribe({
       next: (response) => {
         this.professor = response;
       },

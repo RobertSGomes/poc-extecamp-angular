@@ -13,7 +13,7 @@ import { UpdateCourseDTO } from 'src/app/shared/dtos/update-course.dto';
   styleUrls: ['./professor-offering.component.css'],
 })
 export class ProfessorOfferingComponent implements OnInit {
-  professorId: string | null = getUserId();
+  professorId?: string;
   professor?: ProfessorModel;
 
   courses: Array<CourseModel> = [];
@@ -41,6 +41,7 @@ export class ProfessorOfferingComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.professorId = getUserId() as string;
     this.getProfessor();
     this.loadAllCourses();
   }
@@ -54,7 +55,7 @@ export class ProfessorOfferingComponent implements OnInit {
   }
 
   getProfessor(): void {
-    this.professorService.getOne(this.professorId).subscribe({
+    this.professorService.getOne(this.professorId!).subscribe({
       next: (response) => {
         this.professor = response;
       },

@@ -31,8 +31,6 @@ import { UpdateCourseDTO } from '../dtos/update-course.dto';
 })
 export class CourseService {
   baseURL: string = 'http://localhost:3003/cursos';
-  accessTokenProfessor: string | null = getAccessToken('professor');
-  accessTokenStudent: string | null = getAccessToken('student');
 
   constructor(
     private readonly router: Router,
@@ -440,12 +438,15 @@ export class CourseService {
   }
 
   verifyAccess(): string {
-    if (!this.accessTokenProfessor && !this.accessTokenStudent) {
+    const accessTokenProfessor: string | null = getAccessToken('professor');
+    const accessTokenStudent: string | null = getAccessToken('student');
+
+    if (!accessTokenProfessor && !accessTokenStudent) {
       this.router.navigate(['']);
     }
 
-    return this.accessTokenProfessor
-      ? (this.accessTokenProfessor as string)
-      : (this.accessTokenStudent as string);
+    return accessTokenProfessor
+      ? (accessTokenProfessor as string)
+      : (accessTokenStudent as string);
   }
 }
