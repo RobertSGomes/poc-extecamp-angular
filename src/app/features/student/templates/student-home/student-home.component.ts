@@ -150,6 +150,7 @@ export class StudentHomeComponent {
   handleUnsubscribe(courseId: string) {
     this.courseService.unsubscribeFromCourse(courseId).subscribe({
       next: () => {
+        alert('Você se desinscreveu do curso com sucesso');
         this.loadCourses();
       },
       error: ({ error }) => {
