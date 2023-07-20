@@ -1,7 +1,7 @@
 <div class="grid grid-rows-[0px_auto_1fr] grid-cols-[300px_1fr] h-screen">
   <app-sidebar
-    [name]="student.nome"
-    [email]="student.email"
+    [name]="student?.nome"
+    [email]="student?.email"
     [navItens]="[
       {
         title: 'Página inicial',
@@ -86,9 +86,9 @@
 
       <!--Formulário - Step3 -->
       <app-course-subscription-step-three
-        *ngIf="currentStep === 2"
-        [courseId]="courseId"
+        *ngIf="currentStep === 2 && course"
         [stepThreeForm]="stepThreeForm"
+        [course]="course!"
         (backStep)="backStep()"
         (nextStep)="nextStep()"
       ></app-course-subscription-step-three>

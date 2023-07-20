@@ -30,18 +30,24 @@
         <h1 class="font-semibold text-sm text-gray-600">
           Termo de compromisso
         </h1>
-        <p class="w-[445px] font-normal text-sm text-gray-600">
-          FOP-0472 - BIOQUÍMICA E FISIOLOGIA APLICADAS AO TREINAMENTO FÍSICO
+        <p class="w-[445px] font-normal text-sm text-gray-600 uppercase">
+          {{ course.sigla }} - {{ course.nome }}
         </p>
       </div>
       <button
-        [disabled]="termo_compromisso_assinado?.value"
+        *ngIf="!termo_compromisso_assinado?.value"
         class="h-fit px-4 py-[10px] rounded-lg font-semibold text-sm text-gray-700 shadow-sm border border-gray-300"
         type="button"
         (click)="openSignatureModal()"
       >
         Assinar
       </button>
+      <div
+        *ngIf="termo_compromisso_assinado?.value"
+        class="h-fit px-4 py-[10px] rounded-lg font-semibold text-sm text-emerald-600 shadow-sm border border-emerald-300 bg-emerald-100"
+      >
+        Assinado
+      </div>
     </div>
 
     <hr class="h-[1px] bg-gray-200" />

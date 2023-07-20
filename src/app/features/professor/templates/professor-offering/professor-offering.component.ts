@@ -4,6 +4,8 @@ import { ProfessorModel } from '../../models/professor.model';
 import { ProfessorService } from '../../professor.service';
 import { CourseService } from 'src/app/shared/services/course.service';
 import { CourseModel } from 'src/app/shared/models/course.model';
+import { Router } from '@angular/router';
+import { UpdateCourseDTO } from 'src/app/shared/dtos/update-course.dto';
 
 @Component({
   selector: 'professsor-offering',
@@ -20,7 +22,8 @@ export class ProfessorOfferingComponent implements OnInit {
 
   constructor(
     private readonly courseService: CourseService,
-    private readonly professorService: ProfessorService
+    private readonly professorService: ProfessorService,
+    private readonly router: Router
   ) {}
 
   get incompleteCourses() {
@@ -80,9 +83,28 @@ export class ProfessorOfferingComponent implements OnInit {
       this.openedDropdownOptions === courseId ? '' : courseId;
   }
 
-  handleEditCourse(courseId: string) {}
+  handleEditCourse(courseId: string) {
+    this.router.navigate(['/professor', 'offerings', 'new', courseId]);
+  }
 
-  handleAproveCourse(courseId: string) {}
+  handleAproveCourse(courseId: string) {
+    const updateCourseDTO = new UpdateCourseDTO({ curso_status: 'Andamento' });
 
-  handleDeleteCourse(courseId: string) {}
+    this.courseService.updateCourse(courseId, updateCourseDTO).subscribe({
+      next: () => {
+        alert('Simulação de aprovação de curso executada com sucesso');
+        this.openedDropdownOptions = '';
+        this.loadAllCourses();
+      },
+    });
+  }
+
+  handleDeleteCourse(courseId: string) {
+    this.courseService.deleteCourse(courseId).subscribe({
+      next: () => {
+        alert('Curso removido com sucesso');
+        this.loadAllCourses();
+      },
+    });
+  }
 }

@@ -9,6 +9,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { CourseModel } from 'src/app/shared/models/course.model';
 
 @Component({
   selector: 'app-course-subscription-step-three',
@@ -16,8 +17,8 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./course-subscription-step-three.component.css'],
 })
 export class CourseSubscriptionStepThreeComponent implements AfterViewInit {
-  @Input() courseId!: string;
   @Input() stepThreeForm!: FormGroup;
+  @Input() course!: CourseModel;
 
   @Output() backStep: EventEmitter<void> = new EventEmitter<void>();
   @Output() nextStep: EventEmitter<void> = new EventEmitter<void>();
@@ -102,7 +103,7 @@ export class CourseSubscriptionStepThreeComponent implements AfterViewInit {
     const anchor = document.createElement('a');
 
     anchor.href = this.canvas.toDataURL('image/jpeg', 1.0);
-    anchor.download = `${this.courseId}-assinatura-termo-compromisso.jpeg`;
+    anchor.download = `${this.course.id}-assinatura-termo-compromisso.jpeg`;
     anchor.click();
 
     this.clearSignatureCanvas();

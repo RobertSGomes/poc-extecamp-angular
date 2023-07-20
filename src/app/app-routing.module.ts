@@ -16,7 +16,10 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'professor', pathMatch: 'full', redirectTo: 'professor/offerings' },
   { path: 'professor/offerings', component: ProfessorOfferingComponent },
-  { path: 'professor/offerings/new', component: ProfessorNewOfferingComponent },
+  {
+    path: 'professor/offerings/new/:course_id',
+    component: ProfessorNewOfferingComponent,
+  },
   { path: 'student', component: StudentHomeComponent },
   { path: 'student/courses', component: StudentAllCoursesComponent },
   {

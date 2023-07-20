@@ -90,6 +90,17 @@ export class CourseService {
     );
   }
 
+  deleteCourse(couseId: string) {
+    const accessToken = this.verifyAccess();
+
+    return this.http.delete<CourseModel>(`${this.baseURL}/${couseId}`, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        'Content-Type': 'application/json',
+      },
+    });
+  }
+
   assignCoordination(
     courseId: string,
     assignCoordinationDTO: AssignCoordinationDTO

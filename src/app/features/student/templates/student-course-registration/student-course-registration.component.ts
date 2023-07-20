@@ -17,7 +17,7 @@ import { formatDate } from 'src/app/shared/utils/format-date.util';
 export class StudentCourseRegistrationComponent implements OnInit {
   currentStep: number = 0;
 
-  student!: StudentModel;
+  student?: StudentModel;
   form?: FormGroup;
 
   course?: CourseModel;
@@ -40,16 +40,6 @@ export class StudentCourseRegistrationComponent implements OnInit {
   }
 
   async ngOnInit(): Promise<void> {
-    this.studentService.getOne(getUserId()).subscribe({
-      next: (data) => {
-        this.student = data;
-        this.createForm(data);
-      },
-      error: () => {
-        this.router.navigate(['']);
-      },
-    });
-
     this.loadCourse();
   }
 
@@ -57,6 +47,15 @@ export class StudentCourseRegistrationComponent implements OnInit {
     this.courseService.getOne(this.courseId).subscribe({
       next: (response) => {
         this.course = response;
+        this.studentService.getOne(getUserId()).subscribe({
+          next: (data) => {
+            this.student = data;
+            this.createForm(data);
+          },
+          error: () => {
+            this.router.navigate(['']);
+          },
+        });
       },
       error: () => {
         this.router.navigate(['/student', 'courses']);
@@ -64,7 +63,13 @@ export class StudentCourseRegistrationComponent implements OnInit {
     });
   }
 
+  getStudentFromCourse(student: StudentModel) {
+    return this.course?.alunos.find((aluno) => aluno.id === student.id);
+  }
+
   createForm(student: StudentModel) {
+    const courseStudentInfos = this.getStudentFromCourse(student);
+
     this.form = this.formBuilder.group({
       step1: this.formBuilder.group({
         nome: [student.nome ?? '', [Validators.required]],
@@ -124,12 +129,14 @@ export class StudentCourseRegistrationComponent implements OnInit {
         pais: [student.endereco?.pais_residencia ?? '', [Validators.required]],
       }),
       step3: this.formBuilder.group({
-        termo_compromisso_assinado: [false],
+        termo_compromisso_assinado: [
+          courseStudentInfos?.termo_compromisso_assinado ?? false,
+        ],
       }),
       step4: this.formBuilder.group({
-        documentos_upload: [false],
-        cpf_upload: [false],
-        declaracao_upload: [false],
+        documentos_upload: [courseStudentInfos?.documentos_upload ?? false],
+        cpf_upload: [courseStudentInfos?.cpf_upload ?? false],
+        declaracao_upload: [courseStudentInfos?.declaracao_upload ?? false],
       }),
     });
   }
@@ -163,22 +170,26 @@ export class StudentCourseRegistrationComponent implements OnInit {
   }
 
   handleSubscribeToCourse() {
-    const subscribeCourseDTO = new SubscribeCourseDTO({
-      stepOneValues: this.stepOneForm.value,
-      stepTwoValues: this.stepTwoForm.value,
-      stepThreeValues: this.stepThreeForm.value,
-      stepFourValues: this.stepFourForm.value,
-    });
+    this.courseService.unsubscribeFromCourse(this.courseId).subscribe({
+      next: () => {
+        const subscribeCourseDTO = new SubscribeCourseDTO({
+          stepOneValues: this.stepOneForm.value,
+          stepTwoValues: this.stepTwoForm.value,
+          stepThreeValues: this.stepThreeForm.value,
+          stepFourValues: this.stepFourForm.value,
+        });
 
-    this.courseService
-      .subscribeToCourse(this.courseId, subscribeCourseDTO)
-      .subscribe({
-        next: () => {
-          this.router.navigate(['/student']);
-        },
-        error: ({ error }) => {
-          alert(error.error);
-        },
-      });
+        this.courseService
+          .subscribeToCourse(this.courseId, subscribeCourseDTO)
+          .subscribe({
+            next: () => {
+              this.router.navigate(['/student']);
+            },
+            error: ({ error }) => {
+              alert(error.error);
+            },
+          });
+      },
+    });
   }
 }

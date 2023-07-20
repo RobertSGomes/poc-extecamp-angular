@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { UpdateCourseDTO } from './../../../../shared/dtos/update-course.dto';
 import { CreateOfferingCostDTO } from './../../../../shared/dtos/create-offering-cost.dto';
 import { CreateOfferingDTO } from './../../../../shared/dtos/create-offering.dto';
@@ -25,11 +26,11 @@ import { UpdateOfferingCostConditionDTO } from 'src/app/shared/dtos/update-offer
 export class ProfessorNewOfferingComponent implements OnInit {
   professor?: ProfessorModel;
   professorId: string | null = getUserId();
-  courseId?: string = '98d1d870-53e4-4249-ab2a-05bc892be01b';
+  courseId?: string;
   course?: CourseModel;
 
-  currentStep: number = 3;
-  currentInsideStep: number = 3;
+  currentStep: number = 0;
+  currentInsideStep: number = 0;
   modalCancelOpened = false;
 
   form?: FormGroup;
@@ -37,7 +38,8 @@ export class ProfessorNewOfferingComponent implements OnInit {
   constructor(
     private readonly professorService: ProfessorService,
     private readonly courseService: CourseService,
-    private readonly formBuilder: FormBuilder
+    private readonly formBuilder: FormBuilder,
+    private readonly activatedRoute: ActivatedRoute
   ) {}
 
   get stepOneFormOne() {
@@ -97,6 +99,9 @@ export class ProfessorNewOfferingComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.courseId =
+      this.activatedRoute.snapshot.paramMap.get('course_id') ?? undefined;
+
     this.getProfessor();
     this.loadCourse();
   }
