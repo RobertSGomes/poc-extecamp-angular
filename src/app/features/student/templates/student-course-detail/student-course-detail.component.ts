@@ -4,7 +4,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CourseModel } from 'src/app/shared/models/course.model';
 import { formatDate } from 'src/app/shared/utils/format-date.util';
-import { ProfessorModel } from 'src/app/features/professor/models/professor.model';
 import { getUserId } from 'src/app/shared/utils/user-id.util';
 import { StudentModel } from '../../models/student.model';
 import { StudentService } from '../../student.service';
@@ -47,8 +46,6 @@ export class StudentCourseDetailComponent implements OnInit {
   loadCourse() {
     this.courseService.getOne(this.courseId).subscribe({
       next: (response) => {
-        console.log(response);
-
         this.course = response;
       },
       error: () => {
@@ -65,8 +62,6 @@ export class StudentCourseDetailComponent implements OnInit {
 
   formatDateDDMMAA(date: string | undefined) {
     if (!date) return '';
-
-    console.log(date);
 
     const year = new Date(date).getUTCFullYear();
     const month = new Date(date).getUTCMonth() + 1;
@@ -168,12 +163,10 @@ export class StudentCourseDetailComponent implements OnInit {
 
     this.professorService.getOne(professorId).subscribe({
       next: (response) => {
-        console.log(response);
-
         professorName = response.nome;
       },
-      error: ({ error }) => {
-        console.log('Professor não encontrado');
+      error: () => {
+        alert('Professor não encontrado');
       },
     });
 

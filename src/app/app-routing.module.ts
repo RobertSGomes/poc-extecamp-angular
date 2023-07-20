@@ -4,7 +4,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './features/home/templates/home/home.component';
 import { SigninComponent } from './features/auth/templates/signin/signin.component';
 import { SignupComponent } from './features/auth/templates/signup/signup.component';
-import { ProfessorHomeComponent } from './features/professor/templates/professor-home/professor-home.component';
 import { ProfessorOfferingComponent } from './features/professor/templates/professor-offering/professor-offering.component';
 import { StudentAllCoursesComponent } from './features/student/templates/student-all-courses/student-all-courses.component';
 import { StudentCourseDetailComponent } from './features/student/templates/student-course-detail/student-course-detail.component';
@@ -15,7 +14,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'signin', component: SigninComponent },
   { path: 'signup', component: SignupComponent },
-  { path: 'professor', component: ProfessorHomeComponent },
+  { path: 'professor', pathMatch: 'full', redirectTo: 'professor/offerings' },
   { path: 'professor/offerings', component: ProfessorOfferingComponent },
   { path: 'professor/offerings/new', component: ProfessorNewOfferingComponent },
   { path: 'student', component: StudentHomeComponent },

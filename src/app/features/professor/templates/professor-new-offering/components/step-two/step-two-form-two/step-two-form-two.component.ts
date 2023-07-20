@@ -112,18 +112,17 @@ export class StepTwoFormTwoComponent implements OnInit {
   loadCourseProfessors(
     assignedProfessors: Array<{ id: string; carga_horaria: string }>
   ) {
-    this.courseProfessors = [];
-
     for (let assignedProfessor of assignedProfessors) {
       this.professorService.getOne(assignedProfessor.id).subscribe({
         next: (response) => {
+          this.courseProfessors = [];
           this.courseProfessors.push({
             ...response,
             carga_horaria: assignedProfessor.carga_horaria,
           });
         },
-        error: ({ error }) => {
-          console.log(error);
+        error: () => {
+          this.courseProfessors = [];
         },
       });
     }

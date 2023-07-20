@@ -35,7 +35,7 @@
             class="rounded-2xl h-fit px-2 py-0.5 bg-violet-50 border border-violet-200"
           >
             <p class="font-medium text-xs text-violet-700 whitespace-nowrap">
-              {{ courses.total }} Cursos cadastrados
+              {{ courses.length }} Cursos cadastrados
             </p>
           </div>
         </div>
@@ -64,7 +64,7 @@
     </section>
     <section class="flex flex-col px-4 py-4 gap-6 w-[1072px] mx-auto">
       <a
-        *ngFor="let course of courses.result"
+        *ngFor="let course of courses"
         [routerLink]="['/student', 'courses', course.id]"
       >
         <div

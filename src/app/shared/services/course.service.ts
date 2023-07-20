@@ -1,3 +1,5 @@
+import { UpdateOfferingCostConditionDTO } from 'src/app/shared/dtos/update-offering-cost-condition.dto';
+import { UpdateOfferingCostTaxDTO } from './../dtos/update-offering-cost-tax.dto';
 import { CreateOfferingDTO } from './../dtos/create-offering.dto';
 import { Injectable } from '@angular/core';
 import { CreateCourseDTO } from '../dtos/create-course.dto';
@@ -331,11 +333,27 @@ export class CourseService {
   ) {
     const accessToken = this.verifyAccess();
 
-    console.log(JSON.stringify(createOfferingCostTaxDTO));
-
     return this.http.post<OfferingCostTaxModel>(
       `${this.baseURL}/${courseId}/custos-oferecimento/taxas`,
       createOfferingCostTaxDTO,
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+  }
+
+  updateOfferingCostTax(
+    courseId: string,
+    updateOfferingCostTaxDTO: UpdateOfferingCostTaxDTO
+  ) {
+    const accessToken = this.verifyAccess();
+
+    return this.http.put<OfferingCostTaxModel>(
+      `${this.baseURL}/${courseId}/custos-oferecimento/taxas`,
+      updateOfferingCostTaxDTO,
       {
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -351,8 +369,6 @@ export class CourseService {
   ) {
     const accessToken = this.verifyAccess();
 
-    console.log(JSON.stringify(createOfferingCostConditionDTO));
-
     return this.http.post<OfferingCostConditionModel>(
       `${this.baseURL}/${courseId}/custos-oferecimento/condicoes`,
       createOfferingCostConditionDTO,
@@ -365,10 +381,26 @@ export class CourseService {
     );
   }
 
-  subscribeToCourse(courseId: string, subscribeCourseDTO: SubscribeCourseDTO) {
+  updateOfferingCostCondition(
+    courseId: string,
+    updateOfferingCostConditionDTO: UpdateOfferingCostConditionDTO
+  ) {
     const accessToken = this.verifyAccess();
 
-    console.log(JSON.stringify(subscribeCourseDTO));
+    return this.http.put<OfferingCostConditionModel>(
+      `${this.baseURL}/${courseId}/custos-oferecimento/condicoes`,
+      updateOfferingCostConditionDTO,
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+  }
+
+  subscribeToCourse(courseId: string, subscribeCourseDTO: SubscribeCourseDTO) {
+    const accessToken = this.verifyAccess();
 
     return this.http.post<Array<CourseModel['alunos']>>(
       `${this.baseURL}/${courseId}/inscrever`,

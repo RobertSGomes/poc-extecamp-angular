@@ -22,7 +22,7 @@ export class StudentAllCoursesComponent implements OnInit {
     private readonly router: Router
   ) {}
 
-  courses: { result: CourseModel[]; total: number } = { result: [], total: 0 };
+  courses: CourseModel[] = [];
 
   ngOnInit(): void {
     this.studentService.getOne(getUserId()).subscribe({
@@ -40,7 +40,9 @@ export class StudentAllCoursesComponent implements OnInit {
   loadAllCourses() {
     this.courseService.getAll().subscribe({
       next: (response) => {
-        this.courses = response;
+        this.courses = response.result.filter(
+          (course) => course.curso_status === 'Andamento'
+        );
       },
       error: ({ error }) => {
         alert(error.error);

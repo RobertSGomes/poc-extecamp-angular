@@ -20,7 +20,7 @@ export class AssignSpeakerDTO {
   titulacao?: string;
   tipo_vinculo: string;
   nome_palestra: string;
-  valor: string;
+  valor: number;
   carga_horaria: string;
 
   constructor(stepTwoFormFive: IStepTwoFormFive) {
@@ -31,7 +31,9 @@ export class AssignSpeakerDTO {
     this.titulacao = stepTwoFormFive.docente_titulacao || undefined;
     this.tipo_vinculo = stepTwoFormFive.docente_vinculo;
     this.nome_palestra = stepTwoFormFive.docente_nome_palestra;
-    this.valor = stepTwoFormFive.docente_valor_palestra;
+    this.valor = Number(
+      stepTwoFormFive.docente_valor_palestra.toString().replaceAll(',', '')
+    );
     this.carga_horaria = `${stepTwoFormFive.docente_carga_horaria_horas}h${stepTwoFormFive.docente_carga_horaria_minutos}min`;
   }
 }

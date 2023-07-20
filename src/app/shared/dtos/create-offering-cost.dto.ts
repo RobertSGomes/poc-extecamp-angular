@@ -23,20 +23,52 @@ export class CreateOfferingCostDTO {
 
   constructor(stepFourFormOneValues: IStepFourFormOne) {
     this.fluxo_continuo = stepFourFormOneValues.fluxo_continuo;
-    this.professores_hora_aula =
-      Number(stepFourFormOneValues.professores_hora_aula) || undefined;
+    this.professores_hora_aula = stepFourFormOneValues.professores_hora_aula
+      ? Number(
+          stepFourFormOneValues.professores_hora_aula
+            .toString()
+            .replaceAll(',', '')
+        )
+      : undefined;
     this.professores_outras_atividades =
-      Number(stepFourFormOneValues.professores_outras_atividades) || undefined;
-    this.material_consumo =
-      Number(stepFourFormOneValues.material_consumo) || undefined;
-    this.material_permanente =
-      Number(stepFourFormOneValues.material_permanente) || undefined;
-    this.servico_terceiros =
-      Number(stepFourFormOneValues.servico_terceiros) || undefined;
-    this.outros_custos =
-      Number(stepFourFormOneValues.outros_custos) || undefined;
-    this.aproveitamento_recursos =
-      Number(stepFourFormOneValues.aproveitamento_recursos) || undefined;
-    this.total = Number(stepFourFormOneValues.total) || undefined;
+      stepFourFormOneValues.professores_outras_atividades
+        ? Number(
+            stepFourFormOneValues.professores_outras_atividades
+              .toString()
+              .replaceAll(',', '')
+          )
+        : undefined;
+    this.material_consumo = stepFourFormOneValues.material_consumo
+      ? Number(
+          stepFourFormOneValues.material_consumo.toString().replaceAll(',', '')
+        )
+      : undefined;
+    this.material_permanente = stepFourFormOneValues.material_permanente
+      ? Number(
+          stepFourFormOneValues.material_permanente
+            .toString()
+            .replaceAll(',', '')
+        )
+      : undefined;
+    this.servico_terceiros = stepFourFormOneValues.servico_terceiros
+      ? Number(
+          stepFourFormOneValues.servico_terceiros.toString().replaceAll(',', '')
+        )
+      : undefined;
+    this.outros_custos = stepFourFormOneValues.outros_custos
+      ? Number(
+          stepFourFormOneValues.outros_custos.toString().replaceAll(',', '')
+        )
+      : undefined;
+    this.aproveitamento_recursos = stepFourFormOneValues.aproveitamento_recursos
+      ? Number(
+          stepFourFormOneValues.aproveitamento_recursos
+            .toString()
+            .replaceAll(',', '')
+        )
+      : undefined;
+    this.total = stepFourFormOneValues.total
+      ? Number(stepFourFormOneValues.total.toString().replaceAll(',', ''))
+      : undefined;
   }
 }

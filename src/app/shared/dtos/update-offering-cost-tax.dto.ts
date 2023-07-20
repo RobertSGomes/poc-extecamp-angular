@@ -14,7 +14,7 @@ type IStepFourFormTwo = {
   custo_aluno_valor: string;
 };
 
-export class CreateOfferingCostTaxDTO {
+export class UpdateOfferingCostTaxDTO {
   fixas?: number;
   aiu_unidade_porcentagem?: number;
   aiu_unidade_valor?: number;

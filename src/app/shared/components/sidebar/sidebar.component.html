@@ -7,8 +7,8 @@
       <li *ngFor="let navItem of navItens">
         <a
           [ngClass]="{
-            'bg-gray-50': navItem.routerLink === currentUrl,
-            'text-gray-900': navItem.routerLink === currentUrl,
+            'bg-gray-50': verifyPath(navItem.routerLink),
+            'text-gray-900': verifyPath(navItem.routerLink),
           }"
           [routerLink]="navItem.routerLink"
           class="flex flex-row px-3 py-2 w-full rounded-[6px] font-semibold text-base text-gray-700 hover:bg-gray-100 hover:text-gray-900"

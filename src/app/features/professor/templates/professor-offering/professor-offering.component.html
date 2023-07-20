@@ -5,11 +5,11 @@
     [navItens]="[
       {
         title: 'Página inicial',
-        routerLink: '/professor'
+        routerLink: '#'
       },
       {
         title: 'Oferecimentos',
-        routerLink: '/professor/offering'
+        routerLink: '/professor/offerings'
       }
     ]"
   ></app-sidebar>
@@ -28,7 +28,9 @@
         <div class="flex flex-col gap-y-2 border-b border-b-gray-200 p-6">
           <p class="font-medium text-sm text-gray-600">Proposto</p>
           <div class="flex flex-row items-center justify-between">
-            <h1 class="font-semibold text-4xl text-gray-900">1</h1>
+            <h1 class="font-semibold text-4xl text-gray-900">
+              {{ pendingCourses.length }}
+            </h1>
             <button
               class="flex items-center justify-center rounded-[6px] w-6 h-6 border border-gray-300 shadow-sm"
             >
@@ -49,7 +51,7 @@
           <p class="font-medium text-sm text-gray-600">Andamento</p>
           <div class="flex flex-row items-center justify-between">
             <h1 class="font-semibold text-4xl text-gray-900">
-              {{ courses.length }}
+              {{ completedCourses.length }}
             </h1>
             <button
               class="flex items-center justify-center rounded-[6px] w-6 h-6 border border-gray-300 shadow-sm"
@@ -90,7 +92,9 @@
         <div class="flex flex-col gap-y-2 border-b border-b-gray-200 p-6">
           <p class="font-medium text-sm text-gray-600">Com pendência</p>
           <div class="flex flex-row items-center justify-between">
-            <h1 class="font-semibold text-4xl text-gray-900">0</h1>
+            <h1 class="font-semibold text-4xl text-gray-900">
+              {{ incompleteCourses.length }}
+            </h1>
             <button
               class="flex items-center justify-center rounded-[6px] w-6 h-6 border border-gray-300 shadow-sm"
             >
@@ -125,7 +129,7 @@
         </button>
       </div>
     </div>
-    <table class="rounded-2xl overflow-hidden mb-6 w-[1072px] mx-auto">
+    <table class="rounded-2xl mb-6 w-[1072px] mx-auto">
       <thead class="border-b border-b-gray-200">
         <th class="p-3 bg-gray-100 text-left font-medium text-xs text-gray-700">
           Sigla
@@ -178,14 +182,35 @@
           <td
             class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200 uppercase"
           >
-            ANDAMENTO
+            {{ course.curso_status }}
           </td>
           <td
             class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200 w-[72px]"
           >
-            <button class="flex items-center justify-center">
-              <img src="../../../../../assets/svgs/more.svg" class="w-4 h-4" />
-            </button>
+            <div class="relative">
+              <button
+                class="flex items-center justify-center"
+                type="button"
+                (click)="handleSwitchDropdownOptionsState(course.id)"
+              >
+                <img
+                  src="../../../../../assets/svgs/more.svg"
+                  class="w-4 h-4"
+                />
+              </button>
+              <div
+                *ngIf="openedDropdownOptions === course.id"
+                class="absolute top-1/2 -translate-y-1/2 right-14 z-[5] bg-white border border-gray-200 rounded-xl overflow-hidden"
+              >
+                <button
+                  class="w-full px-3 py-3 whitespace-nowrap font-normal text-sm text-left cursor-pointer hover:bg-violet-600 hover:text-white"
+                  type="button"
+                  (click)="handleDeleteCourse(course.id)"
+                >
+                  Excluir curso
+                </button>
+              </div>
+            </div>
           </td>
         </tr>
       </tbody>
@@ -204,7 +229,7 @@
         </button>
       </div>
     </div>
-    <table class="rounded-2xl overflow-hidden mb-6 w-[1072px] mx-auto">
+    <table class="rounded-2xl mb-6 w-[1072px] mx-auto">
       <thead class="border-b border-b-gray-200">
         <th class="p-3 bg-gray-100 text-left font-medium text-xs text-gray-700">
           Sigla
@@ -226,6 +251,82 @@
         ></th>
       </thead>
       <tbody>
+        <tr *ngFor="let course of pendingCourses; let i = index">
+          <td
+            class="p-3 bg-white text-left font-medium text-sm text-gray-900 border-b border-b-gray-200"
+          >
+            {{ course.sigla }}
+          </td>
+          <td
+            class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200 w-[121px]"
+          >
+            {{ formatIndex(i) }}
+          </td>
+          <td
+            class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200 w-[272px]"
+          >
+            {{ course.nome }}
+          </td>
+          <td
+            class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200"
+          >
+            <div
+              class="flex flex-row items-center gap-x-[6px] rounded-2xl bg-sky-50 pl-[6px] pr-2 py-0.5 w-fit"
+            >
+              <div class="w-[6px] h-[6px] rounded-full bg-sky-500"></div>
+              <p class="font-medium text-xs text-sky-800">
+                {{ course.tipo }}
+              </p>
+            </div>
+          </td>
+          <td
+            class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200 uppercase"
+          >
+            {{ course.curso_status }}
+          </td>
+          <td
+            class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200 w-[72px]"
+          >
+            <div class="relative">
+              <button
+                class="flex items-center justify-center"
+                type="button"
+                (click)="handleSwitchDropdownOptionsState(course.id)"
+              >
+                <img
+                  src="../../../../../assets/svgs/more.svg"
+                  class="w-4 h-4"
+                />
+              </button>
+              <div
+                *ngIf="openedDropdownOptions === course.id"
+                class="absolute top-1/2 -translate-y-1/2 right-14 z-[5] bg-white border border-gray-200 rounded-xl overflow-hidden"
+              >
+                <button
+                  class="w-full px-3 py-3 whitespace-nowrap font-normal text-sm text-left cursor-pointer hover:bg-violet-600 hover:text-white"
+                  type="button"
+                  (click)="handleEditCourse(course.id)"
+                >
+                  Editar curso
+                </button>
+                <button
+                  class="w-full px-3 py-3 whitespace-nowrap font-normal text-sm text-left cursor-pointer hover:bg-violet-600 hover:text-white"
+                  type="button"
+                  (click)="handleAproveCourse(course.id)"
+                >
+                  Simular aprovação
+                </button>
+                <button
+                  class="w-full px-3 py-3 whitespace-nowrap font-normal text-sm text-left cursor-pointer hover:bg-violet-600 hover:text-white"
+                  type="button"
+                  (click)="handleDeleteCourse(course.id)"
+                >
+                  Excluir curso
+                </button>
+              </div>
+            </div>
+          </td>
+        </tr>
         <tr *ngFor="let course of incompleteCourses; let i = index">
           <td
             class="p-3 bg-white text-left font-medium text-sm text-gray-900 border-b border-b-gray-200"
@@ -255,16 +356,44 @@
             </div>
           </td>
           <td
-            class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200"
+            class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200 uppercase"
           >
             {{ course.curso_status }}
           </td>
           <td
             class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200 w-[72px]"
           >
-            <button class="flex items-center justify-center">
-              <img src="../../../../../assets/svgs/more.svg" class="w-4 h-4" />
-            </button>
+            <div class="relative">
+              <button
+                class="flex items-center justify-center"
+                type="button"
+                (click)="handleSwitchDropdownOptionsState(course.id)"
+              >
+                <img
+                  src="../../../../../assets/svgs/more.svg"
+                  class="w-4 h-4"
+                />
+              </button>
+              <div
+                *ngIf="openedDropdownOptions === course.id"
+                class="absolute top-1/2 -translate-y-1/2 right-14 z-[5] bg-white border border-gray-200 rounded-xl overflow-hidden"
+              >
+                <button
+                  class="w-full px-3 py-3 whitespace-nowrap font-normal text-sm text-left cursor-pointer hover:bg-violet-600 hover:text-white"
+                  type="button"
+                  (click)="handleEditCourse(course.id)"
+                >
+                  Continuar cadastro
+                </button>
+                <button
+                  class="w-full px-3 py-3 whitespace-nowrap font-normal text-sm text-left cursor-pointer hover:bg-violet-600 hover:text-white"
+                  type="button"
+                  (click)="handleDeleteCourse(course.id)"
+                >
+                  Excluir curso
+                </button>
+              </div>
+            </div>
           </td>
         </tr>
       </tbody>

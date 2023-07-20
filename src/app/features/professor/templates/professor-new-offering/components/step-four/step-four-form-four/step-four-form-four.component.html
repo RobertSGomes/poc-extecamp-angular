@@ -40,96 +40,17 @@
     </div>
   </div>
 
-  <hr class="h-[1px] bg-gray-200" />
+  <div
+    *ngIf="!stepFourFormFour.get('curso_gratuito')?.value"
+    class="flex flex-col gap-y-6 w-full"
+  >
+    <hr class="h-[1px] bg-gray-200" />
 
-  <!-- À vista -->
-  <h1 class="font-semibold text-lg text-gray-900">À vista</h1>
+    <!-- À vista -->
+    <h1 class="font-semibold text-lg text-gray-900">À vista</h1>
 
-  <!-- Valor e data vencimento -->
-  <div class="flex gap-x-[18px]">
-    <!-- Valor -->
-    <div class="flex flex-col gap-[6px]">
-      <label class="font-medium text-sm text-gray-700">Valor</label>
-      <div
-        class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
-      >
-        <p class="font-normal text-base text-gray-500">R$</p>
-        <input
-          class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-          formControlName="valor_a_vista"
-          [inputMask]="currencyInputMask"
-          placeholder="0.00"
-        />
-      </div>
-    </div>
-
-    <!-- Data vencimento -->
-    <div class="flex flex-col gap-[6px]">
-      <label class="font-medium text-sm text-gray-700"
-        >Data do vencimento</label
-      >
-      <div
-        class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
-      >
-        <img
-          src="../../../../../../../../assets/svgs/calendar.svg"
-          class="w-5 h-5"
-        />
-        <input
-          class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-          placeholder="dd/mm/aaaa"
-          formControlName="valor_a_vista_vencimento"
-          type="date"
-          onfocus="this.showPicker()"
-        />
-      </div>
-    </div>
-  </div>
-
-  <hr class="h-[1px] bg-gray-200" />
-
-  <!-- Parcelado (Boleto) -->
-  <div class="flex flex-col gap-y-2">
-    <h1 class="font-semibold text-lg text-gray-900">Parcelado (Boleto)</h1>
-    <p class="font-normal text-sm text-gray-600">Opção 1</p>
-  </div>
-
-  <!-- Número parcelas, valor e data vencimento -->
-  <div class="flex flex-col w-full gap-y-6" formArrayName="parcelas_boleto">
-    <div
-      class="flex gap-x-[18px]"
-      *ngFor="let parcela_boleto of parcelas_boleto.controls; let i = index"
-      [formGroupName]="i"
-    >
-      <!-- Número parcelas -->
-      <div class="flex flex-col gap-[6px]">
-        <label class="font-medium text-sm text-gray-700"
-          >Número de parcelas *</label
-        >
-        <div
-          class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
-        >
-          <select
-            class="w-full text-gray-800 text-base outline-none"
-            formControlName="nmr_parcelas"
-          >
-            <option selected value="">Selecione</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-            <option value="11">11</option>
-            <option value="12">12</option>
-          </select>
-        </div>
-      </div>
-
+    <!-- Valor e data vencimento -->
+    <div class="flex gap-x-[18px]">
       <!-- Valor -->
       <div class="flex flex-col gap-[6px]">
         <label class="font-medium text-sm text-gray-700">Valor *</label>
@@ -139,7 +60,7 @@
           <p class="font-normal text-base text-gray-500">R$</p>
           <input
             class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-            formControlName="valor"
+            formControlName="valor_a_vista"
             [inputMask]="currencyInputMask"
             placeholder="0.00"
           />
@@ -161,501 +82,591 @@
           <input
             class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
             placeholder="dd/mm/aaaa"
-            formControlName="data_vencimento"
+            formControlName="valor_a_vista_vencimento"
             type="date"
             onfocus="this.showPicker()"
           />
         </div>
       </div>
-
-      <button
-        class="flex gap-x-2 self-end py-3"
-        type="button"
-        (click)="removePaymentSlip(i)"
-      >
-        <p class="font-semibold text-sm text-violet-700">
-          Remover opção de parcelamento
-        </p>
-      </button>
     </div>
 
-    <button class="flex gap-x-2" type="button" (click)="addPaymentSlip()">
-      <img
-        src="../../../../../../../../assets/svgs/plus-violet.svg"
-        class="w-5 h-5"
-      />
-      <p class="font-semibold text-sm text-violet-700">
-        Inserir nova opção de parcelamento
-      </p>
-    </button>
-  </div>
+    <hr class="h-[1px] bg-gray-200" />
 
-  <hr class="h-[1px] bg-gray-200" />
-
-  <!-- Cartão de crédito -->
-  <h1 class="font-semibold text-lg text-gray-900">Cartão de crédito</h1>
-
-  <!-- Número máximo parcelas -->
-  <div class="flex flex-col gap-[6px]">
-    <label class="font-medium text-sm text-gray-700"
-      >Número máximo de parcelas</label
-    >
-    <div
-      class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
-    >
-      <select
-        class="w-full text-gray-800 text-base outline-none"
-        formControlName="parcelas_cartao_credito"
-      >
-        <option selected value="">Selecione</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-        <option value="11">11</option>
-        <option value="12">12</option>
-      </select>
-    </div>
-  </div>
-
-  <hr class="h-[1px] bg-gray-200" />
-
-  <!-- Descontos especiais -->
-  <h1 class="font-semibold text-lg text-gray-900">Descontos especiais</h1>
-
-  <!-- Porcentagem desconto - Estudantes -->
-  <div class="flex flex-col gap-[6px]">
-    <label class="font-medium text-sm text-gray-700"
-      >Porcentagem de desconto a estudantes</label
-    >
-    <div
-      class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
-    >
-      <input
-        class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-        formControlName="porcentagem_desconto_estudantes"
-        placeholder="0.00"
-        [inputMask]="percentageInputMask"
-      />
-      <p class="font-normal text-base text-gray-500">%</p>
-    </div>
-  </div>
-
-  <!-- Para e porcentagem -->
-  <div class="flex flex-col w-full gap-y-6" formArrayName="opcao_desconto">
-    <div
-      *ngFor="let opcao of opcao_desconto.controls; let i = index"
-      class="flex gap-x-[18px]"
-      [formGroupName]="i"
-    >
-      <!-- Para -->
-      <div class="flex flex-col gap-[6px]">
-        <label class="font-medium text-sm text-gray-700">Para *</label>
-        <div
-          class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
-        >
-          <input
-            class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-            formControlName="para"
-          />
-        </div>
-      </div>
-
-      <!-- Porcentagem -->
-      <div class="flex flex-col gap-[6px]">
-        <label class="font-medium text-sm text-gray-700"
-          >Porcentagem de desconto *</label
-        >
-        <div
-          class="flex items-center gap-2 w-[150px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
-        >
-          <input
-            class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-            placeholder="0.00"
-            formControlName="porcentagem_desconto"
-            [inputMask]="percentageInputMask"
-          />
-          <p class="font-normal text-base text-gray-500">%</p>
-        </div>
-      </div>
-
-      <button
-        class="flex gap-x-2 self-end py-3"
-        type="button"
-        (click)="removeDiscountMethod(i)"
-      >
-        <p class="font-semibold text-sm text-violet-700">
-          Remover opção de desconto
-        </p>
-      </button>
+    <!-- Parcelado (Boleto) -->
+    <div class="flex flex-col gap-y-2">
+      <h1 class="font-semibold text-lg text-gray-900">Parcelado (Boleto)</h1>
+      <p class="font-normal text-sm text-gray-600">Opção 1</p>
     </div>
 
-    <button class="flex gap-x-2" type="button" (click)="addDiscountMethod()">
-      <img
-        src="../../../../../../../../assets/svgs/plus-violet.svg"
-        class="w-5 h-5"
-      />
-      <p class="font-semibold text-sm text-violet-700">
-        Inserir nova opção de desconto
-      </p>
-    </button>
-  </div>
-
-  <hr class="h-[1px] bg-gray-200" />
-
-  <!-- Convênio -->
-  <h1 class="font-semibold text-lg text-gray-900">Convênio</h1>
-
-  <!-- Número processo -->
-  <div class="flex flex-col gap-[6px]">
-    <label class="font-medium text-sm text-gray-700">Número do processo</label>
-    <div
-      class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
-    >
-      <input
-        class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-        formControlName="convenio_numero_processo"
-      />
-    </div>
-  </div>
-
-  <!-- Nome empresa -->
-  <div class="flex flex-col gap-[6px]">
-    <label class="font-medium text-sm text-gray-700"
-      >Nome da empresa/Instituição</label
-    >
-    <div
-      class="flex items-center gap-2 w-[323px] h-[154px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
-    >
-      <textarea
-        class="w-full h-full text-gray-800 text-base outline-none resize-none"
-        formControlName="convenio_empresa"
-      ></textarea>
-    </div>
-  </div>
-
-  <!-- CNPJ, tipo, responsável e cargo -->
-  <div class="flex gap-x-[18px]">
-    <!-- CNPJ -->
-    <div class="flex flex-col gap-[6px]">
-      <label class="font-medium text-sm text-gray-700">CNPJ</label>
+    <!-- Número parcelas, valor e data vencimento -->
+    <div class="flex flex-col w-full gap-y-6" formArrayName="parcelas_boleto">
       <div
-        class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+        class="flex gap-x-[18px]"
+        *ngFor="let parcela_boleto of parcelas_boleto.controls; let i = index"
+        [formGroupName]="i"
       >
-        <input
-          class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-          formControlName="convenio_cnpj"
-          [inputMask]="cnpjInputMask"
-        />
+        <!-- Número parcelas -->
+        <div class="flex flex-col gap-[6px]">
+          <label class="font-medium text-sm text-gray-700"
+            >Número de parcelas *</label
+          >
+          <div
+            class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+          >
+            <select
+              class="w-full text-gray-800 text-base outline-none"
+              formControlName="nmr_parcelas"
+            >
+              <option selected value="">Selecione</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Valor -->
+        <div class="flex flex-col gap-[6px]">
+          <label class="font-medium text-sm text-gray-700">Valor *</label>
+          <div
+            class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+          >
+            <p class="font-normal text-base text-gray-500">R$</p>
+            <input
+              class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+              formControlName="valor"
+              [inputMask]="currencyInputMask"
+              placeholder="0.00"
+            />
+          </div>
+        </div>
+
+        <!-- Data vencimento -->
+        <div class="flex flex-col gap-[6px]">
+          <label class="font-medium text-sm text-gray-700"
+            >Data do vencimento *</label
+          >
+          <div
+            class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+          >
+            <img
+              src="../../../../../../../../assets/svgs/calendar.svg"
+              class="w-5 h-5"
+            />
+            <input
+              class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+              placeholder="dd/mm/aaaa"
+              formControlName="data_vencimento"
+              type="date"
+              onfocus="this.showPicker()"
+            />
+          </div>
+        </div>
+
+        <button
+          class="flex gap-x-2 self-end py-3"
+          type="button"
+          (click)="removePaymentSlip(i)"
+        >
+          <p class="font-semibold text-sm text-violet-700">
+            Remover opção de parcelamento
+          </p>
+        </button>
       </div>
+
+      <button class="flex gap-x-2" type="button" (click)="addPaymentSlip()">
+        <img
+          src="../../../../../../../../assets/svgs/plus-violet.svg"
+          class="w-5 h-5"
+        />
+        <p class="font-semibold text-sm text-violet-700">
+          Inserir nova opção de parcelamento
+        </p>
+      </button>
     </div>
 
-    <!-- Tipo -->
+    <hr class="h-[1px] bg-gray-200" />
+
+    <!-- Cartão de crédito -->
+    <h1 class="font-semibold text-lg text-gray-900">Cartão de crédito</h1>
+
+    <!-- Número máximo parcelas -->
     <div class="flex flex-col gap-[6px]">
-      <label class="font-medium text-sm text-gray-700">Tipo</label>
+      <label class="font-medium text-sm text-gray-700"
+        >Número máximo de parcelas</label
+      >
       <div
         class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
         <select
           class="w-full text-gray-800 text-base outline-none"
-          formControlName="convenio_tipo"
+          formControlName="parcelas_cartao_credito"
         >
           <option selected value="">Selecione</option>
-          <option value="intercambio">Intercâmbio estudantil</option>
-          <option value="pesquisa">Pesquisa</option>
-          <option value="estagio">Estágio</option>
-          <option value="coop_academica">Cooperação acadêmica</option>
-          <option value="dupla_titulacao">Dupla titulação</option>
-          <option value="mobilidade_docente">Mobilidade docente</option>
-          <option value="acesso_bibliotecas">
-            Acesso a bibliotecas e recursos
-          </option>
-          <option value="parceria_empresarial">Parceria empresarial</option>
-          <option value="intercambio_cultural">
-            Intercâmbio cultural e esportivo
-          </option>
-          <option value="assistencia_estudantil">Assistência estudantil</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
         </select>
       </div>
     </div>
 
-    <!-- Responsável -->
+    <hr class="h-[1px] bg-gray-200" />
+
+    <!-- Descontos especiais -->
+    <h1 class="font-semibold text-lg text-gray-900">Descontos especiais</h1>
+
+    <!-- Porcentagem desconto - Estudantes -->
     <div class="flex flex-col gap-[6px]">
-      <label class="font-medium text-sm text-gray-700">Responsável</label>
+      <label class="font-medium text-sm text-gray-700"
+        >Porcentagem de desconto a estudantes</label
+      >
       <div
         class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-          formControlName="convenio_responsavel"
+          formControlName="porcentagem_desconto_estudantes"
+          placeholder="0.00"
+          [inputMask]="percentageInputMask"
+        />
+        <p class="font-normal text-base text-gray-500">%</p>
+      </div>
+    </div>
+
+    <!-- Para e porcentagem -->
+    <div class="flex flex-col w-full gap-y-6" formArrayName="opcao_desconto">
+      <div
+        *ngFor="let opcao of opcao_desconto.controls; let i = index"
+        class="flex gap-x-[18px]"
+        [formGroupName]="i"
+      >
+        <!-- Para -->
+        <div class="flex flex-col gap-[6px]">
+          <label class="font-medium text-sm text-gray-700">Para *</label>
+          <div
+            class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+          >
+            <input
+              class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+              formControlName="para"
+            />
+          </div>
+        </div>
+
+        <!-- Porcentagem -->
+        <div class="flex flex-col gap-[6px]">
+          <label class="font-medium text-sm text-gray-700"
+            >Porcentagem de desconto *</label
+          >
+          <div
+            class="flex items-center gap-2 w-[150px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+          >
+            <input
+              class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+              placeholder="0.00"
+              formControlName="porcentagem_desconto"
+              [inputMask]="percentageInputMask"
+            />
+            <p class="font-normal text-base text-gray-500">%</p>
+          </div>
+        </div>
+
+        <button
+          class="flex gap-x-2 self-end py-3"
+          type="button"
+          (click)="removeDiscountMethod(i)"
+        >
+          <p class="font-semibold text-sm text-violet-700">
+            Remover opção de desconto
+          </p>
+        </button>
+      </div>
+
+      <button class="flex gap-x-2" type="button" (click)="addDiscountMethod()">
+        <img
+          src="../../../../../../../../assets/svgs/plus-violet.svg"
+          class="w-5 h-5"
+        />
+        <p class="font-semibold text-sm text-violet-700">
+          Inserir nova opção de desconto
+        </p>
+      </button>
+    </div>
+
+    <hr class="h-[1px] bg-gray-200" />
+
+    <!-- Convênio -->
+    <h1 class="font-semibold text-lg text-gray-900">Convênio</h1>
+
+    <!-- Número processo -->
+    <div class="flex flex-col gap-[6px]">
+      <label class="font-medium text-sm text-gray-700"
+        >Número do processo</label
+      >
+      <div
+        class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+      >
+        <input
+          class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+          formControlName="convenio_numero_processo"
         />
       </div>
     </div>
 
-    <!-- Cargo -->
+    <!-- Nome empresa -->
     <div class="flex flex-col gap-[6px]">
-      <label class="font-medium text-sm text-gray-700">Cargo</label>
+      <label class="font-medium text-sm text-gray-700"
+        >Nome da empresa/Instituição</label
+      >
+      <div
+        class="flex items-center gap-2 w-[323px] h-[154px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+      >
+        <textarea
+          class="w-full h-full text-gray-800 text-base outline-none resize-none"
+          formControlName="convenio_empresa"
+        ></textarea>
+      </div>
+    </div>
+
+    <!-- CNPJ, tipo, responsável e cargo -->
+    <div class="flex gap-x-[18px]">
+      <!-- CNPJ -->
+      <div class="flex flex-col gap-[6px]">
+        <label class="font-medium text-sm text-gray-700">CNPJ</label>
+        <div
+          class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+        >
+          <input
+            class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+            formControlName="convenio_cnpj"
+            [inputMask]="cnpjInputMask"
+          />
+        </div>
+      </div>
+
+      <!-- Tipo -->
+      <div class="flex flex-col gap-[6px]">
+        <label class="font-medium text-sm text-gray-700">Tipo</label>
+        <div
+          class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+        >
+          <select
+            class="w-full text-gray-800 text-base outline-none"
+            formControlName="convenio_tipo"
+          >
+            <option selected value="">Selecione</option>
+            <option value="intercambio">Intercâmbio estudantil</option>
+            <option value="pesquisa">Pesquisa</option>
+            <option value="estagio">Estágio</option>
+            <option value="coop_academica">Cooperação acadêmica</option>
+            <option value="dupla_titulacao">Dupla titulação</option>
+            <option value="mobilidade_docente">Mobilidade docente</option>
+            <option value="acesso_bibliotecas">
+              Acesso a bibliotecas e recursos
+            </option>
+            <option value="parceria_empresarial">Parceria empresarial</option>
+            <option value="intercambio_cultural">
+              Intercâmbio cultural e esportivo
+            </option>
+            <option value="assistencia_estudantil">
+              Assistência estudantil
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Responsável -->
+      <div class="flex flex-col gap-[6px]">
+        <label class="font-medium text-sm text-gray-700">Responsável</label>
+        <div
+          class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+        >
+          <input
+            class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+            formControlName="convenio_responsavel"
+          />
+        </div>
+      </div>
+
+      <!-- Cargo -->
+      <div class="flex flex-col gap-[6px]">
+        <label class="font-medium text-sm text-gray-700">Cargo</label>
+        <div
+          class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+        >
+          <input
+            class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+            formControlName="convenio_responsavel_cargo"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Infos valor e vencimento -->
+    <div class="flex items-start py-4 gap-x-2 w-[323px]">
+      <input
+        type="checkbox"
+        id="checkbox_infos_parcela"
+        class="mt-[3px]"
+        formControlName="convenio_sem_valor_parcela"
+      />
+      <label
+        for="checkbox_infos_parcela"
+        class="font-medium text-sm text-gray-700"
+        >Clique aqui caso não tenha a informação do valor da parcela e da data
+        de vencimento.</label
+      >
+    </div>
+
+    <!-- Número parcelas -->
+    <div class="flex flex-col gap-[6px]">
+      <label class="font-medium text-sm text-gray-700"
+        >Número de parcelas</label
+      >
       <div
         class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
+        <select
+          class="w-full text-gray-800 text-base outline-none"
+          formControlName="convenio_numero_parcelas"
+        >
+          <option selected value="">Selecione</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+        </select>
+      </div>
+    </div>
+
+    <hr class="h-[1px] bg-gray-200" />
+
+    <!-- Recursos doações, patrocínio e outros -->
+    <h1 class="font-semibold text-lg text-gray-900">
+      Recursos provenientes de doações, patrocino e outros
+    </h1>
+
+    <!-- Valor -->
+    <div class="flex flex-col gap-[6px]">
+      <label class="font-medium text-sm text-gray-700">Valor</label>
+      <div
+        class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+      >
+        <p class="font-normal text-base text-gray-500">R$</p>
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-          formControlName="convenio_responsavel_cargo"
+          formControlName="recurso_valor"
+          [inputMask]="currencyInputMask"
+          placeholder="0.00"
         />
       </div>
     </div>
-  </div>
 
-  <!-- Infos valor e vencimento -->
-  <div class="flex items-start py-4 gap-x-2 w-[323px]">
-    <input
-      type="checkbox"
-      id="checkbox_infos_parcela"
-      class="mt-[3px]"
-      formControlName="convenio_sem_valor_parcela"
-    />
-    <label
-      for="checkbox_infos_parcela"
-      class="font-medium text-sm text-gray-700"
-      >Clique aqui caso não tenha a informação do valor da parcela e da data de
-      vencimento.</label
-    >
-  </div>
-
-  <!-- Número parcelas -->
-  <div class="flex flex-col gap-[6px]">
-    <label class="font-medium text-sm text-gray-700">Número de parcelas</label>
-    <div
-      class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
-    >
-      <select
-        class="w-full text-gray-800 text-base outline-none"
-        formControlName="convenio_numero_parcelas"
-      >
-        <option selected value="">Selecione</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-        <option value="11">11</option>
-        <option value="12">12</option>
-      </select>
-    </div>
-  </div>
-
-  <hr class="h-[1px] bg-gray-200" />
-
-  <!-- Recursos doações, patrocínio e outros -->
-  <h1 class="font-semibold text-lg text-gray-900">
-    Recursos provenientes de doações, patrocino e outros
-  </h1>
-
-  <!-- Valor -->
-  <div class="flex flex-col gap-[6px]">
-    <label class="font-medium text-sm text-gray-700">Valor</label>
-    <div
-      class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
-    >
-      <p class="font-normal text-base text-gray-500">R$</p>
-      <input
-        class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-        formControlName="recurso_valor"
-        [inputMask]="currencyInputMask"
-        placeholder="0.00"
-      />
-    </div>
-  </div>
-
-  <!-- Nome empresa -->
-  <div class="flex flex-col gap-[6px]">
-    <label class="font-medium text-sm text-gray-700"
-      >Nome da empresa/Instituição</label
-    >
-    <div
-      class="flex items-center gap-2 w-[323px] h-[154px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
-    >
-      <textarea
-        class="w-full h-full text-gray-800 text-base outline-none resize-none"
-        formControlName="recurso_empresa"
-      ></textarea>
-    </div>
-  </div>
-
-  <hr class="h-[1px] bg-gray-200" />
-
-  <!-- Empresa -->
-  <div class="flex flex-col gap-y-2">
-    <h1 class="font-semibold text-lg text-gray-900">Empresa</h1>
-    <p class="font-normal text-sm text-gray-600">Dados da empresa</p>
-  </div>
-
-  <!-- Nome empresa -->
-  <div class="flex flex-col gap-[6px]">
-    <label class="font-medium text-sm text-gray-700">Nome</label>
-    <div
-      class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
-    >
-      <input
-        class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-        formControlName="empresa_nome"
-      />
-    </div>
-  </div>
-
-  <!-- CEP e Cidade -->
-  <div class="flex gap-x-[18px]">
-    <!-- CEP -->
+    <!-- Nome empresa -->
     <div class="flex flex-col gap-[6px]">
-      <label class="font-medium text-sm text-gray-700">CEP</label>
+      <label class="font-medium text-sm text-gray-700"
+        >Nome da empresa/Instituição</label
+      >
+      <div
+        class="flex items-center gap-2 w-[323px] h-[154px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+      >
+        <textarea
+          class="w-full h-full text-gray-800 text-base outline-none resize-none"
+          formControlName="recurso_empresa"
+        ></textarea>
+      </div>
+    </div>
+
+    <hr class="h-[1px] bg-gray-200" />
+
+    <!-- Empresa -->
+    <div class="flex flex-col gap-y-2">
+      <h1 class="font-semibold text-lg text-gray-900">Empresa</h1>
+      <p class="font-normal text-sm text-gray-600">Dados da empresa</p>
+    </div>
+
+    <!-- Nome empresa -->
+    <div class="flex flex-col gap-[6px]">
+      <label class="font-medium text-sm text-gray-700">Nome</label>
       <div
         class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-          formControlName="empresa_cep"
-          [inputMask]="cepInputMask"
-          (change)="handleChangeCep()"
+          formControlName="empresa_nome"
         />
       </div>
     </div>
 
-    <!-- Cidade -->
+    <!-- CEP e Cidade -->
+    <div class="flex gap-x-[18px]">
+      <!-- CEP -->
+      <div class="flex flex-col gap-[6px]">
+        <label class="font-medium text-sm text-gray-700">CEP</label>
+        <div
+          class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+        >
+          <input
+            class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+            formControlName="empresa_cep"
+            [inputMask]="cepInputMask"
+            (change)="handleChangeCep()"
+          />
+        </div>
+      </div>
+
+      <!-- Cidade -->
+      <div class="flex flex-col gap-[6px]">
+        <label class="font-medium text-sm text-gray-700">Cidade</label>
+        <div
+          class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+        >
+          <input
+            class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+            formControlName="empresa_cidade"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Bairro e Endereço -->
+    <div class="flex gap-x-[18px]">
+      <!-- Bairro -->
+      <div class="flex flex-col gap-[6px]">
+        <label class="font-medium text-sm text-gray-700">Bairro</label>
+        <div
+          class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+        >
+          <input
+            class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+            formControlName="empresa_bairro"
+          />
+        </div>
+      </div>
+
+      <!-- Endereço -->
+      <div class="flex flex-col gap-[6px]">
+        <label class="font-medium text-sm text-gray-700">Endereço</label>
+        <div
+          class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+        >
+          <input
+            class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+            formControlName="empresa_endereco"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- CNPJ -->
     <div class="flex flex-col gap-[6px]">
-      <label class="font-medium text-sm text-gray-700">Cidade</label>
+      <label class="font-medium text-sm text-gray-700">CNPJ</label>
       <div
         class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-          formControlName="empresa_cidade"
+          formControlName="empresa_cnpj"
+          [inputMask]="cnpjInputMask"
         />
       </div>
     </div>
-  </div>
 
-  <!-- Bairro e Endereço -->
-  <div class="flex gap-x-[18px]">
-    <!-- Bairro -->
+    <!-- Ins. Estadual -->
     <div class="flex flex-col gap-[6px]">
-      <label class="font-medium text-sm text-gray-700">Bairro</label>
+      <label class="font-medium text-sm text-gray-700">Ins. Estadual </label>
       <div
         class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-          formControlName="empresa_bairro"
+          formControlName="empresa_ins_estadual"
         />
       </div>
     </div>
 
-    <!-- Endereço -->
+    <!-- Nome do contato -->
     <div class="flex flex-col gap-[6px]">
-      <label class="font-medium text-sm text-gray-700">Endereço</label>
+      <label class="font-medium text-sm text-gray-700">Nome do contato </label>
       <div
         class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-          formControlName="empresa_endereco"
+          formControlName="empresa_nome_contato"
         />
       </div>
     </div>
-  </div>
 
-  <!-- CNPJ -->
-  <div class="flex flex-col gap-[6px]">
-    <label class="font-medium text-sm text-gray-700">CNPJ</label>
-    <div
-      class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
-    >
-      <input
-        class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-        formControlName="empresa_cnpj"
-        [inputMask]="cnpjInputMask"
-      />
+    <!-- Telefone e Fax -->
+    <div class="flex gap-x-[18px]">
+      <!-- Telefone -->
+      <div class="flex flex-col gap-[6px]">
+        <label class="font-medium text-sm text-gray-700">Telefone</label>
+        <div
+          class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+        >
+          <input
+            class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+            formControlName="empresa_telefone"
+            [inputMask]="phoneInputMask"
+          />
+        </div>
+      </div>
+
+      <!-- Fax -->
+      <div class="flex flex-col gap-[6px]">
+        <label class="font-medium text-sm text-gray-700">Fax</label>
+        <div
+          class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+        >
+          <input
+            class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+            formControlName="empresa_fax"
+            [inputMask]="phoneInputMask"
+          />
+        </div>
+      </div>
     </div>
-  </div>
 
-  <!-- Ins. Estadual -->
-  <div class="flex flex-col gap-[6px]">
-    <label class="font-medium text-sm text-gray-700">Ins. Estadual </label>
-    <div
-      class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
-    >
-      <input
-        class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-        formControlName="empresa_ins_estadual"
-      />
-    </div>
-  </div>
-
-  <!-- Nome do contato -->
-  <div class="flex flex-col gap-[6px]">
-    <label class="font-medium text-sm text-gray-700">Nome do contato </label>
-    <div
-      class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
-    >
-      <input
-        class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-        formControlName="empresa_nome_contato"
-      />
-    </div>
-  </div>
-
-  <!-- Telefone e Fax -->
-  <div class="flex gap-x-[18px]">
-    <!-- Telefone -->
+    <!-- E-mail -->
     <div class="flex flex-col gap-[6px]">
-      <label class="font-medium text-sm text-gray-700">Telefone</label>
+      <label class="font-medium text-sm text-gray-700">E-mail</label>
       <div
         class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-          formControlName="empresa_telefone"
-          [inputMask]="phoneInputMask"
+          type="email"
+          formControlName="empresa_email"
         />
       </div>
-    </div>
-
-    <!-- Fax -->
-    <div class="flex flex-col gap-[6px]">
-      <label class="font-medium text-sm text-gray-700">Fax</label>
-      <div
-        class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
-      >
-        <input
-          class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-          formControlName="empresa_fax"
-          [inputMask]="phoneInputMask"
-        />
-      </div>
-    </div>
-  </div>
-
-  <!-- E-mail -->
-  <div class="flex flex-col gap-[6px]">
-    <label class="font-medium text-sm text-gray-700">E-mail</label>
-    <div
-      class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
-    >
-      <input
-        class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-        type="email"
-        formControlName="empresa_email"
-      />
     </div>
   </div>
 
@@ -680,7 +691,10 @@
       <button
         class="px-4 py-[10px] rounded-lg font-semibold text-sm text-white bg-violet-700"
         type="submit"
-        [disabled]="!stepFourFormFour.valid"
+        [disabled]="
+          !stepFourFormFour.get('curso_gratuito')?.value &&
+          !stepFourFormFour.valid
+        "
       >
         Próximo
       </button>

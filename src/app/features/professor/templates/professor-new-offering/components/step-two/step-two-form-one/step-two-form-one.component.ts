@@ -78,8 +78,47 @@ export class StepTwoFormOneComponent implements OnInit {
     this.professorService.getAll().subscribe({
       next: (response) => {
         this.professors = response.result;
+        this.handleLoadInputs();
       },
     });
+  }
+
+  handleLoadInputs() {
+    if (this.stepTwoFormOne.get('coordenador_id')?.value) {
+      this.stepTwoFormOne
+        .get('coordenador')
+        ?.setValue(
+          this.professors.find(
+            (professor) =>
+              professor.id === this.stepTwoFormOne.get('coordenador_id')?.value
+          )?.nome ?? ''
+        );
+    }
+
+    if (this.stepTwoFormOne.get('diretor_id')?.value) {
+      this.stepTwoFormOne
+        .get('diretor')
+        ?.setValue(
+          this.professors.find(
+            (professor) =>
+              professor.id === this.stepTwoFormOne.get('diretor_id')?.value
+          )?.nome ?? ''
+        );
+    }
+
+    if (this.stepTwoFormOne.get('docente_responsavel_id')?.value) {
+      const professor = this.professors.find(
+        (professor) =>
+          professor.id ===
+          this.stepTwoFormOne.get('docente_responsavel_id')?.value
+      ) as ProfessorModel;
+
+      this.handleSelectProfessor(
+        professor,
+        'docente_responsavel',
+        'docente_responsavel_id'
+      );
+    }
   }
 
   getFilteredProfessors(formControlName: string): ProfessorModel[] {

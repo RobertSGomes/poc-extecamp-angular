@@ -16,13 +16,21 @@ export class ProfessorOfferingComponent implements OnInit {
 
   courses: Array<CourseModel> = [];
 
+  openedDropdownOptions = '';
+
   constructor(
     private readonly courseService: CourseService,
     private readonly professorService: ProfessorService
   ) {}
 
   get incompleteCourses() {
-    return this.courses.filter((course) => course.curso_status !== 'Andamento');
+    return this.courses.filter(
+      (course) => course.curso_status === 'Incompleta'
+    );
+  }
+
+  get pendingCourses() {
+    return this.courses.filter((course) => course.curso_status === 'Pendente');
   }
 
   get completedCourses() {
@@ -66,4 +74,15 @@ export class ProfessorOfferingComponent implements OnInit {
 
     return formattedIndex;
   }
+
+  handleSwitchDropdownOptionsState(courseId: string) {
+    this.openedDropdownOptions =
+      this.openedDropdownOptions === courseId ? '' : courseId;
+  }
+
+  handleEditCourse(courseId: string) {}
+
+  handleAproveCourse(courseId: string) {}
+
+  handleDeleteCourse(courseId: string) {}
 }

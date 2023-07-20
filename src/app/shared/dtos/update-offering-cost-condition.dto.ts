@@ -39,7 +39,7 @@ type IStepFourFormFour = {
   empresa_email: string;
 };
 
-export class CreateOfferingCostConditionDTO {
+export class UpdateOfferingCostConditionDTO {
   forma_pagamento: {
     tipo: string;
     fonte: string;

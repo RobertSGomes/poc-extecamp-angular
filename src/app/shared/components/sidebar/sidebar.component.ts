@@ -23,4 +23,8 @@ export class SidebarComponent implements OnInit {
   ngOnInit(): void {
     this.currentUrl = this.router.url;
   }
+
+  verifyPath(path: string) {
+    return this.currentUrl.includes(path);
+  }
 }

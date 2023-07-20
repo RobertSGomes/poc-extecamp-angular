@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { ProfessorHomeComponent } from './templates/professor-home/professor-home.component';
 import { ProfessorNewOfferingComponent } from './templates/professor-new-offering/professor-new-offering.component';
 import { ProfessorOfferingComponent } from './templates/professor-offering/professor-offering.component';
 import { StepOneFormOneComponent } from './templates/professor-new-offering/components/step-one/step-one-form-one/step-one-form-one.component';
@@ -30,7 +29,6 @@ import { InputMaskModule } from '@ngneat/input-mask';
 
 @NgModule({
   declarations: [
-    ProfessorHomeComponent,
     ProfessorNewOfferingComponent,
     ProfessorOfferingComponent,
     StepOneFormOneComponent,
@@ -61,10 +59,6 @@ import { InputMaskModule } from '@ngneat/input-mask';
     CommonModule,
     InputMaskModule,
   ],
-  exports: [
-    ProfessorHomeComponent,
-    ProfessorNewOfferingComponent,
-    ProfessorOfferingComponent,
-  ],
+  exports: [ProfessorNewOfferingComponent, ProfessorOfferingComponent],
 })
 export class ProfessorModule {}

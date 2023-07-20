@@ -20,7 +20,7 @@ import { Router } from '@angular/router';
 export class StudentHomeComponent {
   studentId: string | null = getUserId();
   student?: StudentModel;
-  registeredCourses: (CourseModel & {
+  subscribedCourses: (CourseModel & {
     aluno_inscricao: {
       id: string;
       termo_compromisso_assinado: boolean;
@@ -43,11 +43,11 @@ export class StudentHomeComponent {
   ) {}
 
   get nextCourseWithTermNotification() {
-    return this.registeredCourses.find((course) => course.notifications.termo);
+    return this.subscribedCourses.find((course) => course.notifications.termo);
   }
 
   get nextCourseWithUploadNotification() {
-    return this.registeredCourses.find(
+    return this.subscribedCourses.find(
       (course) => course.notifications.uploads
     );
   }
@@ -65,20 +65,20 @@ export class StudentHomeComponent {
   loadCourses() {
     this.courseService.getAll().subscribe({
       next: (response) => {
-        this.loadRegisteredCourses(response.result);
+        this.loadSubscribedCourses(response.result);
       },
-      error: ({ error }) => {
-        console.log(error.error);
+      error: () => {
+        this.subscribedCourses = [];
       },
     });
   }
 
-  loadRegisteredCourses(courses: CourseModel[]) {
-    const registeredCourses = courses.filter(
+  loadSubscribedCourses(courses: CourseModel[]) {
+    const subscribedCourses = courses.filter(
       (course) => !!course.alunos.find((aluno) => aluno.id === this.studentId)
     );
 
-    this.registeredCourses = registeredCourses.map((course) => {
+    this.subscribedCourses = subscribedCourses.map((course) => {
       const alunoInscricao = course.alunos.find(
         (item) => item.id === this.studentId
       )!;
@@ -131,11 +131,11 @@ export class StudentHomeComponent {
   }
 
   handleCloseNotification(courseId: string, type: 'termo' | 'uploads') {
-    const courseIndex = this.registeredCourses.findIndex(
+    const courseIndex = this.subscribedCourses.findIndex(
       (course) => course.id === courseId
     );
 
-    this.registeredCourses[courseIndex].notifications[type] = false;
+    this.subscribedCourses[courseIndex].notifications[type] = false;
   }
 
   handleSwitchDropdownOptionsState(courseId: string) {

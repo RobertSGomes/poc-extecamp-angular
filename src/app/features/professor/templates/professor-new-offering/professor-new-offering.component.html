@@ -5,7 +5,7 @@
     [navItens]="[
       {
         title: 'Página inicial',
-        routerLink: '/professor'
+        routerLink: '#'
       },
       {
         title: 'Oferecimentos',
@@ -63,14 +63,14 @@
     <section>
       <div *ngIf="currentStep === 0">
         <app-step-one-form-one
-          *ngIf="currentInsideStep === 0"
+          *ngIf="currentInsideStep === 0 && stepOneFormOne"
           [stepOneFormOne]="stepOneFormOne"
           (nextInsideStep)="nextInsideStep()"
           (openCancelModal)="openCancelModal()"
         ></app-step-one-form-one>
 
         <app-step-one-form-two
-          *ngIf="currentInsideStep === 1"
+          *ngIf="currentInsideStep === 1 && stepOneFormTwo"
           [stepOneFormTwo]="stepOneFormTwo"
           (backInsideStep)="backInsideStep()"
           (nextInsideStep)="nextInsideStep()"
@@ -78,7 +78,7 @@
         ></app-step-one-form-two>
 
         <app-step-one-form-three
-          *ngIf="currentInsideStep === 2"
+          *ngIf="currentInsideStep === 2 && stepOneFormThree"
           [stepOneFormThree]="stepOneFormThree"
           (backInsideStep)="backInsideStep()"
           (nextInsideStep)="nextInsideStep()"
@@ -86,7 +86,7 @@
         ></app-step-one-form-three>
 
         <app-step-one-form-four
-          *ngIf="currentInsideStep === 3"
+          *ngIf="currentInsideStep === 3 && stepOneFormFour"
           [stepOneFormFour]="stepOneFormFour"
           (backInsideStep)="backInsideStep()"
           (nextInsideStep)="nextInsideStep()"
@@ -94,7 +94,7 @@
         ></app-step-one-form-four>
 
         <app-step-one-form-five
-          *ngIf="currentInsideStep === 4"
+          *ngIf="currentInsideStep === 4 && stepOneFormFive"
           [stepOneFormFive]="stepOneFormFive"
           (handleCreateCourse)="handleCreateCourse()"
           (backInsideStep)="backInsideStep()"
@@ -104,7 +104,7 @@
 
       <div *ngIf="currentStep === 1">
         <app-step-two-form-one
-          *ngIf="currentInsideStep === 0"
+          *ngIf="currentInsideStep === 0 && stepTwoFormOne"
           [stepTwoFormOne]="stepTwoFormOne"
           (handleAssignCoordination)="handleAssignCoordination()"
           (backStep)="backStep(4)"
@@ -153,7 +153,7 @@
 
       <div *ngIf="currentStep === 2">
         <app-step-three-form-one
-          *ngIf="currentInsideStep === 0"
+          *ngIf="currentInsideStep === 0 && stepThreeFormOne"
           [stepThreeFormOne]="stepThreeFormOne"
           (backStep)="backStep(5)"
           (nextInsideStep)="nextInsideStep()"
@@ -161,7 +161,7 @@
         ></app-step-three-form-one>
 
         <app-step-three-form-two
-          *ngIf="currentInsideStep === 1"
+          *ngIf="currentInsideStep === 1 && stepThreeFormTwo"
           [stepThreeFormTwo]="stepThreeFormTwo"
           (backInsideStep)="backInsideStep()"
           (nextInsideStep)="nextInsideStep()"
@@ -169,7 +169,7 @@
         ></app-step-three-form-two>
 
         <app-step-three-form-three
-          *ngIf="currentInsideStep === 2"
+          *ngIf="currentInsideStep === 2 && stepThreeFormThree"
           [stepThreeFormThree]="stepThreeFormThree"
           (backInsideStep)="backInsideStep()"
           (nextInsideStep)="nextInsideStep()"
@@ -177,7 +177,7 @@
         ></app-step-three-form-three>
 
         <app-step-three-form-four
-          *ngIf="currentInsideStep === 3"
+          *ngIf="currentInsideStep === 3 && stepThreeFormFour"
           [stepThreeFormFour]="stepThreeFormFour"
           (backInsideStep)="backInsideStep()"
           (handleCreateOffering)="handleCreateOffering()"
@@ -187,7 +187,7 @@
 
       <div *ngIf="currentStep === 3">
         <app-step-four-form-one
-          *ngIf="currentInsideStep === 0"
+          *ngIf="currentInsideStep === 0 && stepFourFormOne"
           (backStep)="backStep(3)"
           [stepFourFormOne]="stepFourFormOne"
           (handleCreateOfferingCost)="handleCreateOfferingCost()"
@@ -195,7 +195,7 @@
         ></app-step-four-form-one>
 
         <app-step-four-form-two
-          *ngIf="currentInsideStep === 1"
+          *ngIf="currentInsideStep === 1 && stepFourFormTwo"
           [stepFourFormTwo]="stepFourFormTwo"
           (backInsideStep)="backInsideStep()"
           (handleCreateOfferingCostTax)="handleCreateOfferingCostTax()"
@@ -203,7 +203,7 @@
         ></app-step-four-form-two>
 
         <app-step-four-form-three
-          *ngIf="currentInsideStep === 2"
+          *ngIf="currentInsideStep === 2 && stepFourFormThree"
           [stepFourFormThree]="stepFourFormThree"
           (backInsideStep)="backInsideStep()"
           (nextInsideStep)="nextInsideStep()"
@@ -211,7 +211,7 @@
         ></app-step-four-form-three>
 
         <app-step-four-form-four
-          *ngIf="currentInsideStep === 3"
+          *ngIf="currentInsideStep === 3 && stepFourFormFour"
           [stepFourFormFour]="stepFourFormFour"
           (backInsideStep)="backInsideStep()"
           (handleCreateOfferingCostCondition)="

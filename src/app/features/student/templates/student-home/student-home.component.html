@@ -26,7 +26,7 @@
   <div class="col-start-2 overflow-y-auto">
     <div
       [ngClass]="{
-        'py-8': registeredCourses.length > 0
+        'py-8': subscribedCourses.length > 0
       }"
       class="flex flex-col w-[1072px] mx-auto gap-y-8"
     >
@@ -156,7 +156,7 @@
               Incompletos
             </button>
             <button
-              *ngIf="registeredCourses.length > 0"
+              *ngIf="subscribedCourses.length > 0"
               class="rounded-md px-3 py-2 font-semibold text-sm bg-violet-600 text-white"
               [routerLink]="['/student', 'courses']"
             >
@@ -166,7 +166,7 @@
         </div>
 
         <!-- Cursos registrados -->
-        <table *ngIf="registeredCourses.length > 0" class="w-full rounded-2xl">
+        <table *ngIf="subscribedCourses.length > 0" class="w-full rounded-2xl">
           <thead class="border-b border-gray-200">
             <th
               class="p-3 bg-gray-100 text-left font-medium text-xs text-gray-700"
@@ -198,13 +198,13 @@
             ></th>
           </thead>
           <tbody
-            *ngFor="let registeredCourse of registeredCourses; let i = index"
+            *ngFor="let subscribedCourse of subscribedCourses; let i = index"
           >
             <tr>
               <td
                 class="p-3 bg-white text-left font-medium text-sm text-gray-900 border-b border-b-gray-200"
               >
-                {{ registeredCourse.sigla }}
+                {{ subscribedCourse.sigla }}
               </td>
               <td
                 class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200 w-[121px]"
@@ -214,7 +214,7 @@
               <td
                 class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200 w-[297px]"
               >
-                {{ registeredCourse.nome }}
+                {{ subscribedCourse.nome }}
               </td>
               <td
                 class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200"
@@ -226,14 +226,14 @@
                     class="w-[6px] h-[6px] rounded-full bg-emerald-500"
                   ></div>
                   <p class="font-medium text-xs text-emerald-800">
-                    {{ registeredCourse.tipo }}
+                    {{ subscribedCourse.tipo }}
                   </p>
                 </div>
               </td>
               <td
                 class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200 uppercase"
               >
-                {{ verifySubscription(registeredCourse.aluno_inscricao) }}
+                {{ verifySubscription(subscribedCourse.aluno_inscricao) }}
               </td>
               <td
                 class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200 w-[72px]"
@@ -241,7 +241,7 @@
                 <div class="relative">
                   <button
                     (click)="
-                      handleSwitchDropdownOptionsState(registeredCourse.id)
+                      handleSwitchDropdownOptionsState(subscribedCourse.id)
                     "
                     class="flex items-center justify-center"
                   >
@@ -251,20 +251,20 @@
                     />
                   </button>
                   <div
-                    *ngIf="openedDropdownOptions === registeredCourse.id"
-                    class="absolute top-6 right-12 z-[5] bg-white border border-gray-200 rounded-xl overflow-hidden"
+                    *ngIf="openedDropdownOptions === subscribedCourse.id"
+                    class="absolute top-1/2 -translate-y-1/2 right-14 z-[5] bg-white border border-gray-200 rounded-xl overflow-hidden"
                   >
                     <button
                       class="w-full px-3 py-3 whitespace-nowrap font-normal text-sm text-left cursor-pointer hover:bg-violet-600 hover:text-white"
                       type="button"
-                      (click)="handleEdit(registeredCourse.id)"
+                      (click)="handleEdit(subscribedCourse.id)"
                     >
                       Editar informações
                     </button>
                     <button
                       class="w-full px-3 py-3 whitespace-nowrap font-normal text-sm text-left cursor-pointer hover:bg-violet-600 hover:text-white"
                       type="button"
-                      (click)="handleUnsubscribe(registeredCourse.id)"
+                      (click)="handleUnsubscribe(subscribedCourse.id)"
                     >
                       Cancelar inscrição
                     </button>
@@ -277,7 +277,7 @@
 
         <!-- Sem cursos registrados -->
         <div
-          *ngIf="registeredCourses.length === 0"
+          *ngIf="subscribedCourses.length === 0"
           class="rounded-2xl border border-gray-200 flex flex-col py-8 gap-6 items-center"
         >
           <div class="flex justify-center w-full">
