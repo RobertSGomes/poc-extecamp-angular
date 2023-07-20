@@ -68,6 +68,33 @@ export class StepTwoFormOneComponent implements OnInit {
   @Output() backStep: EventEmitter<void> = new EventEmitter<void>();
   @Output() handleAssignCoordination: EventEmitter<void> =
     new EventEmitter<void>();
+  @Output() handleUpdateProfessor: EventEmitter<{
+    professorId: string;
+    professorData: {
+      nome?: string;
+      email?: string;
+      telefone?: string;
+      matricula?: string;
+      instituicao?: string;
+      unidade?: string;
+      departamento?: string;
+      titulacao?: string;
+      situacao?: string;
+    };
+  }> = new EventEmitter<{
+    professorId: string;
+    professorData: {
+      nome?: string;
+      email?: string;
+      telefone?: string;
+      matricula?: string;
+      instituicao?: string;
+      unidade?: string;
+      departamento?: string;
+      titulacao?: string;
+      situacao?: string;
+    };
+  }>();
   @Output() openCancelModal: EventEmitter<void> = new EventEmitter<void>();
 
   @Input() stepTwoFormOne!: FormGroup;
@@ -170,5 +197,28 @@ export class StepTwoFormOneComponent implements OnInit {
     this.focusInputOne = false;
     this.focusInputTwo = false;
     this.focusInputThree = false;
+  }
+
+  handleSubmit() {
+    this.handleUpdateProfessor.emit({
+      professorId: this.stepTwoFormOne.get('docente_responsavel_id')!.value,
+      professorData: {
+        nome:
+          this.stepTwoFormOne.get('docente_responsavel')?.value ?? undefined,
+        email:
+          this.stepTwoFormOne.get('docente_responsavel_email')?.value ??
+          undefined,
+        telefone:
+          this.stepTwoFormOne.get('docente_responsavel_telefone')?.value ??
+          undefined,
+        instituicao:
+          this.stepTwoFormOne.get('docente_responsavel_instituicao')?.value ??
+          undefined,
+        titulacao:
+          this.stepTwoFormOne.get('docente_responsavel_titulacao')?.value ??
+          undefined,
+      },
+    });
+    this.handleAssignCoordination.emit();
   }
 }

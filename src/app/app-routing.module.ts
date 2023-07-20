@@ -17,6 +17,10 @@ const routes: Routes = [
   { path: 'professor', pathMatch: 'full', redirectTo: 'professor/offerings' },
   { path: 'professor/offerings', component: ProfessorOfferingComponent },
   {
+    path: 'professor/offerings/new',
+    component: ProfessorNewOfferingComponent,
+  },
+  {
     path: 'professor/offerings/new/:course_id',
     component: ProfessorNewOfferingComponent,
   },

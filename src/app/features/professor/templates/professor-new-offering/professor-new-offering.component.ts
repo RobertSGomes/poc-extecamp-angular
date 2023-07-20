@@ -17,6 +17,7 @@ import { UpdateOfferingDTO } from 'src/app/shared/dtos/update-offering.dto';
 import { UpdateOfferingCostDTO } from 'src/app/shared/dtos/update-offering-cost.dto';
 import { UpdateOfferingCostTaxDTO } from 'src/app/shared/dtos/update-offering-cost-tax.dto';
 import { UpdateOfferingCostConditionDTO } from 'src/app/shared/dtos/update-offering-cost-condition.dto';
+import { UpdateProfessorDTO } from 'src/app/shared/dtos/update-professor.dto';
 
 @Component({
   selector: 'professor-new-offering',
@@ -423,54 +424,301 @@ export class ProfessorNewOfferingComponent implements OnInit {
           ],
         }),
         formTwo: this.formBuilder.group({
-          fixas: [''],
-          aiu_unidade_porcentagem: [''],
-          aiu_unidade_valor: [''],
+          fixas: [
+            (course &&
+              course.oferecimento?.custos_oferecimento
+                ?.taxas_custos_oferecimento?.fixas) ??
+              '',
+          ],
+          aiu_unidade_porcentagem: [
+            (course &&
+              course.oferecimento?.custos_oferecimento
+                ?.taxas_custos_oferecimento?.aiu_unidade_porcentagem) ??
+              '',
+          ],
+          aiu_unidade_valor: [
+            (course &&
+              course.oferecimento?.custos_oferecimento
+                ?.taxas_custos_oferecimento?.aiu_unidade_valor) ??
+              '',
+          ],
           fundo_extensao_porcentagem_away: [''],
           fundo_extensao_valor_away: [''],
-          fundo_extensao_unidade: [''],
-          fundo_extensao_porcentagem: [''],
-          fundo_extensao_valor: [''],
-          total: [''],
-          subsidios: [''],
-          custo_total: [''],
-          custo_aluno_min_vagas: [''],
-          custo_aluno_valor: [''],
+          fundo_extensao_unidade: [
+            (course &&
+              course.oferecimento?.custos_oferecimento
+                ?.taxas_custos_oferecimento?.fundo_extensao_unidade) ??
+              '',
+          ],
+          fundo_extensao_porcentagem: [
+            (course &&
+              course.oferecimento?.custos_oferecimento
+                ?.taxas_custos_oferecimento?.fundo_extensao_porcentagem) ??
+              '',
+          ],
+          fundo_extensao_valor: [
+            (course &&
+              course.oferecimento?.custos_oferecimento
+                ?.taxas_custos_oferecimento?.fundo_extensao_valor) ??
+              '',
+          ],
+          total: [
+            (course &&
+              course.oferecimento?.custos_oferecimento
+                ?.taxas_custos_oferecimento?.total) ??
+              '',
+          ],
+          subsidios: [
+            (course &&
+              course.oferecimento?.custos_oferecimento
+                ?.taxas_custos_oferecimento?.subsidios) ??
+              '',
+          ],
+          custo_total: [
+            (course &&
+              course.oferecimento?.custos_oferecimento
+                ?.taxas_custos_oferecimento?.custo_total) ??
+              '',
+          ],
+          custo_aluno_min_vagas: [
+            (course &&
+              course.oferecimento?.custos_oferecimento
+                ?.taxas_custos_oferecimento?.custo_aluno_min_vagas) ??
+              '',
+          ],
+          custo_aluno_valor: [
+            (course &&
+              course.oferecimento?.custos_oferecimento
+                ?.taxas_custos_oferecimento?.custo_aluno_valor) ??
+              '',
+          ],
         }),
         formThree: this.formBuilder.group({
-          tipo: ['', [Validators.required]],
-          fonte: ['', [Validators.required]],
-          taxa_inscricao: [''],
+          tipo: [
+            (course &&
+              course.oferecimento?.custos_oferecimento
+                ?.condicoes_custos_oferecimento?.forma_pagamento?.tipo) ??
+              '',
+            [Validators.required],
+          ],
+          fonte: [
+            (course &&
+              course.oferecimento?.custos_oferecimento
+                ?.condicoes_custos_oferecimento?.forma_pagamento?.fonte) ??
+              '',
+            [Validators.required],
+          ],
+          taxa_inscricao: [
+            (course &&
+              course.oferecimento?.custos_oferecimento
+                ?.condicoes_custos_oferecimento?.forma_pagamento
+                ?.taxa_inscricao) ??
+              '',
+          ],
         }),
         formFour: this.formBuilder.group({
-          curso_gratuito: [false],
-          valor_a_vista: ['', Validators.required],
-          valor_a_vista_vencimento: ['', Validators.required],
-          parcelas_boleto: this.formBuilder.array([]),
-          parcelas_cartao_credito: [''],
-          porcentagem_desconto_estudantes: [''],
-          opcao_desconto: this.formBuilder.array([]),
-          convenio_numero_processo: [''],
-          convenio_empresa: [''],
-          convenio_cnpj: [''],
-          convenio_tipo: [''],
-          convenio_responsavel: [''],
-          convenio_responsavel_cargo: [''],
-          convenio_sem_valor_parcela: [false],
-          convenio_numero_parcelas: [''],
-          recurso_valor: [''],
-          recurso_empresa: [''],
-          empresa_nome: [''],
-          empresa_endereco: [''],
-          empresa_bairro: [''],
-          empresa_cidade: [''],
-          empresa_cep: [''],
-          empresa_cnpj: [''],
-          empresa_ins_estadual: [''],
-          empresa_nome_contato: [''],
-          empresa_telefone: [''],
-          empresa_fax: [''],
-          empresa_email: ['', Validators.email],
+          curso_gratuito: [
+            (course &&
+              course.oferecimento?.custos_oferecimento
+                ?.condicoes_custos_oferecimento?.curso_gratuito) ??
+              false,
+          ],
+          valor_a_vista: [
+            (course &&
+              course.oferecimento?.custos_oferecimento
+                ?.condicoes_custos_oferecimento?.valor_a_vista) ??
+              '',
+            Validators.required,
+          ],
+          valor_a_vista_vencimento: [
+            course &&
+            course.oferecimento?.custos_oferecimento
+              ?.condicoes_custos_oferecimento?.valor_a_vista_vencimento
+              ? course.oferecimento?.custos_oferecimento?.condicoes_custos_oferecimento?.valor_a_vista_vencimento.substring(
+                  0,
+                  10
+                )
+              : '',
+            Validators.required,
+          ],
+          parcelas_boleto: this.formBuilder.array(
+            course &&
+              course.oferecimento?.custos_oferecimento
+                ?.condicoes_custos_oferecimento?.parcelas_boleto
+              ? course.oferecimento?.custos_oferecimento?.condicoes_custos_oferecimento?.parcelas_boleto.map(
+                  (parcelaBoleto) => {
+                    return this.formBuilder.group({
+                      nmr_parcelas: [
+                        parcelaBoleto.nmr_parcelas,
+                        Validators.required,
+                      ],
+                      valor: [parcelaBoleto.valor, Validators.required],
+                      data_vencimento: [
+                        parcelaBoleto.data_vencimento.substring(0, 10),
+                        [Validators.required],
+                      ],
+                    });
+                  }
+                )
+              : []
+          ),
+          parcelas_cartao_credito: [
+            (course &&
+              course.oferecimento?.custos_oferecimento
+                ?.condicoes_custos_oferecimento?.parcelas_cartao_credito) ??
+              '',
+          ],
+          porcentagem_desconto_estudantes: [
+            (course &&
+              course.oferecimento?.custos_oferecimento
+                ?.condicoes_custos_oferecimento
+                ?.porcentagem_desconto_estudantes) ??
+              '',
+          ],
+          opcao_desconto: this.formBuilder.array(
+            course &&
+              course.oferecimento?.custos_oferecimento
+                ?.condicoes_custos_oferecimento?.opcao_desconto
+              ? course.oferecimento?.custos_oferecimento?.condicoes_custos_oferecimento?.opcao_desconto.map(
+                  (opcao) => {
+                    return this.formBuilder.group({
+                      para: [opcao.para, Validators.required],
+                      porcentagem_desconto: [
+                        opcao.porcentagem_desconto,
+                        Validators.required,
+                      ],
+                    });
+                  }
+                )
+              : []
+          ),
+          convenio_numero_processo: [
+            (course &&
+              course.oferecimento?.custos_oferecimento
+                ?.condicoes_custos_oferecimento?.convenio?.numero_processo) ??
+              '',
+          ],
+          convenio_empresa: [
+            (course &&
+              course.oferecimento?.custos_oferecimento
+                ?.condicoes_custos_oferecimento?.convenio?.empresa) ??
+              '',
+          ],
+          convenio_cnpj: [
+            (course &&
+              course.oferecimento?.custos_oferecimento
+                ?.condicoes_custos_oferecimento?.convenio?.cnpj) ??
+              '',
+          ],
+          convenio_tipo: [
+            (course &&
+              course.oferecimento?.custos_oferecimento
+                ?.condicoes_custos_oferecimento?.convenio?.tipo) ??
+              '',
+          ],
+          convenio_responsavel: [
+            (course &&
+              course.oferecimento?.custos_oferecimento
+                ?.condicoes_custos_oferecimento?.convenio?.responsavel) ??
+              '',
+          ],
+          convenio_responsavel_cargo: [
+            (course &&
+              course.oferecimento?.custos_oferecimento
+                ?.condicoes_custos_oferecimento?.convenio?.responsavel_cargo) ??
+              '',
+          ],
+          convenio_sem_valor_parcela: [
+            (course &&
+              course.oferecimento?.custos_oferecimento
+                ?.condicoes_custos_oferecimento?.convenio?.sem_valor_parcela) ??
+              false,
+          ],
+          convenio_numero_parcelas: [
+            (course &&
+              course.oferecimento?.custos_oferecimento
+                ?.condicoes_custos_oferecimento?.convenio?.numero_parcelas) ??
+              '',
+          ],
+          recurso_valor: [
+            (course &&
+              course.oferecimento?.custos_oferecimento
+                ?.condicoes_custos_oferecimento?.recurso?.valor) ??
+              '',
+          ],
+          recurso_empresa: [
+            (course &&
+              course.oferecimento?.custos_oferecimento
+                ?.condicoes_custos_oferecimento?.recurso?.empresa) ??
+              '',
+          ],
+          empresa_nome: [
+            (course &&
+              course.oferecimento?.custos_oferecimento
+                ?.condicoes_custos_oferecimento?.empresa?.nome) ??
+              '',
+          ],
+          empresa_endereco: [
+            (course &&
+              course.oferecimento?.custos_oferecimento
+                ?.condicoes_custos_oferecimento?.empresa?.endereco) ??
+              '',
+          ],
+          empresa_bairro: [
+            (course &&
+              course.oferecimento?.custos_oferecimento
+                ?.condicoes_custos_oferecimento?.empresa?.bairro) ??
+              '',
+          ],
+          empresa_cidade: [
+            (course &&
+              course.oferecimento?.custos_oferecimento
+                ?.condicoes_custos_oferecimento?.empresa?.cidade) ??
+              '',
+          ],
+          empresa_cep: [
+            (course &&
+              course.oferecimento?.custos_oferecimento
+                ?.condicoes_custos_oferecimento?.empresa?.cep) ??
+              '',
+          ],
+          empresa_cnpj: [
+            (course &&
+              course.oferecimento?.custos_oferecimento
+                ?.condicoes_custos_oferecimento?.empresa?.cnpj) ??
+              '',
+          ],
+          empresa_ins_estadual: [
+            (course &&
+              course.oferecimento?.custos_oferecimento
+                ?.condicoes_custos_oferecimento?.empresa?.ins_estadual) ??
+              '',
+          ],
+          empresa_nome_contato: [
+            (course &&
+              course.oferecimento?.custos_oferecimento
+                ?.condicoes_custos_oferecimento?.empresa?.nome_contato) ??
+              '',
+          ],
+          empresa_telefone: [
+            (course &&
+              course.oferecimento?.custos_oferecimento
+                ?.condicoes_custos_oferecimento?.empresa?.telefone) ??
+              '',
+          ],
+          empresa_fax: [
+            (course &&
+              course.oferecimento?.custos_oferecimento
+                ?.condicoes_custos_oferecimento?.empresa?.fax) ??
+              '',
+          ],
+          empresa_email: [
+            (course &&
+              course.oferecimento?.custos_oferecimento
+                ?.condicoes_custos_oferecimento?.empresa?.email) ??
+              '',
+            Validators.email,
+          ],
         }),
       }),
     });
@@ -750,5 +998,31 @@ export class ProfessorNewOfferingComponent implements OnInit {
           alert(error.error);
         },
       });
+  }
+
+  handleUpdateProfessor({
+    professorId,
+    professorData,
+  }: {
+    professorId: string;
+    professorData: {
+      nome?: string;
+      email?: string;
+      telefone?: string;
+      matricula?: string;
+      instituicao?: string;
+      unidade?: string;
+      departamento?: string;
+      titulacao?: string;
+      situacao?: string;
+    };
+  }) {
+    const updateProfessorDTO = new UpdateProfessorDTO(professorData);
+
+    this.professorService.update(professorId, updateProfessorDTO).subscribe({
+      next: (response) => {
+        console.log(response);
+      },
+    });
   }
 }

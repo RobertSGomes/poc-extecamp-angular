@@ -106,6 +106,7 @@
         <app-step-two-form-one
           *ngIf="currentInsideStep === 0 && stepTwoFormOne"
           [stepTwoFormOne]="stepTwoFormOne"
+          (handleUpdateProfessor)="handleUpdateProfessor($event)"
           (handleAssignCoordination)="handleAssignCoordination()"
           (backStep)="backStep(4)"
           (openCancelModal)="openCancelModal()"
@@ -114,6 +115,7 @@
         <app-step-two-form-two
           *ngIf="currentInsideStep === 1"
           [courseId]="courseId!"
+          (handleUpdateProfessor)="handleUpdateProfessor($event)"
           (backInsideStep)="backInsideStep()"
           (nextInsideStep)="nextInsideStep()"
           (openCancelModal)="openCancelModal()"
@@ -122,6 +124,7 @@
         <app-step-two-form-three
           *ngIf="currentInsideStep === 2"
           [courseId]="courseId!"
+          (handleUpdateProfessor)="handleUpdateProfessor($event)"
           (backInsideStep)="backInsideStep()"
           (nextInsideStep)="nextInsideStep()"
           (openCancelModal)="openCancelModal()"

@@ -70,6 +70,33 @@ export class StepTwoFormTwoComponent implements OnInit {
   @Output() backInsideStep: EventEmitter<void> = new EventEmitter<void>();
   @Output() nextInsideStep: EventEmitter<void> = new EventEmitter<void>();
   @Output() openCancelModal: EventEmitter<void> = new EventEmitter<void>();
+  @Output() handleUpdateProfessor: EventEmitter<{
+    professorId: string;
+    professorData: {
+      nome?: string;
+      email?: string;
+      telefone?: string;
+      matricula?: string;
+      instituicao?: string;
+      unidade?: string;
+      departamento?: string;
+      titulacao?: string;
+      situacao?: string;
+    };
+  }> = new EventEmitter<{
+    professorId: string;
+    professorData: {
+      nome?: string;
+      email?: string;
+      telefone?: string;
+      matricula?: string;
+      instituicao?: string;
+      unidade?: string;
+      departamento?: string;
+      titulacao?: string;
+      situacao?: string;
+    };
+  }>();
 
   @Input() courseId!: string;
 
@@ -112,17 +139,15 @@ export class StepTwoFormTwoComponent implements OnInit {
   loadCourseProfessors(
     assignedProfessors: Array<{ id: string; carga_horaria: string }>
   ) {
+    this.courseProfessors = [];
+
     for (let assignedProfessor of assignedProfessors) {
       this.professorService.getOne(assignedProfessor.id).subscribe({
         next: (response) => {
-          this.courseProfessors = [];
           this.courseProfessors.push({
             ...response,
             carga_horaria: assignedProfessor.carga_horaria,
           });
-        },
-        error: () => {
-          this.courseProfessors = [];
         },
       });
     }
@@ -216,5 +241,22 @@ export class StepTwoFormTwoComponent implements OnInit {
         alert(error.error);
       },
     });
+  }
+
+  handleSubmitModal() {
+    this.handleUpdateProfessor.emit({
+      professorId: this.modalFormGroup.get('docente_id')!.value,
+      professorData: {
+        nome: this.modalFormGroup.get('docente_nome')?.value || undefined,
+        titulacao:
+          this.modalFormGroup.get('docente_titulacao')?.value || undefined,
+        situacao:
+          this.modalFormGroup.get('docente_situacao')?.value || undefined,
+        unidade: this.modalFormGroup.get('docente_unidade')?.value || undefined,
+        departamento:
+          this.modalFormGroup.get('docente_departamento')?.value || undefined,
+      },
+    });
+    this.handleAssignUnicamp();
   }
 }

@@ -1,3 +1,4 @@
+import { UpdateProfessorDTO } from './../../shared/dtos/update-professor.dto';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { getAccessToken } from 'src/app/shared/utils/access-token.util';
@@ -10,8 +11,6 @@ import { Observable } from 'rxjs';
 })
 export class ProfessorService {
   private apiURL: string = 'http://localhost:3000/professores';
-  private accessTokenProfessor: string | null = getAccessToken('professor');
-  private accessTokenStudent: string | null = getAccessToken('student');
 
   constructor(private readonly http: HttpClient, private router: Router) {}
 
@@ -38,14 +37,28 @@ export class ProfessorService {
     );
   }
 
+  update(professorId: string, updateProfessorDTO: UpdateProfessorDTO) {
+    const accessToken = this.verifyAccess();
+
+    return this.http.put<{ result: ProfessorModel[]; total: number }>(
+      `${this.apiURL}/${professorId}`,
+      updateProfessorDTO,
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    );
+  }
+
   verifyAccess(): string {
-    if (!this.accessTokenProfessor && !this.accessTokenStudent) {
+    const accessTokenProfessor: string | null = getAccessToken('professor');
+    const accessTokenStudent: string | null = getAccessToken('student');
+
+    if (!accessTokenProfessor && !accessTokenStudent) {
       this.router.navigate(['']);
     }
 
-    return (
-      (this.accessTokenProfessor as string) ??
-      (this.accessTokenStudent as string)
-    );
+    return (accessTokenProfessor as string) ?? (accessTokenStudent as string);
   }
 }

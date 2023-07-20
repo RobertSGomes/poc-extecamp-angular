@@ -112,9 +112,9 @@ export interface OfferingCostTaxModel {
   fixas: number;
   aiu_unidade_porcentagem: number;
   aiu_unidade_valor: number;
-  fundo_extencao_unidade: string | null;
-  fundo_extencao_porcentagem: number;
-  fundo_extencao_valor: number;
+  fundo_extensao_unidade: string | null;
+  fundo_extensao_porcentagem: number;
+  fundo_extensao_valor: number;
   total: number;
   subsidios: number;
   custo_total: number;

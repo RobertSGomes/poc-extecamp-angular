@@ -72,6 +72,33 @@ export class StepTwoFormThreeComponent {
   @Output() backInsideStep: EventEmitter<void> = new EventEmitter<void>();
   @Output() nextInsideStep: EventEmitter<void> = new EventEmitter<void>();
   @Output() openCancelModal: EventEmitter<void> = new EventEmitter<void>();
+  @Output() handleUpdateProfessor: EventEmitter<{
+    professorId: string;
+    professorData: {
+      nome?: string;
+      email?: string;
+      telefone?: string;
+      matricula?: string;
+      instituicao?: string;
+      unidade?: string;
+      departamento?: string;
+      titulacao?: string;
+      situacao?: string;
+    };
+  }> = new EventEmitter<{
+    professorId: string;
+    professorData: {
+      nome?: string;
+      email?: string;
+      telefone?: string;
+      matricula?: string;
+      instituicao?: string;
+      unidade?: string;
+      departamento?: string;
+      titulacao?: string;
+      situacao?: string;
+    };
+  }>();
 
   @Input() courseId!: string;
 
@@ -120,19 +147,16 @@ export class StepTwoFormThreeComponent {
       carga_horaria: string;
     }>
   ) {
+    this.courseProfessors = [];
+
     for (let assignedProfessor of assignedProfessors) {
       this.professorService.getOne(assignedProfessor.id).subscribe({
         next: (response) => {
-          this.courseProfessors = [];
-
           this.courseProfessors.push({
             ...response,
             funcao: assignedProfessor.funcao,
             carga_horaria: assignedProfessor.carga_horaria,
           });
-        },
-        error: () => {
-          this.courseProfessors = [];
         },
       });
     }
@@ -232,5 +256,20 @@ export class StepTwoFormThreeComponent {
         alert(error.error);
       },
     });
+  }
+
+  handleSubmitModal() {
+    this.handleUpdateProfessor.emit({
+      professorId: this.modalFormGroup.get('docente_id')!.value,
+      professorData: {
+        nome: this.modalFormGroup.get('docente_nome')?.value,
+        titulacao: this.modalFormGroup.get('docente_titulacao')?.value,
+        situacao: this.modalFormGroup.get('docente_situacao')?.value,
+        instituicao: this.modalFormGroup.get('docente_instituicao')?.value,
+        unidade: this.modalFormGroup.get('docente_unidade')?.value,
+        departamento: this.modalFormGroup.get('docente_departamento')?.value,
+      },
+    });
+    this.handleAssignAttached();
   }
 }
