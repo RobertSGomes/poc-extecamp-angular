@@ -45,12 +45,11 @@
             >
               <select class="font-medium text-base text-gray-800 outline-none">
                 <option>BR</option>
-                <option>EN</option>
-                <option>ES</option>
               </select>
               <input
                 class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
                 placeholder="+55 (DDD) 00000-0000"
+                [inputMask]="phoneInputMask"
                 required
                 type="text"
                 formControlName="telefone"
