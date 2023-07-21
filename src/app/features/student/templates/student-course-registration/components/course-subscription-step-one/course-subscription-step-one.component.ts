@@ -80,26 +80,28 @@ export class CourseSubscriptionStepOneComponent implements OnInit {
   }
 
   loadStates() {
-    this.locationService
-      .getStates(this.selectedCountry?.name.common)
-      .subscribe({
-        next: (value) => {
-          this.states = value.data.states;
+    if (!this.selectedCountry) return;
 
-          this.loadCities();
-        },
-        error: () => {
-          this.stepOneForm.get('naturalidade_pais')?.setValue('');
-          this.stepOneForm.get('naturalidade_estado')?.setValue('');
+    this.locationService.getStates(this.selectedCountry.name.common).subscribe({
+      next: (value) => {
+        this.states = value.data.states;
 
-          this.states = [];
-        },
-      });
+        this.loadCities();
+      },
+      error: () => {
+        this.stepOneForm.get('naturalidade_pais')?.setValue('');
+        this.stepOneForm.get('naturalidade_estado')?.setValue('');
+
+        this.states = [];
+      },
+    });
   }
 
   loadCities() {
+    if (!this.selectedCountry || !this.selectedState) return;
+
     this.locationService
-      .getCities(this.selectedCountry?.name.common, this.selectedState?.name)
+      .getCities(this.selectedCountry.name.common, this.selectedState?.name)
       .subscribe({
         next: (value) => {
           this.cities = value.data;

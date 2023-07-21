@@ -54,7 +54,6 @@ export class CourseSubscriptionStepTwoComponent {
     this.locationService.getCountries().subscribe({
       next: (value) => {
         this.countries = value;
-
         this.loadStates();
       },
       error: () => {
@@ -66,26 +65,28 @@ export class CourseSubscriptionStepTwoComponent {
   }
 
   loadStates() {
-    this.locationService
-      .getStates(this.selectedCountry?.name.common)
-      .subscribe({
-        next: (value) => {
-          this.states = value.data.states;
+    if (!this.selectedCountry) return;
 
-          this.loadCities();
-        },
-        error: () => {
-          this.stepTwoForm.get('pais')?.setValue('');
-          this.stepTwoForm.get('estado')?.setValue('');
+    this.locationService.getStates(this.selectedCountry.name.common).subscribe({
+      next: (value) => {
+        this.states = value.data.states;
 
-          this.states = [];
-        },
-      });
+        this.loadCities();
+      },
+      error: () => {
+        this.stepTwoForm.get('pais')?.setValue('');
+        this.stepTwoForm.get('estado')?.setValue('');
+
+        this.states = [];
+      },
+    });
   }
 
   loadCities() {
+    if (!this.selectedCountry || !this.selectedState) return;
+
     this.locationService
-      .getCities(this.selectedCountry?.name.common, this.selectedState?.name)
+      .getCities(this.selectedCountry.name.common, this.selectedState.name)
       .subscribe({
         next: (value) => {
           this.cities = value.data;
@@ -131,6 +132,7 @@ export class CourseSubscriptionStepTwoComponent {
           this.stepTwoForm.get('bairro')?.setValue(value.bairro);
           this.stepTwoForm.get('estado')?.setValue(value.uf);
           this.stepTwoForm.get('cidade')?.setValue(value.localidade);
+          this.stepTwoForm.get('pais')?.setValue('Brasil');
         }
 
         this.loadStates();
