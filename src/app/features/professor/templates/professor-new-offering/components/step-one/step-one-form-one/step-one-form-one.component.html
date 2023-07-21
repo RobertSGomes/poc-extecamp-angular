@@ -1,23 +1,23 @@
 <form
   (submit)="nextInsideStep.emit()"
   [formGroup]="stepOneFormOne"
-  class="flex flex-col w-[1072px] mx-auto p-8 gap-y-6 bg-white border border-gray-200 rounded-2xl shadow-sm"
+  class="flex flex-col w-[1072px] mx-auto p-8 gap-y-6 bg-white border border-gray-200 rounded-2xl shadow-sm max-[768px]:w-full max-[768px]:px-4"
 >
   <app-history-line [currentStep]="0" [steps]="historySteps"></app-history-line>
 
-  <hr class="h-[1px] bg-gray-200" />
+  <hr class="h-[1px] bg-gray-200 max-[768px]:hidden" />
 
   <h1 class="font-semibold text-lg text-gray-900">Dados iniciais</h1>
 
   <div class="flex flex-col gap-y-2">
     <p class="font-medium text-sm text-gray-700">Sigla do curso *</p>
 
-    <div class="flex gap-x-[18px]">
+    <div class="flex gap-[18px] max-[768px]:flex-col">
       <div
-        class="flex gap-2 w-[152px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+        class="flex gap-2 w-[152px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center max-[768px]:w-full"
       >
         <select
-          class="w-full text-gray-800 text-base outline-none"
+          class="w-full text-gray-800 text-base outline-none bg-white"
           formControlName="sigla_tipo"
           required
         >
@@ -32,10 +32,10 @@
         </select>
       </div>
       <div
-        class="flex gap-2 w-[152px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+        class="flex gap-2 w-[152px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center max-[768px]:w-full"
       >
         <select
-          class="w-full text-gray-800 text-base outline-none"
+          class="w-full text-gray-800 text-base outline-none bg-white"
           formControlName="sigla_numero"
           required
         >
@@ -60,10 +60,10 @@
   <div class="flex flex-col gap-[6px]">
     <label class="font-medium text-sm text-gray-700">Tipo de curso *</label>
     <div
-      class="flex gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+      class="flex gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center max-[768px]:w-full"
     >
       <select
-        class="w-full text-gray-800 text-base outline-none"
+        class="w-full text-gray-800 text-base outline-none bg-white"
         formControlName="tipo"
         required
       >
@@ -84,10 +84,10 @@
   <div class="flex flex-col gap-[6px]">
     <label class="font-medium text-sm text-gray-700">Nome do curso *</label>
     <div
-      class="flex gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+      class="flex gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center max-[768px]:w-full"
     >
       <input
-        class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+        class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500 bg-white"
         placeholder="Preencha"
         formControlName="nome"
         required
@@ -170,10 +170,10 @@
       >Forma de realização *</label
     >
     <div
-      class="flex gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+      class="flex gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center max-[768px]:w-full"
     >
       <select
-        class="w-full text-gray-800 text-base outline-none"
+        class="w-full text-gray-800 text-base outline-none bg-white"
         formControlName="forma_realizacao"
       >
         <option value="">Selecione</option>
@@ -196,10 +196,10 @@
       >Plataforma de gestão dos alunos *</label
     >
     <div
-      class="flex gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+      class="flex gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center max-[768px]:w-full"
     >
       <select
-        class="w-full text-gray-800 text-base outline-none"
+        class="w-full text-gray-800 text-base outline-none bg-white"
         formControlName="plataforma"
       >
         <option value="">Selecione</option>
@@ -216,7 +216,7 @@
     </div>
   </div>
 
-  <div class="flex flex-col w-[665px] gap-[6px]">
+  <div class="flex flex-col w-[665px] gap-[6px] max-[768px]:w-full">
     <label class="font-medium text-sm text-gray-700"
       >Mensagem ao aluno em ambiente virtual de aprendizado</label
     >
@@ -235,7 +235,7 @@
     </p>
   </div>
 
-  <div class="flex flex-col gap-[6px] w-[665px]">
+  <div class="flex flex-col gap-[6px] w-[665px] max-[768px]:w-full">
     <label class="font-medium text-sm text-gray-700"
       >Descrição ao aluno sobre o ambiente virtual de aprendizagem</label
     >
@@ -284,7 +284,7 @@
   <div class="flex flex-col gap-[6px]">
     <label class="font-medium text-sm text-gray-700">Unidade *</label>
     <div
-      class="flex gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+      class="flex gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center max-[768px]:w-full"
     >
       <input
         class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
@@ -302,7 +302,7 @@
   <div class="flex flex-col gap-[6px]">
     <label class="font-medium text-sm text-gray-700">Departamento *</label>
     <div
-      class="flex gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+      class="flex gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center max-[768px]:w-full"
     >
       <input
         class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"

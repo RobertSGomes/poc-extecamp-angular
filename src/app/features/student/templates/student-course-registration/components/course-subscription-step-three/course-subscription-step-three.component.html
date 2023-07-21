@@ -1,6 +1,6 @@
 <div class="flex flex-col gap-y-8">
   <section
-    class="flex p-4 gap-x-6 rounded-xl bg-violet-50 border border-violet-300 shadow-sm"
+    class="flex p-4 mx-8 gap-x-6 rounded-xl bg-violet-50 border border-violet-300 shadow-sm"
   >
     <div
       class="relative w-5 h-5 rounded-full before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:w-[28px] before:h-[28px] before:rounded-full before:border-2 before:border-violet-600/30 after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:w-[38px] after:h-[38px] after:rounded-full after:border-2 after:border-violet-600/10"
@@ -19,18 +19,20 @@
   </section>
 
   <section
-    class="flex flex-col p-8 gap-y-6 rounded-2xl bg-white border border-gray-200 shadow-sm"
+    class="flex flex-col p-8 gap-y-6 rounded-2xl bg-white border border-gray-200 shadow-sm max-[768px]:px-4 max-[768px]:w-screen"
   >
     <h1 class="font-semibold text-lg text-black">Termo de compromisso</h1>
 
     <div
-      class="flex items-center justify-between px-8 py-6 rounded-2xl bg-white border border-gray-200 shadow-sm"
+      class="flex items-center justify-between px-8 py-6 gap-4 rounded-2xl bg-white border border-gray-200 shadow-sm max-[768px]:flex-col max-[768px]:items-start"
     >
       <div class="flex flex-col gap-1">
         <h1 class="font-semibold text-sm text-gray-600">
           Termo de compromisso
         </h1>
-        <p class="w-[445px] font-normal text-sm text-gray-600 uppercase">
+        <p
+          class="w-[445px] font-normal text-sm text-gray-600 uppercase max-[768px]:w-full"
+        >
           {{ course.sigla }} - {{ course.nome }}
         </p>
       </div>
@@ -87,7 +89,7 @@
   class="absolute items-center justify-center top-0 left-0 w-screen h-screen bg-black/50 z-50 backdrop-blur-sm"
 >
   <div
-    class="flex flex-col gap-y-6 p-6 bg-white rounded-2xl w-[1000px] h-[630px]"
+    class="flex flex-col gap-y-6 p-6 bg-white rounded-2xl w-[1000px] h-[630px] max-[768px]:w-screen"
   >
     <div class="flex justify-between">
       <h1 class="font-semibold text-lg text-gray-900">
@@ -111,8 +113,15 @@
         (mousemove)="draw($event)"
         (mouseup)="stopDrawing()"
         (mouseout)="stopDrawing()"
-      ></canvas>
-      <div class="absolute bottom-6 gap-x-4 left-1/2 -translate-x-1/2 z-50">
+        (touchstart)="startDrawingTouch($event)"
+        (touchmove)="drawTouch($event)"
+        (touchend)="stopDrawing()"
+      >
+        ></canvas
+      >
+      <div
+        class="absolute flex items-center justify-center bottom-6 gap-x-4 left-1/2 -translate-x-1/2 z-50 w-full"
+      >
         <button
           class="px-4 py-[10px] rounded-lg font-semibold text-sm text-violet-700"
           type="button"

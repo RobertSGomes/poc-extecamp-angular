@@ -1,19 +1,19 @@
-<div class="grid grid-rows-[0px_auto_1fr] grid-cols-[300px_1fr] h-screen">
+<div
+  class="grid grid-rows-[0_auto_1fr] grid-cols-[300px_1fr] h-screen max-[768px]:flex max-[768px]:flex-col"
+>
   <app-sidebar
     [name]="student?.nome"
     [email]="student?.email"
     [navItens]="[
       {
         title: 'Página inicial',
-        routerLink: '/student'
+        routerLink: ['/student']
       },
       {
-        title: 'Meus dados',
-        routerLink: '#'
+        title: 'Meus dados'
       },
       {
-        title: 'Meus cursos',
-        routerLink: '#'
+        title: 'Meus cursos'
       }
     ]"
   ></app-sidebar>
@@ -25,11 +25,13 @@
   </div>
 
   <div
-    class="col-start-2 row-start-3 h-full overflow-y-auto w-full px-8 bg-gray-50"
+    class="col-start-2 row-start-3 h-full overflow-y-auto w-full px-8 bg-gray-50 overflow-x-hidden"
   >
-    <section class="flex gap-5 py-6">
+    <section class="flex gap-5 py-6 max-[768px]:flex-col">
       <div class="flex flex-1 flex-col gap-1">
-        <div class="flex items-center gap-x-1">
+        <div
+          class="flex items-center gap-x-1 max-[768px]:flex-col max-[768px]:gap-4 max-[768px]:mb-4 max-[768px]:items-start"
+        >
           <h1 class="font-semibold text-xl text-gray-900">Todos os cursos</h1>
           <div
             class="rounded-2xl h-fit px-2 py-0.5 bg-violet-50 border border-violet-200"
@@ -44,7 +46,7 @@
         </p>
       </div>
       <div
-        class="flex items-center gap-2 w-[320px] h-fit px-[14px] py-[10px] rounded-lg border border-gray-300 bg-white shadow-sm"
+        class="flex items-center gap-2 w-[320px] h-fit px-[14px] py-[10px] rounded-lg border border-gray-300 bg-white shadow-sm max-[768px]:w-full"
       >
         <img src="../../../../../assets/svgs/search.svg" class="w-4 h-4" />
         <input
@@ -53,7 +55,7 @@
         />
       </div>
       <button
-        class="flex items-center gap-2 rounded-lg px-[18px] py-[10px] border h-fit bg-white border-gray-300 shadow-sm font-semibold text-base text-gray-700"
+        class="flex items-center gap-2 rounded-lg px-[18px] py-[10px] border h-fit w-fit bg-white border-gray-300 shadow-sm font-semibold text-base text-gray-700"
       >
         <img
           src="../../../../../assets/svgs/filter-lines.svg"
@@ -62,7 +64,9 @@
         Filtros
       </button>
     </section>
-    <section class="flex flex-col px-4 py-4 gap-6 w-[1072px] mx-auto">
+    <section
+      class="flex flex-col px-4 py-4 gap-6 w-[1072px] mx-auto max-[768px]:w-full max-[768px]:px-0"
+    >
       <a
         *ngFor="let course of courses"
         [routerLink]="['/student', 'courses', course.id]"
@@ -70,8 +74,10 @@
         <div
           class="flex px-4 py-4 gap-8 rounded-[32px] h-[232px] bg-white border border-gray-200 shadow-sm"
         >
-          <div class="rounded-2xl w-[320px] h-[200px] bg-gray-300"></div>
-          <div class="flex flex-1 flex-col gap-6 w-[656px]">
+          <div
+            class="rounded-2xl w-[320px] h-[200px] bg-gray-300 max-[768px]:hidden"
+          ></div>
+          <div class="flex flex-1 flex-col gap-6 w-[656px] max-[768px]:w-full">
             <div class="flex flex-col gap-2">
               <p class="font-semibold text-sm text-gray-500">
                 Inscrições de

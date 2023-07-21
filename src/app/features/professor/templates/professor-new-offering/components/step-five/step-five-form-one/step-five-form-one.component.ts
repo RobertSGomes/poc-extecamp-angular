@@ -125,6 +125,38 @@ export class StepFiveFormOneComponent implements OnInit, AfterViewInit {
     this.lastMousePosition = currentMousePosition;
   }
 
+  startDrawingTouch(event: TouchEvent): void {
+    this.isDrawing = true;
+
+    const rect = this.canvas.getBoundingClientRect();
+
+    this.lastMousePosition = {
+      x: event.touches[0].clientX - rect.x,
+      y: event.touches[0].clientY - rect.y,
+    };
+  }
+
+  drawTouch(event: TouchEvent): void {
+    if (!this.isDrawing) return;
+
+    const rect = this.canvas.getBoundingClientRect();
+
+    const currentMousePosition = {
+      x: event.touches[0].clientX - rect.x,
+      y: event.touches[0].clientY - rect.y,
+    };
+
+    this.canvasContext!.beginPath();
+    this.canvasContext!.moveTo(
+      this.lastMousePosition.x,
+      this.lastMousePosition.y
+    );
+    this.canvasContext!.lineTo(currentMousePosition.x, currentMousePosition.y);
+    this.canvasContext!.stroke();
+
+    this.lastMousePosition = currentMousePosition;
+  }
+
   stopDrawing(): void {
     this.isDrawing = false;
   }

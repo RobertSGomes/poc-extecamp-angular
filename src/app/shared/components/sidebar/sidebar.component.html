@@ -1,5 +1,5 @@
 <nav
-  class="flex flex-col justify-between row-span-2 overflow-hidden border-r border-r-gray-200 px-4 h-screen w-full"
+  class="flex flex-col justify-between row-span-2 overflow-hidden border-r border-r-gray-200 px-4 h-screen w-full max-[768px]:hidden"
 >
   <ul class="flex flex-col items-center gap-y-6 pt-8">
     <img src="../../../../assets/extecamp_logo_colored.png" class="w-[250px]" />
@@ -7,8 +7,8 @@
       <li *ngFor="let navItem of navItens">
         <a
           [ngClass]="{
-            'bg-gray-50': verifyPath(navItem.routerLink),
-            'text-gray-900': verifyPath(navItem.routerLink),
+            'bg-gray-50': verifyPath(navItem?.routerLink),
+            'text-gray-900': verifyPath(navItem?.routerLink),
           }"
           [routerLink]="navItem.routerLink"
           class="flex flex-row px-3 py-2 w-full rounded-[6px] font-semibold text-base text-gray-700 hover:bg-gray-100 hover:text-gray-900"

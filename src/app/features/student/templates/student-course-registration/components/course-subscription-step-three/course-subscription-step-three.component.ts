@@ -70,6 +70,7 @@ export class CourseSubscriptionStepThreeComponent implements AfterViewInit {
 
   startDrawing(event: MouseEvent): void {
     this.isDrawing = true;
+
     this.lastMousePosition = {
       x: event.offsetX,
       y: event.offsetY,
@@ -82,6 +83,38 @@ export class CourseSubscriptionStepThreeComponent implements AfterViewInit {
     const currentMousePosition = {
       x: event.offsetX,
       y: event.offsetY,
+    };
+
+    this.canvasContext!.beginPath();
+    this.canvasContext!.moveTo(
+      this.lastMousePosition.x,
+      this.lastMousePosition.y
+    );
+    this.canvasContext!.lineTo(currentMousePosition.x, currentMousePosition.y);
+    this.canvasContext!.stroke();
+
+    this.lastMousePosition = currentMousePosition;
+  }
+
+  startDrawingTouch(event: TouchEvent): void {
+    this.isDrawing = true;
+
+    const rect = this.canvas.getBoundingClientRect();
+
+    this.lastMousePosition = {
+      x: event.touches[0].clientX - rect.x,
+      y: event.touches[0].clientY - rect.y,
+    };
+  }
+
+  drawTouch(event: TouchEvent): void {
+    if (!this.isDrawing) return;
+
+    const rect = this.canvas.getBoundingClientRect();
+
+    const currentMousePosition = {
+      x: event.touches[0].clientX - rect.x,
+      y: event.touches[0].clientY - rect.y,
     };
 
     this.canvasContext!.beginPath();

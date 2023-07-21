@@ -1,11 +1,11 @@
 <form
-  class="flex flex-col gap-y-6 w-[1072px] mx-auto p-8 bg-white border border-gray-200 rounded-2xl shadow-sm"
+  class="flex flex-col gap-y-6 w-[1072px] mx-auto p-8 bg-white border border-gray-200 rounded-2xl shadow-sm max-[768px]:w-screen max-[768px]:px-4"
   [formGroup]="stepFourFormFour"
   (submit)="handleCreateOfferingCostCondition.emit()"
 >
   <app-history-line [currentStep]="3" [steps]="historySteps"></app-history-line>
 
-  <hr class="h-[1px] bg-gray-200" />
+  <hr class="h-[1px] bg-gray-200 max-[768px]:hidden" />
 
   <!-- Condições de pagamento -->
   <h1 class="font-semibold text-lg text-gray-900">Condições de pagamento</h1>
@@ -50,12 +50,12 @@
     <h1 class="font-semibold text-lg text-gray-900">À vista</h1>
 
     <!-- Valor e data vencimento -->
-    <div class="flex gap-x-[18px]">
+    <div class="flex gap-[18px] max-[768px]:flex-col">
       <!-- Valor -->
       <div class="flex flex-col gap-[6px]">
         <label class="font-medium text-sm text-gray-700">Valor *</label>
         <div
-          class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+          class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm max-[768px]:w-full"
         >
           <p class="font-normal text-base text-gray-500">R$</p>
           <input
@@ -73,11 +73,11 @@
           >Data do vencimento *</label
         >
         <div
-          class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+          class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm max-[768px]:w-full"
         >
           <img
             src="../../../../../../../../assets/svgs/calendar.svg"
-            class="w-5 h-5"
+            class="w-5 h-5 max-[768px]:hidden"
           />
           <input
             class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
@@ -101,7 +101,7 @@
     <!-- Número parcelas, valor e data vencimento -->
     <div class="flex flex-col w-full gap-y-6" formArrayName="parcelas_boleto">
       <div
-        class="flex gap-x-[18px]"
+        class="flex gap-[18px] max-[768px]:flex-col"
         *ngFor="let parcela_boleto of parcelas_boleto.controls; let i = index"
         [formGroupName]="i"
       >
@@ -111,10 +111,10 @@
             >Número de parcelas *</label
           >
           <div
-            class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+            class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm max-[768px]:w-full"
           >
             <select
-              class="w-full text-gray-800 text-base outline-none"
+              class="w-full text-gray-800 text-base outline-none bg-white"
               formControlName="nmr_parcelas"
             >
               <option selected value="">Selecione</option>
@@ -138,7 +138,7 @@
         <div class="flex flex-col gap-[6px]">
           <label class="font-medium text-sm text-gray-700">Valor *</label>
           <div
-            class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+            class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm max-[768px]:w-full"
           >
             <p class="font-normal text-base text-gray-500">R$</p>
             <input
@@ -156,11 +156,11 @@
             >Data do vencimento *</label
           >
           <div
-            class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+            class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm max-[768px]:w-full"
           >
             <img
               src="../../../../../../../../assets/svgs/calendar.svg"
-              class="w-5 h-5"
+              class="w-5 h-5 max-[768px]:hidden"
             />
             <input
               class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
@@ -205,13 +205,13 @@
         >Número máximo de parcelas</label
       >
       <div
-        class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+        class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm max-[768px]:w-full"
       >
         <select
-          class="w-full text-gray-800 text-base outline-none"
+          class="w-full text-gray-800 text-base outline-none bg-white"
           formControlName="parcelas_cartao_credito"
         >
-          <option selected value="">Selecione</option>
+          <option selected value="0">Selecione</option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -239,7 +239,7 @@
         >Porcentagem de desconto a estudantes</label
       >
       <div
-        class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+        class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm max-[768px]:w-full"
       >
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
@@ -255,14 +255,14 @@
     <div class="flex flex-col w-full gap-y-6" formArrayName="opcao_desconto">
       <div
         *ngFor="let opcao of opcao_desconto.controls; let i = index"
-        class="flex gap-x-[18px]"
+        class="flex gap-[18px] max-[768px]:flex-col"
         [formGroupName]="i"
       >
         <!-- Para -->
         <div class="flex flex-col gap-[6px]">
           <label class="font-medium text-sm text-gray-700">Para *</label>
           <div
-            class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+            class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm max-[768px]:w-full"
           >
             <input
               class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
@@ -277,7 +277,7 @@
             >Porcentagem de desconto *</label
           >
           <div
-            class="flex items-center gap-2 w-[150px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+            class="flex items-center gap-2 w-[150px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm max-[768px]:w-full"
           >
             <input
               class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
@@ -322,7 +322,7 @@
         >Número do processo</label
       >
       <div
-        class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+        class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm max-[768px]:w-full"
       >
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
@@ -337,7 +337,7 @@
         >Nome da empresa/Instituição</label
       >
       <div
-        class="flex items-center gap-2 w-[323px] h-[154px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+        class="flex items-center gap-2 w-[323px] h-[154px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm max-[768px]:w-full"
       >
         <textarea
           class="w-full h-full text-gray-800 text-base outline-none resize-none"
@@ -347,12 +347,12 @@
     </div>
 
     <!-- CNPJ, tipo, responsável e cargo -->
-    <div class="flex gap-x-[18px]">
+    <div class="flex gap-[18px] max-[768px]:flex-col">
       <!-- CNPJ -->
       <div class="flex flex-col gap-[6px]">
         <label class="font-medium text-sm text-gray-700">CNPJ</label>
         <div
-          class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+          class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm max-[768px]:w-full"
         >
           <input
             class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
@@ -366,10 +366,10 @@
       <div class="flex flex-col gap-[6px]">
         <label class="font-medium text-sm text-gray-700">Tipo</label>
         <div
-          class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+          class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm max-[768px]:w-full"
         >
           <select
-            class="w-full text-gray-800 text-base outline-none"
+            class="w-full text-gray-800 text-base outline-none bg-white"
             formControlName="convenio_tipo"
           >
             <option selected value="">Selecione</option>
@@ -397,7 +397,7 @@
       <div class="flex flex-col gap-[6px]">
         <label class="font-medium text-sm text-gray-700">Responsável</label>
         <div
-          class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+          class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm max-[768px]:w-full"
         >
           <input
             class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
@@ -410,7 +410,7 @@
       <div class="flex flex-col gap-[6px]">
         <label class="font-medium text-sm text-gray-700">Cargo</label>
         <div
-          class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+          class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm max-[768px]:w-full"
         >
           <input
             class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
@@ -421,7 +421,7 @@
     </div>
 
     <!-- Infos valor e vencimento -->
-    <div class="flex items-start py-4 gap-x-2 w-[323px]">
+    <div class="flex items-start py-4 gap-x-2 w-[323px] max-[768px]:w-full">
       <input
         type="checkbox"
         id="checkbox_infos_parcela"
@@ -442,10 +442,10 @@
         >Número de parcelas</label
       >
       <div
-        class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+        class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm max-[768px]:w-full"
       >
         <select
-          class="w-full text-gray-800 text-base outline-none"
+          class="w-full text-gray-800 text-base outline-none bg-white"
           formControlName="convenio_numero_parcelas"
         >
           <option selected value="">Selecione</option>
@@ -476,7 +476,7 @@
     <div class="flex flex-col gap-[6px]">
       <label class="font-medium text-sm text-gray-700">Valor</label>
       <div
-        class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+        class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm max-[768px]:w-full"
       >
         <p class="font-normal text-base text-gray-500">R$</p>
         <input
@@ -494,7 +494,7 @@
         >Nome da empresa/Instituição</label
       >
       <div
-        class="flex items-center gap-2 w-[323px] h-[154px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+        class="flex items-center gap-2 w-[323px] h-[154px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm max-[768px]:w-full"
       >
         <textarea
           class="w-full h-full text-gray-800 text-base outline-none resize-none"
@@ -515,7 +515,7 @@
     <div class="flex flex-col gap-[6px]">
       <label class="font-medium text-sm text-gray-700">Nome</label>
       <div
-        class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+        class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm max-[768px]:w-full"
       >
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
@@ -530,7 +530,7 @@
       <div class="flex flex-col gap-[6px]">
         <label class="font-medium text-sm text-gray-700">CEP</label>
         <div
-          class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+          class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm max-[768px]:w-full"
         >
           <input
             class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
@@ -545,7 +545,7 @@
       <div class="flex flex-col gap-[6px]">
         <label class="font-medium text-sm text-gray-700">Cidade</label>
         <div
-          class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+          class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm max-[768px]:w-full"
         >
           <input
             class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
@@ -561,7 +561,7 @@
       <div class="flex flex-col gap-[6px]">
         <label class="font-medium text-sm text-gray-700">Bairro</label>
         <div
-          class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+          class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm max-[768px]:w-full"
         >
           <input
             class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
@@ -574,7 +574,7 @@
       <div class="flex flex-col gap-[6px]">
         <label class="font-medium text-sm text-gray-700">Endereço</label>
         <div
-          class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+          class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm max-[768px]:w-full"
         >
           <input
             class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
@@ -588,7 +588,7 @@
     <div class="flex flex-col gap-[6px]">
       <label class="font-medium text-sm text-gray-700">CNPJ</label>
       <div
-        class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+        class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm max-[768px]:w-full"
       >
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
@@ -602,7 +602,7 @@
     <div class="flex flex-col gap-[6px]">
       <label class="font-medium text-sm text-gray-700">Ins. Estadual </label>
       <div
-        class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+        class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm max-[768px]:w-full"
       >
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
@@ -615,7 +615,7 @@
     <div class="flex flex-col gap-[6px]">
       <label class="font-medium text-sm text-gray-700">Nome do contato </label>
       <div
-        class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+        class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm max-[768px]:w-full"
       >
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
@@ -625,12 +625,12 @@
     </div>
 
     <!-- Telefone e Fax -->
-    <div class="flex gap-x-[18px]">
+    <div class="flex gap-[18px] max-[768px]:flex-col">
       <!-- Telefone -->
       <div class="flex flex-col gap-[6px]">
         <label class="font-medium text-sm text-gray-700">Telefone</label>
         <div
-          class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+          class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm max-[768px]:w-full"
         >
           <input
             class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
@@ -644,7 +644,7 @@
       <div class="flex flex-col gap-[6px]">
         <label class="font-medium text-sm text-gray-700">Fax</label>
         <div
-          class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+          class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm max-[768px]:w-full"
         >
           <input
             class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
@@ -659,7 +659,7 @@
     <div class="flex flex-col gap-[6px]">
       <label class="font-medium text-sm text-gray-700">E-mail</label>
       <div
-        class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+        class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm max-[768px]:w-full"
       >
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"

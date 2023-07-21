@@ -1,15 +1,16 @@
-<div class="grid grid-rows-[0px_auto_1fr] grid-cols-[300px_1fr] h-screen">
+<div
+  class="grid grid-rows-[0px_auto_1fr] grid-cols-[300px_1fr] h-screen max-[768px]:flex max-[768px]:flex-col"
+>
   <app-sidebar
     [name]="professor?.nome"
     [email]="professor?.email"
     [navItens]="[
       {
-        title: 'Página inicial',
-        routerLink: '#'
+        title: 'Página inicial'
       },
       {
         title: 'Oferecimentos',
-        routerLink: '/professor/offerings'
+        routerLink: ['/professor', 'offerings']
       }
     ]"
   ></app-sidebar>
@@ -21,256 +22,262 @@
   </div>
 
   <div
-    class="col-start-2 row-start-3 overflow-y-auto w-full px-8 py-6 bg-gray-50"
+    class="col-start-2 row-start-3 overflow-y-auto w-full px-8 py-6 bg-gray-50 max-[768px]:px-0"
     id="form-section"
   >
-    <h1 class="font-semibold text-lg text-gray-900">Novo oferecimento</h1>
+    <div class="flex flex-col gap-y-6">
+      <h1 class="font-semibold text-lg text-gray-900 max-[768px]:pl-4">
+        Novo oferecimento
+      </h1>
 
-    <section class="w-[1072px] mx-auto my-6">
-      <app-steps
-        [currentStep]="currentStep"
-        [currentInsideStep]="currentInsideStep"
-        [steps]="[
-          {
-            title: 'Dados do curso',
-            stepIndex: 0,
-            amountInsideSteps: 5
-          },
-          {
-            title: 'Professores',
-            stepIndex: 1,
-            amountInsideSteps: 6
-          },
-          {
-            title: 'Dados do oferecimento',
-            stepIndex: 2,
-            amountInsideSteps: 4
-          },
-          {
-            title: 'Custos do oferecimento',
-            stepIndex: 3,
-            amountInsideSteps: 4
-          },
-          {
-            title: 'Envio do oferecimento',
-            stepIndex: 4,
-            amountInsideSteps: 1
-          }
-        ]"
-      ></app-steps>
-    </section>
+      <section
+        class="w-[1072px] mx-auto max-[768px]:hidden max-[768px]:w-screen"
+      >
+        <app-steps
+          [currentStep]="currentStep"
+          [currentInsideStep]="currentInsideStep"
+          [steps]="[
+            {
+              title: 'Dados do curso',
+              stepIndex: 0,
+              amountInsideSteps: 5
+            },
+            {
+              title: 'Professores',
+              stepIndex: 1,
+              amountInsideSteps: 6
+            },
+            {
+              title: 'Dados do oferecimento',
+              stepIndex: 2,
+              amountInsideSteps: 4
+            },
+            {
+              title: 'Custos do oferecimento',
+              stepIndex: 3,
+              amountInsideSteps: 4
+            },
+            {
+              title: 'Envio do oferecimento',
+              stepIndex: 4,
+              amountInsideSteps: 1
+            }
+          ]"
+        ></app-steps>
+      </section>
 
-    <section>
-      <div *ngIf="currentStep === 0">
-        <app-step-one-form-one
-          *ngIf="currentInsideStep === 0 && stepOneFormOne"
-          [stepOneFormOne]="stepOneFormOne"
-          (nextInsideStep)="nextInsideStep()"
-          (openCancelModal)="openCancelModal()"
-        ></app-step-one-form-one>
+      <section>
+        <div *ngIf="currentStep === 0">
+          <app-step-one-form-one
+            *ngIf="currentInsideStep === 0 && stepOneFormOne"
+            [stepOneFormOne]="stepOneFormOne"
+            (nextInsideStep)="nextInsideStep()"
+            (openCancelModal)="openCancelModal()"
+          ></app-step-one-form-one>
 
-        <app-step-one-form-two
-          *ngIf="currentInsideStep === 1 && stepOneFormTwo"
-          [stepOneFormTwo]="stepOneFormTwo"
-          (backInsideStep)="backInsideStep()"
-          (nextInsideStep)="nextInsideStep()"
-          (openCancelModal)="openCancelModal()"
-        ></app-step-one-form-two>
+          <app-step-one-form-two
+            *ngIf="currentInsideStep === 1 && stepOneFormTwo"
+            [stepOneFormTwo]="stepOneFormTwo"
+            (backInsideStep)="backInsideStep()"
+            (nextInsideStep)="nextInsideStep()"
+            (openCancelModal)="openCancelModal()"
+          ></app-step-one-form-two>
 
-        <app-step-one-form-three
-          *ngIf="currentInsideStep === 2 && stepOneFormThree"
-          [stepOneFormThree]="stepOneFormThree"
-          (backInsideStep)="backInsideStep()"
-          (nextInsideStep)="nextInsideStep()"
-          (openCancelModal)="openCancelModal()"
-        ></app-step-one-form-three>
+          <app-step-one-form-three
+            *ngIf="currentInsideStep === 2 && stepOneFormThree"
+            [stepOneFormThree]="stepOneFormThree"
+            (backInsideStep)="backInsideStep()"
+            (nextInsideStep)="nextInsideStep()"
+            (openCancelModal)="openCancelModal()"
+          ></app-step-one-form-three>
 
-        <app-step-one-form-four
-          *ngIf="currentInsideStep === 3 && stepOneFormFour"
-          [stepOneFormFour]="stepOneFormFour"
-          (backInsideStep)="backInsideStep()"
-          (nextInsideStep)="nextInsideStep()"
-          (openCancelModal)="openCancelModal()"
-        ></app-step-one-form-four>
+          <app-step-one-form-four
+            *ngIf="currentInsideStep === 3 && stepOneFormFour"
+            [stepOneFormFour]="stepOneFormFour"
+            (backInsideStep)="backInsideStep()"
+            (nextInsideStep)="nextInsideStep()"
+            (openCancelModal)="openCancelModal()"
+          ></app-step-one-form-four>
 
-        <app-step-one-form-five
-          *ngIf="currentInsideStep === 4 && stepOneFormFive"
-          [stepOneFormFive]="stepOneFormFive"
-          (handleCreateCourse)="handleCreateCourse()"
-          (backInsideStep)="backInsideStep()"
-          (openCancelModal)="openCancelModal()"
-        ></app-step-one-form-five>
-      </div>
+          <app-step-one-form-five
+            *ngIf="currentInsideStep === 4 && stepOneFormFive"
+            [stepOneFormFive]="stepOneFormFive"
+            (handleCreateCourse)="handleCreateCourse()"
+            (backInsideStep)="backInsideStep()"
+            (openCancelModal)="openCancelModal()"
+          ></app-step-one-form-five>
+        </div>
 
-      <div *ngIf="currentStep === 1">
-        <app-step-two-form-one
-          *ngIf="currentInsideStep === 0 && stepTwoFormOne"
-          [stepTwoFormOne]="stepTwoFormOne"
-          (handleUpdateProfessor)="handleUpdateProfessor($event)"
-          (handleAssignCoordination)="handleAssignCoordination()"
-          (backStep)="backStep(4)"
-          (openCancelModal)="openCancelModal()"
-        ></app-step-two-form-one>
+        <div *ngIf="currentStep === 1">
+          <app-step-two-form-one
+            *ngIf="currentInsideStep === 0 && stepTwoFormOne"
+            [stepTwoFormOne]="stepTwoFormOne"
+            (handleUpdateProfessor)="handleUpdateProfessor($event)"
+            (handleAssignCoordination)="handleAssignCoordination()"
+            (backStep)="backStep(4)"
+            (openCancelModal)="openCancelModal()"
+          ></app-step-two-form-one>
 
-        <app-step-two-form-two
-          *ngIf="currentInsideStep === 1"
-          [courseId]="courseId!"
-          (handleUpdateProfessor)="handleUpdateProfessor($event)"
-          (backInsideStep)="backInsideStep()"
-          (nextInsideStep)="nextInsideStep()"
-          (openCancelModal)="openCancelModal()"
-        ></app-step-two-form-two>
+          <app-step-two-form-two
+            *ngIf="currentInsideStep === 1"
+            [courseId]="courseId!"
+            (handleUpdateProfessor)="handleUpdateProfessor($event)"
+            (backInsideStep)="backInsideStep()"
+            (nextInsideStep)="nextInsideStep()"
+            (openCancelModal)="openCancelModal()"
+          ></app-step-two-form-two>
 
-        <app-step-two-form-three
-          *ngIf="currentInsideStep === 2"
-          [courseId]="courseId!"
-          (handleUpdateProfessor)="handleUpdateProfessor($event)"
-          (backInsideStep)="backInsideStep()"
-          (nextInsideStep)="nextInsideStep()"
-          (openCancelModal)="openCancelModal()"
-        ></app-step-two-form-three>
+          <app-step-two-form-three
+            *ngIf="currentInsideStep === 2"
+            [courseId]="courseId!"
+            (handleUpdateProfessor)="handleUpdateProfessor($event)"
+            (backInsideStep)="backInsideStep()"
+            (nextInsideStep)="nextInsideStep()"
+            (openCancelModal)="openCancelModal()"
+          ></app-step-two-form-three>
 
-        <app-step-two-form-four
-          *ngIf="currentInsideStep === 3"
-          [courseId]="courseId!"
-          (backInsideStep)="backInsideStep()"
-          (nextInsideStep)="nextInsideStep()"
-          (openCancelModal)="openCancelModal()"
-        ></app-step-two-form-four>
+          <app-step-two-form-four
+            *ngIf="currentInsideStep === 3"
+            [courseId]="courseId!"
+            (backInsideStep)="backInsideStep()"
+            (nextInsideStep)="nextInsideStep()"
+            (openCancelModal)="openCancelModal()"
+          ></app-step-two-form-four>
 
-        <app-step-two-form-five
-          *ngIf="currentInsideStep === 4"
-          [courseId]="courseId!"
-          (backInsideStep)="backInsideStep()"
-          (nextInsideStep)="nextInsideStep()"
-          (openCancelModal)="openCancelModal()"
-        ></app-step-two-form-five>
+          <app-step-two-form-five
+            *ngIf="currentInsideStep === 4"
+            [courseId]="courseId!"
+            (backInsideStep)="backInsideStep()"
+            (nextInsideStep)="nextInsideStep()"
+            (openCancelModal)="openCancelModal()"
+          ></app-step-two-form-five>
 
-        <app-step-two-form-six
-          *ngIf="currentInsideStep === 5"
-          [courseId]="courseId!"
-          (backInsideStep)="backInsideStep()"
-          (nextStep)="nextStep()"
-          (openCancelModal)="openCancelModal()"
-        ></app-step-two-form-six>
-      </div>
+          <app-step-two-form-six
+            *ngIf="currentInsideStep === 5"
+            [courseId]="courseId!"
+            (backInsideStep)="backInsideStep()"
+            (nextStep)="nextStep()"
+            (openCancelModal)="openCancelModal()"
+          ></app-step-two-form-six>
+        </div>
 
-      <div *ngIf="currentStep === 2">
-        <app-step-three-form-one
-          *ngIf="currentInsideStep === 0 && stepThreeFormOne"
-          [stepThreeFormOne]="stepThreeFormOne"
-          (backStep)="backStep(5)"
-          (nextInsideStep)="nextInsideStep()"
-          (openCancelModal)="openCancelModal()"
-        ></app-step-three-form-one>
+        <div *ngIf="currentStep === 2">
+          <app-step-three-form-one
+            *ngIf="currentInsideStep === 0 && stepThreeFormOne"
+            [stepThreeFormOne]="stepThreeFormOne"
+            (backStep)="backStep(5)"
+            (nextInsideStep)="nextInsideStep()"
+            (openCancelModal)="openCancelModal()"
+          ></app-step-three-form-one>
 
-        <app-step-three-form-two
-          *ngIf="currentInsideStep === 1 && stepThreeFormTwo"
-          [stepThreeFormTwo]="stepThreeFormTwo"
-          (backInsideStep)="backInsideStep()"
-          (nextInsideStep)="nextInsideStep()"
-          (openCancelModal)="openCancelModal()"
-        ></app-step-three-form-two>
+          <app-step-three-form-two
+            *ngIf="currentInsideStep === 1 && stepThreeFormTwo"
+            [stepThreeFormTwo]="stepThreeFormTwo"
+            (backInsideStep)="backInsideStep()"
+            (nextInsideStep)="nextInsideStep()"
+            (openCancelModal)="openCancelModal()"
+          ></app-step-three-form-two>
 
-        <app-step-three-form-three
-          *ngIf="currentInsideStep === 2 && stepThreeFormThree"
-          [stepThreeFormThree]="stepThreeFormThree"
-          (backInsideStep)="backInsideStep()"
-          (nextInsideStep)="nextInsideStep()"
-          (openCancelModal)="openCancelModal()"
-        ></app-step-three-form-three>
+          <app-step-three-form-three
+            *ngIf="currentInsideStep === 2 && stepThreeFormThree"
+            [stepThreeFormThree]="stepThreeFormThree"
+            (backInsideStep)="backInsideStep()"
+            (nextInsideStep)="nextInsideStep()"
+            (openCancelModal)="openCancelModal()"
+          ></app-step-three-form-three>
 
-        <app-step-three-form-four
-          *ngIf="currentInsideStep === 3 && stepThreeFormFour"
-          [stepThreeFormFour]="stepThreeFormFour"
-          (backInsideStep)="backInsideStep()"
-          (handleCreateOffering)="handleCreateOffering()"
-          (openCancelModal)="openCancelModal()"
-        ></app-step-three-form-four>
-      </div>
+          <app-step-three-form-four
+            *ngIf="currentInsideStep === 3 && stepThreeFormFour"
+            [stepThreeFormFour]="stepThreeFormFour"
+            (backInsideStep)="backInsideStep()"
+            (handleCreateOffering)="handleCreateOffering()"
+            (openCancelModal)="openCancelModal()"
+          ></app-step-three-form-four>
+        </div>
 
-      <div *ngIf="currentStep === 3">
-        <app-step-four-form-one
-          *ngIf="currentInsideStep === 0 && stepFourFormOne"
-          (backStep)="backStep(3)"
-          [stepFourFormOne]="stepFourFormOne"
-          (handleCreateOfferingCost)="handleCreateOfferingCost()"
-          (openCancelModal)="openCancelModal()"
-        ></app-step-four-form-one>
+        <div *ngIf="currentStep === 3">
+          <app-step-four-form-one
+            *ngIf="currentInsideStep === 0 && stepFourFormOne"
+            (backStep)="backStep(3)"
+            [stepFourFormOne]="stepFourFormOne"
+            (handleCreateOfferingCost)="handleCreateOfferingCost()"
+            (openCancelModal)="openCancelModal()"
+          ></app-step-four-form-one>
 
-        <app-step-four-form-two
-          *ngIf="currentInsideStep === 1 && stepFourFormTwo"
-          [stepFourFormTwo]="stepFourFormTwo"
-          (backInsideStep)="backInsideStep()"
-          (handleCreateOfferingCostTax)="handleCreateOfferingCostTax()"
-          (openCancelModal)="openCancelModal()"
-        ></app-step-four-form-two>
+          <app-step-four-form-two
+            *ngIf="currentInsideStep === 1 && stepFourFormTwo"
+            [stepFourFormTwo]="stepFourFormTwo"
+            (backInsideStep)="backInsideStep()"
+            (handleCreateOfferingCostTax)="handleCreateOfferingCostTax()"
+            (openCancelModal)="openCancelModal()"
+          ></app-step-four-form-two>
 
-        <app-step-four-form-three
-          *ngIf="currentInsideStep === 2 && stepFourFormThree"
-          [stepFourFormThree]="stepFourFormThree"
-          (backInsideStep)="backInsideStep()"
-          (nextInsideStep)="nextInsideStep()"
-          (openCancelModal)="openCancelModal()"
-        ></app-step-four-form-three>
+          <app-step-four-form-three
+            *ngIf="currentInsideStep === 2 && stepFourFormThree"
+            [stepFourFormThree]="stepFourFormThree"
+            (backInsideStep)="backInsideStep()"
+            (nextInsideStep)="nextInsideStep()"
+            (openCancelModal)="openCancelModal()"
+          ></app-step-four-form-three>
 
-        <app-step-four-form-four
-          *ngIf="currentInsideStep === 3 && stepFourFormFour"
-          [stepFourFormFour]="stepFourFormFour"
-          (backInsideStep)="backInsideStep()"
-          (handleCreateOfferingCostCondition)="
-            handleCreateOfferingCostCondition()
-          "
-          (openCancelModal)="openCancelModal()"
-        ></app-step-four-form-four>
-      </div>
+          <app-step-four-form-four
+            *ngIf="currentInsideStep === 3 && stepFourFormFour"
+            [stepFourFormFour]="stepFourFormFour"
+            (backInsideStep)="backInsideStep()"
+            (handleCreateOfferingCostCondition)="
+              handleCreateOfferingCostCondition()
+            "
+            (openCancelModal)="openCancelModal()"
+          ></app-step-four-form-four>
+        </div>
 
-      <div *ngIf="currentStep === 4">
-        <app-step-five-form-one
-          [courseId]="courseId!"
-          (backStep)="backStep(3)"
-          (openCancelModal)="openCancelModal()"
-        ></app-step-five-form-one>
-      </div>
-    </section>
+        <div *ngIf="currentStep === 4">
+          <app-step-five-form-one
+            [courseId]="courseId!"
+            (backStep)="backStep(3)"
+            (openCancelModal)="openCancelModal()"
+          ></app-step-five-form-one>
+        </div>
+      </section>
+    </div>
   </div>
-</div>
 
-<div
-  *ngIf="modalCancelOpened"
-  class="absolute flex items-center justify-center top-0 left-0 w-screen h-screen bg-black/50 z-50 backdrop-blur-sm"
->
   <div
-    class="flex flex-col justify-between w-[525px] h-[200px] bg-white rounded-2xl p-6"
+    *ngIf="modalCancelOpened"
+    class="absolute flex items-center justify-center top-0 left-0 w-screen h-screen bg-black/50 z-50 backdrop-blur-sm"
   >
-    <div class="flex justify-between">
-      <div>
-        <h1 class="font-semibold text-lg text-gray-900">
-          Deseja cancelar o processo?
-        </h1>
-        <p class="font-normal text-sm text-gray-600">
-          Essa ação é irreversível
-        </p>
+    <div
+      class="flex flex-col justify-between w-[525px] h-[200px] bg-white rounded-2xl p-6"
+    >
+      <div class="flex justify-between">
+        <div>
+          <h1 class="font-semibold text-lg text-gray-900">
+            Deseja cancelar o processo?
+          </h1>
+          <p class="font-normal text-sm text-gray-600">
+            Essa ação é irreversível
+          </p>
+        </div>
+        <div class="flex items-center justify-center w-11 h-11">
+          <button (click)="modalCancelOpened = false" class="w-6 h-6">
+            <img src="../../../../../assets/svgs/x-close.svg" class="w-6 h-6" />
+          </button>
+        </div>
       </div>
-      <div class="flex items-center justify-center w-11 h-11">
-        <button (click)="modalCancelOpened = false" class="w-6 h-6">
-          <img src="../../../../../assets/svgs/x-close.svg" class="w-6 h-6" />
+      <div class="flex items-center justify-end gap-x-4">
+        <button
+          (click)="modalCancelOpened = false"
+          class="px-4 py-[10px] rounded-lg font-semibold text-sm text-violet-700"
+        >
+          Fechar e voltar ao formulário
+        </button>
+        <button
+          [routerLink]="['/professor', 'offerings']"
+          class="px-4 py-[10px] rounded-lg bg-violet-600 font-semibold text-sm text-white"
+        >
+          Sim, gostaria de cancelar
         </button>
       </div>
-    </div>
-    <div class="flex items-center justify-end gap-x-4">
-      <button
-        (click)="modalCancelOpened = false"
-        class="px-4 py-[10px] rounded-lg font-semibold text-sm text-violet-700"
-      >
-        Fechar e voltar ao formulário
-      </button>
-      <button
-        [routerLink]="['/professor', 'offerings']"
-        class="px-4 py-[10px] rounded-lg bg-violet-600 font-semibold text-sm text-white"
-      >
-        Sim, gostaria de cancelar
-      </button>
     </div>
   </div>
 </div>

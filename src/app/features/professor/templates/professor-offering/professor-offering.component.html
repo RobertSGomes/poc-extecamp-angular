@@ -1,15 +1,16 @@
-<div class="grid grid-rows-[108px_1fr] grid-cols-[300px_1fr] h-screen">
+<div
+  class="grid grid-rows-[108px_1fr] grid-cols-[300px_1fr] h-screen max-[768px]:flex max-[768px]:flex-col"
+>
   <app-sidebar
     [name]="professor?.nome"
     [email]="professor?.email"
     [navItens]="[
       {
-        title: 'Página inicial',
-        routerLink: '#'
+        title: 'Página inicial'
       },
       {
         title: 'Oferecimentos',
-        routerLink: '/professor/offerings'
+        routerLink: ['/professor', 'offerings']
       }
     ]"
   ></app-sidebar>
@@ -19,101 +20,121 @@
     [description]="'Bem vindo(a) a sua área do docente EXTECAMP'"
   ></app-header-navbar>
 
-  <div class="col-start-2 overflow-y-auto w-full px-8 py-6 bg-gray-50">
-    <h1 class="font-semibold text-lg text-gray-900">Visão geral</h1>
-    <div class="flex flex-row gap-x-[22px] py-6 w-[1072px] mx-auto">
-      <div
-        class="flex flex-col w-full bg-white rounded-xl border border-gray-200"
+  <div
+    class="col-start-2 overflow-y-auto w-full py-6 bg-gray-50 overflow-x-hidden"
+  >
+    <div>
+      <h1
+        class="font-semibold text-lg text-gray-900 w-[1072px] mx-auto max-[768px]:pl-4 max-[768px]:w-full"
       >
-        <div class="flex flex-col gap-y-2 border-b border-b-gray-200 p-6">
-          <p class="font-medium text-sm text-gray-600">Proposto</p>
-          <div class="flex flex-row items-center justify-between">
-            <h1 class="font-semibold text-4xl text-gray-900">
-              {{ pendingCourses.length }}
-            </h1>
-            <button
-              class="flex items-center justify-center rounded-[6px] w-6 h-6 border border-gray-300 shadow-sm"
-            >
-              <img src="../../../../../assets/svgs/plus.svg" class="w-3 h-3" />
-            </button>
-          </div>
-        </div>
-        <div class="flex flex-row p-6 justify-end">
-          <button class="font-semibold text-sm text-violet-700">
-            Ver todos
-          </button>
-        </div>
-      </div>
+        Visão geral
+      </h1>
       <div
-        class="flex flex-col w-full bg-white rounded-xl border border-gray-200"
+        class="py-6 w-[1072px] mx-auto max-[768px]:w-screen max-[768px]:overflow-x-auto"
       >
-        <div class="flex flex-col gap-y-2 border-b border-b-gray-200 p-6">
-          <p class="font-medium text-sm text-gray-600">Andamento</p>
-          <div class="flex flex-row items-center justify-between">
-            <h1 class="font-semibold text-4xl text-gray-900">
-              {{ completedCourses.length }}
-            </h1>
-            <button
-              class="flex items-center justify-center rounded-[6px] w-6 h-6 border border-gray-300 shadow-sm"
-            >
-              <img src="../../../../../assets/svgs/plus.svg" class="w-3 h-3" />
-            </button>
+        <div class="flex flex-row gap-[22px] w-[1072px] max-[768px]:px-4">
+          <div class="w-[251px] bg-white rounded-xl border border-gray-200">
+            <div class="flex flex-col gap-y-2 border-b border-b-gray-200 p-6">
+              <p class="font-medium text-sm text-gray-600">Proposto</p>
+              <div class="flex flex-row items-center justify-between">
+                <h1 class="font-semibold text-4xl text-gray-900">
+                  {{ pendingCourses.length }}
+                </h1>
+                <button
+                  class="flex items-center justify-center rounded-[6px] w-6 h-6 border border-gray-300 shadow-sm"
+                >
+                  <img
+                    src="../../../../../assets/svgs/plus.svg"
+                    class="w-3 h-3"
+                  />
+                </button>
+              </div>
+            </div>
+            <div class="flex flex-row p-6 justify-end">
+              <button class="font-semibold text-sm text-violet-700">
+                Ver todos
+              </button>
+            </div>
           </div>
-        </div>
-        <div class="flex flex-row p-6 justify-end">
-          <button class="font-semibold text-sm text-violet-700">
-            Ver todos
-          </button>
-        </div>
-      </div>
-      <div
-        class="flex flex-col w-full bg-white rounded-xl border border-gray-200"
-      >
-        <div class="flex flex-col gap-y-2 border-b border-b-gray-200 p-6">
-          <p class="font-medium text-sm text-gray-600">Terminados</p>
-          <div class="flex flex-row items-center justify-between">
-            <h1 class="font-semibold text-4xl text-gray-900">0</h1>
-            <button
-              class="flex items-center justify-center rounded-[6px] w-6 h-6 border border-gray-300 shadow-sm"
-            >
-              <img src="../../../../../assets/svgs/plus.svg" class="w-3 h-3" />
-            </button>
+          <div class="w-[251px] bg-white rounded-xl border border-gray-200">
+            <div class="flex flex-col gap-y-2 border-b border-b-gray-200 p-6">
+              <p class="font-medium text-sm text-gray-600">Andamento</p>
+              <div class="flex flex-row items-center justify-between">
+                <h1 class="font-semibold text-4xl text-gray-900">
+                  {{ completedCourses.length }}
+                </h1>
+                <button
+                  class="flex items-center justify-center rounded-[6px] w-6 h-6 border border-gray-300 shadow-sm"
+                >
+                  <img
+                    src="../../../../../assets/svgs/plus.svg"
+                    class="w-3 h-3"
+                  />
+                </button>
+              </div>
+            </div>
+            <div class="flex flex-row p-6 justify-end">
+              <button class="font-semibold text-sm text-violet-700">
+                Ver todos
+              </button>
+            </div>
           </div>
-        </div>
-        <div class="flex flex-row p-6 justify-end">
-          <button class="font-semibold text-sm text-violet-700">
-            Ver todos
-          </button>
-        </div>
-      </div>
-      <div
-        class="flex flex-col w-full bg-white rounded-xl border border-gray-200"
-      >
-        <div class="flex flex-col gap-y-2 border-b border-b-gray-200 p-6">
-          <p class="font-medium text-sm text-gray-600">Com pendência</p>
-          <div class="flex flex-row items-center justify-between">
-            <h1 class="font-semibold text-4xl text-gray-900">
-              {{ incompleteCourses.length }}
-            </h1>
-            <button
-              class="flex items-center justify-center rounded-[6px] w-6 h-6 border border-gray-300 shadow-sm"
-            >
-              <img src="../../../../../assets/svgs/plus.svg" class="w-3 h-3" />
-            </button>
+          <div class="w-[251px] bg-white rounded-xl border border-gray-200">
+            <div class="flex flex-col gap-y-2 border-b border-b-gray-200 p-6">
+              <p class="font-medium text-sm text-gray-600">Terminados</p>
+              <div class="flex flex-row items-center justify-between">
+                <h1 class="font-semibold text-4xl text-gray-900">0</h1>
+                <button
+                  class="flex items-center justify-center rounded-[6px] w-6 h-6 border border-gray-300 shadow-sm"
+                >
+                  <img
+                    src="../../../../../assets/svgs/plus.svg"
+                    class="w-3 h-3"
+                  />
+                </button>
+              </div>
+            </div>
+            <div class="flex flex-row p-6 justify-end">
+              <button class="font-semibold text-sm text-violet-700">
+                Ver todos
+              </button>
+            </div>
           </div>
-        </div>
-        <div class="flex flex-row p-6 justify-end">
-          <button class="font-semibold text-sm text-violet-700">
-            Ver todos
-          </button>
+          <div class="w-[251px] bg-white rounded-xl border border-gray-200">
+            <div class="flex flex-col gap-y-2 border-b border-b-gray-200 p-6">
+              <p class="font-medium text-sm text-gray-600">Com pendência</p>
+              <div class="flex flex-row items-center justify-between">
+                <h1 class="font-semibold text-4xl text-gray-900">
+                  {{ incompleteCourses.length }}
+                </h1>
+                <button
+                  class="flex items-center justify-center rounded-[6px] w-6 h-6 border border-gray-300 shadow-sm"
+                >
+                  <img
+                    src="../../../../../assets/svgs/plus.svg"
+                    class="w-3 h-3"
+                  />
+                </button>
+              </div>
+            </div>
+            <div class="flex flex-row p-6 justify-end">
+              <button class="font-semibold text-sm text-violet-700">
+                Ver todos
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="flex flex-row justify-between py-6 w-[1072px] mx-auto">
-      <h1 class="font-semibold text-lg text-gray-900">Cursos em andamento</h1>
-      <div class="flex flex-row gap-x-2">
+    <div
+      class="flex flex-row items-center justify-between py-6 w-[1072px] gap-4 mx-auto max-[768px]:flex-col max-[768px]:items-start max-[768px]:w-screen"
+    >
+      <h1 class="flex-1 font-semibold text-lg text-gray-900 max-[768px]:pl-4">
+        Cursos em andamento
+      </h1>
+      <div class="flex flex-row gap-x-2 max-[768px]:pl-4">
         <button
-          class="flex gap-x-2 items-center rounded-lg px-[14px] py-2 border bg-white border-gray-300 shadow-sm font-semibold text-sm text-gray-700"
+          class="flex gap-x-2 items-center rounded-lg px-[14px] py-2 h-fit border bg-white border-gray-300 shadow-sm font-semibold text-sm text-gray-700"
         >
           <img
             src="../../../../../assets/svgs/filter-lines.svg"
@@ -123,14 +144,16 @@
         </button>
         <button
           [routerLink]="['/professor', 'offerings', 'new']"
-          class="rounded-lg px-[14px] py-2 border bg-violet-600 border-violet-600 shadow-sm font-semibold text-sm text-white"
+          class="rounded-lg px-[14px] py-2 h-fit border bg-violet-600 border-violet-600 shadow-sm font-semibold text-sm text-white"
         >
           Novo oferecimento
         </button>
       </div>
     </div>
-    <div class="w-[1072px] mx-auto mb-6">
-      <table class="rounded-2xl w-full">
+    <div
+      class="w-[1072px] mx-auto mb-6 max-[768px]:w-screen max-[768px]:overflow-x-auto"
+    >
+      <table class="w-[1072px] rounded-2xl max-[768px]:mx-4">
         <thead class="border-b border-b-gray-200">
           <th
             class="p-3 bg-gray-100 text-left font-medium text-xs text-gray-700"
@@ -226,7 +249,7 @@
           </tr>
         </tbody>
       </table>
-      <div class="w-full bg-white" *ngIf="completedCourses.length === 0">
+      <div class="w-[1072px] bg-white" *ngIf="completedCourses.length === 0">
         <div class="w-[352px] mx-auto py-[48px]">
           <p class="font-semibold text-base text-gray-900 text-center">
             Sem cursos em andamento
@@ -238,11 +261,15 @@
       </div>
     </div>
 
-    <div class="flex flex-row justify-between py-6 w-[1072px] mx-auto">
-      <h1 class="font-semibold text-lg text-gray-900">Cursos propostos</h1>
-      <div class="flex flex-row gap-x-2">
+    <div
+      class="flex flex-row items-center justify-between py-6 w-[1072px] mx-auto gap-4 max-[768px]:flex-col max-[768px]:items-start max-[768px]:w-screen"
+    >
+      <h1 class="font-semibold text-lg text-gray-900 max-[768px]:pl-4">
+        Cursos propostos
+      </h1>
+      <div class="flex flex-row gap-x-2 max-[768px]:pl-4">
         <button
-          class="flex gap-x-2 items-center rounded-lg px-[14px] py-2 border bg-white border-gray-300 shadow-sm font-semibold text-sm text-gray-700"
+          class="flex gap-x-2 items-center rounded-lg px-[14px] py-2 h-fit border bg-white border-gray-300 shadow-sm font-semibold text-sm text-gray-700"
         >
           <img
             src="../../../../../assets/svgs/filter-lines.svg"
@@ -252,8 +279,10 @@
         </button>
       </div>
     </div>
-    <div class="w-[1072px] mx-auto">
-      <table class="rounded-2xl w-full">
+    <div
+      class="w-[1072px] mx-auto max-[768px]:w-screen max-[768px]:overflow-x-auto max-[768px]:px-4"
+    >
+      <table class="w-[1072px] rounded-2xl">
         <thead class="border-b border-b-gray-200">
           <th
             class="p-3 bg-gray-100 text-left font-medium text-xs text-gray-700"
@@ -433,7 +462,7 @@
         </tbody>
       </table>
       <div
-        class="w-full bg-white"
+        class="w-[1072px] bg-white"
         *ngIf="incompleteCourses.length === 0 && pendingCourses.length === 0"
       >
         <div class="w-[352px] mx-auto py-[48px]">

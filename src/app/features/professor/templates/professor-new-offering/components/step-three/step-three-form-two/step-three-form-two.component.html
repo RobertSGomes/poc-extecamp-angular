@@ -1,22 +1,24 @@
 <form
   (submit)="nextInsideStep.emit()"
   [formGroup]="stepThreeFormTwo"
-  class="flex flex-col gap-y-6 w-[1072px] mx-auto p-8 bg-white border border-gray-200 rounded-2xl shadow-sm"
+  class="flex flex-col gap-y-6 w-[1072px] mx-auto p-8 bg-white border border-gray-200 rounded-2xl shadow-sm max-[768px]:w-screen max-[768px]:px-4"
 >
   <app-history-line [currentStep]="1" [steps]="historySteps"></app-history-line>
 
-  <hr class="h-[1px] bg-gray-200" />
+  <hr class="h-[1px] bg-gray-200 max-[768px]:hidden" />
 
   <h1 class="font-semibold text-lg text-gray-900">Inscrição</h1>
 
   <div class="flex flex-col gap-y-2">
     <div class="flex gap-x-[18px]">
-      <p class="w-[494px] font-medium text-sm text-gray-700">Local *</p>
+      <p class="w-[494px] font-medium text-sm text-gray-700 max-[768px]:w-full">
+        Local *
+      </p>
     </div>
 
     <div class="flex gap-x-[18px]">
       <div
-        class="flex gap-2 w-[494px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+        class="flex gap-2 w-[494px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center max-[768px]:w-full"
       >
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
@@ -36,8 +38,10 @@
     </div>
   </div>
 
-  <div class="flex flex-col gap-y-2">
-    <div class="flex gap-x-[18px]">
+  <div
+    class="flex flex-col gap-y-2 max-[768px]:w-full max-[768px]:overflow-x-auto"
+  >
+    <div class="flex gap-x-[18px] max-[768px]:w-full">
       <p class="w-[324px] font-medium text-sm text-gray-700">
         Telefone da Secretaria de Extensão *
       </p>
@@ -51,13 +55,13 @@
         class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
         <select
-          class="font-medium text-base text-gray-800 outline-none"
+          class="font-medium text-base text-gray-800 outline-none bg-white"
           formControlName="telefone_secretaria_pais"
         >
           <option selected value="+55 (XX) XXXX-XXXX">BR</option>
         </select>
         <input
-          class="w-[324px] text-gray-800 text-base outline-none placeholder:text-gray-500"
+          class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
           placeholder="+55 (DDD) 0 0000-0000"
           formControlName="telefone_secretaria"
           required
@@ -68,13 +72,13 @@
         class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
         <select
-          class="font-medium text-base text-gray-800 outline-none"
+          class="font-medium text-base text-gray-800 outline-none bg-white"
           formControlName="telefone_informacoes_pais"
         >
           <option selected value="+55 (XX) XXXX-XXXX">BR</option>
         </select>
         <input
-          class="w-[324px] text-gray-800 text-base outline-none placeholder:text-gray-500"
+          class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
           placeholder="+55 (DDD) 0 0000-0000"
           formControlName="telefone_informacoes"
           [inputMask]="phoneInputMask"
@@ -96,7 +100,7 @@
     </div>
   </div>
 
-  <div class="flex flex-col gap-y-2">
+  <div class="flex flex-col gap-y-2 max-[768px]:w-full">
     <div class="flex gap-x-[18px]">
       <p class="w-[324px] font-medium text-sm text-gray-700">
         Abertura das incrições *
@@ -107,10 +111,10 @@
     </div>
     <div class="flex gap-x-[18px]">
       <div
-        class="flex items-center gap-2 w-[324px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+        class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
         <img
-          class="w-5 h-5"
+          class="w-5 h-5 max-[768px]:hidden"
           src="../../../../../../../../assets/svgs/calendar.svg"
         />
         <input
@@ -123,10 +127,10 @@
         />
       </div>
       <div
-        class="flex items-center gap-2 w-[324px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+        class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
         <img
-          class="w-5 h-5"
+          class="w-5 h-5 max-[768px]:hidden"
           src="../../../../../../../../assets/svgs/calendar.svg"
         />
         <input

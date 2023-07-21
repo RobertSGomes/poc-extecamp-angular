@@ -1,5 +1,5 @@
 <div
-  class="flex flex-col gap-y-6 w-[1072px] mx-auto p-8 bg-white border border-gray-200 rounded-2xl shadow-sm"
+  class="flex flex-col gap-y-6 w-[1072px] mx-auto p-8 bg-white border border-gray-200 rounded-2xl shadow-sm max-[768px]:w-screen max-[768px]:px-4"
 >
   <app-history-line [currentStep]="1" [steps]="historySteps"></app-history-line>
 
@@ -9,11 +9,13 @@
     Professores docentes da UNICAMP (Cadastro DGRH)
   </h1>
 
-  <div class="flex flex-row justify-between w-full mb-[10px]">
+  <div
+    class="flex flex-row justify-between gap-4 w-full mb-[10px] max-[768px]:flex-col"
+  >
     <p class="font-semibold text-base text-gray-700">Docente cadastrado</p>
     <button
       type="button"
-      class="font-semibold text-sm text-violet-700 rounded-lg px-4 py-[10px] bg-violet-50 border border-violet-200"
+      class="font-semibold text-sm text-violet-700 rounded-lg px-4 py-[10px] bg-violet-50 border border-violet-200 h-fit w-fit"
       (click)="openNewProfessorModal = true"
     >
       Novo docente
@@ -22,7 +24,7 @@
 
   <div
     *ngIf="hasRecentAdded"
-    class="flex items-center justify-between gap-x-4 w-full p-4 rounded-xl bg-emerald-50 border border-emerald-300"
+    class="flex items-center justify-between gap-4 w-full p-4 rounded-xl bg-emerald-50 border border-emerald-300"
   >
     <div class="flex items-center gap-x-4">
       <div
@@ -47,8 +49,8 @@
     </button>
   </div>
 
-  <div>
-    <table class="w-full">
+  <div class="w-full max-[768px]:overflow-x-auto">
+    <table class="w-full max-[768px]:w-[1008px]">
       <thead class="border-b border-b-gray-200">
         <th
           class="font-medium text-xs text-left px-6 py-3 text-gray-600 w-[120px]"
@@ -118,7 +120,7 @@
         </tr>
       </tbody>
     </table>
-    <div class="w-full bg-gray-50" *ngIf="courseProfessors.length === 0">
+    <div class="w-[1008px] bg-gray-50" *ngIf="courseProfessors.length === 0">
       <div class="w-[352px] mx-auto py-[48px]">
         <p class="font-semibold text-base text-gray-900 text-center">
           Sem docentes cadastrados
@@ -164,7 +166,7 @@
 >
   <form
     [formGroup]="modalFormGroup"
-    class="z-50 w-[798px] h-screen bg-white p-6 overflow-y-auto"
+    class="z-50 w-[798px] h-screen bg-white p-6 overflow-y-auto max-[768px]:w-screen"
   >
     <div class="flex flex-col gap-y-8">
       <div class="flex justify-between">
@@ -237,7 +239,7 @@
             />
           </div>
         </div>
-        <div class="flex gap-x-8 justify-between">
+        <div class="flex gap-8 justify-between max-[768px]:flex-col">
           <div class="flex flex-col flex-1 gap-[6px]">
             <label class="font-medium text-sm text-gray-700">Matrícula *</label>
             <div
@@ -256,7 +258,7 @@
               class="flex items-center gap-2 w-full px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
             >
               <select
-                class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                class="flex-1 w-full text-gray-800 text-base outline-none placeholder:text-gray-500 bg-white"
                 formControlName="docente_titulacao"
               >
                 <option value="">Selecione</option>
@@ -315,15 +317,15 @@
           </div>
         </div>
         <div class="flex flex-col gap-y-2">
-          <div class="flex gap-x-[18px]">
+          <div class="flex gap-[18px] max-[768px]:flex-col">
             <p class="w-full font-medium text-sm text-gray-700">
               Carga horária do docente*
             </p>
           </div>
 
-          <div class="flex gap-x-[18px]">
+          <div class="flex gap-[18px] max-[768px]:flex-col">
             <div
-              class="flex gap-2 w-[135px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+              class="flex gap-2 w-[135px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center max-[768px]:w-full"
             >
               <input
                 class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
@@ -333,7 +335,7 @@
               />
             </div>
             <div
-              class="flex gap-2 w-[135px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+              class="flex gap-2 w-[135px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center max-[768px]:w-full"
             >
               <input
                 class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"

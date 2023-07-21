@@ -1,19 +1,19 @@
-<div class="grid grid-rows-[108px_1fr] grid-cols-[300px_1fr] h-screen">
+<div
+  class="grid grid-rows-[108px_1fr] grid-cols-[300px_1fr] h-screen max-[768px]:flex max-[768px]:flex-col"
+>
   <app-sidebar
     [name]="student?.nome"
     [email]="student?.email"
     [navItens]="[
       {
         title: 'Página inicial',
-        routerLink: '/student'
+        routerLink: ['/student']
       },
       {
-        title: 'Meus dados',
-        routerLink: '#'
+        title: 'Meus dados'
       },
       {
-        title: 'Meus cursos',
-        routerLink: '#'
+        title: 'Meus cursos'
       }
     ]"
   ></app-sidebar>
@@ -23,12 +23,14 @@
     [description]="'Bem vindo(a) a sua área do aluno EXTECAMP'"
   ></app-header-navbar>
 
-  <div class="col-start-2 overflow-y-auto">
+  <div
+    class="col-start-2 overflow-y-auto w-full py-6 bg-gray-50 overflow-x-hidden"
+  >
     <div
       [ngClass]="{
         'py-8': subscribedCourses.length > 0
       }"
-      class="flex flex-col w-[1072px] mx-auto gap-y-8"
+      class="flex flex-col w-[1072px] mx-auto gap-y-8 max-[768px]:w-full max-[768px]:px-4"
     >
       <!-- Notificação 1 -->
       <section
@@ -136,8 +138,10 @@
         </div>
       </section>
 
-      <section class="w-full">
-        <div class="flex py-6 items-center justify-between">
+      <section class="w-full max-[768px]:w-screen">
+        <div
+          class="flex py-6 items-center justify-between max-[768px]:flex-col max-[768px]:gap-4"
+        >
           <h1 class="font-semibold text-lg text-gray-900">Meus cursos</h1>
           <div class="flex gap-2">
             <button
@@ -155,125 +159,130 @@
             >
               Incompletos
             </button>
-            <button
-              *ngIf="subscribedCourses.length > 0"
-              class="rounded-md px-3 py-2 font-semibold text-sm bg-violet-600 text-white"
-              [routerLink]="['/student', 'courses']"
-            >
-              Buscar novo curso
-            </button>
           </div>
+          <button
+            *ngIf="subscribedCourses.length > 0"
+            class="rounded-md px-3 py-2 font-semibold text-sm bg-violet-600 text-white"
+            [routerLink]="['/student', 'courses']"
+          >
+            Buscar novo curso
+          </button>
         </div>
 
         <!-- Cursos registrados -->
-        <table *ngIf="subscribedCourses.length > 0" class="w-full rounded-2xl">
-          <thead class="border-b border-gray-200">
-            <th
-              class="p-3 bg-gray-100 text-left font-medium text-xs text-gray-700"
-            >
-              Sigla
-            </th>
-            <th
-              class="p-3 bg-gray-100 text-left font-medium text-xs text-gray-700"
-            >
-              Oferecimento
-            </th>
-            <th
-              class="p-3 bg-gray-100 text-left font-medium text-xs text-gray-700"
-            >
-              Nome do curso
-            </th>
-            <th
-              class="p-3 bg-gray-100 text-left font-medium text-xs text-gray-700"
-            >
-              Tipo de curso
-            </th>
-            <th
-              class="p-3 bg-gray-100 text-left font-medium text-xs text-gray-700"
-            >
-              Inscrição
-            </th>
-            <th
-              class="p-3 bg-gray-100 text-left font-medium text-xs text-gray-700"
-            ></th>
-          </thead>
-          <tbody
-            *ngFor="let subscribedCourse of subscribedCourses; let i = index"
+        <div class="w-full overflow-x-auto">
+          <table
+            *ngIf="subscribedCourses.length > 0"
+            class="w-full rounded-2xl max-[768px]:w-[1072px]"
           >
-            <tr>
-              <td
-                class="p-3 bg-white text-left font-medium text-sm text-gray-900 border-b border-b-gray-200"
+            <thead class="border-b border-gray-200">
+              <th
+                class="p-3 bg-gray-100 text-left font-medium text-xs text-gray-700"
               >
-                {{ subscribedCourse.sigla }}
-              </td>
-              <td
-                class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200 w-[121px]"
+                Sigla
+              </th>
+              <th
+                class="p-3 bg-gray-100 text-left font-medium text-xs text-gray-700"
               >
-                {{ formatIndex(i) }}
-              </td>
-              <td
-                class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200 w-[297px]"
+                Oferecimento
+              </th>
+              <th
+                class="p-3 bg-gray-100 text-left font-medium text-xs text-gray-700"
               >
-                {{ subscribedCourse.nome }}
-              </td>
-              <td
-                class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200"
+                Nome do curso
+              </th>
+              <th
+                class="p-3 bg-gray-100 text-left font-medium text-xs text-gray-700"
               >
-                <div
-                  class="flex flex-row items-center gap-x-[6px] rounded-2xl bg-emerald-50 pl-[6px] pr-2 py-0.5 w-fit"
+                Tipo de curso
+              </th>
+              <th
+                class="p-3 bg-gray-100 text-left font-medium text-xs text-gray-700"
+              >
+                Inscrição
+              </th>
+              <th
+                class="p-3 bg-gray-100 text-left font-medium text-xs text-gray-700"
+              ></th>
+            </thead>
+            <tbody
+              *ngFor="let subscribedCourse of subscribedCourses; let i = index"
+            >
+              <tr>
+                <td
+                  class="p-3 bg-white text-left font-medium text-sm text-gray-900 border-b border-b-gray-200"
+                >
+                  {{ subscribedCourse.sigla }}
+                </td>
+                <td
+                  class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200 w-[121px]"
+                >
+                  {{ formatIndex(i) }}
+                </td>
+                <td
+                  class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200 w-[297px]"
+                >
+                  {{ subscribedCourse.nome }}
+                </td>
+                <td
+                  class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200"
                 >
                   <div
-                    class="w-[6px] h-[6px] rounded-full bg-emerald-500"
-                  ></div>
-                  <p class="font-medium text-xs text-emerald-800">
-                    {{ subscribedCourse.tipo }}
-                  </p>
-                </div>
-              </td>
-              <td
-                class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200 uppercase"
-              >
-                {{ verifySubscription(subscribedCourse.aluno_inscricao) }}
-              </td>
-              <td
-                class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200 w-[72px]"
-              >
-                <div class="relative">
-                  <button
-                    (click)="
-                      handleSwitchDropdownOptionsState(subscribedCourse.id)
-                    "
-                    class="flex items-center justify-center"
+                    class="flex flex-row items-center gap-x-[6px] rounded-2xl bg-emerald-50 pl-[6px] pr-2 py-0.5 w-fit"
                   >
-                    <img
-                      src="../../../../../assets/svgs/more.svg"
-                      class="w-4 h-4"
-                    />
-                  </button>
-                  <div
-                    *ngIf="openedDropdownOptions === subscribedCourse.id"
-                    class="absolute top-1/2 -translate-y-1/2 right-14 z-[5] bg-white border border-gray-200 rounded-xl overflow-hidden"
-                  >
-                    <button
-                      class="w-full px-3 py-3 whitespace-nowrap font-normal text-sm text-left cursor-pointer hover:bg-violet-600 hover:text-white"
-                      type="button"
-                      (click)="handleEdit(subscribedCourse.id)"
-                    >
-                      Editar informações
-                    </button>
-                    <button
-                      class="w-full px-3 py-3 whitespace-nowrap font-normal text-sm text-left cursor-pointer hover:bg-violet-600 hover:text-white"
-                      type="button"
-                      (click)="handleUnsubscribe(subscribedCourse.id)"
-                    >
-                      Cancelar inscrição
-                    </button>
+                    <div
+                      class="w-[6px] h-[6px] rounded-full bg-emerald-500"
+                    ></div>
+                    <p class="font-medium text-xs text-emerald-800">
+                      {{ subscribedCourse.tipo }}
+                    </p>
                   </div>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+                </td>
+                <td
+                  class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200 uppercase"
+                >
+                  {{ verifySubscription(subscribedCourse.aluno_inscricao) }}
+                </td>
+                <td
+                  class="p-3 bg-white text-left font-normal text-sm text-gray-700 border-b border-b-gray-200 w-[72px]"
+                >
+                  <div class="relative">
+                    <button
+                      (click)="
+                        handleSwitchDropdownOptionsState(subscribedCourse.id)
+                      "
+                      class="flex items-center justify-center"
+                    >
+                      <img
+                        src="../../../../../assets/svgs/more.svg"
+                        class="w-4 h-4"
+                      />
+                    </button>
+                    <div
+                      *ngIf="openedDropdownOptions === subscribedCourse.id"
+                      class="absolute top-1/2 -translate-y-1/2 right-14 z-[5] bg-white border border-gray-200 rounded-xl overflow-hidden"
+                    >
+                      <button
+                        class="w-full px-3 py-3 whitespace-nowrap font-normal text-sm text-left cursor-pointer hover:bg-violet-600 hover:text-white"
+                        type="button"
+                        (click)="handleEdit(subscribedCourse.id)"
+                      >
+                        Editar informações
+                      </button>
+                      <button
+                        class="w-full px-3 py-3 whitespace-nowrap font-normal text-sm text-left cursor-pointer hover:bg-violet-600 hover:text-white"
+                        type="button"
+                        (click)="handleUnsubscribe(subscribedCourse.id)"
+                      >
+                        Cancelar inscrição
+                      </button>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
         <!-- Sem cursos registrados -->
         <div

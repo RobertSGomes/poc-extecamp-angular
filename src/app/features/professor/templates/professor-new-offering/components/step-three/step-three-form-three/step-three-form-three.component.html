@@ -1,11 +1,11 @@
 <form
   (submit)="nextInsideStep.emit()"
   [formGroup]="stepThreeFormThree"
-  class="flex flex-col gap-y-6 w-[1072px] mx-auto p-8 bg-white border border-gray-200 rounded-2xl shadow-sm"
+  class="flex flex-col gap-y-6 w-[1072px] mx-auto p-8 bg-white border border-gray-200 rounded-2xl shadow-sm max-[768px]:w-screen max-[768px]:px-4"
 >
   <app-history-line [currentStep]="2" [steps]="historySteps"></app-history-line>
 
-  <hr class="h-[1px] bg-gray-200" />
+  <hr class="h-[1px] bg-gray-200 max-[768px]:hidden" />
 
   <h1 class="font-semibold text-lg text-gray-900">
     Oferecimento e outras informações
@@ -13,14 +13,14 @@
 
   <div class="flex flex-col gap-y-2">
     <div class="flex gap-x-[18px]">
-      <p class="w-[494px] font-medium text-sm text-gray-700">
+      <p class="w-[494px] font-medium text-sm text-gray-700 max-[768px]:w-full">
         Local do oferecimento *
       </p>
     </div>
 
     <div class="flex gap-x-[18px]">
       <div
-        class="flex gap-2 w-[494px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+        class="flex gap-2 w-[494px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center max-[768px]:w-full"
       >
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
@@ -51,7 +51,7 @@
         class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
         <select
-          class="w-full text-gray-800 text-base outline-none"
+          class="w-full text-gray-800 text-base outline-none bg-white"
           formControlName="uf"
           (change)="handleChangeState()"
         >
@@ -65,7 +65,7 @@
         class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
         <select
-          class="w-full text-gray-800 text-base outline-none"
+          class="w-full text-gray-800 text-base outline-none bg-white"
           formControlName="cidade"
         >
           <option selected value="">Selecione</option>
@@ -99,11 +99,12 @@
   </div>
 
   <div class="flex flex-col w-full gap-[6px]">
-    <label class="w-[494px] font-medium text-sm text-gray-700"
+    <label
+      class="w-[494px] font-medium text-sm text-gray-700 max-[768px]:w-full"
       >Dias da semana e horários</label
     >
     <div
-      class="flex gap-2 w-[494px] h-[154px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+      class="flex gap-2 w-[494px] h-[154px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center max-[768px]:w-full"
     >
       <textarea
         class="w-full h-full text-gray-800 text-base outline-none resize-none placeholder:text-gray-500"
@@ -128,7 +129,7 @@
         class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
         <img
-          class="w-5 h-5"
+          class="w-5 h-5 max-[768px]:hidden"
           src="../../../../../../../../assets/svgs/calendar.svg"
         />
         <input
@@ -143,7 +144,7 @@
         class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
       >
         <img
-          class="w-5 h-5"
+          class="w-5 h-5 max-[768px]:hidden"
           src="../../../../../../../../assets/svgs/calendar.svg"
         />
         <input

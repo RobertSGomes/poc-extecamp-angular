@@ -1,11 +1,11 @@
 <form
   (submit)="handleSubmit()"
   [formGroup]="stepTwoFormOne"
-  class="flex flex-col gap-y-6 w-[1072px] mx-auto p-8 bg-white border border-gray-200 rounded-2xl shadow-sm"
+  class="flex flex-col gap-y-6 w-[1072px] mx-auto p-8 bg-white border border-gray-200 rounded-2xl shadow-sm max-[768px]:w-screen max-[768px]:px-4"
 >
   <app-history-line [currentStep]="0" [steps]="historySteps"></app-history-line>
 
-  <hr class="h-[1px] bg-gray-200" />
+  <hr class="h-[1px] bg-gray-200 max-[768px]:hidden" />
 
   <h1 class="font-semibold text-lg text-gray-900">Coordenação do curso</h1>
 
@@ -14,7 +14,7 @@
       >Coordenador de extensão *</label
     >
     <div
-      class="flex items-center gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+      class="flex items-center gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm max-[768px]:w-full"
     >
       <img
         src="../../../../../../../../assets/svgs/search.svg"
@@ -36,7 +36,7 @@
       </p>
     </div>
     <div
-      class="absolute z-[1] top-[70px] left-0 w-[665px] border max-h-36 overflow-y-auto border-gray-300 shadow-sm rounded-lg overflow-hidden"
+      class="absolute z-[1] top-[70px] left-0 w-[665px] border max-h-36 overflow-y-auto border-gray-300 shadow-sm rounded-lg overflow-hidden max-[768px]:w-full"
       *ngIf="focusInputOne"
     >
       <p
@@ -63,7 +63,7 @@
       >Diretor da unidade *</label
     >
     <div
-      class="flex items-center gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+      class="flex items-center gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm max-[768px]:w-full"
     >
       <img
         src="../../../../../../../../assets/svgs/search.svg"
@@ -84,7 +84,7 @@
       </p>
     </div>
     <div
-      class="absolute z-[1] top-[70px] left-0 w-[665px] border max-h-36 overflow-y-auto border-gray-300 shadow-sm rounded-lg overflow-hidden"
+      class="absolute z-[1] top-[70px] left-0 w-[665px] border max-h-36 overflow-y-auto border-gray-300 shadow-sm rounded-lg overflow-hidden max-[768px]:w-full"
       *ngIf="focusInputTwo"
     >
       <p
@@ -109,7 +109,7 @@
       >Professor responsável *</label
     >
     <div
-      class="flex items-center gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+      class="flex items-center gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm max-[768px]:w-full"
     >
       <img
         src="../../../../../../../../assets/svgs/search.svg"
@@ -130,7 +130,7 @@
       </p>
     </div>
     <div
-      class="absolute z-[1] top-[70px] left-0 w-[665px] border max-h-36 overflow-y-auto border-gray-300 shadow-sm rounded-lg overflow-hidden"
+      class="absolute z-[1] top-[70px] left-0 w-[665px] border max-h-36 overflow-y-auto border-gray-300 shadow-sm rounded-lg overflow-hidden max-[768px]:w-full"
       *ngIf="focusInputThree"
     >
       <p
@@ -159,7 +159,7 @@
   <div class="flex flex-col gap-[6px]">
     <label class="font-medium text-sm text-gray-700">E-mail *</label>
     <div
-      class="flex items-center gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+      class="flex items-center gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm max-[768px]:w-full"
     >
       <img src="../../../../../../../../assets/svgs/mail.svg" class="w-5 h-5" />
       <input
@@ -183,7 +183,7 @@
     <div
       class="flex items-center gap-2 w-[323px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
     >
-      <select class="font-medium text-base text-gray-800 outline-none">
+      <select class="font-medium text-base text-gray-800 outline-none bg-white">
         <option selected>BR</option>
       </select>
       <input
@@ -209,7 +209,7 @@
 
     <div class="flex gap-x-[18px]">
       <div
-        class="flex gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+        class="flex gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center max-[768px]:w-full"
       >
         <input
           class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
@@ -232,10 +232,10 @@
 
     <div class="flex gap-x-[18px]">
       <div
-        class="flex gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
+        class="flex gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center max-[768px]:w-full"
       >
         <select
-          class="w-full text-gray-800 text-base outline-none"
+          class="w-full text-gray-800 text-base outline-none bg-white"
           formControlName="docente_responsavel_titulacao"
         >
           <option value="">Selecione</option>

@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 type NavItem = {
   title: string;
-  routerLink: string;
+  routerLink?: string[];
 };
 
 @Component({
@@ -24,7 +24,9 @@ export class SidebarComponent implements OnInit {
     this.currentUrl = this.router.url;
   }
 
-  verifyPath(path: string) {
-    return this.currentUrl.includes(path);
+  verifyPath(path?: string[]) {
+    if (!path) return false;
+
+    return this.currentUrl.includes(path.join('/'));
   }
 }

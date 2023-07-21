@@ -1,24 +1,24 @@
 <form
   (submit)="nextInsideStep.emit()"
   [formGroup]="stepOneFormTwo"
-  class="flex flex-col w-[1072px] mx-auto p-8 gap-y-6 bg-white border border-gray-200 rounded-2xl shadow-sm"
+  class="flex flex-col w-[1072px] mx-auto p-8 gap-y-6 bg-white border border-gray-200 rounded-2xl shadow-sm max-[768px]:px-4 max-[768px]:w-screen"
 >
   <app-history-line [currentStep]="1" [steps]="historySteps"></app-history-line>
 
-  <hr class="h-[1px] bg-gray-200" />
+  <hr class="h-[1px] bg-gray-200 max-[768px]:hidden" />
 
   <h1 class="font-semibold text-lg text-gray-900">Palavras-chave e áreas</h1>
 
-  <div class="flex flex-col gap-y-2" formArrayName="palavras_chave">
+  <div class="flex flex-col gap-[18px]" formArrayName="palavras_chave">
     <p class="font-medium text-sm text-gray-700">Palavras-chave *</p>
 
-    <div class="flex gap-x-[18px]">
+    <div class="flex gap-[18px] max-[768px]:flex-col">
       <div
         class="flex gap-2 w-[324px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
         [formGroupName]="0"
       >
         <select
-          class="w-full text-gray-800 text-base outline-none"
+          class="w-full text-gray-800 text-base outline-none bg-white"
           formControlName="palavra_chave"
         >
           <option value="">Selecione</option>
@@ -49,7 +49,7 @@
         [formGroupName]="1"
       >
         <select
-          class="w-full text-gray-800 text-base outline-none"
+          class="w-full text-gray-800 text-base outline-none bg-white"
           formControlName="palavra_chave"
         >
           <option value="">Selecione</option>
@@ -77,13 +77,13 @@
       </div>
     </div>
 
-    <div class="flex gap-x-[18px]">
+    <div class="flex gap-[18px] max-[768px]:flex-col">
       <div
         class="flex gap-2 w-[324px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
         [formGroupName]="2"
       >
         <select
-          class="w-full text-gray-800 text-base outline-none"
+          class="w-full text-gray-800 text-base outline-none bg-white"
           formControlName="palavra_chave"
         >
           <option value="">Selecione</option>
@@ -114,7 +114,7 @@
         [formGroupName]="3"
       >
         <select
-          class="w-full text-gray-800 text-base outline-none"
+          class="w-full text-gray-800 text-base outline-none bg-white"
           formControlName="palavra_chave"
         >
           <option value="">Selecione</option>
@@ -159,7 +159,7 @@
         class="flex gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
       >
         <select
-          class="w-full text-gray-800 text-base outline-none"
+          class="w-full text-gray-800 text-base outline-none bg-white"
           formControlName="area_geral"
         >
           <option value="">Selecione</option>
@@ -209,16 +209,16 @@
     </div>
   </div>
 
-  <div class="flex flex-col gap-y-2" formArrayName="areas_tematicas">
+  <div class="flex flex-col gap-y-[18px]" formArrayName="areas_tematicas">
     <p class="font-medium text-sm text-gray-700">Área temáticas *</p>
 
-    <div class="flex gap-x-[18px]">
+    <div class="flex gap-[18px] max-[768px]:flex-col">
       <div
         class="flex gap-2 w-[324px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
         [formGroupName]="0"
       >
         <select
-          class="w-full text-gray-800 text-base outline-none"
+          class="w-full text-gray-800 text-base outline-none bg-white"
           formControlName="area_tematica"
         >
           <option value="">Selecione</option>
@@ -287,7 +287,7 @@
         [formGroupName]="1"
       >
         <select
-          class="w-full text-gray-800 text-base outline-none"
+          class="w-full text-gray-800 text-base outline-none bg-white"
           formControlName="area_tematica"
         >
           <option value="">Selecione</option>

@@ -1,19 +1,19 @@
-<div class="grid grid-rows-[0px_auto_1fr] grid-cols-[300px_1fr] h-screen">
+<div
+  class="grid grid-rows-[0_auto_1fr] grid-cols-[300px_1fr] h-screen max-[768px]:flex max-[768px]:flex-col"
+>
   <app-sidebar
     [name]="student?.nome"
     [email]="student?.email"
     [navItens]="[
       {
         title: 'Página inicial',
-        routerLink: '/student'
+        routerLink: ['/student']
       },
       {
-        title: 'Meus dados',
-        routerLink: '#'
+        title: 'Meus dados'
       },
       {
-        title: 'Meus cursos',
-        routerLink: '#'
+        title: 'Meus cursos'
       }
     ]"
   ></app-sidebar>
@@ -24,13 +24,15 @@
     ></app-header-navbar>
   </div>
 
-  <div class="col-start-2 row-start-3 overflow-y-auto w-full px-8 bg-gray-50">
+  <div
+    class="col-start-2 row-start-3 overflow-y-auto w-full px-8 bg-gray-50 overflow-x-hidden max-[768px]:px-0"
+  >
     <div
-      class="flex flex-col mx-auto gap-y-6 items-center w-[1072px] py-6 border-x border-gray-200 shadow-sm bg-white"
+      class="flex flex-col mx-auto gap-y-6 items-center w-[1072px] py-6 border-x border-gray-200 shadow-sm bg-white max-[768px]:w-full"
     >
       <!-- Descrição do curso -->
       <section
-        class="flex w-[993px] p-4 gap-x-[31px] rounded-2xl border border-gray-200 shadow-sm"
+        class="flex w-[993px] p-4 gap-x-[31px] rounded-2xl border border-gray-200 shadow-sm max-[768px]:w-full"
       >
         <div class="flex flex-col flex-1 gap-y-8">
           <div class="flex flex-col gap-2">
@@ -50,7 +52,9 @@
             a
             {{ formatDate(course?.oferecimento?.inscricao?.data_encerramento) }}
           </p>
-          <div class="flex justify-between items-center">
+          <div
+            class="flex justify-between items-center gap-4 max-[768px]:flex-col"
+          >
             <div
               *ngIf="
                 course?.oferecimento?.custos_oferecimento
@@ -98,11 +102,15 @@
             </button>
           </div>
         </div>
-        <div class="flex flex-1 rounded-2xl bg-gray-300"></div>
+        <div
+          class="flex flex-1 rounded-2xl bg-gray-300 max-[768px]:hidden"
+        ></div>
       </section>
 
       <!-- Cards informativos -->
-      <section class="flex justify-between w-full px-8">
+      <section
+        class="flex justify-between w-full px-8 max-[768px]:flex-col max-[768px]:gap-y-8"
+      >
         <div class="flex flex-col gap-y-8">
           <div class="flex gap-5">
             <div class="flex items-center justify-center w-[66px] h-[66px]">
@@ -182,7 +190,7 @@
       </section>
 
       <!-- Accordions -->
-      <section class="flex flex-col w-[912px] gap-8">
+      <section class="flex flex-col w-[912px] gap-8 max-[768px]:w-full">
         <app-accordion
           title="Ementa"
           content="{{ formatHTML(course?.ementa) }}"

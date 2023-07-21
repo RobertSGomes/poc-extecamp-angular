@@ -1,11 +1,11 @@
 <form
-  class="flex flex-col gap-y-6 w-[1072px] mx-auto p-8 bg-white border border-gray-200 rounded-2xl shadow-sm"
+  class="flex flex-col gap-y-6 w-[1072px] mx-auto p-8 bg-white border border-gray-200 rounded-2xl shadow-sm max-[768px]:w-full max-[768px]:px-4"
   [formGroup]="stepFourFormOne"
   (submit)="handleCreateOfferingCost.emit()"
 >
   <app-history-line [currentStep]="0" [steps]="historySteps"></app-history-line>
 
-  <hr class="h-[1px] bg-gray-200" />
+  <hr class="h-[1px] bg-gray-200 max-[768px]:hidden" />
 
   <h1 class="font-semibold text-lg text-gray-900">Custos do oferecimento</h1>
 
@@ -42,187 +42,199 @@
 
   <h1 class="font-semibold text-lg text-gray-900">Planilha de custos</h1>
 
-  <table>
-    <tbody>
-      <tr class="border-b border-gray-200">
-        <td class="px-6 py-3">
-          <p class="font-normal text-sm text-gray-600">Professores hora-aula</p>
-          <p class="font-normal text-sm text-gray-600">(incluir encargos)(a)</p>
-        </td>
-        <td class="px-6 py-3">
-          <div
-            class="flex items-center gap-2 w-[180px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
-          >
-            <p class="font-normal text-base text-gray-500">R$</p>
-            <input
-              type="text"
-              class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-              formControlName="professores_hora_aula"
-              (change)="setTotal()"
-              [inputMask]="currencyInputMask"
-              placeholder="0.00"
-            />
-          </div>
-        </td>
-      </tr>
-      <tr class="border-b border-gray-200">
-        <td class="px-6 py-3">
-          <p class="font-normal text-sm text-gray-600">
-            Professores outras atividades
-          </p>
-          <p class="font-normal text-sm text-gray-600">(incluir encargos)(a)</p>
-        </td>
-        <td class="px-6 py-3">
-          <div
-            class="flex items-center gap-2 w-[180px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
-          >
-            <p class="font-normal text-base text-gray-500">R$</p>
-            <input
-              type="text"
-              class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-              formControlName="professores_outras_atividades"
-              (change)="setTotal()"
-              [inputMask]="currencyInputMask"
-              placeholder="0.00"
-            />
-          </div>
-        </td>
-      </tr>
-      <tr class="border-b border-gray-200">
-        <td class="px-6 py-3">
-          <p class="font-normal text-sm text-gray-600">Material de Consumo</p>
-          <p class="font-normal text-sm text-gray-600">
-            (materiais de escritório, etc.)
-          </p>
-        </td>
-        <td class="px-6 py-3">
-          <div
-            class="flex items-center gap-2 w-[180px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
-          >
-            <p class="font-normal text-base text-gray-500">R$</p>
-            <input
-              type="text"
-              class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-              formControlName="material_consumo"
-              (change)="setTotal()"
-              [inputMask]="currencyInputMask"
-              placeholder="0.00"
-            />
-          </div>
-        </td>
-      </tr>
-      <tr class="border-b border-gray-200">
-        <td class="px-6 py-3">
-          <p class="font-normal text-sm text-gray-600">
-            Material permanente e equipamentos
-          </p>
-        </td>
-        <td class="px-6 py-3">
-          <div
-            class="flex items-center gap-2 w-[180px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
-          >
-            <p class="font-normal text-base text-gray-500">R$</p>
-            <input
-              type="text"
-              class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-              formControlName="material_permanente"
-              (change)="setTotal()"
-              [inputMask]="currencyInputMask"
-              placeholder="0.00"
-            />
-          </div>
-        </td>
-      </tr>
-      <tr class="border-b border-gray-200">
-        <td class="px-6 py-3">
-          <p class="font-normal text-sm text-gray-600">Serviço de Terceiros</p>
-          <p class="font-normal text-sm text-gray-600">(incluir encargos)</p>
-        </td>
-        <td class="px-6 py-3">
-          <div
-            class="flex items-center gap-2 w-[180px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
-          >
-            <p class="font-normal text-base text-gray-500">R$</p>
-            <input
-              type="text"
-              class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-              formControlName="servico_terceiros"
-              (change)="setTotal()"
-              [inputMask]="currencyInputMask"
-              placeholder="0.00"
-            />
-          </div>
-        </td>
-      </tr>
-      <tr class="border-b border-gray-200">
-        <td class="px-6 py-3">
-          <p class="font-normal text-sm text-gray-600">Outros Custos</p>
-          <p class="font-normal text-sm text-gray-600">
-            (Certificados/Atestados entre Outros)
-          </p>
-        </td>
-        <td class="px-6 py-3">
-          <div
-            class="flex items-center gap-2 w-[180px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
-          >
-            <p class="font-normal text-base text-gray-500">R$</p>
-            <input
-              type="text"
-              class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-              formControlName="outros_custos"
-              (change)="setTotal()"
-              [inputMask]="currencyInputMask"
-              placeholder="0.00"
-            />
-          </div>
-        </td>
-      </tr>
-      <tr class="border-b border-gray-200 bg-yellow-200/30">
-        <td class="px-6 py-3">
-          <p class="font-normal text-sm text-gray-600">
-            Aproveitamento de Recursos Gerados
-          </p>
-          <p class="font-normal text-sm text-gray-600">
-            por Cursos de Extensão
-          </p>
-        </td>
-        <td class="px-6 py-3">
-          <div
-            class="flex items-center gap-2 w-[180px] px-3 py-2 bg-white rounded-lg border border-gray-300 shadow-sm"
-          >
-            <p class="font-normal text-base text-gray-500">R$</p>
-            <input
-              type="text"
-              class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-              formControlName="aproveitamento_recursos"
-              (change)="setTotal()"
-              [inputMask]="currencyInputMask"
-              placeholder="0.00"
-            />
-          </div>
-        </td>
-      </tr>
-      <tr class="border-b border-gray-200 bg-blue-200/30">
-        <td class="px-6 py-3">
-          <p class="font-normal text-sm text-gray-600">Custo total do curso</p>
-        </td>
-        <td class="px-6 py-3">
-          <div
-            class="flex items-center gap-2 w-[180px] px-3 py-2 bg-white rounded-lg border border-gray-300 shadow-sm"
-          >
-            <p class="font-normal text-base text-gray-500">R$</p>
-            <input
-              type="text"
-              class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500 disabled:bg-white"
-              formControlName="total"
-              [inputMask]="currencyInputMask"
-              placeholder="0.00"
-            />
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="w-full overflow-x-auto">
+    <table class="w-full max-[768px]:w-[1008px]">
+      <tbody>
+        <tr class="border-b border-gray-200">
+          <td class="px-6 py-3">
+            <p class="font-normal text-sm text-gray-600">
+              Professores hora-aula
+            </p>
+            <p class="font-normal text-sm text-gray-600">
+              (incluir encargos)(a)
+            </p>
+          </td>
+          <td class="px-6 py-3">
+            <div
+              class="flex items-center gap-2 w-[180px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+            >
+              <p class="font-normal text-base text-gray-500">R$</p>
+              <input
+                type="text"
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                formControlName="professores_hora_aula"
+                (change)="setTotal()"
+                [inputMask]="currencyInputMask"
+                placeholder="0.00"
+              />
+            </div>
+          </td>
+        </tr>
+        <tr class="border-b border-gray-200">
+          <td class="px-6 py-3">
+            <p class="font-normal text-sm text-gray-600">
+              Professores outras atividades
+            </p>
+            <p class="font-normal text-sm text-gray-600">
+              (incluir encargos)(a)
+            </p>
+          </td>
+          <td class="px-6 py-3">
+            <div
+              class="flex items-center gap-2 w-[180px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+            >
+              <p class="font-normal text-base text-gray-500">R$</p>
+              <input
+                type="text"
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                formControlName="professores_outras_atividades"
+                (change)="setTotal()"
+                [inputMask]="currencyInputMask"
+                placeholder="0.00"
+              />
+            </div>
+          </td>
+        </tr>
+        <tr class="border-b border-gray-200">
+          <td class="px-6 py-3">
+            <p class="font-normal text-sm text-gray-600">Material de Consumo</p>
+            <p class="font-normal text-sm text-gray-600">
+              (materiais de escritório, etc.)
+            </p>
+          </td>
+          <td class="px-6 py-3">
+            <div
+              class="flex items-center gap-2 w-[180px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+            >
+              <p class="font-normal text-base text-gray-500">R$</p>
+              <input
+                type="text"
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                formControlName="material_consumo"
+                (change)="setTotal()"
+                [inputMask]="currencyInputMask"
+                placeholder="0.00"
+              />
+            </div>
+          </td>
+        </tr>
+        <tr class="border-b border-gray-200">
+          <td class="px-6 py-3">
+            <p class="font-normal text-sm text-gray-600">
+              Material permanente e equipamentos
+            </p>
+          </td>
+          <td class="px-6 py-3">
+            <div
+              class="flex items-center gap-2 w-[180px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+            >
+              <p class="font-normal text-base text-gray-500">R$</p>
+              <input
+                type="text"
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                formControlName="material_permanente"
+                (change)="setTotal()"
+                [inputMask]="currencyInputMask"
+                placeholder="0.00"
+              />
+            </div>
+          </td>
+        </tr>
+        <tr class="border-b border-gray-200">
+          <td class="px-6 py-3">
+            <p class="font-normal text-sm text-gray-600">
+              Serviço de Terceiros
+            </p>
+            <p class="font-normal text-sm text-gray-600">(incluir encargos)</p>
+          </td>
+          <td class="px-6 py-3">
+            <div
+              class="flex items-center gap-2 w-[180px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+            >
+              <p class="font-normal text-base text-gray-500">R$</p>
+              <input
+                type="text"
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                formControlName="servico_terceiros"
+                (change)="setTotal()"
+                [inputMask]="currencyInputMask"
+                placeholder="0.00"
+              />
+            </div>
+          </td>
+        </tr>
+        <tr class="border-b border-gray-200">
+          <td class="px-6 py-3">
+            <p class="font-normal text-sm text-gray-600">Outros Custos</p>
+            <p class="font-normal text-sm text-gray-600">
+              (Certificados/Atestados entre Outros)
+            </p>
+          </td>
+          <td class="px-6 py-3">
+            <div
+              class="flex items-center gap-2 w-[180px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+            >
+              <p class="font-normal text-base text-gray-500">R$</p>
+              <input
+                type="text"
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                formControlName="outros_custos"
+                (change)="setTotal()"
+                [inputMask]="currencyInputMask"
+                placeholder="0.00"
+              />
+            </div>
+          </td>
+        </tr>
+        <tr class="border-b border-gray-200 bg-yellow-200/30">
+          <td class="px-6 py-3">
+            <p class="font-normal text-sm text-gray-600">
+              Aproveitamento de Recursos Gerados
+            </p>
+            <p class="font-normal text-sm text-gray-600">
+              por Cursos de Extensão
+            </p>
+          </td>
+          <td class="px-6 py-3">
+            <div
+              class="flex items-center gap-2 w-[180px] px-3 py-2 bg-white rounded-lg border border-gray-300 shadow-sm"
+            >
+              <p class="font-normal text-base text-gray-500">R$</p>
+              <input
+                type="text"
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                formControlName="aproveitamento_recursos"
+                (change)="setTotal()"
+                [inputMask]="currencyInputMask"
+                placeholder="0.00"
+              />
+            </div>
+          </td>
+        </tr>
+        <tr class="border-b border-gray-200 bg-blue-200/30">
+          <td class="px-6 py-3">
+            <p class="font-normal text-sm text-gray-600">
+              Custo total do curso
+            </p>
+          </td>
+          <td class="px-6 py-3">
+            <div
+              class="flex items-center gap-2 w-[180px] px-3 py-2 bg-white rounded-lg border border-gray-300 shadow-sm"
+            >
+              <p class="font-normal text-base text-gray-500">R$</p>
+              <input
+                type="text"
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500 disabled:bg-white"
+                formControlName="total"
+                [inputMask]="currencyInputMask"
+                placeholder="0.00"
+              />
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
   <hr class="h-[1px] bg-gray-200" />
 

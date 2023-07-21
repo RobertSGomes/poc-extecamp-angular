@@ -1,5 +1,5 @@
 <form
-  class="flex flex-col p-8 gap-y-6 rounded-2xl bg-white border border-gray-200 shadow-sm"
+  class="flex flex-col p-8 gap-y-6 rounded-2xl bg-white border border-gray-200 shadow-sm max-[768px]:w-screen max-[768px]:px-4"
   [formGroup]="stepTwoForm"
   (submit)="nextStep.emit()"
 >
@@ -9,11 +9,11 @@
   <div class="flex flex-col gap-[6px]">
     <label class="font-medium text-sm text-gray-700">CEP *</label>
     <div
-      class="flex items-center gap-2 w-[324px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+      class="flex items-center gap-2 w-[324px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm max-[768px]:w-full"
     >
       <img
         src="../../../../../../../assets/svgs/marker-pin-01.svg"
-        class="w-5 h-5"
+        class="w-5 h-5 max-[768px]:hidden"
       />
       <input
         formControlName="cep"
@@ -34,7 +34,7 @@
   <div class="flex flex-col gap-[6px]">
     <label class="font-medium text-sm text-gray-700">Logradouro *</label>
     <div
-      class="flex items-center gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+      class="flex items-center gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm max-[768px]:w-full"
     >
       <input
         formControlName="logradouro"
@@ -50,12 +50,12 @@
   </div>
 
   <!-- Número, bairro e complemento -->
-  <div class="flex gap-x-[18px]">
+  <div class="flex gap-[18px] max-[768px]:flex-col">
     <!-- Número -->
     <div class="flex flex-col gap-[6px]">
       <label class="font-medium text-sm text-gray-700">Número *</label>
       <div
-        class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+        class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm max-[768px]:w-full"
       >
         <input
           formControlName="numero"
@@ -78,7 +78,7 @@
     <div class="flex flex-col gap-[6px]">
       <label class="font-medium text-sm text-gray-700">Bairro *</label>
       <div
-        class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+        class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm max-[768px]:w-full"
       >
         <input
           formControlName="bairro"
@@ -97,7 +97,7 @@
     <div class="flex flex-col gap-[6px]">
       <label class="font-medium text-sm text-gray-700">Complemento *</label>
       <div
-        class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+        class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm max-[768px]:w-full"
       >
         <input
           formControlName="complemento"
@@ -109,18 +109,18 @@
   </div>
 
   <!-- País, estado e cidade -->
-  <div class="flex gap-x-[18px]">
+  <div class="flex gap-[18px] max-[768px]:flex-col">
     <!-- País residência -->
     <div class="flex flex-col gap-[6px]">
       <label class="font-medium text-sm text-gray-700"
         >País de residência *</label
       >
       <div
-        class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+        class="flex items-center gap-2 w-[238px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm max-[768px]:w-full"
       >
         <select
           formControlName="pais"
-          class="w-full text-gray-800 text-base outline-none cursor-pointer"
+          class="w-full text-gray-800 text-base outline-none cursor-pointer bg-white"
           (change)="handleChangeCountry()"
         >
           <option value="" selected>Selecione</option>
@@ -143,11 +143,11 @@
     <div class="flex flex-col gap-[6px]">
       <label class="font-medium text-sm text-gray-700">Estado *</label>
       <div
-        class="flex items-center gap-2 w-[324px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+        class="flex items-center gap-2 w-[324px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm max-[768px]:w-full"
       >
         <select
           formControlName="estado"
-          class="w-full text-gray-800 text-base outline-none cursor-pointer"
+          class="w-full text-gray-800 text-base outline-none cursor-pointer bg-white"
           (change)="handleChangeState()"
         >
           <option value="" selected>Selecione</option>
@@ -167,11 +167,11 @@
     <div class="flex flex-col gap-[6px]">
       <label class="font-medium text-sm text-gray-700">Cidade *</label>
       <div
-        class="flex items-center gap-2 w-[324px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+        class="flex items-center gap-2 w-[324px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm max-[768px]:w-full"
       >
         <select
           formControlName="cidade"
-          class="w-full text-gray-800 text-base outline-none cursor-pointer"
+          class="w-full text-gray-800 text-base outline-none cursor-pointer bg-white"
         >
           <option value="" selected>Selecione</option>
           <option *ngFor="let city of cities" [value]="city">

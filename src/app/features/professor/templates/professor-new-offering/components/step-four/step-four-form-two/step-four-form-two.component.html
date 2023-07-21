@@ -1,11 +1,11 @@
 <form
-  class="flex flex-col gap-y-6 w-[1072px] mx-auto p-8 bg-white border border-gray-200 rounded-2xl shadow-sm"
+  class="flex flex-col gap-y-6 w-[1072px] mx-auto p-8 bg-white border border-gray-200 rounded-2xl shadow-sm max-[768px]:w-screen max-[768px]:px-4"
   [formGroup]="stepFourFormTwo"
   (submit)="handleCreateOfferingCostTax.emit()"
 >
   <app-history-line [currentStep]="1" [steps]="historySteps"></app-history-line>
 
-  <hr class="h-[1px] bg-gray-200" />
+  <hr class="h-[1px] bg-gray-200 max-[768px]:hidden" />
 
   <div class="flex flex-col gap-y-2">
     <h1 class="font-semibold text-lg text-gray-900">Taxas</h1>
@@ -14,133 +14,46 @@
     </p>
   </div>
 
-  <table class="w-[895px]">
-    <tbody>
-      <tr>
-        <td
-          class="w-[261px] h-[130px] items-center px-6 border-b border-gray-200"
-        >
-          <p class="font-semibold text-sm text-gray-500">Fixas</p>
-        </td>
-        <td class="h-[130px] items-center px-6 border-b border-gray-200">
-          <p class="font-normal text-sm text-gray-500">
-            FAEPEX:0,6% - EXTECAMP: 2,4% - PIDS:8% - FUNCAMP: 6,5%
-          </p>
-        </td>
-        <td
-          class="w-[222px] h-[130px] items-center px-6 border-b border-gray-200"
-        >
-          <div
-            class="flex items-center gap-2 w-[180px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+  <div class="w-full overflow-x-auto">
+    <table class="w-[895px]">
+      <tbody>
+        <tr>
+          <td
+            class="w-[261px] h-[130px] items-center px-6 border-b border-gray-200"
           >
-            <p class="font-normal text-base text-gray-500">R$</p>
-            <input
-              class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-              formControlName="fixas"
-              [inputMask]="currencyInputMask"
-              placeholder="0.00"
-            />
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td class="w-[261px] h-[130px] items-center px-6"></td>
-        <td class="h-[130px] items-center px-6 border-b border-gray-200">
-          <div class="mb-4">
+            <p class="font-semibold text-sm text-gray-500">Fixas</p>
+          </td>
+          <td class="h-[130px] items-center px-6 border-b border-gray-200">
             <p class="font-normal text-sm text-gray-500">
-              AIU da própria Unidade
+              FAEPEX:0,6% - EXTECAMP: 2,4% - PIDS:8% - FUNCAMP: 6,5%
             </p>
-            <p class="font-normal text-sm text-gray-500">
-              (Definida pelo Diretor da Unidade de no mínimo 3%) *
-            </p>
-          </div>
-          <div
-            class="flex items-center gap-2 w-[180px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+          </td>
+          <td
+            class="w-[222px] h-[130px] items-center px-6 border-b border-gray-200"
           >
-            <p class="font-normal text-base text-gray-500">%</p>
-            <input
-              class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-              formControlName="aiu_unidade_porcentagem"
-              [inputMask]="percentageInputMask"
-              placeholder="0.00"
-            />
-          </div>
-        </td>
-        <td
-          class="w-[222px] h-[130px] items-center px-6 border-b border-gray-200"
-        >
-          <div
-            class="flex items-center gap-2 w-[180px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
-          >
-            <p class="font-normal text-base text-gray-500">R$</p>
-            <input
-              class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-              formControlName="aiu_unidade_valor"
-              [inputMask]="currencyInputMask"
-              placeholder="0.00"
-            />
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td class="w-[261px] h-[130px] items-center px-6">
-          <p class="font-semibold text-sm text-gray-500">Variáveis</p>
-        </td>
-        <td class="h-[130px] items-center px-6 border-b border-gray-200">
-          <div class="mb-4">
-            <p class="font-normal text-sm text-gray-500">
-              Fundo de Extensão da Unidade
-            </p>
-          </div>
-          <div
-            class="flex items-center gap-2 w-[180px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
-          >
-            <p class="font-normal text-base text-gray-500">%</p>
-            <input
-              class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-              formControlName="fundo_extensao_porcentagem_away"
-              [inputMask]="percentageInputMask"
-              placeholder="0.00"
-            />
-          </div>
-        </td>
-        <td
-          class="w-[222px] h-[130px] items-center px-6 border-b border-gray-200"
-        >
-          <div
-            class="flex items-center gap-2 w-[180px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
-          >
-            <p class="font-normal text-base text-gray-500">R$</p>
-            <input
-              class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-              formControlName="fundo_extensao_valor_away"
-              [inputMask]="currencyInputMask"
-              placeholder="0.00"
-            />
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td
-          class="w-[261px] h-[130px] items-center px-6 border-b border-gray-200"
-        ></td>
-        <td class="h-[130px] items-center px-6 border-b border-gray-200">
-          <div class="mb-4">
-            <p class="font-normal text-sm text-gray-500">
-              Fundo de Extensão da Unidade
-            </p>
-          </div>
-          <div class="flex gap-x-4">
             <div
               class="flex items-center gap-2 w-[180px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
             >
-              <select
-                class="w-full text-gray-800 text-base outline-none"
-                formControlName="fundo_extensao_unidade"
-              >
-                <option selected value="">Selecione</option>
-                <option value="Unidade IE">Unidade IE</option>
-              </select>
+              <p class="font-normal text-base text-gray-500">R$</p>
+              <input
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                formControlName="fixas"
+                [inputMask]="currencyInputMask"
+                placeholder="0.00"
+              />
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="w-[261px] h-[130px] items-center px-6"></td>
+          <td class="h-[130px] items-center px-6 border-b border-gray-200">
+            <div class="mb-4">
+              <p class="font-normal text-sm text-gray-500">
+                AIU da própria Unidade
+              </p>
+              <p class="font-normal text-sm text-gray-500">
+                (Definida pelo Diretor da Unidade de no mínimo 3%) *
+              </p>
             </div>
             <div
               class="flex items-center gap-2 w-[180px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
@@ -148,173 +61,266 @@
               <p class="font-normal text-base text-gray-500">%</p>
               <input
                 class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-                formControlName="fundo_extensao_porcentagem"
+                formControlName="aiu_unidade_porcentagem"
                 [inputMask]="percentageInputMask"
                 placeholder="0.00"
               />
             </div>
-          </div>
-        </td>
-        <td
-          class="w-[222px] h-[130px] items-center px-6 border-b border-gray-200"
-        >
-          <div
-            class="flex items-center gap-2 w-[180px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+          </td>
+          <td
+            class="w-[222px] h-[130px] items-center px-6 border-b border-gray-200"
           >
-            <p class="font-normal text-base text-gray-500">R$</p>
-            <input
-              class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-              formControlName="fundo_extensao_valor"
-              [inputMask]="currencyInputMask"
-              placeholder="0.00"
-            />
-          </div>
-        </td>
-      </tr>
-      <tr class="bg-gray-50">
-        <td
-          class="w-[261px] h-[130px] items-center px-6 border-b border-gray-200"
-        >
-          <p class="font-semibold text-sm text-gray-500">
-            Total de Taxas Fixas + Variáveis
-          </p>
-        </td>
-        <td class="h-[130px] items-center px-6 border-b border-gray-200"></td>
-        <td
-          class="w-[222px] h-[130px] items-center px-6 border-b border-gray-200"
-        >
-          <div
-            class="flex items-center gap-2 w-[180px] px-3 py-2 rounded-lg bg-white border border-gray-300 shadow-sm"
-          >
-            <p class="font-normal text-base text-gray-500">R$</p>
-            <input
-              class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-              formControlName="total"
-              [inputMask]="currencyInputMask"
-              placeholder="0.00"
-            />
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
-  <table class="w-[895px]">
-    <tbody>
-      <tr class="bg-yellow-200/30">
-        <td class="h-[130px] items-center px-6 border-b border-gray-200">
-          <p class="font-semibold text-sm text-gray-500">
-            Subsídios Gerados em Conformidade com a Portaria GR 086/1995
-          </p>
-          <p class="font-semibold text-sm text-gray-500">
-            (Doação, Patrocínio, Captação de Apoio)
-          </p>
-        </td>
-        <td
-          class="w-[222px] h-[130px] items-center px-6 border-b border-gray-200"
-        >
-          <div
-            class="flex items-center gap-2 w-[180px] px-3 py-2 rounded-lg bg-white border border-gray-300 shadow-sm"
-          >
-            <p class="font-normal text-base text-gray-500">R$</p>
-            <input
-              class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-              formControlName="subsidios"
-              [inputMask]="currencyInputMask"
-              placeholder="0.00"
-            />
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
-  <table class="w-[895px]">
-    <tbody>
-      <tr>
-        <td
-          class="w-[261px] h-[130px] items-center px-6 border-b border-gray-200"
-        >
-          <div>
-            <p class="font-semibold text-sm text-gray-500 uppercase">
-              Custo total
-            </p>
-            <p class="font-normal text-sm text-gray-500">
-              (Custo Total do Curso + Total das Taxas Fixas e Variável)
-            </p>
-          </div>
-        </td>
-        <td class="h-[130px] items-center px-6 border-b border-gray-200">
-          <div
-            class="flex items-center gap-2 w-[180px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
-          >
-            <p class="font-normal text-base text-gray-500">R$</p>
-            <input
-              class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-              formControlName="custo_total"
-              [inputMask]="currencyInputMask"
-              placeholder="0.00"
-            />
-          </div>
-        </td>
-        <td
-          class="w-[222px] h-[130px] items-center px-6 border-b border-gray-200"
-        ></td>
-      </tr>
-      <tr>
-        <td
-          class="w-[261px] h-[130px] items-center px-6 border-b border-gray-200"
-        >
-          <div>
-            <p class="font-semibold text-sm text-gray-500 uppercase">
-              CUSTO POR ALUNO (b)
-            </p>
-            <p class="font-normal text-sm text-gray-500">(Custo Total)</p>
-          </div>
-        </td>
-        <td class="h-[130px] items-center px-6 border-b border-gray-200">
-          <div class="flex flex-col gap-y-2">
-            <p class="font-normal text-sm text-gray-500">
-              Número mínimo de vagas
-            </p>
             <div
               class="flex items-center gap-2 w-[180px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
             >
+              <p class="font-normal text-base text-gray-500">R$</p>
               <input
                 class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-                formControlName="custo_aluno_min_vagas"
+                formControlName="aiu_unidade_valor"
                 [inputMask]="currencyInputMask"
                 placeholder="0.00"
               />
             </div>
-            <p class="font-normal text-xs text-gray-500">
-              O "Custo por aluno" ficará R$ 0,00 caso a Fonte de Pagamento seja
-              “Fechado com empresas”
-            </p>
-          </div>
-        </td>
-        <td
-          class="w-[222px] h-[130px] items-center px-6 border-b border-gray-200"
-        >
-          <div
-            class="flex items-center gap-2 w-[180px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+          </td>
+        </tr>
+        <tr>
+          <td class="w-[261px] h-[130px] items-center px-6">
+            <p class="font-semibold text-sm text-gray-500">Variáveis</p>
+          </td>
+          <td class="h-[130px] items-center px-6 border-b border-gray-200">
+            <div class="mb-4">
+              <p class="font-normal text-sm text-gray-500">
+                Fundo de Extensão da Unidade
+              </p>
+            </div>
+            <div
+              class="flex items-center gap-2 w-[180px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+            >
+              <p class="font-normal text-base text-gray-500">%</p>
+              <input
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                formControlName="fundo_extensao_porcentagem_away"
+                [inputMask]="percentageInputMask"
+                placeholder="0.00"
+              />
+            </div>
+          </td>
+          <td
+            class="w-[222px] h-[130px] items-center px-6 border-b border-gray-200"
           >
-            <p class="font-normal text-base text-gray-500">R$</p>
-            <input
-              class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
-              formControlName="custo_aluno_valor"
-              [inputMask]="currencyInputMask"
-              placeholder="0.00"
-            />
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+            <div
+              class="flex items-center gap-2 w-[180px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+            >
+              <p class="font-normal text-base text-gray-500">R$</p>
+              <input
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                formControlName="fundo_extensao_valor_away"
+                [inputMask]="currencyInputMask"
+                placeholder="0.00"
+              />
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="w-[261px] h-[130px] items-center px-6 border-b border-gray-200"
+          ></td>
+          <td class="h-[130px] items-center px-6 border-b border-gray-200">
+            <div class="mb-4">
+              <p class="font-normal text-sm text-gray-500">
+                Fundo de Extensão da Unidade
+              </p>
+            </div>
+            <div class="flex gap-x-4">
+              <div
+                class="flex items-center gap-2 w-[180px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+              >
+                <select
+                  class="w-full text-gray-800 text-base outline-none bg-white"
+                  formControlName="fundo_extensao_unidade"
+                >
+                  <option selected value="">Selecione</option>
+                  <option value="Unidade IE">Unidade IE</option>
+                </select>
+              </div>
+              <div
+                class="flex items-center gap-2 w-[180px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+              >
+                <p class="font-normal text-base text-gray-500">%</p>
+                <input
+                  class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                  formControlName="fundo_extensao_porcentagem"
+                  [inputMask]="percentageInputMask"
+                  placeholder="0.00"
+                />
+              </div>
+            </div>
+          </td>
+          <td
+            class="w-[222px] h-[130px] items-center px-6 border-b border-gray-200"
+          >
+            <div
+              class="flex items-center gap-2 w-[180px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+            >
+              <p class="font-normal text-base text-gray-500">R$</p>
+              <input
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                formControlName="fundo_extensao_valor"
+                [inputMask]="currencyInputMask"
+                placeholder="0.00"
+              />
+            </div>
+          </td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td
+            class="w-[261px] h-[130px] items-center px-6 border-b border-gray-200"
+          >
+            <p class="font-semibold text-sm text-gray-500">
+              Total de Taxas Fixas + Variáveis
+            </p>
+          </td>
+          <td class="h-[130px] items-center px-6 border-b border-gray-200"></td>
+          <td
+            class="w-[222px] h-[130px] items-center px-6 border-b border-gray-200"
+          >
+            <div
+              class="flex items-center gap-2 w-[180px] px-3 py-2 rounded-lg bg-white border border-gray-300 shadow-sm"
+            >
+              <p class="font-normal text-base text-gray-500">R$</p>
+              <input
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                formControlName="total"
+                [inputMask]="currencyInputMask"
+                placeholder="0.00"
+              />
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="w-full overflow-x-auto">
+    <table class="w-[895px]">
+      <tbody>
+        <tr class="bg-yellow-200/30">
+          <td class="h-[130px] items-center px-6 border-b border-gray-200">
+            <p class="font-semibold text-sm text-gray-500">
+              Subsídios Gerados em Conformidade com a Portaria GR 086/1995
+            </p>
+            <p class="font-semibold text-sm text-gray-500">
+              (Doação, Patrocínio, Captação de Apoio)
+            </p>
+          </td>
+          <td
+            class="w-[222px] h-[130px] items-center px-6 border-b border-gray-200"
+          >
+            <div
+              class="flex items-center gap-2 w-[180px] px-3 py-2 rounded-lg bg-white border border-gray-300 shadow-sm"
+            >
+              <p class="font-normal text-base text-gray-500">R$</p>
+              <input
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                formControlName="subsidios"
+                [inputMask]="currencyInputMask"
+                placeholder="0.00"
+              />
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="w-full overflow-x-auto">
+    <table class="w-[895px]">
+      <tbody>
+        <tr>
+          <td
+            class="w-[261px] h-[130px] items-center px-6 border-b border-gray-200"
+          >
+            <div>
+              <p class="font-semibold text-sm text-gray-500 uppercase">
+                Custo total
+              </p>
+              <p class="font-normal text-sm text-gray-500">
+                (Custo Total do Curso + Total das Taxas Fixas e Variável)
+              </p>
+            </div>
+          </td>
+          <td class="h-[130px] items-center px-6 border-b border-gray-200">
+            <div
+              class="flex items-center gap-2 w-[180px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+            >
+              <p class="font-normal text-base text-gray-500">R$</p>
+              <input
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                formControlName="custo_total"
+                [inputMask]="currencyInputMask"
+                placeholder="0.00"
+              />
+            </div>
+          </td>
+          <td
+            class="w-[222px] h-[130px] items-center px-6 border-b border-gray-200"
+          ></td>
+        </tr>
+        <tr>
+          <td
+            class="w-[261px] h-[130px] items-center px-6 border-b border-gray-200"
+          >
+            <div>
+              <p class="font-semibold text-sm text-gray-500 uppercase">
+                CUSTO POR ALUNO (b)
+              </p>
+              <p class="font-normal text-sm text-gray-500">(Custo Total)</p>
+            </div>
+          </td>
+          <td class="h-[130px] items-center px-6 border-b border-gray-200">
+            <div class="flex flex-col gap-y-2">
+              <p class="font-normal text-sm text-gray-500">
+                Número mínimo de vagas
+              </p>
+              <div
+                class="flex items-center gap-2 w-[180px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+              >
+                <input
+                  class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                  formControlName="custo_aluno_min_vagas"
+                  [inputMask]="currencyInputMask"
+                  placeholder="0.00"
+                />
+              </div>
+              <p class="font-normal text-xs text-gray-500">
+                O "Custo por aluno" ficará R$ 0,00 caso a Fonte de Pagamento
+                seja “Fechado com empresas”
+              </p>
+            </div>
+          </td>
+          <td
+            class="w-[222px] h-[130px] items-center px-6 border-b border-gray-200"
+          >
+            <div
+              class="flex items-center gap-2 w-[180px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm"
+            >
+              <p class="font-normal text-base text-gray-500">R$</p>
+              <input
+                class="w-full text-gray-800 text-base outline-none placeholder:text-gray-500"
+                formControlName="custo_aluno_valor"
+                [inputMask]="currencyInputMask"
+                placeholder="0.00"
+              />
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
   <div
     *ngIf="!alertClosed"
-    class="flex justify-between gap-x-4 w-[837px] p-4 rounded-xl bg-orange-50 border border-orange-300"
+    class="flex justify-between gap-x-4 w-[837px] p-4 rounded-xl bg-orange-50 border border-orange-300 max-[768px]:w-full"
   >
     <div class="flex flex-1 gap-x-4">
       <img
