@@ -1,11 +1,11 @@
 <form
   (submit)="nextInsideStep.emit()"
   [formGroup]="stepThreeFormTwo"
-  class="flex flex-col gap-y-6 w-[1072px] mx-auto p-8 bg-white border border-gray-200 rounded-2xl shadow-sm max-[768px]:w-screen max-[768px]:px-4"
+  class="flex flex-col gap-y-6 w-[1072px] mx-auto p-8 bg-white border border-gray-200 rounded-2xl shadow-sm max-[1024px]:w-full max-[768px]:w-screen max-[768px]:px-4"
 >
   <app-history-line [currentStep]="1" [steps]="historySteps"></app-history-line>
 
-  <hr class="h-[1px] bg-gray-200 max-[768px]:hidden" />
+  <hr class="h-[1px] bg-gray-200 max-[1024px]:hidden" />
 
   <h1 class="font-semibold text-lg text-gray-900">Inscrição</h1>
 

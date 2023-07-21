@@ -1,5 +1,5 @@
 <div
-  class="grid grid-rows-[0px_auto_1fr] grid-cols-[300px_1fr] h-screen max-[768px]:flex max-[768px]:flex-col"
+  class="grid grid-rows-[0px_auto_1fr] grid-cols-[300px_1fr] h-screen max-[1024px]:grid-cols-[200px_1fr] max-[768px]:flex max-[768px]:flex-col"
 >
   <app-sidebar
     [name]="professor?.nome"
@@ -30,9 +30,7 @@
         Novo oferecimento
       </h1>
 
-      <section
-        class="w-[1072px] mx-auto max-[768px]:hidden max-[768px]:w-screen"
-      >
+      <section class="w-[1072px] mx-auto max-[1024px]:hidden">
         <app-steps
           [currentStep]="currentStep"
           [currentInsideStep]="currentInsideStep"

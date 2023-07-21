@@ -1,16 +1,16 @@
 <form
   (submit)="handleCreateCourse.emit()"
   [formGroup]="stepOneFormFive"
-  class="flex flex-col w-[1072px] mx-auto gap-y-6 p-8 bg-white border border-gray-200 rounded-2xl shadow-sm max-[768px]:w-screen max-[768px]:px-4"
+  class="flex flex-col w-[1072px] mx-auto gap-y-6 p-8 bg-white border border-gray-200 rounded-2xl shadow-sm max-[1024px]:w-full max-[768px]:w-screen max-[768px]:px-4"
 >
   <app-history-line [currentStep]="4" [steps]="historySteps"></app-history-line>
 
-  <hr class="h-[1px] bg-gray-200 max-[768px]:hidden" />
+  <hr class="h-[1px] bg-gray-200 max-[1024px]:hidden" />
 
   <h1 class="font-semibold text-lg text-gray-900">Critérios de avaliação</h1>
 
   <section
-    class="flex w-[750px] p-4 gap-x-6 rounded-xl bg-violet-50 border border-violet-300 shadow-sm max-[768px]:w-full"
+    class="flex w-[750px] p-4 gap-x-6 rounded-xl bg-violet-50 border border-violet-300 shadow-sm max-[1024px]:w-full"
   >
     <div
       class="relative w-5 h-5 rounded-full before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:w-[28px] before:h-[28px] before:rounded-full before:border-2 before:border-violet-600/30 after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:w-[38px] after:h-[38px] after:rounded-full after:border-2 after:border-violet-600/10"
@@ -109,7 +109,7 @@
       >Grau de Escolaridade *</label
     >
     <div
-      class="flex gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center max-[768px]:w-full"
+      class="flex gap-2 w-[665px] px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center max-[1024px]:w-full"
     >
       <select
         class="w-full text-gray-800 text-base outline-none bg-white"
@@ -150,7 +150,7 @@
   </div>
 
   <section
-    class="flex w-[750px] p-4 gap-x-6 rounded-xl bg-violet-50 border border-violet-300 shadow-sm max-[768px]:w-full"
+    class="flex w-[750px] p-4 gap-x-6 rounded-xl bg-violet-50 border border-violet-300 shadow-sm max-[1024px]:w-full"
   >
     <div
       class="relative w-5 h-5 rounded-full before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:w-[28px] before:h-[28px] before:rounded-full before:border-2 before:border-violet-600/30 after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:w-[38px] after:h-[38px] after:rounded-full after:border-2 after:border-violet-600/10"
