@@ -1,8 +1,8 @@
 <nav class="fixed w-full top-0 bg-white">
   <ul
-    class="flex flex-row items-center justify-between h-20 w-[1280px] mx-auto px-8"
+    class="flex flex-row items-center justify-between h-20 w-[1280px] mx-auto px-8 max-[768px]:w-screen"
   >
-    <div class="flex flex-row items-center gap-x-9">
+    <div class="flex flex-row items-center gap-x-9 max-[768px]:hidden">
       <li class="logo">
         <img src="../../../../assets/extecamp_logo.png" width="100%" />
       </li>
@@ -27,7 +27,9 @@
         >
       </li>
     </div>
-    <div class="flex flex-row items-center gap-x-3">
+    <div
+      class="flex flex-row items-center gap-x-3 justify-end max-[768px]:w-full"
+    >
       <li class="nav-button signin">
         <a
           class="font-semibold text-base text-gray-600 px-[18px] py-[10px]"
