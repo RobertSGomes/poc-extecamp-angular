@@ -1,8 +1,8 @@
 <section
-  class="relative flex h-screen w-screen items-center justify-center overflow-x-hidden"
+  class="relative flex h-screen w-screen items-center justify-center overflow-x-hidden max-[768px]:items-start max-[768px]:justify-start"
 >
   <form
-    class="flex flex-col p-2 items-center gap-8"
+    class="flex flex-col p-2 items-center gap-8 max-[768px]:w-screen max-[768px]:px-4 max-[768px]:py-10"
     [formGroup]="signUpForm"
     (submit)="handleSignUp()"
   >
@@ -14,7 +14,7 @@
       <div class="flex flex-col gap-6 items-start justify-start">
         <h1 class="font-semibold text-lg text-gray-900">Cadastro</h1>
         <div class="flex flex-col gap-6">
-          <div class="flex flex-col gap-[6px] w-[500px]">
+          <div class="flex flex-col gap-[6px] w-[500px] max-[768px]:w-full">
             <label class="font-medium text-sm text-gray-700"
               >Nome completo *</label
             >
@@ -38,12 +38,14 @@
               </p>
             </div>
           </div>
-          <div class="flex flex-col gap-[6px] w-[500px]">
+          <div class="flex flex-col gap-[6px] w-[500px] max-[768px]:w-full">
             <label class="font-medium text-sm text-gray-700">Telefone *</label>
             <div
               class="flex gap-2 w-full px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
             >
-              <select class="font-medium text-base text-gray-800 outline-none">
+              <select
+                class="font-medium text-base text-gray-800 outline-none bg-white"
+              >
                 <option>BR</option>
               </select>
               <input
@@ -63,7 +65,7 @@
               </p>
             </div>
           </div>
-          <div class="flex flex-col gap-[6px] w-[500px]">
+          <div class="flex flex-col gap-[6px] w-[500px] max-[768px]:w-full">
             <label class="font-medium text-sm text-gray-700">Email *</label>
             <div
               class="flex gap-2 w-full px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
@@ -90,7 +92,7 @@
               </p>
             </div>
           </div>
-          <div class="flex flex-col gap-[6px] w-[500px]">
+          <div class="flex flex-col gap-[6px] w-[500px] max-[768px]:w-full">
             <label class="font-medium text-sm text-gray-700">Matrícula *</label>
             <div
               class="flex gap-2 w-full px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
@@ -121,7 +123,7 @@
               </p>
             </div>
           </div>
-          <div class="flex flex-col gap-[6px] w-[500px]">
+          <div class="flex flex-col gap-[6px] w-[500px] max-[768px]:w-full">
             <label class="font-medium text-sm text-gray-700">Senha *</label>
             <div
               class="flex gap-2 w-full px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
@@ -141,7 +143,7 @@
               <p class="font-normal text-sm text-red-600">Informe uma senha</p>
             </div>
           </div>
-          <div class="flex flex-col gap-[6px] w-[500px]">
+          <div class="flex flex-col gap-[6px] w-[500px] max-[768px]:w-full">
             <label class="font-medium text-sm text-gray-700"
               >Confirmação de senha *</label
             >
@@ -178,7 +180,7 @@
   </form>
 
   <button
-    class="absolute left-[65px] top-[65px] px-4 py-[10px] font-semibold text-sm text-violet-700"
+    class="absolute left-[65px] top-[65px] px-4 py-[10px] font-semibold text-sm text-violet-700 max-[768px]:hidden"
     [routerLink]="['']"
   >
     Voltar para home

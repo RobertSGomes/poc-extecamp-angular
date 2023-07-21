@@ -1,8 +1,10 @@
-<section class="relative flex h-screen w-screen items-center justify-center">
+<section
+  class="relative flex h-screen w-screen items-center justify-center max-[768px]:items-start max-[768px]:justify-start"
+>
   <form
     [formGroup]="signInForm"
     (submit)="handleSignIn()"
-    class="flex flex-col p-2 items-center gap-8"
+    class="flex flex-col p-2 items-center gap-8 max-[768px]:w-screen max-[768px]:px-4 max-[768px]:py-10"
   >
     <img
       src="../../../../../assets/extecamp_logo_colored.png"
@@ -14,7 +16,7 @@
           <h1 class="font-semibold text-lg text-gray-900">Faça seu login</h1>
           <div class="flex flex-col gap-6">
             <div class="flex flex-col gap-6">
-              <div class="flex flex-col gap-[6px] w-[500px]">
+              <div class="flex flex-col gap-[6px] w-[500px] max-[768px]:w-full">
                 <label class="font-medium text-sm text-gray-700">Login</label>
                 <div
                   class="flex gap-2 w-full px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
@@ -39,7 +41,7 @@
                   </p>
                 </div>
               </div>
-              <div class="flex flex-col gap-[6px] w-[500px]">
+              <div class="flex flex-col gap-[6px] w-[500px] max-[768px]:w-full">
                 <label class="font-medium text-sm text-gray-700">Senha</label>
                 <div
                   class="flex gap-2 w-full px-3 py-2 rounded-lg border border-gray-300 shadow-sm items-center"
@@ -93,7 +95,7 @@
   </form>
 
   <button
-    class="absolute left-[65px] top-[65px] px-4 py-[10px] font-semibold text-sm text-violet-700"
+    class="absolute left-[65px] top-[65px] px-4 py-[10px] font-semibold text-sm text-violet-700 max-[768px]:hidden"
     [routerLink]="['']"
   >
     Voltar para home
