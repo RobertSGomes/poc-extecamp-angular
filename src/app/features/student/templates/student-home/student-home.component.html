@@ -30,7 +30,7 @@
       [ngClass]="{
         'py-8': subscribedCourses.length > 0
       }"
-      class="flex flex-col w-[1072px] mx-auto gap-y-8 max-[768px]:w-full max-[768px]:px-4"
+      class="flex flex-col w-[1072px] mx-auto gap-y-8 max-[1420px]:w-full max-[1420px]:px-4"
     >
       <!-- Notificação 1 -->
       <section
@@ -140,7 +140,7 @@
 
       <section class="w-full max-[768px]:w-screen">
         <div
-          class="flex py-6 items-center justify-between max-[768px]:flex-col max-[768px]:gap-4"
+          class="flex py-6 items-center justify-between max-[1420px]:flex-col max-[1420px]:gap-4"
         >
           <h1 class="font-semibold text-lg text-gray-900">Meus cursos</h1>
           <div class="flex gap-2">
@@ -173,7 +173,7 @@
         <div class="w-full overflow-x-auto">
           <table
             *ngIf="subscribedCourses.length > 0"
-            class="w-full rounded-2xl max-[768px]:w-[1072px]"
+            class="w-full rounded-2xl max-[1420px]:w-[1072px]"
           >
             <thead class="border-b border-gray-200">
               <th

@@ -30,7 +30,7 @@ export class ProfessorNewOfferingComponent implements OnInit {
   courseId?: string;
   course?: CourseModel;
 
-  currentStep: number = 4;
+  currentStep: number = 0;
   currentInsideStep: number = 0;
   modalCancelOpened = false;
 
