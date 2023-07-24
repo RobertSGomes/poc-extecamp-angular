@@ -25,17 +25,20 @@ import { UpdateOfferingDTO } from '../dtos/update-offering.dto';
 import { UpdateOfferingCostDTO } from '../dtos/update-offering-cost.dto';
 import { SubscribeCourseDTO } from '../dtos/subscribe-course.dto';
 import { UpdateCourseDTO } from '../dtos/update-course.dto';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CourseService {
-  baseURL: string = 'http://localhost:3003/cursos';
+  baseURL?: string;
 
   constructor(
     private readonly router: Router,
     private readonly http: HttpClient
-  ) {}
+  ) {
+    this.baseURL = environment.baseURLCourse;
+  }
 
   getAll() {
     const accessToken = this.verifyAccess();

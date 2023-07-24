@@ -5,14 +5,17 @@ import { getAccessToken } from 'src/app/shared/utils/access-token.util';
 import { Router } from '@angular/router';
 import { ProfessorModel } from './models/professor.model';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProfessorService {
-  private apiURL: string = 'http://localhost:3000/professores';
+  private apiURL?: string;
 
-  constructor(private readonly http: HttpClient, private router: Router) {}
+  constructor(private readonly http: HttpClient, private router: Router) {
+    this.apiURL = environment.baseURLProfessor;
+  }
 
   getOne(professorId: string | null): Observable<ProfessorModel> {
     const accessToken = this.verifyAccess();

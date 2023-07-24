@@ -5,18 +5,21 @@ import { Router } from '@angular/router';
 import { StudentModel } from './models/student.model';
 import { getAccessToken } from 'src/app/shared/utils/access-token.util';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class StudentService {
-  private apiURL: string = 'http://localhost:3001/alunos';
+  private apiURL?: string;
   private accessToken: string | null = getAccessToken('student');
 
   constructor(
     private readonly http: HttpClient,
     private readonly router: Router
-  ) {}
+  ) {
+    this.apiURL = environment.baseURLStudent;
+  }
 
   signUp(sigupDTO: SignUpDTO): Observable<any> {
     return this.http.post(`${this.apiURL}/cadastrar`, sigupDTO, {
